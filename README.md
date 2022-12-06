@@ -55,6 +55,8 @@ Os conteúdos principais  a serem estudados são:
        <p>Adiciomos um vídeo explicando o <strong>processo de entrega</strong> [do fork ao pull request] no Material Assincrono da <a href="https://classroom.google.com/w/NTM0NjA2NDg3MjIx/tc/NTM2NDg5NTQyODg4">A005 - Git e Github</a>. Esse vídeo também exemplifica situações que podem acontecer durante o fluxo de utilização do Git.</p>
     </details>
 - Faça o deploy do projeto. Pode ser ultilizado o surge, Github pages ou outra ferramenta que faça a disponibilização do seu site para acesso público;
+				
+	dica para usar o surge:
 	* Instalar surge (só 1a vez): `npm install -g surge`
 	* Buildar app React: `npm run build`
 	* Deployar com surge: `surge ./build`
