@@ -11,7 +11,7 @@ Os conteúdos principais  a serem estudados são:
 - Estado Global
 
 ## **Enunciado**
-É objetivo deste projeto criar um site com três páginas usando a Poke Api usando as seguintes ferramentas:
+É objetivo deste projeto criar um site com três páginas usando a Poke Api com as seguintes ferramentas:
 
 - React
 - React Router
