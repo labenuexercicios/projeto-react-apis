@@ -63,4 +63,4 @@ Os conteúdos principais  a serem estudados são:
 - Adicionar o link do deploy no readme do seu projeto/repositório:
 
 
-- Entregue o **link do repo** no [Formulário de entrega]("será adicionado").
+- Entregue o **link do repo** no [Formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
