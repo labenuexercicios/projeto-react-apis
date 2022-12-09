@@ -59,6 +59,7 @@ Os conteúdos principais  a serem estudados são:
 	dica para usar o surge:
 	* Instalar surge (só 1a vez): `npm install -g surge`
 	* Buildar app React: `npm run build`
+	* cp ./build/index.html ./build/200.html
 	* Deployar com surge: `surge ./build`
 - Adicionar o link do deploy no readme do seu projeto/repositório:
 
