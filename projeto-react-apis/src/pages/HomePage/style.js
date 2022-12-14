@@ -11,10 +11,14 @@ export const MainContainer = styled.div`
   padding: 0 40px;
   background: grey;
 `;
-
 export const Title = styled.h1`
-    // font-family: poppins;
-    font-size: 48px;
-    color: white;
-    padding: 60px 0 55px 0;
-`
+  // font-family: poppins;
+  font-size: 48px;
+  color: white;
+  padding: 60px 0 55px 0;
+`;
+export const DivColumn = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;

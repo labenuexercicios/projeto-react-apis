@@ -4,7 +4,6 @@ import PokeBall from "../../img/pngwing 2.png";
 export const ContainerCard = styled.div`
   display: flex;
   flex-direction: column;
-  background: olive;
   width: 395px;
   height: 172px;
   border-radius: 12px;
@@ -15,6 +14,7 @@ export const ContainerCard = styled.div`
   background-position: 187px -60px;
   position: absolut;
   justify-content: flex-end;
+  margin: 0 20px 53px 0;
 `;
 export const DivColumn = styled.div`
   display: flex;
@@ -37,16 +37,18 @@ export const DivRowCatch = styled.div`
 export const TextId = styled.p`
   font-size: 12px;
   padding-top: 66px;
+  color: white;
 `;
 export const TextPokemon = styled.p`
   font-size: 30px;
   padding-top: -5px;
+  color: white;
 `;
 export const PokemonImg = styled.img`
   position: relative;
   width: 163px;
   top: -8px;
-  right: -11px;
+  right: -7px;
 `;
 export const DivPoison = styled.div`
   padding-top: 5px;
@@ -59,6 +61,7 @@ export const CatchButton = styled.button`
   border-radius: 8px;
   background: #ffffff;
   border: none;
+  cursor: pointer;
 `;
 export const DeleteButton = styled.button`
   width: 146px;
@@ -69,4 +72,5 @@ export const DeleteButton = styled.button`
 `;
 export const Link = styled.a`
   color: white;
+  cursor: pointer;
 `;

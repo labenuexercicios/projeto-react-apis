@@ -32,3 +32,10 @@ export const BlankSpace = styled.div`
     width: 250px;
     height: 50px;
 `
+export const DeleteButton = styled.button`
+  width: 250px;
+  height: 50px;
+  border-radius: 8px;
+  background: #FF6262;
+  border: none;
+`;

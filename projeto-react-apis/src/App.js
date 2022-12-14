@@ -1,5 +1,4 @@
 import React from "react";
-import axios from 'axios'
 import { createGlobalStyle } from "styled-components";
 import { Router } from "./routes/Router";
 
@@ -13,8 +12,6 @@ const GlobalStyled = createGlobalStyle`
 `;
 
 function App() {
-  axios.get('', )
-
   return (
     <>
       <GlobalStyled />
