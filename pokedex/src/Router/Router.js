@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import HomePage from "../Pages/HomePage"
-import Pokedex from "../Pages/Pokedex"
-import DetailsPage from "../Pages/DetailsPage"
-import NotFoundPage from "../Pages/NotFoundPage"
+import HomePage from "../Pages/HomePage/HomePage"
+import Pokedex from "../Pages/Pokedex/Pokedex"
+import DetailsPage from "../Pages/DetailsPage/DetailsPage"
+import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage"
 
 function Router () {
     return(
