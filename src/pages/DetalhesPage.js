@@ -146,8 +146,10 @@ padding:0 26px;
 
 `
 
-const DetalhesPage = () => {
-  const params = useParams
+ const DetalhesPage = () => {
+//   const params = useParams
+
+  
 
   return (
     <>
@@ -160,7 +162,7 @@ const DetalhesPage = () => {
           <div >
 
             <div className='ladoEsquerdo1'>
-              {/* //img Bulbasaur frente, img Bulbasaur costa,*/}
+              {/* img Bulbasaur frente, img Bulbasaur costa, */}
               <img className='imgBulbasaurFrente' src={imgBulbasaurFrente} />
             </div>
 
@@ -170,7 +172,7 @@ const DetalhesPage = () => {
           </div>
 
           <div className='posicaoGrafico'>
-            {/* <img className='imgDetalhes4Grande' src={imgDetalhes4Grande} /> */}
+            <img className='imgDetalhes4Grande' src={imgDetalhes4Grande} />
             <img className='grafico' src={grafico} />
           </div>
 
@@ -182,7 +184,7 @@ const DetalhesPage = () => {
         <img className='bolaPoke' src={imagemBola} />
 
           <div className='divBulbasaur'>
-            {/* //img Bulbasaur, img pokeBola, botão de capturar */}
+           
             <img className='imgBulba' src={imagemBulbassauro} />
             
           </div>
@@ -201,7 +203,7 @@ const DetalhesPage = () => {
         <div className='move'>
           <h1>Moves</h1>
           <span> Razor Wind</span>
-          <span> Shord Dance</span>
+          <span> Shord Dance</span> 
           {/* fazer um map p ele replicar */}
 
           {/* <img className='imgDetalhesTipo4' src={imgDetalhesTipo4} />
@@ -220,8 +222,11 @@ const DetalhesPage = () => {
 
 
       </MainStyled>
+
+     
     </>
   )
-}
+  
+ }
 
 export default DetalhesPage

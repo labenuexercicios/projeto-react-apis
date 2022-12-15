@@ -1,7 +1,11 @@
-import React from "react"
-import PokemonCard from "../components/card/PokemonCard"
-import Header from "../components/Header"
-import styled from 'styled-components'
+import React from "react";
+import PokemonCard from "../components/card/PokemonCard";
+import Header from "../components/Header";
+import styled from 'styled-components';
+import { BASE_URL } from "../constants/url";
+
+import { useContext } from "react";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 const PokedexPageStyled = styled.div`
 
@@ -29,26 +33,45 @@ h1{
 
 `
 
-
-
 const PokedexPage = () => {
+    const context = useContext(GlobalContext)
+   
+   const {pokedex, removePokedex} = context
+
+
+   
     return (
-        <>
-            <Header isPokedex = {true}/>
+         <>
+              <Header isPokedex = {true}/>
 
             <PokedexPageStyled>
                 <h1>Meus Pokemons</h1>
-                <div className="divCard">
-                    <PokemonCard />
+                {pokedex.map((pokemon) =>{                   
+                       return(
+                        <PokemonCard
+                        key={pokemon.name}
+                        pokemon={pokemon}
+                        removeFromPokedex={removePokedex}
+                        />
+
+                       )           
+               
+                
+                })} 
+               
+
+
+                {/* <div className="divCard">
+                    <PokemonCard /> */}
                     {/* <PokemonCard />
                     <PokemonCard />
                     <PokemonCard /> */}
-                </div>
-            </PokedexPageStyled>
+                {/* </div> */}
+             </PokedexPageStyled> 
 
 
-
-        </>
+</>
+      
     )
 }
 export default PokedexPage

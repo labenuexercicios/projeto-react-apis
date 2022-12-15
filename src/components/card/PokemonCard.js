@@ -1,12 +1,16 @@
 import styled from 'styled-components'
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { GlobalContext } from '../../contexts/GlobalContext'
+import axios from 'axios'
 import imagemBulbassauro from "../../imagens/imagemBulbassau.png"
 import imagemBola from "../../imagens/pokeBola.png"
 import imagemTipo from "../../imagens/tipo.png"
 import imagemTipo2 from "../../imagens/tipo2.png"
 import { Button } from '@chakra-ui/react'
-import {gotoDetalhesPage} from "../../routes/coordinators"
-import { useNavigate } from 'react-router-dom'
+import { gotoDetalhesPage } from "../../routes/coordinators"
+import { useNavigate, useLocation } from 'react-router-dom'
+
+
 
 const PokemonCardConteiner = styled.div`
 display: flex;
@@ -72,38 +76,78 @@ h2{
     } 
    
 }
-` 
+`
 
-const PokemonCard = () => {    
+const PokemonCard = (props) => {
+    const { pokemon } = props;
 
-      const navigate = useNavigate()
+    const location = useLocation();//path atual
 
-  return (
-    <PokemonCardConteiner>
-        <div className='ladoDireito'> 
-            {/* //img Bulbasaur, img pokeBola, botão de capturar */}
-            <img className='imgBulba' src = {imagemBulbassauro} />
-            <img className='bolaPoke' src = {imagemBola } />   
-            <Button>Capturar</Button>
+    const navigate = useNavigate()
 
-        </div>
 
-        <div className='ladoEsquerdo'> 
-            {/* //#1, Bulbasaur, os tipos, detalhes */}
-            <p>#01</p>
-            <h2>Bulbasaur</h2>
-            <div className='tipos'>
-            <img className='tipo1' src = {imagemTipo} />
-            <img className='tipo2' src = {imagemTipo2} />
+    const context = useContext(GlobalContext)
+
+    const { addToPokedex, removeFromPokedex } = context
+
+
+
+
+
+    //   const fetchPokemon = async () => {
+    //     try {
+    //       const response = await axios.get(props.pokemon.url);
+    //       setPokemon(response.data);          
+    //       console.log("aqui", response.data)
+    //        console.log(pokemon)
+
+    //     } catch (error) {
+    //       console.log("Erro ao buscar lista de pokemons");
+    //       console.log(error);
+    //     }
+    //   };
+
+    //      useEffect(() => {
+    //     fetchPokemon();
+    //   }, []);
+
+
+    //   fetchPokemon()
+
+    //console.log(pokemon.sprites.other["official-artwork"].front_default)
+    return (
+        <PokemonCardConteiner>
+
+            <div className='ladoDireito'>
+
+
+                <img className='imgBulba' src={pokemon.sprites?.other["official-artwork"].front_default} />
+                <img className='bolaPoke' src={imagemBola} />
+                {location.pathname === "/" ? 
+                <Button onClick={() => addToPokedex(pokemon)}>Capturar</Button>
+                 :<Button onClick={() => removeFromPokedex(pokemon)}>Excluir</Button>}  
+
+
+
+
             </div>
-            < Button onClick={()=>gotoDetalhesPage(navigate,"Bulbauro")}  className='detalhes'>Detalhes</Button>
 
-        </div>  
-       
-    </PokemonCardConteiner>   
+            <div className='ladoEsquerdo'>
+                <p>#01</p>
+                <h2>{pokemon.name}</h2>
+                <div className='tipos'>
+                    <img className='tipo1' src={imagemTipo} />
+                    <img className='tipo2' src={imagemTipo2} />
+                </div>
+                < Button onClick={() => gotoDetalhesPage(navigate, "Bulbauro")} className='detalhes'>Detalhes</Button>
 
-  )
+
+
+            </div>
+
+        </PokemonCardConteiner>
+
+    )
 }
 
 export default PokemonCard
-

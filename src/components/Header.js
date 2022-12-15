@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import {ButtonPokedex, ButtonTodosPokemonsDetalhes, ButtonExcluir} from "../components/header.styled"
 import {goToHomePage, goToPokedexPage} from "../routes/coordinators"
+import imgPokemonHeader from "../imagens/img-pokemon-header.png"
 
 
 
@@ -53,7 +54,8 @@ const Header = (props) => {
       {/* <Flex bg="white" justifyContent={"end" } alignItems={"center"}      > */}
       
       <div>{isPokedex && <ButtonTodosPokemonsDetalhes onClick={homePage}>Todos os Pokemons</ButtonTodosPokemonsDetalhes>}</div>
-      <div><h1>Pokemon</h1></div>
+      {/* <div><h1>Pokemon</h1></div> */}
+      <div> <img className='imgMoves' src={imgPokemonHeader} /></div>
       <div>
       {isHomePage && <ButtonPokedex onClick={pokedex}>Pokedéx</ButtonPokedex>}
         {isDetalhes && <ButtonExcluir > excluir da pokedéx </ButtonExcluir>}      
