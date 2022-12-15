@@ -23,32 +23,24 @@ import {
   DivName,
   PokemonImg,
   Moves,
+  Img,
 } from "./style";
 
 export const DetailCard = ({ url }) => {
-  const [hp, setHp] = useState(45);
-  const [attack, setAttack] = useState(49);
-  const [defense, setDefense] = useState(49);
-  const [spAtk, setSpAtk] = useState(65);
-  const [spDef, setSpDef] = useState(100);
-  const [speed, setSpeed] = useState(30);
-
-  const graphicColor = (item) => {
-    if (item < 31) return "#f5410f";
-    if (item > 30 && item < 61) return "#f7b72d";
-    if (item > 60) return "#61c754";
-  };
-
-  const [pokemonId, setPokemonId] = useState("1");
-  const [pokemonName, setPokemonName] = useState("bulbasaur");
-  const [pokemonType1, setPokemonType1] = useState("poison");
-  const [pokemonType2, setPokemonType2] = useState("grass");
-  const [pokemonImg, setPokemonImg] = useState("");
-
   const searchPokemon = () => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/1/`, {})
+      .get(`${url}`, {})
       .then((response) => {
+        // console.log(response.data)
+        setMoves(response.data.moves);
+        setPokemonFrontImg(response.data.sprites.front_default);
+        setPokemonBackImg(response.data.sprites.back_default);
+        setHp(response.data.stats[0].base_stat);
+        setAttack(response.data.stats[1].base_stat);
+        setDefense(response.data.stats[2].base_stat);
+        setSpAtk(response.data.stats[3].base_stat);
+        setSpDef(response.data.stats[4].base_stat);
+        setSpeed(response.data.stats[5].base_stat);
         setPokemonId(response.data.id);
         setPokemonName(response.data.name);
         setPokemonType1(response.data.types[0].type.name);
@@ -60,7 +52,7 @@ export const DetailCard = ({ url }) => {
             setPokemonImg(response.data.sprites.other[i].front_default);
           }
         }
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -71,18 +63,39 @@ export const DetailCard = ({ url }) => {
     searchPokemon();
   }, []);
 
+  const [hp, setHp] = useState("");
+  const [attack, setAttack] = useState("");
+  const [defense, setDefense] = useState("");
+  const [spAtk, setSpAtk] = useState("");
+  const [spDef, setSpDef] = useState("");
+  const [speed, setSpeed] = useState("");
+  const [pokemonId, setPokemonId] = useState("");
+  const [pokemonName, setPokemonName] = useState("");
+  const [pokemonType1, setPokemonType1] = useState("");
+  const [pokemonType2, setPokemonType2] = useState("");
+  const [pokemonImg, setPokemonImg] = useState("");
+  const [pokemonFrontImg, setPokemonFrontImg] = useState("");
+  const [pokemonBackImg, setPokemonBackImg] = useState("");
+  const [moves, setMoves] = useState([]);
+
+  const graphicColor = (item) => {
+    if (item < 31) return "#f5410f";
+    if (item > 30 && item < 61) return "#f7b72d";
+    if (item > 60) return "#61c754";
+  };
+
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   return (
-    <ContainerCard>
+    <ContainerCard style={{ backgroundColor: BackgroundColor(pokemonType1) }}>
       <DivColumn>
         <DivImg>
-          <img src={""} alt="pokemon" />
+          <Img src={pokemonFrontImg} alt="pokemon" />
         </DivImg>
         <DivImg>
-          <img src={""} alt="pokemon" />
+          <Img src={pokemonBackImg} alt="pokemon" />
         </DivImg>
       </DivColumn>
       <DivStats>
@@ -211,12 +224,23 @@ export const DetailCard = ({ url }) => {
         </DivName>
         <DivMoves>
           <Title>Moves:</Title>
-          <Moves><p>Razor Wind</p></Moves>
-          <Moves><p>Sword Dance</p></Moves>
+          {moves
+            .filter((move, index) => {
+              return index < 5;
+            })
+            .map((item) => {
+              return (
+                <Moves key={item.move.name}>
+                  <p>{item.move.name}</p>
+                </Moves>
+              );
+            })}
+          <Moves>
+            <p>Razor Wind</p>
+          </Moves>
         </DivMoves>
-        
       </DivInfos>
-      <PokemonImg src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" />
+      <PokemonImg src={pokemonImg} />
     </ContainerCard>
   );
 };

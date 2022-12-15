@@ -39,3 +39,10 @@ export const DeleteButton = styled.button`
   background: #FF6262;
   border: none;
 `;
+export const CatchButton = styled.button`
+  width: 250px;
+  height: 50px;
+  border-radius: 8px;
+  background: green;
+  border: none;
+`;

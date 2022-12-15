@@ -126,3 +126,7 @@ export const Moves = styled.div`
   padding: 10px;
   margin-bottom: 20px;
 `;
+export const Img = styled.img`
+  width: 200px;
+  height: 200px;
+`;

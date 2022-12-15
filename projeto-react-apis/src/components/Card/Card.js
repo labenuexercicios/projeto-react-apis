@@ -18,7 +18,7 @@ import {
   DeleteButton,
 } from "./style";
 
-export const Card = ({ url }) => {
+export const Card = ({ url, catchPokemon, releasePokemon }) => {
   const navigate = useNavigate();
   const pathParams = useParams();
 
@@ -27,6 +27,8 @@ export const Card = ({ url }) => {
   const [pokemonType1, setPokemonType1] = useState("");
   const [pokemonType2, setPokemonType2] = useState("");
   const [pokemonImg, setPokemonImg] = useState("");
+
+  // console.log(url)
 
   const searchPokemon = () => {
     axios
@@ -38,11 +40,7 @@ export const Card = ({ url }) => {
         if (!!response.data.types[1]) {
           setPokemonType2(response.data.types[1].type.name);
         }
-        for (let i in response.data.sprites.other) {
-          if (i === "official-artwork") {
-            setPokemonImg(response.data.sprites.other[i].front_default);
-          }
-        }
+        setPokemonImg(response.data.sprites.other["official-artwork"].front_default);
       })
       .catch((error) => {
         console.log(error);
@@ -71,13 +69,13 @@ export const Card = ({ url }) => {
         <PokemonImg src={pokemonImg} />
       </DivRow>
       <DivRowCatch>
-        <Link onClick={() => goToDetail(navigate, "detail")}>
+        <Link onClick={() => goToDetail(navigate, pokemonName)}>
           <u>Detalhes</u>
         </Link>
         {pathParams.variable === "pokedex" ? (
-          <DeleteButton>Excluir</DeleteButton>
+          <DeleteButton onClick={()=> releasePokemon(pokemonName)}>Excluir</DeleteButton>
         ) : (
-          <CatchButton>Capturar!</CatchButton>
+          <CatchButton onClick={() => catchPokemon(pokemonName)}>Capturar!</CatchButton>
         )}
       </DivRowCatch>
     </ContainerCard>
