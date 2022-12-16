@@ -1,10 +1,11 @@
 import styled from "styled-components"
+import { getColors } from "../../Utils/ReturnCardColor";
 
 export const Container = styled.div`
   padding: 16px;
   min-width: 400px;
   max-width: 440px;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => getColors(props.color?.type.name)};
   border-radius: 12px;
   display: flex;
   position: relative;
@@ -39,6 +40,7 @@ export const PokemonType = styled.img`
 export const TypesContainer = styled.div`
   margin-bottom: 52px;
 `;
+
 export const Pokeball = styled.img`
   position: absolute;
   top: 0;

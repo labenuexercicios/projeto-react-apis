@@ -31,3 +31,16 @@ export const Button = styled.button`
     background: #33A4F5;
     border-radius: 8px;
 ` 
+
+export const Link = styled.a`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 50px;
+
+    width: 287px;
+    height: 74px;
+    left: 1112px;
+    top: 41px;
+`

@@ -3,7 +3,6 @@ import { Container, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pok
 import pokeball from "../../Assets/pngwing 2.png"
 import { getTypes } from "../../Utils/ReturnPokemonType"
 import axios from "axios"
-import { getColors } from "../../Utils/ReturnCardColor"
 
 const PokemonCard = (props) => {
 
@@ -11,7 +10,7 @@ const PokemonCard = (props) => {
 
   const [pokemonTypes, setPokemonTypes] = useState([])
 
-  const [pokemonImage, setPokemonImage] = useState("")
+  const [pokemonImage, setPokemonImage] = useState("") 
 
   useEffect(() => {
     getPokemonDetails()
@@ -20,11 +19,12 @@ const PokemonCard = (props) => {
   const getPokemonDetails = async () => {
     try {
 
-      const response = await axios.get(props.pokemon.url)      
-      
+      const response = await axios.get(props.pokemon.url)    
+                  
       setPokemonId(response.data.id)
-      setPokemonTypes(response.data.types)       
-      setPokemonImage(response.data.sprites.front_default)  
+      setPokemonTypes(response.data.types)               
+      setPokemonImage(response.data.sprites.front_default)
+      
 
     } catch (error) {
       console.log(error)
@@ -32,23 +32,22 @@ const PokemonCard = (props) => {
   }
 
   return (
-    <Container color={getColors(pokemonTypes[0].type.name)}>            
+    <Container color={pokemonTypes && pokemonTypes[0]}>            
       <div>
-        <PokemonNumber>{pokemonId}</PokemonNumber>
+        <PokemonNumber>#{pokemonId}</PokemonNumber>
         <PokemonName>{props.pokemon.name}</PokemonName>
         <TypesContainer>
             {pokemonTypes.map((type) => {              
-                return <PokemonType key={pokemonId} src={getTypes(type.type.name)} alt='' />
+                return <PokemonType src={getTypes(type.type.name)} alt='' />
             })}
         </TypesContainer>
         <p>Detalhes</p>
       </div>
       <div>
         <Pokemon src={pokemonImage} alt="" />
-        <CatchButton>Capturar!</CatchButton>
+        <CatchButton onClick={() => props.addToPokedex(props.pokemon)}>Capturar!</CatchButton>
       </div>
-      <Pokeball src={pokeball} alt="pokeball" />
-         
+      <Pokeball src={pokeball} alt="pokeball" />         
     </Container>    
    
   );
