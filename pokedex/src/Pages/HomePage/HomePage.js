@@ -1,22 +1,22 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import Header from '../../Components/Header/Header'
+import HeaderHome from '../../Components/Headers/HeaderHome'
 import PokemonCard from '../../Components/PokemonCard/PokemonCard'
 import { Container, CardsContainer } from './styles'
 
-function HomePage() {
+function HomePage(props) {
 
-  const [pokemons, setPokemons] = useState([]) 
+  const [pokemons, setPokemons] = useState([])   
 
   useEffect(() => {
     getPokemons()
   }, [])
 
   const getPokemons = async () => {
-    try {
+    try {      
 
-      const response = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0")
-      
+      const response = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=99&offset=0")
+            
       setPokemons(response.data.results)            
 
     } catch (error) {
@@ -25,12 +25,12 @@ function HomePage() {
   }    
 
   return (
-    <Container>
-      <Header/> 
+    <Container>   
+      <HeaderHome/>   
       <CardsContainer>  
         {
-          pokemons.map((pokemon) => {
-            return <PokemonCard pokemon={pokemon}/>
+          pokemons.map((pokemon) => {            
+            return <PokemonCard pokemon={pokemon} addToPokedex={props.addToPokedex}/>
           })
         }   
       </CardsContainer>

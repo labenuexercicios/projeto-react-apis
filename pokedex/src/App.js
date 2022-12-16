@@ -15,7 +15,7 @@ function App() {
   return (
     <> 
       <GlobalStyle/>   
-      <Router/>
+      <Router/>      
     </>
   );
 }
