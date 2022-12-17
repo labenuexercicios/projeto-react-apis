@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
+import { useContext } from "react";
+import { GlobalContext } from "../contexts/GlobalContext";
 import Header from "../components/Header"
 import imgBulbasaurFrente from "../imagens/imgBulbasaurFrente.png"
 import imgBulbasaurCosta from "../imagens/imgBulbasaurCosta.png"
@@ -37,14 +39,12 @@ border-radius: 12px;
     justify-content: space-between;
     width: 50%;
     padding:26px 34px 26px 44px ;
-    gap: 16px;
-    
+    gap: 16px;    
 
 div{
-  display: flex;
+    display: flex;
     flex-direction:column;
-    justify-content: space-between;
-   
+    justify-content: space-between;   
    }    
    
 }
@@ -149,8 +149,6 @@ padding:0 26px;
  const DetalhesPage = () => {
 //   const params = useParams
 
-  
-
   return (
     <>
       <Header isDetalhes={true} isPokedex={true}/>
@@ -206,17 +204,18 @@ padding:0 26px;
           <span> Shord Dance</span> 
           {/* fazer um map p ele replicar */}
 
-          {/* <img className='imgDetalhesTipo4' src={imgDetalhesTipo4} />
+          <img className='imgDetalhesTipo4' src={imgDetalhesTipo4} />
           <img className='imgMoves' src={imgMoves} />
           <img className='imgDetalhesTipo1' src={imgDetalhesTipo1} />
           <img className='imgDetalhesTipo2' src={imgDetalhesTipo2} />
-          <img className='imgDetalhesTipo3' src={imgDetalhesTipo3} /> */}
+          <img className='imgDetalhesTipo3' src={imgDetalhesTipo3} />
         </div>
 
 
         </div>
 
-
+        {/* pokemon={pokemon}
+        removeFromPokedex={removePokedex} */}
 
       </DetlhesCardConteiner >
 

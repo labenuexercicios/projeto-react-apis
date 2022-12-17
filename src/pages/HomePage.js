@@ -3,7 +3,6 @@ import PokemonCard from "../components/card/PokemonCard"
 import Header from "../components/Header"
 import styled from 'styled-components'
 
-
  import { useContext } from "react"
  import { GlobalContext } from "../contexts/GlobalContext"
 
@@ -12,9 +11,7 @@ const HomePageStyled = styled.div`
 padding:24px;
 background-color:#5D5D5D;
 min-height:100vh;
-display: flex;
-flex-direction:column;
-
+width: 100%;
 
 h1{
     color: white;
@@ -26,9 +23,19 @@ h1{
 .divCard{
     display: flex;
     flex-wrap:wrap;
-    gap:20px;
-  
+    gap:20px;  
     
+}
+.containerCard{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.divTitulo{
+  width:100%;
+  height: 90px;
+  margin-bottom:25px;
 }
 
 `
@@ -38,9 +45,6 @@ const HomePage = () => {
 
     const  {pokelist, addToPokedex,pokedex} = context
     //console.log(pokelist)
-
-   
-   
   
     // não mostrar pokemons que estão na pokedex
     // const filteredPokelist = () =>
@@ -57,32 +61,17 @@ const HomePage = () => {
             <Header isHomePage={true} />
 
             <HomePageStyled>
-                <h1>Todos os Pokemons</h1>
-                <div>
+                <div className="divTitulo"><h1>Todos os Pokemons</h1></div>
+                <div className="containerCard">
                 {pokelist && pokelist.map((item) => {
               return (<div key={item.name}>                
-                <PokemonCard pokemon={item}/>
+                <PokemonCard pokemon={item} pokemonUrlCada={item.url}/>
+                
               </div>)
             })
             }
 
                 </div>
-
-
-
-                {/* <Container>
-          <h1>Todos Pokémons</h1>
-          <div>
-            {pokemonData && pokemonData.map((item) => {
-              return (<div key={item.name}>
-                <CardHome url={item.url}/>
-              </div>)
-            })
-            }
-          </div>
-        </Container> */}
-
-
 
 
 

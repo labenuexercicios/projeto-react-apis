@@ -6,14 +6,17 @@ import axios from "axios"
 //import { BASE_URL } from "./constants/url"
 import { GlobalContext } from "./contexts/GlobalContext"
 
+
 const App = () => {
 
     const [pokelist, setPokelist] = useState([]);
     const [pokedex, setPokedex] = useState([]);
+    const [typePoke, setTypePoke] = useState([])
+
 
     const fetchPokelist = () => {
         
-            axios.get('https://pokeapi.co/api/v2/pokemon?limit=20').then((response)=>{
+            axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=27').then((response)=>{
                 //console.log(response.data.results)
                 const inforPokemon = response.data.results.map((item)=>{
                     return(
@@ -27,8 +30,9 @@ const App = () => {
                             )                            
                     })
                     //console.log("aqui", buscaInfo)
-                    setPokelist(buscaInfo) 
-                    
+                  
+                    setPokelist(buscaInfo)
+                                      
                   
 
                 }).cath(()=>{
@@ -38,24 +42,21 @@ const App = () => {
             }).catch((error)=>{
 
             })
-
-            //console.log(response)
-
-            
+            //console.log(response)          
            
-
     }
-    //console.log(pokelist)
+    //console.log(pokelist) 
+    
    
      
 
     useEffect(() => {
         fetchPokelist();
         // pokemonInformacao();
+       
     }, []);
-
-
    
+  
 
 
 
@@ -98,8 +99,11 @@ const context = {
     pokedex,
     setPokelist,
     addToPokedex,
-    removeFromPokedex
-    
+    removeFromPokedex,
+    typePoke,
+    setTypePoke,
+    fetchPokelist
+        
 }
 
 

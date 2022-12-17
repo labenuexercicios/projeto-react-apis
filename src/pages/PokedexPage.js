@@ -30,6 +30,18 @@ h1{
   
     
 }
+.containerCard{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.pokedexContainerCard{
+     display: flex;
+     flex-wrap:wrap;
+     gap:20px; 
+     justify-content: center;
+}
 
 `
 
@@ -37,8 +49,6 @@ const PokedexPage = () => {
     const context = useContext(GlobalContext)
    
    const {pokedex, removePokedex} = context
-
-
    
     return (
          <>
@@ -46,6 +56,8 @@ const PokedexPage = () => {
 
             <PokedexPageStyled>
                 <h1>Meus Pokemons</h1>
+               <div className="pokedexContainerCard">
+
                 {pokedex.map((pokemon) =>{                   
                        return(
                         <PokemonCard
@@ -59,7 +71,7 @@ const PokedexPage = () => {
                 
                 })} 
                
-
+                      </div>
 
                 {/* <div className="divCard">
                     <PokemonCard /> */}

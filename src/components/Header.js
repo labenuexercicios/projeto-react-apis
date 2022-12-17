@@ -6,6 +6,9 @@ import {ButtonPokedex, ButtonTodosPokemonsDetalhes, ButtonExcluir} from "../comp
 import {goToHomePage, goToPokedexPage} from "../routes/coordinators"
 import imgPokemonHeader from "../imagens/img-pokemon-header.png"
 
+// import { GlobalContext } from '../contexts/GlobalContext'
+// import { useContext } from "react"
+
 
 
 const HeaderStyled = styled.div`
@@ -47,7 +50,11 @@ const Header = (props) => {
   }
   console.log(pokedex)
 
-  const {isHomePage, isDetalhes, isPokedex} = props
+  // const {removeFromPokedex } = context
+
+  // const context = useContext(GlobalContext)
+
+  const {isHomePage, isDetalhes, isPokedex, pokemon} = props
   
   return (
     <HeaderStyled>
@@ -58,7 +65,8 @@ const Header = (props) => {
       <div> <img className='imgMoves' src={imgPokemonHeader} /></div>
       <div>
       {isHomePage && <ButtonPokedex onClick={pokedex}>Pokedéx</ButtonPokedex>}
-        {isDetalhes && <ButtonExcluir > excluir da pokedéx </ButtonExcluir>}      
+        {isDetalhes && <ButtonExcluir>Excluir</ButtonExcluir>} 
+        {/* alert("Oh,no! O pokemon foi removido de sua pokedex")      */}
       </div>
 
       {/* para os botões ir p essas paginas */}     
