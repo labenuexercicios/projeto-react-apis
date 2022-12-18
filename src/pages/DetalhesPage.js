@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useContext } from "react";
 import { GlobalContext } from "../contexts/GlobalContext";
 import Header from "../components/Header"
+import { BASE_URL } from '../constants/url';
+import axios from "axios"
+import { goToHomePage } from '../routes/coordinators';
 import imgBulbasaurFrente from "../imagens/imgBulbasaurFrente.png"
 import imgBulbasaurCosta from "../imagens/imgBulbasaurCosta.png"
 import grafico from "../imagens/grafico.png"
@@ -147,7 +150,43 @@ padding:0 26px;
 `
 
  const DetalhesPage = () => {
-//   const params = useParams
+  const params = useParams()
+  const navigate = useNavigate()
+
+  const [detalhes, setDetalhes] = useState({})
+  const [isLoading, setIsloading] = useState({})
+  
+  useEffect(() => {
+    fetchDetalhes()
+}, [])
+
+const fetchDetalhes = async () => {
+  try{
+    setIsloading(true)
+
+     const config = {
+      headers: {
+        Authorization: window.localStorage.getItem("pokemon-token")
+      }
+
+     }
+     const response = await axios.get(
+      `${BASE_URL}/detalhes/${params.namePokemon}`,
+      config
+     )
+     setDetalhes(response.data)
+     setIsloading(false)
+  }catch(error){
+    console.log(error)
+    setIsloading(false)
+  }
+}
+  console.log(isLoading)
+
+
+
+
+
 
   return (
     <>
@@ -177,7 +216,6 @@ padding:0 26px;
         </div>
 
 
-
         <div className='ladoDireito'>
         <img className='bolaPoke' src={imagemBola} />
 
@@ -204,11 +242,11 @@ padding:0 26px;
           <span> Shord Dance</span> 
           {/* fazer um map p ele replicar */}
 
-          <img className='imgDetalhesTipo4' src={imgDetalhesTipo4} />
+          {/* <img className='imgDetalhesTipo4' src={imgDetalhesTipo4} />
           <img className='imgMoves' src={imgMoves} />
           <img className='imgDetalhesTipo1' src={imgDetalhesTipo1} />
           <img className='imgDetalhesTipo2' src={imgDetalhesTipo2} />
-          <img className='imgDetalhesTipo3' src={imgDetalhesTipo3} />
+          <img className='imgDetalhesTipo3' src={imgDetalhesTipo3} /> */}
         </div>
 
 
