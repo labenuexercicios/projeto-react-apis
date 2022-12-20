@@ -1,65 +1,115 @@
 import axios from 'axios'
-import React, {useEffect, useState} from 'react'
-import { useNavigate,useLocation } from 'react-router-dom'
-import ivissaur from "../imagens/Ivissaur.png"
+import React, { useEffect, useState } from 'react'
 import pokeBola from "../imagens/pokeBola.png"
-import tagGrass from "../imagens/tagGrass.png"
-import tagPoison from "../imagens/tagPoison.png"
 import PokeCardStyle from "./PokeCard.style"
-import paraDetalhes from "../Rotas/cordenation"
+import { cores } from "../utilitarios/Cores"
+import { useParams,useNavigate } from 'react-router-dom'
+import { GlobalContext } from '../Rotas/Context/GlobalContext'
+// import { vaiParaDetalhes } from '../Rotas/cordenation'
 
 
 const Pokecard = (props) => {
-  const {pokemon} = props
-
-// console.log('pokemon',pokemon)
-
-const [Objpokemon, setObjPokemon] = useState([])
-
-useEffect (()=>{
-resquisicao()
-
-},[])
-
-const resquisicao = ()=>{
-axios.get(`${pokemon.url}`)
-.then((res)=>{
-  console.log(res.data)
-  setObjPokemon(res.data)
-})
-.catch((err)=>{
-console.log(err)
-})
-
-}
+  const { arrayPokemons, todosPokemons } = props
 
 
+  console.log('arrayPokemon', arrayPokemons)
 
+  const [pokemon, setPokemon] = useState([])
+  const [cor, setCor] = useState([])
+  const [arrayPokedex, setArrayPokedex] = useState([])
+  const [tipoFuncionar, setTipoFuncionar] = useState(false)
+
+  //  const navigate = useNavigate()
+
+
+  useEffect(() => {
+    resquisicao()
+
+  }, [todosPokemons])
+
+
+  const resquisicao = () => {
+    axios.get(`${arrayPokemons.url}`)
+      .then((res) => {
+        setPokemon(res.data)
+        setTipoFuncionar(true)
+        setCor(res.data.types[0].type.name)
+
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+  }
+  // const resquisicao = async () => {
+  //   try {
+  //     const res = await axios.get(`${arrayPokemons.url}`)
+  //   console.log(res.data)
+  //     setCor(res.data.types[0].type.name)
+  //   }
+  //   catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
+  console.log('pokemon', pokemon)
+
+  const tipo = () => {
+    if (tipoFuncionar && pokemon.types[1]) {
+      return (
+        pokemon.types[0].type.name + " " + pokemon.types[1].type.name)
+    }
+    return (
+      pokemon.types && pokemon.types[0].type.name
+    )
+  }
+ 
+
+  const adcPokedex = (pokeadd) => {
+    const estaNaPokedex = arrayPokedex.find((pokemonNaPokedex) => pokemonNaPokedex.name === pokeadd.name)
+    if (!estaNaPokedex) {
+      const novoArrayPokedex = [...arrayPokedex, pokeadd]
+      setArrayPokedex(novoArrayPokedex)
+    }
+
+  }
+
+  const context = {
+  pokemon,
+  setPokemon,
+  arrayPokedex,
+  setArrayPokedex,
+  adcPokedex,
+  }
 
   return (
 
 
-    <PokeCardStyle>
+    <PokeCardStyle color={cores(cor)}>
       <div className='lado-esquerdo'>
+
         <div className='lado-esquerdo-superior'>
-          <span>{Objpokemon.id}</span>
-          <h1>{Objpokemon.name}</h1>
+          <span>#{pokemon.id}</span>
+          <h1>{pokemon.name}</h1>
         </div>
+
         <div className='lado-esquerdo-inferior'>
-          <img src={tagPoison} alt='etiqueta poison'></img>
-          <img src={tagGrass} alt='etiqueta grass'></img>
+          <div className='tipo'>
+            <span>{tipo()}</span>
+            {/* <span>{pokemon.types && pokemon.types[0].type.name}</span> */}
+          </div>
+          <div>
+            <button>Detalhes</button>
+          </div>
         </div>
-        <div className='detalhes'>
-         {/* <button onClick={ ()=>paraDetalhes(navigate, )}>Detalhes</button>  */}
-        </div>
+
       </div>
       <div className='lado-direito'>
-      
-          <img className='ivissaur' src={Objpokemon.sprites?.other['official-artwork'].front_default}alt='ivissaur'></img>
-          <img className='pokebola' src={pokeBola} alt='pokebola'></img>
-          <button>Capturar</button>
-       
+        <img className='ivissaur' src={pokemon.sprites?.other['official-artwork'].front_default} alt='ivissaur'></img>
+        <img className='pokebola' src={pokeBola} alt='pokebola'></img>
+        <button onClick={() => adcPokedex(pokemon)}>Capturar</button>
       </div>
+
 
     </PokeCardStyle>
 
@@ -67,5 +117,7 @@ console.log(err)
 
   )
 }
+
+
 
 export default Pokecard
