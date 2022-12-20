@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from "../../componentes/Header/Header"
-import Pokecard from '../../PokeCard/PokeCard'
 import PokedexStyle from './Pokedex.style'
+import { GlobalContext } from '../../Rotas/Context/GlobalContext'
+
 const Pokedex = () => {
+  const context = useContext(GlobalContext) 
+  const { pokemon,
+    setPokemon,
+    arrayPokedex,
+    setArrayPokedex,
+    adcPokedex,} = context
   return (
     <>
       <Header />
@@ -11,8 +18,7 @@ const Pokedex = () => {
           <h1>Meus Pokemons</h1>
         </div>
         < div className='cards' >
-        <Pokecard />
-        <Pokecard />
+       {/* {arrayPokedex.map(()=>)} */}
         </div>
       </PokedexStyle>
     </>

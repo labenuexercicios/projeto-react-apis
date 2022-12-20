@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Paginanaoencontrada = () => {
+const PaginaNaoEncontrada = () => {
   return (
-    <div>Paginanaoencontrada</div>
+    <div>A página não foi encontrada</div>
   )
 }
 
-export default Paginanaoencontrada
+export default PaginaNaoEncontrada

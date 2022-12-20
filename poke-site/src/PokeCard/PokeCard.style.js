@@ -8,7 +8,7 @@ width: 440px;
 margin-left:40px;
 margin-bottom: 56px;
 border-radius: 12px;
-background: #729F92;
+background-color:${(props) => props.color} ;
 color:white;
 position:relative;
 
@@ -18,6 +18,7 @@ position:relative;
     margin-left: 24px;
     margin-top:24px;
     font-family: 'Inter';
+    
 
 }
 .lado-esquerdo-superior{
@@ -37,20 +38,30 @@ font-weight: 700;
     
 .lado-esquerdo-inferior{
     display:flex;
+    flex-direction: column;
+    min-height:auto;
+}
+.tipo{
+    display:flex;
     gap:8px;
-   
+    border:dashed 2px black;
+    color:black;
+    border-radius:25px;
+    
+
 }
 .detalhes{
+
     text-decoration:underline;
     margin-top:auto;
-    margin-bottom: 12px;
-   
-}
+    border:solid 2px black;
+    margin-bottom: auto;
+  }
+  
 .lado-direito{
     display:flex;
     flex-direction:column;
     left:64px;
-   /* border:10px solid orange; */
     margin-left:auto;
   }
 

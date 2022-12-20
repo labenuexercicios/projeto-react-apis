@@ -5,39 +5,40 @@ import Header from "../../componentes/Header/Header"
 import axios from 'axios'
 
 
- const Home = () => {
+const Home = () => {
 
-const [resposta,setResposta] = useState([])
+  const [resposta, setResposta] = useState([])
 
   useEffect(() => {
     todosPokemons()
 
-  },[])
+  }, [])
 
   const todosPokemons = () => {
     axios.get("https://pokeapi.co/api/v2/pokemon")
       .then((res) => setResposta(res.data.results))
       .catch((err) => console.log(err))
+
   }
 
-return (
+  return (
 
-  <HomePageStyle>
-    <Header />
-    <div className='cor-da-pagina'>
-      <div className='margem-total'>
-        <h1>Todos os Pokemons</h1>
+    <HomePageStyle>
+      <Header />
+      <div className='cor-da-pagina'>
+        <div className='margem-total'>
+          <h1>Todos os Pokemons</h1>
+        </div>
+        <div className='pagina-dos-cards' >
+          {resposta.map((arrayPokemons) => {
+            return (<Pokecard todosPokemons={todosPokemons} arrayPokemons={arrayPokemons} />)
+
+          })}
+        </div>
       </div>
-      <div className='pagina-dos-cards' >
-        {resposta.map((pokemon)=>{
-          return(<Pokecard pokemon={pokemon}/>)
-        
-        })}
-      </div>
-    </div>
 
-  </HomePageStyle>
+    </HomePageStyle>
 
-)
- }
- export default Home
+  )
+}
+export default Home
