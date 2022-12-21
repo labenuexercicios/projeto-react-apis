@@ -1,28 +1,40 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import Pokecard from '../../PokeCard/PokeCard.js'
+import HomePageStyle from '../HomePage/HomePage.style'
 import Header from "../../componentes/Header/Header"
-import PokedexStyle from './Pokedex.style'
-import { GlobalContext } from '../../Rotas/Context/GlobalContext'
+import { GlobalContext } from '../../Rotas/Context/GlobalContext.js'
+
 
 const Pokedex = () => {
-  const context = useContext(GlobalContext) 
-  const { pokemon,
-    setPokemon,
-    arrayPokedex,
-    setArrayPokedex,
-    adcPokedex,} = context
+
+  const context = useContext(GlobalContext)
+
+  const { resposta,
+    todosPokemons,
+    arrayPokedex } = context
+
+  console.log(arrayPokedex)
   return (
-    <>
+
+    <HomePageStyle>
       <Header />
-      <PokedexStyle>
-        <div className='margin-total'>
-          <h1>Meus Pokemons</h1>
+      <p>aaaaaaaaaaaaaaaaaaar</p>
+      <div className='cor-da-pagina'>
+        <div className='margem-total'>
+          <h1>Pokedex</h1>
         </div>
-        < div className='cards' >
-       {/* {arrayPokedex.map(()=>)} */}
+        <div className='pagina-dos-cards' >
+          {arrayPokedex.map((propsPokemon) => {
+            return (<Pokecard
+              propsPokemon={propsPokemon}
+            />)
+
+          })}
         </div>
-      </PokedexStyle>
-    </>
+      </div>
+
+    </HomePageStyle>
+
   )
 }
-
-export default Pokedex
+export default Pokedex 

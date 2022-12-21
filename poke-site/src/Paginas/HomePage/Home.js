@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Pokecard from '../../PokeCard/PokeCard.js'
 import HomePageStyle from './HomePage.style.js'
 import Header from "../../componentes/Header/Header"
-import axios from 'axios'
+import { GlobalContext } from '../../Rotas/Context/GlobalContext.js'
 
 
 const Home = () => {
 
-  const [resposta, setResposta] = useState([])
+  const context = useContext(GlobalContext)
 
-  useEffect(() => {
-    todosPokemons()
+  const { resposta,
+    todosPokemons,
+  } = context
 
-  }, [])
-
-  const todosPokemons = () => {
-    axios.get("https://pokeapi.co/api/v2/pokemon")
-      .then((res) => setResposta(res.data.results))
-      .catch((err) => console.log(err))
-
-  }
 
   return (
 
@@ -30,8 +23,10 @@ const Home = () => {
           <h1>Todos os Pokemons</h1>
         </div>
         <div className='pagina-dos-cards' >
-          {resposta.map((arrayPokemons) => {
-            return (<Pokecard todosPokemons={todosPokemons} arrayPokemons={arrayPokemons} />)
+          {resposta.map((propsPokemon) => {
+            return (<Pokecard todosPokemons={todosPokemons}
+              propsPokemon={propsPokemon}
+            />)
 
           })}
         </div>

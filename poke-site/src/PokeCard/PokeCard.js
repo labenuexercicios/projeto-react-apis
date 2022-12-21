@@ -3,33 +3,35 @@ import React, { useEffect, useState } from 'react'
 import pokeBola from "../imagens/pokeBola.png"
 import PokeCardStyle from "./PokeCard.style"
 import { cores } from "../utilitarios/Cores"
-import { useParams,useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
 import { GlobalContext } from '../Rotas/Context/GlobalContext'
-// import { vaiParaDetalhes } from '../Rotas/cordenation'
+import { json } from 'react-router-dom'
+
 
 
 const Pokecard = (props) => {
-  const { arrayPokemons, todosPokemons } = props
+  const { propsPokemon } = props
 
-
-  console.log('arrayPokemon', arrayPokemons)
 
   const [pokemon, setPokemon] = useState([])
   const [cor, setCor] = useState([])
-  const [arrayPokedex, setArrayPokedex] = useState([])
   const [tipoFuncionar, setTipoFuncionar] = useState(false)
 
-  //  const navigate = useNavigate()
+  const context = useContext(GlobalContext)
 
+  const { arrayPokedex,
+    setArrayPokedex,
+  } = context
 
   useEffect(() => {
+
     resquisicao()
 
-  }, [todosPokemons])
+  }, [])
 
 
   const resquisicao = () => {
-    axios.get(`${arrayPokemons.url}`)
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${propsPokemon.name}`)
       .then((res) => {
         setPokemon(res.data)
         setTipoFuncionar(true)
@@ -41,19 +43,9 @@ const Pokecard = (props) => {
       })
 
   }
-  // const resquisicao = async () => {
-  //   try {
-  //     const res = await axios.get(`${arrayPokemons.url}`)
-  //   console.log(res.data)
-  //     setCor(res.data.types[0].type.name)
-  //   }
-  //   catch (err) {
-  //     console.log(err)
-  //   }
-  // }
 
   console.log('pokemon', pokemon)
-
+  console.log('aqui', propsPokemon)
   const tipo = () => {
     if (tipoFuncionar && pokemon.types[1]) {
       return (
@@ -63,24 +55,20 @@ const Pokecard = (props) => {
       pokemon.types && pokemon.types[0].type.name
     )
   }
- 
+
 
   const adcPokedex = (pokeadd) => {
     const estaNaPokedex = arrayPokedex.find((pokemonNaPokedex) => pokemonNaPokedex.name === pokeadd.name)
+    console.log("entrou")
     if (!estaNaPokedex) {
       const novoArrayPokedex = [...arrayPokedex, pokeadd]
       setArrayPokedex(novoArrayPokedex)
+      
+      localStorage.setItem("pokedex",JSON.stringify(novoArrayPokedex))
     }
 
   }
 
-  const context = {
-  pokemon,
-  setPokemon,
-  arrayPokedex,
-  setArrayPokedex,
-  adcPokedex,
-  }
 
   return (
 
@@ -107,7 +95,7 @@ const Pokecard = (props) => {
       <div className='lado-direito'>
         <img className='ivissaur' src={pokemon.sprites?.other['official-artwork'].front_default} alt='ivissaur'></img>
         <img className='pokebola' src={pokeBola} alt='pokebola'></img>
-        <button onClick={() => adcPokedex(pokemon)}>Capturar</button>
+        <button onClick={() => adcPokedex(propsPokemon)}>Capturar</button>
       </div>
 
 
