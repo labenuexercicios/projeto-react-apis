@@ -13,7 +13,7 @@ const Header = () => {
     <HeaderStyle>
       <div className='todo-header'>
         <div className='botão'>
-          <button onClick={()=>vaiParaPokedex()}><h1>Pokedex</h1></button>
+          <button onClick={()=>vaiParaPokedex(navigate)}><h1>Pokedex</h1></button>
         </div>
         <div className='nome-pokemon'>
           <img src={NomePokemon} alt="marca pokemon"></img>
