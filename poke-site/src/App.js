@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     todosPokemons()
-   setArrayPokedex(JSON.parse(localStorage.getItem('pokedex')))
+  
   }, [])
 
   const todosPokemons = () => {

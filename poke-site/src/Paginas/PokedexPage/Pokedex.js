@@ -18,7 +18,7 @@ const Pokedex = () => {
 
     <HomePageStyle>
       <Header />
-      <p>aaaaaaaaaaaaaaaaaaar</p>
+    
       <div className='cor-da-pagina'>
         <div className='margem-total'>
           <h1>Pokedex</h1>

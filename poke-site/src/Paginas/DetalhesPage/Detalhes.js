@@ -14,6 +14,10 @@ import tagGrass from "../../imagens/tagGrass.png"
 import tagPoison from "../../imagens/tagPoison.png"
 
 const Detalhes = () => {
+
+  // const informacao = ()=>{
+  //   axios.get()
+  // }
   return (
     <>
       <Header />
