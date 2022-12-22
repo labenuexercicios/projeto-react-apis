@@ -8,7 +8,7 @@ width: 440px;
 margin-left:40px;
 margin-bottom: 56px;
 border-radius: 12px;
-background-color:${(props) => props.color} ;
+background-color:${(props) => props.color};
 color:white;
 position:relative;
 
@@ -19,7 +19,6 @@ position:relative;
     margin-top:24px;
     font-family: 'Inter';
     
-
 }
 .lado-esquerdo-superior{
     >h1{
@@ -41,21 +40,12 @@ font-weight: 700;
     flex-direction: column;
     min-height:auto;
 }
-.tipo{
-    display:flex;
-    gap:8px;
-    border:dashed 2px black;
-    color:black;
-    border-radius:25px;
-    
 
-}
 .detalhes{
-
+    padding-top:20px;
     text-decoration:underline;
     margin-top:auto;
-    border:solid 2px black;
-    margin-bottom: auto;
+    margin-bottom: 12px;
   }
   
 .lado-direito{
@@ -86,7 +76,7 @@ width: 146px;
 border-radius: 8px; 
 margin-bottom:12px; 
 padding: 4px 10px 4px 10px;
-margin-top:158px;
+margin-top:auto;
 margin-right:22px; 
 border:none;
 
