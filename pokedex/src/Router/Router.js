@@ -9,6 +9,8 @@ function Router () {
 
     const [pokedex, setPokedex] = useState([])
 
+    const [activeScreen, setActiveScreen] = useState("HomePage")
+
     const addToPokedex = (pokemonToBeAdded) => {
         const newPokedex = [...pokedex]
     
@@ -24,11 +26,17 @@ function Router () {
         setPokedex(newPokedex)    
       }  
 
+    const deleteFromPokedex = (pokemonToBeDeleted) => {
+      const newPokedex = [...pokedex]        
+      
+      setPokedex(newPokedex)
+    }
+
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<HomePage addToPokedex={addToPokedex}/>}/>
-                <Route path="/pokedex" element={<Pokedex pokedex={pokedex}/>}/>
+                <Route path="/" element={<HomePage addToPokedex={addToPokedex} activeScreen={activeScreen} setActiveScreen={setActiveScreen}/>}/>
+                <Route path="/pokedex" element={<Pokedex pokedex={pokedex} deleteFromPokedex={deleteFromPokedex} activeScreen={activeScreen} setActiveScreen={setActiveScreen}/>}/>
                 <Route path="/:pokemonId" element={<DetailsPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
             </Routes>

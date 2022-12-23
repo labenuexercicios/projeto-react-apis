@@ -66,6 +66,25 @@ export const CatchButton = styled.button`
   color: #000;
 `;
 
+export const DeleteButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 10px;
+  width: 146px;
+  height: 38px;
+  background: #FF6262;  
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 22px;
+  z-index: 2;
+  color: white;
+`;
+
 export const Pokemon = styled.img`
 width: 193px;
 height: 193px;

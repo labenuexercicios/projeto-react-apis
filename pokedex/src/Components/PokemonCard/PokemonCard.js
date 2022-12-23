@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Container, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokeball, CatchButton, Pokemon } from './styles'
+import { Container, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokeball, CatchButton, DeleteButton, Pokemon } from './styles'
 import pokeball from "../../Assets/pngwing 2.png"
 import { getTypes } from "../../Utils/ReturnPokemonType"
 import axios from "axios"
@@ -10,7 +10,7 @@ const PokemonCard = (props) => {
 
   const [pokemonTypes, setPokemonTypes] = useState([])
 
-  const [pokemonImage, setPokemonImage] = useState("") 
+  const [pokemonImage, setPokemonImage] = useState("")   
 
   useEffect(() => {
     getPokemonDetails()
@@ -23,8 +23,7 @@ const PokemonCard = (props) => {
                   
       setPokemonId(response.data.id)
       setPokemonTypes(response.data.types)               
-      setPokemonImage(response.data.sprites.front_default)
-      
+      setPokemonImage(response.data.sprites.front_default)         
 
     } catch (error) {
       console.log(error)
@@ -45,7 +44,7 @@ const PokemonCard = (props) => {
       </div>
       <div>
         <Pokemon src={pokemonImage} alt="" />
-        <CatchButton onClick={() => props.addToPokedex(props.pokemon)}>Capturar!</CatchButton>
+        {props.activeScreen === "HomePage" ? <CatchButton onClick={() => props.addToPokedex(props.pokemon)}>Capturar!</CatchButton> : <DeleteButton onClick={() => props.deleteFromPokedex(props.pokemon)}>Excluir</DeleteButton>}        
       </div>
       <Pokeball src={pokeball} alt="pokeball" />         
     </Container>    

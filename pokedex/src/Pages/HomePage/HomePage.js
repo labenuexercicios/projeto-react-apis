@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import HeaderHome from '../../Components/Headers/HeaderHome'
 import PokemonCard from '../../Components/PokemonCard/PokemonCard'
-import { Container, CardsContainer } from './styles'
+import { Container, CardsContainer, Heading } from './styles'
 
 function HomePage(props) {
 
@@ -26,11 +26,12 @@ function HomePage(props) {
 
   return (
     <Container>   
-      <HeaderHome/>   
+      <HeaderHome setActiveScreen={props.setActiveScreen}/> 
+      <Heading>Todos os Pokémons</Heading>  
       <CardsContainer>  
         {
           pokemons.map((pokemon) => {            
-            return <PokemonCard pokemon={pokemon} addToPokedex={props.addToPokedex}/>
+            return <PokemonCard pokemon={pokemon} addToPokedex={props.addToPokedex} activeScreen={props.activeScreen}/>
           })
         }   
       </CardsContainer>
