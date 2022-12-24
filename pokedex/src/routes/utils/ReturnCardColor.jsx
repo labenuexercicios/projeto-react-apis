@@ -21,7 +21,7 @@ export const getColors = (type) => {
       case "dragon":
         return "#004170";
       default:
-        return "red";
+        return "#7A7A7A";
     }
   };
   

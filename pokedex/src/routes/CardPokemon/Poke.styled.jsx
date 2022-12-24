@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const BoxCard = styled.div`
     background-color: ${(props) => props.color};
-    width: 380px;
+    width: 440px;
     height: 210px;
-    border-radius: 8px;
+    border-radius: 12px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     
@@ -26,13 +26,16 @@ export const EsquerdoCard = styled.div`
     }
     .nameDetalhes{
       color:white;
+      font-size:16px;
     }
     p{
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
     }
     h2{
-        font-size: 30px;
+        width:159px;
+        height: 39px;
+        font-size:32px;
         font-weight: bold;
         margin-bottom: 15px;
     }
@@ -42,15 +45,15 @@ export const DireitoCard = styled.div`
     height: 210px;
     display: flex;
     flex-direction: column;
-    
+    z-index: 0;
 `
 export const ImgFundo = styled.img`
-   width: 200px;
-   height: 200px;
+   width: 210px;
+   height: 210px;
    position: relative;
    bottom: 120px;
    right: 15px;
-   z-index: 0;
+   z-index: -1;
 `
 export const ImgPrincipal = styled.img`
    min-width: 150px;
@@ -60,19 +63,21 @@ export const ImgPrincipal = styled.img`
    position: relative;
    top: -50px;
    left: 25px;
-   z-index: 1;
+   z-index: 0;
 `
 export const ButtonCapturar = styled.button`
    padding: 10px 10px;
-   width: 140px;
+   width: 146px;
+   height: 38px;
    border: none;
    border-radius: 8px;
    z-index: 1;
    position: relative;
-   bottom: 150px;
+   bottom: 160px;
    font-size: 16px;
    margin: 0 auto;
    cursor: pointer;
+   z-index: 0;
 `
 export const ButtonCapturar2 = styled.button`
    background-color:#FF6262;
@@ -89,13 +94,13 @@ export const ButtonCapturar2 = styled.button`
    cursor: pointer;
 `
 export const TypeImg = styled.img`
-   width: 70px;
-   height: 28px;
+   width: 91px;
+   height: 31px;
    margin-right: 10px;
 `
 export const TypeImg2 = styled.img`
-   width: 70px;
-   height: 28px
+   width: 91px;
+   height: 31px
 `
 export const PageDetalhes = styled.a`
    border-bottom: 1px solid #FFFFFF;

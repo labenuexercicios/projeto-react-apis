@@ -3,19 +3,48 @@ import styled from 'styled-components'
 export const MainHomePage = styled.div`
    width: 100%;
    height: 100%;
-   background-color: #7A7A7A;
-   padding: 50px 5px 80px 5px;
+   background-color: #4A4A4A;
+   padding: 50px 20px 80px 20px;
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
-   gap: 80px;
+   gap:50px 20px;
+
+   .btnTrocaPagina{
+      border: none;
+      padding: 8px 26px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: .5s;
+   }
+   .btnTrocaPagina: hover{
+      background-color: limegreen;
+      color: white;
+   }
+   .buttonDuplo{
+      margin-left: auto;
+      width: 300px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: #7A7A7A;
+   }
 `
 export const TituloHome = styled.div`
    width: 100%;
-   height: 50px;
-   background-color: #7A7A7A;
+   height: 120px;
+   background-color: #4A4A4A;
    color: white;
    font-weight: bold;
-   font-size: 22px;
-   padding: 0 20px;
+   font-size: 28px;
+   padding: 0 40px;
+   display: flex;
+   align-items: center;
+`
+export const ImgModalCapturar = styled.img`
+   width: 451px;
+   height: 222px;
 `

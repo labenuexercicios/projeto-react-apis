@@ -8,18 +8,18 @@ const Pokedex = (props) => {
   const context = useContext(GlobalContext)
   const {pokedex} = context
 
-
   return (
     <>
     <Header isPokedex={true}/>
     <MainPokedex>
-    <TituloPokedex><h1>Meus Pokémons</h1></TituloPokedex>
+    <TituloPokedex><h1>Meus Pokémons</h1><h1>({pokedex.length})</h1></TituloPokedex>
       {pokedex && pokedex.map((pokemon)=>{
       return  <CardPokemon
         pokemon={pokemon}
         isPokedex={true}
         key={pokemon.url}
         pokemonUrlCada2={pokemon.url}
+        
         />
       })}
     </MainPokedex>

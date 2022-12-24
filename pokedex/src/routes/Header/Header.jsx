@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GlobalContext } from '../../contexts/GlobalContext'
-import {HeaderPage,
-   ImgLogo, 
-   ButtonPokedex, 
-   ButtonHomePage,
-   GridLogo,
-   GridButtonPokedex,
-   GridButtonHome
-  } from './Header.styled'
+import {
+  HeaderPage,
+  ImgLogo,
+  ButtonPokedex,
+  ButtonHomePage,
+  GridLogo,
+  GridButtonPokedex,
+  GridButtonHome,
+  ButtonDetalhes,
+  ButtonHomePage2
+} from './Header.styled'
 import Logo from '../../assets/Logo.png'
 import { useContext } from 'react'
+import { ChakraProvider, Alert, AlertIcon } from '@chakra-ui/react'
 
 const Header = (props) => {
   const navigate = useNavigate()
@@ -21,19 +25,30 @@ const Header = (props) => {
     navigate("/")
   }
   const context = useContext(GlobalContext)
-  const {pokedex, setPokedex, removeFromPokedex} = context
-  const {isPokedex, isHomePage, isDetalhes} = props
+  const { pokedex, setPokedex, flow, setFlow, addToPokedex } = context
+  const { isPokedex, isHomePage, isDetalhes, details } = props
   
   return (
     <>
-    <HeaderPage>
-      <GridButtonPokedex>{isPokedex && <ButtonPokedex onClick={goToHomePage}>Todos pokémons</ButtonPokedex>}</GridButtonPokedex>
-      <GridLogo><ImgLogo src={Logo} alt="logo"/></GridLogo>
-      <GridButtonHome>{isHomePage && <ButtonHomePage onClick={goToPokedex}>Pokédex</ButtonHomePage>}</GridButtonHome>
-     {pokedex.map((pokemon)=>{
-       return (<div className='buttonDetalhes'>{isDetalhes && pokedex && <ButtonHomePage key={pokemon.id} onClick={()=> removeFromPokedex(pokemon)}>{pokemon.name}</ButtonHomePage>}</div>)
-     })} 
-    </HeaderPage>
+      <HeaderPage>
+        <GridButtonPokedex>
+          {isPokedex && <ButtonPokedex onClick={goToHomePage}><span>{"<"}</span>Todos pokémons</ButtonPokedex>}
+          {isDetalhes && <ButtonPokedex onClick={goToHomePage}><span>{"<"}</span>Todos pokémons</ButtonPokedex>}
+        </GridButtonPokedex>
+        <GridLogo><ImgLogo src={Logo} alt="logo" /></GridLogo>
+        <GridButtonHome>{isHomePage && <ButtonHomePage onClick={goToPokedex}>Pokédex</ButtonHomePage>}
+       {isDetalhes && flow === 1 && <ButtonDetalhes onClick={() => {
+            const arrayPoke = pokedex.filter((card) =>
+              card.name !== details.name
+            )
+            setPokedex(arrayPoke)
+            const pokedexString = JSON.stringify(arrayPoke)
+            window.localStorage.setItem("pokemon", pokedexString)
+            setFlow(2)
+          }}>Excluir da Pokédex</ButtonDetalhes>}
+       {isDetalhes && flow === 2 && <ButtonHomePage2 onClick={()=>addToPokedex(details)}>Capturar</ButtonHomePage2>}
+          </GridButtonHome>
+      </HeaderPage>
     </>
   )
 }

@@ -1,12 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Header from '../Header/Header'
-import { MainHomePage,TituloHome } from './HomePage.styled'
+import { MainHomePage, TituloHome, ImgModalCapturar } from './HomePage.styled'
 import CardPokemon from '../CardPokemon/CardPokemon'
 import { GlobalContext } from '../../contexts/GlobalContext'
+import Modal from 'react-modal'
+import Capturar from '../../assets/Capturar2.png'
 
 const HomePage = () => {
   const context = useContext(GlobalContext)
-  const {cardTop, pokedex} = context
+  const {
+    cardTop,
+    pokedex,
+    modalOpen,
+    closeModalCapturar,
+    customStyle,
+    nextPageHome,
+    backPageHome,
+    contador,
+    nextPage,
+    nextPage2
+  } = context
+
   const filteredCardTop = () =>
     cardTop.filter(
       (pokemonInList) =>
@@ -14,20 +28,32 @@ const HomePage = () => {
           (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
         )
     );
-const umArray = []
   return (
     <>
-    <Header isHomePage={true}/>
-    <MainHomePage>
-      <TituloHome><h1>Todos Pokémons</h1></TituloHome>
-      {filteredCardTop().map((pokemon) => (
+      <Header isHomePage={true} />
+      <MainHomePage>
+        <TituloHome>
+          <h1>Todos Pokémons</h1>
+          <div className='buttonDuplo'>
+            <button className='btnTrocaPagina' onClick={() => backPageHome()}>back</button>
+            <button className='btnTrocaPagina' onClick={() => nextPageHome()}>next</button>
+          </div>
+        </TituloHome>
+        {filteredCardTop().map((pokemon) => (
           <CardPokemon
             pokemon={pokemon}
             isHomePage={true}
             key={pokemon.url}
             pokemonUrlCada={pokemon.url}
           />))}
-    </MainHomePage>  
+      </MainHomePage>
+      <Modal
+        isOpen={modalOpen}
+        onRequestClose={closeModalCapturar}
+        style={customStyle}
+      >
+        <ImgModalCapturar src={Capturar} />
+      </Modal>
     </>
   )
 }

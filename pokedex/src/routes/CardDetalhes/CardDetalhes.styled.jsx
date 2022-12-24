@@ -2,15 +2,19 @@ import styled from "styled-components";
 
 
 export const BoxPrincipal = styled.div`
-     width: 100%;
-     max-height: 480px;
-     min-height: 480px;
+     min-width: 100%;
+     max-width: 100%;
+     max-height: 663px;
+     min-height: 663px;
      background-color:${(props) => props.color};
      border-radius: 20px;
      display: grid;
      grid-template-column : 1fr 1fr;
      display: flex;
-
+     padding-left: 44px;
+     padding-top: 26px;
+     padding-bottom:26px;
+     margin: 0 auto;
      
      .ladoDireito{
         border: 1px solid yellow;
@@ -18,30 +22,31 @@ export const BoxPrincipal = styled.div`
      }
 `
 export const LadoEsquerdoDT = styled.div`
-    width: 100%;
+    width: 105%;
     display: flex;
-    padding: 20px;
     gap: 20px;
 
     .cardDuplos{
         width: 40%;
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 47px;
+        justify-content: space-between;
+        align-items: center;
     }
     .cardFront{
-        width: 100%;
+        width: 282px;
         background-color: white;
-        height: 100%;
+        height: 282px;
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .cardBack{
-        width: 100%;
+        width: 282px;
         background-color: white;
-        height: 100%;
+        height: 282px;
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -53,10 +58,11 @@ export const LadoEsquerdoDT = styled.div`
         background-color: white;
         border-radius: 10px;
         padding:25px;
+        margin-left: 15px;
     }
     .img_dupla{
-        width: 90px;
-        height: 90px;
+        width: 110px;
+        height: 110px;
     }
     .poderes{
         display: flex;
@@ -68,7 +74,7 @@ export const LadoEsquerdoDT = styled.div`
         border-bottom: 2px solid #ECECEC;
     }
     .progressoHP{
-        width:100%;
+        width:343px;
         border-bottom: 2px solid #ECECEC;
         color:gray;
         padding-bottom: 5px;
@@ -80,15 +86,14 @@ export const LadoEsquerdoDT = styled.div`
     }
 `
 export const LadoDireitoDT = styled.div`
-    width: 100%;
+    width: 95%;
     display: flex;
     position: relative;
 
     .cardLadoEsquerdo{
         width: 50%;
         height: 100%;
-        padding-top: 25px;
-        padding-left: 25px;
+        padding-left: 60px;
     }
     .cardLadoDireito{
         width: 50%;
@@ -97,19 +102,21 @@ export const LadoDireitoDT = styled.div`
     p{
         color: white;
         font-weight: bold;
+        font-size: 16px;
+        margin-top: 10px;
     }
     h2{
-        font-size: 30px;
+        font-size: 38px;
         font-weight: bold;
-        margin-bottom: 15px;
         color: #FFFFFF;
     }
     .moves{
         padding: 10px 15px;
-        margin-top: 20px;
         border-radius: 10px;
-        height: 270px;
-        width: 100%;
+        min-height: 437px;
+        min-width: 292px;
+        max-height: 437px;
+        max-width: 292px;
         background-color: #FFFFFF;
         display: flex;
         flex-direction: column;
@@ -117,35 +124,42 @@ export const LadoDireitoDT = styled.div`
     }
     span{
         background-color:#ECECEC;
-        padding: 5px 0;
+        padding: 10px;
         text-align: center;
         border: 1px dashed rgba(0, 0, 0, 0.14);
-        border-radius: 8px;
+        border-radius: 12px;
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
+        width: fit-content;
+
     }
     .types{
         display: flex;
-        gap: 10px;
+        gap: 18px;
+        margin-bottom: 45px;
     }
     .titleMove{
         font-weight: bold;
-        font-size: 20px;
+        font-size: 24px;
+        font-family: 'Inter';
+        font-style: normal;
+        margin-bottom: 20px;
     }
 `
 export const Img1 = styled.img`
-      min-width: 600px;
-      max-width: 600px;
-      min-height: 480px;
-      max-height: 480px;
+      min-width: 667px;
+      max-width: 667px;
+      min-height: 664px;
+      max-height: 664px;
       z-index: 0;
       position: absolute;
       right: 1px;
+      top: -27px;
 `
 export const ImgCard2 = styled.img`
-      width: 200px;
-      height: 200px;
+      width: 270px;
+      height: 270px;
       position: relative;
       bottom: 90px;
       left: 20px;
