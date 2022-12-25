@@ -10,11 +10,10 @@ import {
   GridButtonPokedex,
   GridButtonHome,
   ButtonDetalhes,
-  ButtonHomePage2
+  ButtonHomePage2,
 } from './Header.styled'
 import Logo from '../../assets/Logo.png'
 import { useContext } from 'react'
-import { ChakraProvider, Alert, AlertIcon } from '@chakra-ui/react'
 
 const Header = (props) => {
   const navigate = useNavigate()
@@ -24,6 +23,9 @@ const Header = (props) => {
   const goToHomePage = () => {
     navigate("/")
   }
+  const goToJogo = () => {
+    navigate("/jogo")
+  }
   const context = useContext(GlobalContext)
   const { pokedex, setPokedex, flow, setFlow, addToPokedex } = context
   const { isPokedex, isHomePage, isDetalhes, details } = props
@@ -32,6 +34,7 @@ const Header = (props) => {
     <>
       <HeaderPage>
         <GridButtonPokedex>
+          {isHomePage && <h1 className='pageJogo' onClick={goToJogo}>🎮</h1>}
           {isPokedex && <ButtonPokedex onClick={goToHomePage}><span>{"<"}</span>Todos pokémons</ButtonPokedex>}
           {isDetalhes && <ButtonPokedex onClick={goToHomePage}><span>{"<"}</span>Todos pokémons</ButtonPokedex>}
         </GridButtonPokedex>

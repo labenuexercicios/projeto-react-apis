@@ -23,6 +23,12 @@ export const GridButtonPokedex = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
+
+   .pageJogo{
+      font-size: 100px;
+      cursor: pointer;
+      padding-bottom: 20px;
+   }
 `
 export const GridButtonHome = styled.div`
    height: 100%;
@@ -80,5 +86,4 @@ export const ButtonDetalhes = styled.button`
    border-radius: 4px;
    border: none;
    cursor: pointer;
-
 `

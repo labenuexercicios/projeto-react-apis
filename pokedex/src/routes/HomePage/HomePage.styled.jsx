@@ -11,11 +11,10 @@ export const MainHomePage = styled.div`
    gap:50px 20px;
 
    .btnTrocaPagina{
-      border: none;
+      border: 3px solid black;
       padding: 8px 26px;
       font-size: 20px;
       cursor: pointer;
-      border-radius: 8px;
       transition: .5s;
    }
    .btnTrocaPagina: hover{

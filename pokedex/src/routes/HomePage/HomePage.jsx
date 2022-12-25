@@ -46,14 +46,15 @@ const HomePage = () => {
             key={pokemon.url}
             pokemonUrlCada={pokemon.url}
           />))}
-      </MainHomePage>
-      <Modal
+          <Modal
+        bodyOpenClassName={"modalClasse"}
         isOpen={modalOpen}
         onRequestClose={closeModalCapturar}
         style={customStyle}
       >
         <ImgModalCapturar src={Capturar} />
       </Modal>
+      </MainHomePage>
     </>
   )
 }

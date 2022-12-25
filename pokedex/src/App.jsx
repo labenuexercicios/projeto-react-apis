@@ -27,7 +27,7 @@ function App() {
     }
   }, [contador])
 // Adicionar a Pokedex
-console.log(contador,"contador")
+
   const addToPokedex = (pokemonToAdd) => {
     const isAlreadyOnPokedex = pokedex.find(
       (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
@@ -107,7 +107,7 @@ console.log(contador,"contador")
     backPageHome,
     contador,
     nextPage,
-
+    openModalCapturar
   }
   return (
     <div className="App">
