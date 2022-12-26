@@ -1,0 +1,239 @@
+  .Container{
+    width: 100%;
+    height: 100vh;
+    padding: 150px 300px;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+    background-image: url('../../assets/fundoJogo.jpg');
+    background-size: contain;
+    background-size: 100% 100%;
+} 
+  
+  .Game{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .GameMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: rgba(255, 255, 255, 100);
+    border-radius: 10px;
+    padding: 15px 50px;
+    gap: 15px;
+    background-color: black;
+    color: white;
+  }
+  
+  .GameBoard {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .GameBoard button {
+    border: 1px solid #ddd;
+    padding: 22px;
+    font-size: 4rem;
+    line-height: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 180px;
+    min-height: 180px;
+    cursor: pointer;
+    border: 2px solid black;
+  }
+  .GameBoard button:hover{
+    background-color: rgb(205, 204, 204);
+  }
+  .resetar{
+    background-color: red;
+    color: white;
+    padding: 6px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .ganhador{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .imgJoga{
+    width: 120px;
+    height: 120px;
+  }
+  .titulo{
+    width: 100%;
+    height: 70px;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    background-color: green;
+    border: 3px solid black;
+  }
+  .pokebola{
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    right: 22px;
+    bottom: 70px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+  }
+  .imgPokebola{
+    width: 100% - 20%;
+    height: 70%;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .seta{
+    font-size: 35px;
+  }
+  .personagem{
+    background-color: black;
+    padding: 6px 15px;
+    border-radius: 9px;
+    border: 1px solid white;
+  }
+  /* Parte do modal */
+  .titleModal{
+    height: 60px;
+    color: white;
+  }
+  .modal{
+    width: 500px;
+    height: 500px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    background-color: rgb(202, 202, 202);
+  }
+  .cadaPokeModal{
+    height: 40px;
+    background-color: gray;
+    color: white;
+    margin: 20px 0;
+    font-size: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+  }
+  select{
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 15px;
+    cursor: pointer;
+    border: 1px solid black;
+  }
+  .imgPokes{
+    width: 140px;
+    height: 140px;
+  }
+  .divsJogadores{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: gray;
+    border-radius: 12px;
+    padding:0 10px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;
+  }
+  .labelJogador{
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 2px solid black;
+    background-color: #FFDAB9;
+    color: black;
+    margin-bottom: 20px;
+  }
+  .labelJogador2{
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 2px solid black;
+    background-color: powderblue;
+    color: black;
+    margin-bottom: 20px;
+  }
+  .OBS{
+    margin-top: 15px;
+    font-weight: bold;
+    color: rgb(209, 25, 25);
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+  }
+  .voltarHome{
+    height: 70px;
+    width: 230px;
+    position: absolute;
+    z-index: 1;
+    left: 40px;
+    top: 25px;
+    font-size: 22px;
+    padding: 0 5px;
+    background-color: #33A4F5;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border: 3px solid black;
+    transition: 0.5s;
+  }
+  .voltarHome:hover{
+    background-color: blue;
+  }
+  .alinharPadrao{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  
+  .padraoInicial{
+    padding: 8px 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: limegreen;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: .5s;
+  }
+  .padraoInicial:hover{
+    background-color: green;
+  }
