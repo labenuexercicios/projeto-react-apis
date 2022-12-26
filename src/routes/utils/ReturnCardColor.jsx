@@ -36,8 +36,6 @@ export const getColors = (type) => {
         return "#BBBBBB";
       case "water":
         return "#71C3FF";
-      case "dragon":
-        return "#004170";
       default:
         return "#7A7A7A";
     }
