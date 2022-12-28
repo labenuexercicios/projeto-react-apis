@@ -1,5 +1,7 @@
 
 import Modal from "react-modal";
+import '@fontsource/inter/700.css'
+import '@fontsource/poppins/700.css'
 import {
   Badge,
   Button,
@@ -68,8 +70,9 @@ export default function Card(props) {
           gap="10px" 
           flexDirection={"row"}>
           {/* {getTypePokemons(props.pokemon.url) } */}
-          <VStack p="16px" align="flex-start" maxW="350px" minW="200px">
-            <Text color={"#FFFFFF"}>#{props.pokemon.data.id}</Text>
+          <VStack fontFamily={'inter'} p="16px" align="flex-start" maxW="350px" minW="200px">
+            {props.pokemon.data.id <=9?<Text color={"#FFFFFF"}>#0{props.pokemon.data.id}</Text>:<Text color={"#FFFFFF"}>#{props.pokemon.data.id}</Text>}
+            
             <Heading color={"#FFFFFF"} fontSize={'2xl'} fontFamily='Inter'>
               {props.pokemon.data.name.charAt(0).toUpperCase() + props.pokemon.data.name.slice(1)}
             </Heading>
@@ -97,7 +100,7 @@ export default function Card(props) {
               color={"#FFFFFF"} 
               fontFamily='Poppins'
               marginTop={"21px"}
-              onClick={()=>goToPageDetails(navigate,props.pokemon.data.name, props.pokemon)}>Detalhes
+              onClick={()=>goToPageDetails(navigate,props.pokemon.data.name)}>Detalhes
               </Link>
               {/* <Link color={"#FFFFFF"} fontFamily='Poppins'onClick={()=>goToPageDetails(navigate,props.pokedex.data.name)}>Detalhes</Link> */}
             
@@ -156,25 +159,26 @@ export default function Card(props) {
           <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
-          animationType='slide'
+          // animationType='slide'
           // zIndex="102"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          position="absolute"
+          // display="flex"
+          // justifyContent="center"
+          // alignItems="center"
+          // position="absolute"
           style={
             {content:{
               width:'451px',
               height: '222px',
               display:'flex',
               alignItems:'center',
-              marginLeft:'150px',
+              // marginLeft:'150px',
               // justifyContent:'rown',
               // position: 'absolute',
-              top:'20vh',
-              left:'20vw',
-              right:'20vw',
-              bottom:'40px',
+              top:'50%',
+              left:'50%',
+              right:'auto',
+              bottom:'auto',
+              transform:'translate(-50%,-50%)',
               WbebkitOverflowScrolling: 'touch',
               borderRadius:'25px',
               outline:'none',
@@ -186,14 +190,16 @@ export default function Card(props) {
           }
           
           >
+            <h1>go</h1>
+            <p>ok</p>
             
-            <Heading
+            {/* <Heading
             
             display={"flex"}
             >{modalIncludeDelete?"Gotcha!":"Oh, no!"}</Heading>
                     <Text fontWeight={"bold"} display={"flex"}>
                        {modalIncludeDelete?" O Pokémon foi adicionado a sua Pokédex":"O Pokémon foi removido de sua Pokedéx"}
-                    </Text>
+                    </Text> */}
                    
           </Modal>
 

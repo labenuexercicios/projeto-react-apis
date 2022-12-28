@@ -2,7 +2,8 @@ import styled from "styled-components";
 <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins:wght@700&display=swap');
    </style>
 export const ContainerDetails=styled.div`
-background-color: gray;
+/* background-color: gray; */
+    background-color: ${(props)=>props.cor};
 
 .textDetailsOverall{
     /* position: absolute; */
@@ -32,8 +33,7 @@ background-color: gray;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /* background-color: #729F92; */
-    /* background-color: ${(props)=>props.cor?props.cor:"yellow"}; */
+    background-color: ${(props)=>props.cor};
 }
 
 .Div1{
@@ -113,7 +113,6 @@ background-color: gray;
     }
     .Progress{
         display: grid;
-        border:1px solid black;
         grid-column: 4/9;
         justify-self: flex-start;
         margin-left:140px;

@@ -72,7 +72,7 @@ function App() {
   }
   const getPokemons = ()=>{
     var endpoints = []
-    for (let i=1; i<=21; i++){
+    for (let i=1; i<=30; i++){
       endpoints.push(`${baseUrl}/pokemon/${i}/`);
     }
     let response= axios.all(endpoints.map((endpoint)=>axios.get(endpoint)))

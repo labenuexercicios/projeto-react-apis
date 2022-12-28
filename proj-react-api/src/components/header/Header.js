@@ -29,7 +29,7 @@ const Header = () =>{
                 color={'#1A1A1A'}
                 fontSize={"24px"}
                 onClick={()=>goToHomePage(navigate)}
-            > <Text>{"< Todos os Pokémons"}</Text></Link>
+            > <Text as={'u'}>{"< Todos os Pokémons"}</Text></Link>
             <img src="../imgs/pokemon-header.svg" ></img>
             <button className="deletePokedex"  onClick={deletePokedex}>Excluir Pokédex</button>
             </>
