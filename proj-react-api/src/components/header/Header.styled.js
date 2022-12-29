@@ -4,15 +4,17 @@ export const ContainerHeader = styled.div`
     display: flex;
     align-items: center;
     margin-top: 0;
-    /* justify-content: center; */
+    justify-content: center;
     height: 10rem;
-    width: 100%;
+    width: 1440px;
     background-color: white;
+    /* border: 3px solid #4169e1; */
 
     
     button{
         justify-self:flex-end;
-        align-self: center;
+        
+        /* align-self: center; */
         background-color: #33A4F5;
         width: 18rem;
         height: 4.6rem;
@@ -20,7 +22,7 @@ export const ContainerHeader = styled.div`
         border: none;
         align-items:center;
         border-radius: 0.5rem;
-        margin-left: 75vw;
+        margin-left: 1050px;
         cursor: pointer;
         font-size: 1.5rem;
         position: absolute;

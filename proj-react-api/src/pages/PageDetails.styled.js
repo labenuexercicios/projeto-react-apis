@@ -2,8 +2,9 @@ import styled from "styled-components";
 <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins:wght@700&display=swap');
    </style>
 export const ContainerDetails=styled.div`
-/* background-color: gray; */
-    background-color: ${(props)=>props.cor};
+background-color: gray;
+width: 1440px;
+    
 
 .textDetailsOverall{
     /* position: absolute; */
@@ -18,28 +19,30 @@ export const ContainerDetails=styled.div`
     font-weight: 700;
     line-height: 72px;
     font-style: normal;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
-
     
 }
+`
+export const Container=styled.div`
 
-.Container{
-    width: 1390px;
-    height: 665px;
+    width: 1440px;
+    height: 100%;
+    left: 40px;
     display: flex;
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: ${(props)=>props.cor};
-}
+
 
 .Div1{
-    /* background-color: ${(props)=>props.cor?props.cor:props.cor}; */
-    /* background-color: blueviolet; */
-    border: 2px solid white;
+    /* border: 2px solid white; */
     border-radius: 10px;
     width: 330px;
     height: 600px;
@@ -47,6 +50,7 @@ export const ContainerDetails=styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-right: 30px;
     
     .img{
         display: flex;
@@ -73,13 +77,14 @@ export const ContainerDetails=styled.div`
     /* border: 2px solid white; */
     border-radius: 10px;
     width: 330px;
-    height: 600px;
+    height: 560px;
+    margin-right: 30px;
 
     .infoStats{
         margin-top: 16px;
         display: grid;
         display: block;
-        border: 3px solid yellow;
+        /* border: 3px solid yellow; */
         grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px;
         grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px;
         justify-content: flex-start;
@@ -130,7 +135,7 @@ export const ContainerDetails=styled.div`
         color: #6b6b6b;
         padding: 0;
         align-self: flex-start;
-        border-top: 1px solid #d9d9db;
+        /* border-top: 1px solid #d9d9db; */
     }
     .valueTotal{
         display: grid; 
@@ -149,13 +154,12 @@ export const ContainerDetails=styled.div`
     
     
     .textBaseStats{
-        margin-top: 10px;
+        margin-top: 30px;
         margin-left: 10px;
         align-self: flex-start;
         font-family: 'inter', sans-serif;
         font-weight: 800;
         font-size: 24px;
-        margin-left: 0;
         grid-row: 1/3;
         grid-column: 1/6;
         color: #000000;
@@ -164,24 +168,34 @@ export const ContainerDetails=styled.div`
     
 }
 .Div3{
-    background-color: pink;
-    border: 2px solid white;
+    /* background-color: pink; */
+    /* border: 2px solid white; */
     border-radius: 10px;
     width: 330px;
     height: 600px;
+    margin-right: 30px;
 }
 .Div4{
-    background-color: yellowgreen;
-    border: 2px solid white;
+    /* background-color: yellowgreen; */
+    /* border: 2px solid white; */
     border-radius: 10px;
     width: 330px;
     height: 600px;
-    img{
+    .imgPokemonBig{
         position: absolute;
+        z-index: 100;
         width: 270px;
         height: 270px;
         left: 1071px;
-        top: 80px;
+        top: 150px;
+    }
+    .imgPokebola{
+        position: absolute;
+        z-index: 99;
+        width:650px;
+        height: 650px;
+        margin-left: -310px;
+
     }
 }
 .Details{
@@ -214,13 +228,11 @@ export const ContainerDetails=styled.div`
     padding: 10px;
     gap: 10px;
     margin-left: 5px;
-    width: 292px;
-    height: 771px;
     background-color: #fff;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: absolute;
     width: 292px;
-    height: 453px;
+    height: 400px;
     label{
         /* left: 803px; */
         /* top: 712px; */
@@ -238,5 +250,7 @@ export const ContainerDetails=styled.div`
         color: #000000;
     }
 }
-
 `
+
+
+

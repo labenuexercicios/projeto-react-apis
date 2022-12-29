@@ -23,14 +23,14 @@ function App() {
   const [deletePokemonPokedex, setDeletePokemonPokedex]=useState(false)
   const [modalIsOpen, setIsOpen]= useState(false)
   const [modalIncludeDelete, setModalIncludeDelete]=useState(true)
-  const [pokemonShow, setPokemonShow] = useState([])
+  // const [pokemonShow, setPokemonShow] = useState([])
+  const [pokemonDetails,setPokemonDetails]=useState([])
   const pokemonFromPageDetails = []
   const params =useParams()
   
   const [callPlace,setCallPlace]=useState(true)//Constante que determinará de onde foi a chamada para detalhes true é Home, e false é Pokedex, para configurar botão do header
   // useEffect(()=>{setCallPlace(true)},[])
-  useEffect(() => { checkPokemons()
-    setPokemonShow([]) }, [])
+  useEffect(() => { checkPokemons()}, [])
   useEffect(()=>{
     localStorage.setItem("pokeId",JSON.stringify(pokemons))
   },[pokemons])
@@ -72,8 +72,9 @@ function App() {
   }
   const getPokemons = ()=>{
     var endpoints = []
-    for (let i=1; i<=30; i++){
+    for (let i=1; i<=21; i++){
       endpoints.push(`${baseUrl}/pokemon/${i}/`);
+      console.log(endpoints)
     }
     let response= axios.all(endpoints.map((endpoint)=>axios.get(endpoint)))
     .then((res)=>{setPokemons(res)
@@ -91,6 +92,8 @@ function App() {
     setModalIncludeDelete(true)
     openModal()
   }
+  console.log(pokemons)
+  console.log(pokedex)
   const removePokemonHome = (pokemonARemover)=>{
     const copyPokemons = []
     let pokemonOutHome = pokemons.filter((pokemonFilter)=>{
@@ -143,8 +146,10 @@ function App() {
     modalIncludeDelete,
     setCallPlace,
     callPlace,
-    pokemonShow,
-    setPokemonShow,
+    // pokemonShow,
+    // setPokemonShow,
+    pokemonDetails,
+    setPokemonDetails,
     deletePokedex
   }
   

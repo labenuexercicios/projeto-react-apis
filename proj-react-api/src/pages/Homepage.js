@@ -49,7 +49,8 @@ const Homepage = () => {
     bgColor={"#5E5E5E"}
     wrap={'wrap'}
     justifyContent={"space-around"}
-    flexDirection={"row"}>
+    flexDirection={"row"}
+    w='1440px'>
       
       <Heading
       color={"white"}

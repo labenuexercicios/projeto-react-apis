@@ -6,52 +6,73 @@ import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { baseUrl } from '../components/utils/baseUrl'
 import { getTypesPokemon } from '../assets/pokemon-types/pokemons_types'
-import { ContainerDetails } from './PageDetails.styled'
+import { Container, ContainerDetails } from './PageDetails.styled'
 import { getColorCard } from '../assets/pokemon-types/getColorCard'
+import  axios  from 'axios'
+
+
 const PageDetails = (props) => {
   const context = useContext(GlobalContext)
   const { pokedex, pokemons, setDeletePokemonPokedex, backPokemonHome,
      deletePokemonPokedex, pokemonFromPageDetails, callBackPokemonHome, 
-     setCallPlace,pokemonShow,setPokemonShow } = context
+     setCallPlace,pokemonShow,setPokemonShow, pokemonDetails,setPokemonDetails } = context
   console.log(pokemons)
   console.log(props)
   const params = useParams()
   console.log(params)
-  const [pokemonDetails,setPokemonDetails]=useState([])
+  // const [pokemonDetails,setPokemonDetails]=useState([])
   // const pokemonShow = []
+  const [type1,setType1]=useState()
+  const [type2,setType2]=useState()
   const [cor, setCor] = useState("")
   let totalStats = 0
   //aqui
-  const findPokemon = async (url)=>{
-    const responseApi = await fetch(url)
-    const dataPokemon = await responseApi.json()
-    setPokemonDetails(dataPokemon)
-    setCor(getColorCard(dataPokemon.types[0].type.name))
-    
+  const findPokemon = async ()=>{
+    try {
+
+      const responseApi = await axios.get(`${baseUrl}/pokemon/${params.pokemonName}/`)
+      setPokemonDetails(responseApi)
+      
+    }
+    catch(error){
+      
+    }
   }
+
+    const upTypes = async ()=>{
+      if(pokemonDetails){
+        setCor(getColorCard(pokemonDetails.data.types[0].type.name))
+        setType1(pokemonDetails.data.types[0].type.name)
+        setType2(pokemonDetails.data.types[1]?.type.name)
+      }
+    }
+    useEffect(()=>{
+      upTypes()
+    },[pokemonDetails])
+  
   useEffect(() => {
-    const Url = `https://pokeapi.co/api/v2/pokemon/${params.pokemonName}`
-    findPokemon(Url)
-    setPokemonShow([])
+    // const Url = `${baseUrl}/pokemon/${params.pokemonName}/`
+    findPokemon()
+    // setPokemonShow([])
     // setCor(getColorCard(pokemonShow[2]?.data.types[0].type.name))
 
   }, [])
-  {
-    for (let i of pokemons) {
-      if (i.data.name === params.pokemonName) {
-        pokemonShow.push(i)
-      } else {
-        for (let j of pokedex) {
-          if (j.data.name === params.pokemonName) {
-            pokemonShow.push(j)
-            // setCor(getColorCard(pokemonShow[0]?.data.types[0].type.name))
-          }
-        }
-      }
-      // setCor(getColorCard(pokemonShow[0]?.data.types[0].type.name))
+  // {
+  //   for (let i of pokemons) {
+  //     if (i.data.name === params.pokemonName) {
+  //       pokemonShow.push(i)
+  //     } else {
+  //       for (let j of pokedex) {
+  //         if (j.data.name === params.pokemonName) {
+  //           pokemonShow.push(j)
+  //           // setCor(getColorCard(pokemonShow[0]?.data.types[0].type.name))
+  //         }
+  //       }
+  //     }
+  //     // setCor(getColorCard(pokemonShow[0]?.data.types[0].type.name))
 
-    }
-  }
+  //   }
+  // }
   console.log(cor)
   console.log(pokemonDetails)
 
@@ -59,22 +80,22 @@ const PageDetails = (props) => {
     <>
       <Header />
 
-      <ContainerDetails cor={cor}>
+      <ContainerDetails >
         <text className='textDetailsOverall'>Detalhes</text>
-        <div className='Container' >
+        <Container cor={cor} >
           <div className='Div1'>
             <div className='img'>
-              <img className='imgPokemon' src={pokemonDetails.sprites?.other["official-artwork"].front_default}></img>
+              <img className='imgPokemon' src={pokemonDetails.data && pokemonDetails.data?.sprites?.front_default}></img>
             </div>
             <div className='img'>
-              <img className='imgPokemon' src={pokemonDetails.sprites?.back_shiny}></img>
+              <img className='imgPokemon' src={pokemonDetails.data && pokemonDetails.data?.sprites?.back_default}></img>
             </div>
           </div>
           <div className='Div2'>
             {/* <div> */}
               <text className='textBaseStats'>Base stats</text>
               <div className='infoStats'>
-                {pokemonDetails.stats?.map((stat) => {
+                {pokemonDetails.data && pokemonDetails.data.stats?.map((stat) => {
                   {totalStats+= stat.base_stat}
                   return (
                     <text className='textStats'>
@@ -102,23 +123,16 @@ const PageDetails = (props) => {
           </div>
           <div className='Div3'>
             <div className='Details'>
-              <p className='idText'>#0{pokemonDetails?.id}</p>
-              <p className='idName'>{pokemonDetails.name?.charAt(0).toUpperCase() + pokemonDetails.name?.slice(1)}</p>
+              <p className='idText'>#0{pokemonDetails.data && pokemonDetails?.data.id}</p>
+              <p className='idName'>{pokemonDetails.data && pokemonDetails.data.name?.charAt(0).toUpperCase() + pokemonDetails.data.name?.slice(1)}</p>
               <div className='Types'>
-                {pokemonDetails &&
-                 <Image src={getTypesPokemon(pokemonDetails.types[0].type.name)}></Image>
-                }
-                {pokemonDetails.types[1]?.type &&
-                 <Image src={getTypesPokemon(pokemonDetails.types[1]?.type.name)}></Image>
-                }
-                {/* {pokemonDetails.length>1 && <Image src={getTypesPokemon(pokemonDetails.types[0]?.type.name)}></Image>} */}
-                {/* {pokemonDetails.length>1 && <Image src={getTypesPokemon(pokemonDetails.types[1]?.type.name)}></Image>} */}
-                
+                 <Image src={getTypesPokemon(type1)}></Image>
+                 <Image src={getTypesPokemon(type2)}></Image>
               </div>
             </div>
             <div className='Moves'>
               <text>Moves:</text>
-              {pokemonDetails.moves?.filter((move, index) => index < 4).map((move) => {
+              {pokemonDetails.data && pokemonDetails.data.moves?.filter((move, index) => index < 4).map((move) => {
                 return (
                   //   <WrapItem>
                   // <Center w='292px' h='292px' bg='blue.200'>
@@ -130,10 +144,12 @@ const PageDetails = (props) => {
             </div>
           </div>
           <div className='Div4'>
-            <img className='imgPokemonBig' src={pokemonDetails.sprites?.other["official-artwork"].front_default}></img>
+            <img className='imgPokemonBig' src={pokemonDetails.data && pokemonDetails.data.sprites?.other["official-artwork"].front_default}></img>
+            <img className='imgPokebola' src='../imgs/pokebola.png'></img>
+            
 
           </div>
-        </div>
+        </Container>
       </ContainerDetails>
 
     </>

@@ -11,7 +11,7 @@ const Header = () =>{
     const navigate = useNavigate()
     const location=useLocation()
     const context=useContext(GlobalContext)
-    const{callBackPokemonHome,callPlace, capturePokemon,pokemonShow,setCallPlace,deletePokedex}= context 
+    const{callBackPokemonHome,callPlace, capturePokemon,pokemonShow,setCallPlace,deletePokedex, pokemonDetails}= context 
     const params=useParams()
 
     return (
@@ -62,7 +62,7 @@ const Header = () =>{
             <img src="../imgs/pokemon-header.svg" ></img>
             
             <button className="btnAddPokemon" onClick={()=>{
-                capturePokemon(pokemonShow[0]); //a constante pokemonshow armazena o pokemon que esta sendo exibido portanto é utilizada para adicionar pokemon
+                capturePokemon(pokemonDetails); //a constante pokemonshow armazena o pokemon que esta sendo exibido portanto é utilizada para adicionar pokemon
                 setCallPlace(false)}
             }
                 >CapturePokemon</button>

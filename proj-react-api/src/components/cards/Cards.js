@@ -149,11 +149,7 @@ export default function Card(props) {
           </Image>
           <Image 
           marginLeft={"-250"} 
-          
-          // position={"relative"} 
-          
           src='../imgs/pokebola.png' >
-
           </Image>
          
           <Modal
