@@ -1,13 +1,23 @@
 import { PokemonCardContainer } from "./PokemonCard.styled";
-// import  poison from "../../assets/img/iconsHabilidades"
-// import grass from "../../assets/img/iconsHabilidades/grass.svg"
-import poison from "../../assets/img/iconsHabilidades/poison.png"
-import grass from "../../assets/img/iconsHabilidades/grass.svg"
 import bug  from "../../assets/img/iconsHabilidades/bug.png"
-import water  from "../../assets/img/iconsHabilidades/water.png"
-import flying  from "../../assets/img/iconsHabilidades/flying.png"
+import dark  from "../../assets/img/iconsHabilidades/dark.png"
+import dragon  from "../../assets/img/iconsHabilidades/dragon.png"
+import electric  from "../../assets/img/iconsHabilidades/electric.png"
+import fairy  from "../../assets/img/iconsHabilidades/fairy.png"
+import fighting  from "../../assets/img/iconsHabilidades/fighting.png"
 import fire  from "../../assets/img/iconsHabilidades/fire.png"
+import flying  from "../../assets/img/iconsHabilidades/flying.png"
+import ghost  from "../../assets/img/iconsHabilidades/ghost.png"
+import grass from "../../assets/img/iconsHabilidades/grass.svg"
+import ground from "../../assets/img/iconsHabilidades/ground.png"
+import ice from "../../assets/img/iconsHabilidades/ice.png"
 import normal  from "../../assets/img/iconsHabilidades/normal.png"
+import poison from "../../assets/img/iconsHabilidades/poison.png"
+import psychic from "../../assets/img/iconsHabilidades/psychic.png"
+import rock  from "../../assets/img/iconsHabilidades/rock.png"
+import steel  from "../../assets/img/iconsHabilidades/steel.png"
+import water  from "../../assets/img/iconsHabilidades/water.png"
+
 
 
 function corFundo(tipoPokemon){
@@ -28,13 +38,24 @@ function corFundo(tipoPokemon){
 function PokemonCard(props) {
 
   const typesButtons = {
-    'poison' : poison, 
-    'grass' : grass, 
-    'bug' : bug, 
-    'water' : water, 
-    'flying' : flying, 
-    'fire' : fire, 
-    'normal' : normal
+    'bug': bug,
+    'dark': dark,
+    'dragon': dragon,
+    'electric': electric,
+    'fairy': fairy,
+    'fighting': fighting,
+    'fire': fire,
+    'flying': flying,
+    'ghost': ghost,
+    'grass': grass,
+    'ground': ground,
+    'ice': ice,
+    'normal': normal,
+    'poison': poison,
+    'psychic': psychic,
+    'rock': rock,
+    'steel': steel,
+    'water': water
   };
   
   return (
@@ -48,13 +69,10 @@ function PokemonCard(props) {
             {
               props.types &&
               props.types.map((tipo) => {
-              return <div key={ Math.random()}>
-                        <img className="icon-tipo" src={typesButtons[tipo]} alt="img tipo"></img>
-                    </div>
+                return <img key={props.id + Math.random()} className="icon-tipo" src={typesButtons[tipo]} alt="img tipo"></img>
               })
             }
-            {/* <img className="icon-tipo" src={typesButtons[props.tipo]} alt="img tipo"></img> */}
-            {/* <img className="icon-habilidade" src={props.habilidade} alt="img hanbilidade"></img> */}
+            
           </div>
           <div className="div-detalhes-capturar">
             <button className="btn-detalhes">Detalhes</button>
