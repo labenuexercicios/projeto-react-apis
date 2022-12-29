@@ -1,0 +1,138 @@
+[
+    {
+        "id": 16,
+        "name": "pidgey",
+        "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png",
+        "types": ["normal","flying"],
+        "stats": [
+            {        
+                "name": "hp",
+                "base_stat": 40
+            },
+            {        
+                "name": "attack",
+                "base_stat": 45
+            }
+            ,
+            {        
+                "name": "defense",
+                "base_stat": 40
+            },
+            {        
+                "name": "special-attack",
+                "base_stat": 35
+            },
+            {        
+                "name": "special-defense",
+                "base_stat": 45
+            },
+            {        
+                "name": "speed",
+                "base_stat": 56
+            }
+        ],
+        "moves": ["razor-wind", "gust", "wing-attack", "whirlwind"]
+    },
+    {
+        "id": 25,
+        "name": "pikachu",
+        "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+        "types": ["eletric"],
+        "stats": [
+            {        
+                "name": "hp",
+                "base_stat": 35
+            },
+            {        
+                "name": "attack",
+                "base_stat": 55
+            }
+            ,
+            {        
+                "name": "defense",
+                "base_stat": 40
+            },
+            {        
+                "name": "special-attack",
+                "base_stat": 50
+            },
+            {        
+                "name": "special-defense",
+                "base_stat": 50
+            },
+            {        
+                "name": "speed",
+                "base_stat": 90
+            }
+        ],
+        "moves": ["mega-punch","pay-day","thunder-punch","slam","double-kick"]
+    },
+    {
+        "id": 4,
+        "name": "charmander",
+        "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+        "types": ["fire"],
+        "stats": [
+            {        
+                "name": "hp",
+                "base_stat": 39
+            },
+            {        
+                "name": "attack",
+                "base_stat": 52
+            }
+            ,
+            {        
+                "name": "defense",
+                "base_stat": 43
+            },
+            {        
+                "name": "special-attack",
+                "base_stat": 60
+            },
+            {        
+                "name": "special-defense",
+                "base_stat": 50
+            },
+            {        
+                "name": "speed",
+                "base_stat": 65
+            }
+        ],
+        "moves": ["mega-punch","fire-punch","thunder-punch","scratch","swords-dance"]
+    },
+    {
+        "id": 1,
+        "name": "bulbasaur",
+        "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+        "types": ["grass", "poison"],
+        "stats": [
+            {        
+                "name": "hp",
+                "base_stat": 45
+            },
+            {        
+                "name": "attack",
+                "base_stat": 49
+            }
+            ,
+            {        
+                "name": "defense",
+                "base_stat": 49
+            },
+            {        
+                "name": "special-attack",
+                "base_stat": 65
+            },
+            {        
+                "name": "special-defense",
+                "base_stat": 65
+            },
+            {        
+                "name": "speed",
+                "base_stat": 45
+            }
+        ],
+        "moves": ["razor-wind","swords-dance","cut","bind","vine-whip"]
+    }
+]

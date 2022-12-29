@@ -3,15 +3,34 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
     
     width:100%;
-
-    /* :root {
+    background-color: white;
+   
+    :root {
         --main-height:20px;
-    } */
+        
 
-    display: flex;
-    justify-content: space-between;
-    background-color:pink;
-    height: 160px;
+    }
+
+    .navegar-home{
+       
+        display:flex;
+        justify-content:space-between;
+        align-items: center;
+        padding:20px;
+        background-color:white;
+        border-width: 50px;
+        height: 20vh;
+        padding-right:15px;
+        padding-left:150px;
+        font-family: 'Poppins', sans-serif;
+        
+    
+    }
+    
+    *, *::before, ::after {
+    border-color: white;
+    
+}
   
    
 
@@ -19,6 +38,9 @@ export const HeaderContainer = styled.header`
         display:flex;
         justify-content:center;
         align-items: center;
+        background-color:white;
+        /* margin-left:525px; */
+        /* position: absolute; */
         /* padding:20px; */
         /* border-width: 50px; */
         /* height: 20vh; */
