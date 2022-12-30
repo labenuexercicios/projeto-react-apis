@@ -8,15 +8,36 @@ import ClickMe from "../../Components/Chakra/ClickMe";
 function PokemonListPage(){
     const [pokemonList, setPokemonList] = useState([]);
     const [pageNumber, setPageNumber] = useState(1);
+    const [pageDirection, setPageDirection] = useState('');
     const [pageLimit, setPageLimit] = useState(1);
     const [nextPageLink, setNextPageLink] = useState('');
-  
+    const [previousPageLink,setPreviousPageLink]=useState('');
+
+    function URL(){
+        let url = "https://pokeapi.co/api/v2/pokemon";
+        if(pageDirection==="next"){
+            if(nextPageLink != ""){
+                url = nextPageLink
+            } 
+         
+        }
+        else if(pageDirection==="previous"){
+            if(previousPageLink != ""){
+                url = previousPageLink
+            }
+        }
+
+        return url;
+    }
+
     async function getPokemons (){
-      const response = await axios.create({
-        baseURL: nextPageLink !=''? nextPageLink:"https://pokeapi.co/api/v2/pokemon"
+        const response = await axios.create({
+            baseURL: URL()
       }).get("")
       .then((response)=> {
+
         setNextPageLink(response.data.next);
+        setPreviousPageLink(response.data.previous);
         setPageLimit(Math.floor(response.data.count/20));
         setPokemonList(response.data.results);
         return response;
@@ -61,12 +82,15 @@ function PokemonListPage(){
     useEffect(()=>{ getPokemons();}, [pageNumber]);
   
     function nextPage(){
+        setPageDirection("next")
         setPageNumber(pageNumber+1)
     }
     const isButtonDisabledNext = pageNumber >= pageLimit;
 
     function previousPage(){
+
         if(pageNumber>1){
+            setPageDirection("previous")
             setPageNumber(pageNumber-1)
         }
         
