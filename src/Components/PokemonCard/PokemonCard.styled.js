@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PokemonCardContainer = styled.header`
+export const PokemonCardContainer = styled.div`
 
     
     color:#5E5E5E;
@@ -22,7 +22,7 @@ export const PokemonCardContainer = styled.header`
         bottom: 0;
         color: white;
         font-family: 'Poppins', sans-serif;
-        padding: 20px;
+        padding: 0 20px 20px 20px;
     }
 
     .div-type{
@@ -31,7 +31,7 @@ export const PokemonCardContainer = styled.header`
         
     }
 
-    .div-detalhes-capturar{
+    .div-botoes{
         display: flex;
         justify-content :space-between;
         margin-top:45px ;
@@ -53,5 +53,10 @@ export const PokemonCardContainer = styled.header`
         font-size: 14px;
         text-decoration: underline;
     }
-
+    
+    .pokebol-symbol{
+        position: relative;
+        top: 0;
+        right: -164px;
+    }
 `

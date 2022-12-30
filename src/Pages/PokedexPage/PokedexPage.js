@@ -11,17 +11,22 @@ import { baseTheme } from "@chakra-ui/react";
 import pokemons from "../../assets/pokemons.json"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ClickMe from "../../Components/Chakra/ClickMe";
 
 function PokedexPage() {
 
   const [pokemonList, setPokemonList] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageLimit, setPageLimit] = useState(1);
+  const [nextPageLink, setNextPageLink] = useState('');
 
   async function getPokemons (){
-
     const response = await axios.create({
-      baseURL: "https://pokeapi.co/api/v2/"
-    }).get("pokemon")
+      baseURL: nextPageLink !=''? nextPageLink:"https://pokeapi.co/api/v2/pokemon"
+    }).get("")
     .then((response)=> {
+      setNextPageLink(response.data.next);
+      setPageLimit(Math.floor(response.data.count/20));
       setPokemonList(response.data.results);
       return response;
     })
@@ -42,6 +47,7 @@ function PokedexPage() {
           let tipos = [...resposta.data.types];
           const pokemonDetalhado = {
             name: pokemon.name,
+            img: resposta.data.sprites.other['official-artwork'].front_default,
             id: resposta.data.id,
             types: tipos.map((value,index)=> value.type.name),
             stats: resposta.data.stats,
@@ -59,31 +65,35 @@ function PokedexPage() {
     Promise.all(promises).then(()=>{
       setPokemonList(pokemons);
     })
-
   }
   
-  useEffect(()=>{
+  useEffect(()=>{ getPokemons();}, [pageNumber]);
 
-    getPokemons();
-
-  },[]);
+  function nextPage(){
+    setPageNumber(pageNumber+1)
+  }
+  const isButtonDisabled = pageNumber >= pageLimit;
 
   return (
     <PokedexPageContainer>
-      <h1>Meus Pokémons</h1>
+      <h1>Meus Pokémons - Página {pageNumber} de { pageLimit }</h1>
       
       <div className="container-card">
         {
           pokemonList.map((pokemon) => {
-           return <PokemonCard
-                    key={pokemon.name.length + Math.random()}
-                    id={pokemon.id}
-                    nome={pokemon.name}
-                    types={pokemon.types}
-                  />
+            return <PokemonCard
+            key={pokemon.name.length + Math.random()}
+            id={pokemon.id}
+            nome={pokemon.name}
+            types={pokemon.types}
+            img={pokemon.img}
+            />
           })
         }
       </div>
+
+      <ClickMe disabled={isButtonDisabled} onClick={()=> nextPage()} text={'Next'}></ClickMe>
+
     </PokedexPageContainer>
   )
 }

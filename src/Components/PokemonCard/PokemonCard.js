@@ -17,6 +17,7 @@ import psychic from "../../assets/img/iconsHabilidades/psychic.png"
 import rock  from "../../assets/img/iconsHabilidades/rock.png"
 import steel  from "../../assets/img/iconsHabilidades/steel.png"
 import water  from "../../assets/img/iconsHabilidades/water.png"
+import pokebolSymbol  from "../../assets/img/cardDesign/simbolpokemoncard.png"
 
 
 
@@ -61,20 +62,26 @@ function PokemonCard(props) {
   return (
     <PokemonCardContainer  color={corFundo(props.tipo)}>
       <div className="div-card-externo">
-        <div className="div-card-interno">
-          <h3 className="pokemon-id">#{props.id}</h3>
-          <h2 className="pokemon-nome">{props.nome}</h2>
-          <div className="div-type">
 
-            {
-              props.types &&
-              props.types.map((tipo) => {
-                return <img key={props.id + Math.random()} className="icon-tipo" src={typesButtons[tipo]} alt="img tipo"></img>
-              })
-            }
-            
+        <img className="icon-tipo" width={193} src={props.img} alt={props.nome}></img>
+        
+        <div className="div-card-interno">
+          <img className="pokebol-symbol" width={193} src={pokebolSymbol} alt={props.nome}></img>
+          <div className="descricao">
+            <h3 className="pokemon-id">#{props.id}</h3>
+            <h2 className="pokemon-nome">{props.nome}</h2>
+            <div className="div-type">
+
+              {
+                props.types &&
+                props.types.map((tipo) => {
+                  return <img key={props.id + Math.random()} className="icon-tipo" src={typesButtons[tipo]} alt="img tipo"></img>
+                })
+              }
+
+            </div>
           </div>
-          <div className="div-detalhes-capturar">
+          <div className="div-botoes">
             <button className="btn-detalhes">Detalhes</button>
             <button className="btn-capturar">Capturar!</button>
           </div>

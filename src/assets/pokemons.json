@@ -134,5 +134,20 @@
             }
         ],
         "moves": ["razor-wind","swords-dance","cut","bind","vine-whip"]
+    },
+    {
+        "dream_world": {
+            "front_default": "https://raw.githubuserconster/other/dream-world/16.svg",
+            "front_female": null
+        },
+        "home": {
+            "front_default": "https://raw.githubusercontentes/pokemon/other/home/16.png",
+            "front_female": null,
+            "front_shiny": "https://raw.githubusercontenother/home/shiny/16.png",
+            "front_shiny_female": null
+        },
+        "official-artwork": {
+            "front_default": "https://raw.githubuserokemon/other/official-artwork/16.png"
+        }
     }
 ]
