@@ -21,46 +21,92 @@ import pokebolSymbol  from "../../assets/img/cardDesign/simbolpokemoncard.png"
 
 
 
-function corFundo(tipoPokemon){
-  if(tipoPokemon === 'fire')
-    return '#EAAB7D';
-  else if(tipoPokemon === 'water')
-    return '#33A4F5';
-  else if(tipoPokemon === 'raio')
-    return '#ffeb14';
-  else if(tipoPokemon === 'bug')
-    return '#316520';
-  else if(tipoPokemon === 'normal')
-    return '#BF9762';
-  else if(tipoPokemon === 'poison')
-    return '#729F92';
-}
-
 function PokemonCard(props) {
 
+  function corFundo(types){
+    if(types){
+      let tipoPokemon = types[0]
+      return typesButtons[tipoPokemon].background;
+    }
+  }
+
   const typesButtons = {
-    'bug': bug,
-    'dark': dark,
-    'dragon': dragon,
-    'electric': electric,
-    'fairy': fairy,
-    'fighting': fighting,
-    'fire': fire,
-    'flying': flying,
-    'ghost': ghost,
-    'grass': grass,
-    'ground': ground,
-    'ice': ice,
-    'normal': normal,
-    'poison': poison,
-    'psychic': psychic,
-    'rock': rock,
-    'steel': steel,
-    'water': water
+    'bug': {
+      button: bug,
+      background: '#437d4a'
+    },
+    'dark': {
+      button: dark,
+      background: ''
+    },
+    'dragon': {
+      button: dragon,
+      background: ''
+    },
+    'electric': {
+      button: electric,
+      background: '#ffeb14'
+    },
+    'fairy': {
+      button: fairy,
+      background: ''
+    },
+    'fighting': {
+      button: fighting,
+      background: ''
+    },
+    'fire': {
+      button: fire,
+      background: '#EAAB7D'
+    },
+    'flying': {
+      button: flying,
+      background: ''
+    },
+    'ghost': {
+      button: ghost,
+      background: ''
+    },
+    'grass': {
+      button: grass,
+      background: '#729F92'
+    },
+    'ground': {
+      button: ground,
+      background: ''
+    },
+    'ice': {
+      button: ice,
+      background: ''
+    },
+    'normal': {
+      button: normal,
+      background: '#BF9762'
+    },
+    'poison': {
+      button: poison,
+      background: '#6d376e'
+    },
+    'psychic': {
+      button: psychic,
+      background: ''
+    },
+    'rock': {
+      button: rock,
+      background: ''
+    },
+    'steel': {
+      button: steel,
+      background: ''
+    },
+    'water': {
+      button: water,
+      background: '#33A4F5'
+    }
   };
   
   return (
-    <PokemonCardContainer  color={corFundo(props.tipo)}>
+    <PokemonCardContainer  color={corFundo(props.types)}>
       <div className="div-card-externo">
 
         <img className="pokemon-img" width={170} src={props.img} alt={props.nome}></img>
@@ -75,7 +121,7 @@ function PokemonCard(props) {
               {
                 props.types &&
                 props.types.map((tipo) => {
-                  return <img key={props.id + Math.random()} className="icon-tipo" src={typesButtons[tipo]} alt="img tipo"></img>
+                  return <img key={props.id + Math.random()} className="icon-tipo" src={typesButtons[tipo].button} alt="img tipo"></img>
                 })
               }
 

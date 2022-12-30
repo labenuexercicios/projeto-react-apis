@@ -8,7 +8,6 @@ export const PokemonCardContainer = styled.div`
     .div-card-externo{
         width: 395px;
         height: 263px;
-        border: 2px solid red;
         position: relative;
     }
 
@@ -16,7 +15,6 @@ export const PokemonCardContainer = styled.div`
         width: 100%;
         height: 210px;
         border:2px solid black;
-        /* margin-top: 49px; */
         background-color: ${props => props.color};
         position: absolute;
         bottom: 0;
@@ -58,6 +56,7 @@ export const PokemonCardContainer = styled.div`
         position: absolute;
         top: 0;
         right: 0;
+        z-index: 999;
     }
     
     .pokebol-symbol{
