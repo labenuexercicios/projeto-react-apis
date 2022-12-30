@@ -1,10 +1,4 @@
 import { Button, Flex, useColorModeValue } from '@chakra-ui/react';
-// import { useState } from 'react';
-
-// function randomColor() {
-//   return Math.floor(Math.random() * 5);
-// }
-
 // const colorList = [
 //   '#E53E3E',
 //   '#38A169',
@@ -14,7 +8,6 @@ import { Button, Flex, useColorModeValue } from '@chakra-ui/react';
 // ];
 
 export default function ClickMe(props) {
-  // const [colorCode, setColorCode] = useState(colorList[randomColor()]);
 
   return (
     <Flex
@@ -36,7 +29,7 @@ export default function ClickMe(props) {
           transform: 'translateY(-4px)',
           boxShadow: 'lg',
         }}>
-        Pokedéx
+        {props.text}
       </Button>
     </Flex>
   );

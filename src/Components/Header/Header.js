@@ -11,7 +11,7 @@ function Header(props){
             <div className="logo">
                 <img className="img-logo" src={imgLogo} alt="Logo icon"/>
             </div>
-                <ClickMe>Pokedéx</ClickMe>
+                <ClickMe text={'Pokédex'}/>
             </div>
           
         </HeaderContainer>
