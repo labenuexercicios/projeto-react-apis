@@ -4,10 +4,7 @@ import pokeBola from "../../imagens/pokeBola.png"
 export const DetalhesStyle = styled.section`
 display:flex;
 flex-direction:row;
-background-color:#5c5365;
-/* min-height:100vh; */
 min-height: 100vh;
-/* min-width: 100vw;  */
 width:100%;
 
 h1{
@@ -38,7 +35,9 @@ color:white;
 }
 .margem-total{
 min-height: 100vh;
-min-width: 100vw;  
+min-width: 100vw; 
+padding:24px;
+background-color :#5D5D5D ;
 }
 .super-card{
 display:flex;
@@ -53,6 +52,7 @@ padding-bottom: 24px;
 margin-left: 26px;
 margin-bottom: 163px;
 border-radius:36px;
+background-color:${(props) => props.color};
 
 }
 
@@ -61,67 +61,83 @@ border-radius:36px;
     flex-direction: column;
     margin-left:42px;
     margin-right:34px;
-    gap:38px;
-    max-width:20%;
-    img{
-        width: 100%;
-        height: 100%;
-    }
+    gap:32px;
+  width:22%;   
+}
+.ivissauro-frente{
+    background-color:white;
+    width:20vw;
+    height:42vh;
+    border-radius:16px;
+  
+   
+}
+.centraliza-superior{
+    width:20vw;
+       height:42vh;
+         display:flex;
+        align-items:center;
+        justify-content:center;
 }
 
 .ivissauro-tras{
-    margin-bottom:28px;
+    background-color:white;
+    width:20vw;
+    height:42vh;
+    border-radius:16px;
+  
 }
+.centaliza-inferior{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    }
 .grafico{
 height: 613px;
 width: 343px;
 left: 360px;
 border-radius: 12px;
 background-color:white;
-width:30%;
- img{
-margin:18px 18px 0px 18px; 
-height: 40%;
-width: 70%;
+width:33%;
 
-left: 378px;
-top: 43px;
-
- }
 
 }
 .componente-final{
 margin-left:68px;
-background-image: url('../../imagens/pokeBola.png');
-background-repeat: no-repeat;
-width:20%;
+width:28%;
 }
-.inicio{
-    h1{
-
-    }
-
+.bulbassauro{
+    /* position:absolute;
+    z-index:2; */
 }
-.margem{
-    margin-top: 18px;
-    margin-bottom: 18px;
+.pokebola{
+    position:absolute;
+    width:100vw;
+    height:100vh;
+    z-index:0;
+}
+.tags-coloridas{
+  z-index:1;
+  position:relative;
 }
 .parte-inferior{
-height: 453px;
-width: 292px;
-left: 771px;
-top: 184px;
+position:absolute;
+height: 63vh;
+width: 22vw;
 border-radius: 8px;
 background-color:white;
-margin-bottom:26px;
-
+padding-left: 18px;
+display:flex;
+flex-direction:column;
 }
+
 .bulbassauro{
 height: 270px;
 width: 270px;
 left: 1109px;
 top: 216px;
-border-radius: 0px;
 position:absolute;
 }
 
@@ -131,20 +147,36 @@ position:absolute;
     display:flex;
     gap:18px;
 }
-.parte-inferior{
-    display:flex;
-    flex-direction:column;
-
-}
 
 .margem{
-    margin-top: 18px;
-    margin-left: 18px;
+    width:100%;
     >p{
-font-family: Inter;
+font-family: 'Inter';
 font-size: 24px;
 font-weight: 800;
+padding:18px;
 }
+}
+.box-individual{
+   display:flex;
+   align-items:center;
+   padding-bottom: 8px;
+   flex-wrap: wrap;
+   font-family: 'Inter';
+   >span{
+    padding-right: 4px;
+   }
+  }
+.cor-de-fundo{
+    width:50%;
+    background-color: #CFCFCF;
+    border-radius: 24px;
+    padding:8px;
+    border: dashed 1px gray;
+    >span{
+        padding-left: 4px;
+        width:100%;
+    }
 }
 .tags{
 display:flex;
@@ -153,12 +185,15 @@ gap:20px;
 height: 37px;
 border-radius: 12px;
 padding: 10px;
-height: 37px;
-width: 114px;
 border-radius: 12px;
-padding: 10px;
 
-
+}
+.total{
+    display:flex;
+    >span{
+        padding-left: 4px;
+        font-weight: bold;
+    }
 }
 `
 export default DetalhesStyle 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Pokecard from '../../PokeCard/PokeCard.js'
 import HomePageStyle from './HomePage.style.js'
 import Header from "../../componentes/Header/Header"
@@ -11,6 +11,7 @@ const Home = () => {
 
   const { resposta,
     todosPokemons,
+
   } = context
 
 

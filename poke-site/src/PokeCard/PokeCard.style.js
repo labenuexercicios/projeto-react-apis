@@ -40,14 +40,20 @@ font-weight: 700;
     flex-direction: column;
     min-height:auto;
 }
+.tipo{
+    display:flex;
+    
+}
 
 .detalhes{
     padding-top:20px;
     text-decoration:underline;
     margin-top:auto;
     margin-bottom: 12px;
-  }
-  
+    cursor:pointer;
+    }
+   
+ 
 .lado-direito{
     display:flex;
     flex-direction:column;
@@ -69,8 +75,13 @@ position: absolute;
 right:-36px;
 top: -52px;
 }
-
+.logica-botao{
+    margin-top: 155px;
+    margin-left: 26px;
+}
 button{
+position:absolute;
+z-index:1;
 height: 38px;
 width: 146px;
 border-radius: 8px; 
@@ -79,6 +90,7 @@ padding: 4px 10px 4px 10px;
 margin-top:auto;
 margin-right:22px; 
 border:none;
+cursor:pointer;
 
 }
 `
