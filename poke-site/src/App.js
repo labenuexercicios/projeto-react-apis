@@ -21,8 +21,9 @@ const App = () => {
       .catch((err) => console.log(err))
 
   }
+
   const context = {
-    resposta,
+     resposta,
     setResposta,
     todosPokemons,
     arrayPokedex,
