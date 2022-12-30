@@ -4,7 +4,7 @@ export const ContainerHeader = styled.div`
     display: flex;
     align-items: center;
     margin-top: 0;
-    justify-content: center;
+    /* justify-content: center; */
     height: 10rem;
     width: 1440px;
     background-color: white;
@@ -58,7 +58,7 @@ export const ContainerHeader = styled.div`
         border: none;
         align-items:center;
         border-radius: 0.5rem;
-        margin-left: 75vw;
+        margin-left: 1050px;
         cursor: pointer;
         font-size: 1.5rem;
         position: absolute;

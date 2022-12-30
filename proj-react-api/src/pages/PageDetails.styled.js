@@ -2,8 +2,11 @@ import styled from "styled-components";
 <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins:wght@700&display=swap');
    </style>
 export const ContainerDetails=styled.div`
-background-color: gray;
+background-color: #5E5E5E;
 width: 1440px;
+height: 100vh;
+
+
     
 
 .textDetailsOverall{
@@ -22,8 +25,8 @@ width: 1440px;
     /* border: 2px solid white; */
     margin-left: 30px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     
     
 }
@@ -84,6 +87,7 @@ export const Container=styled.div`
         margin-top: 16px;
         display: grid;
         display: block;
+        margin-top: 80px;
         /* border: 3px solid yellow; */
         grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px;
         grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px;
@@ -135,7 +139,6 @@ export const Container=styled.div`
         color: #6b6b6b;
         padding: 0;
         align-self: flex-start;
-        /* border-top: 1px solid #d9d9db; */
     }
     .valueTotal{
         display: grid; 
@@ -148,13 +151,12 @@ export const Container=styled.div`
         color: #6b6b6b;
         padding: 0;
         align-self: flex-start;
-        /* border-top: 1px solid #d9d9db; */
     }
     }
     
     
     .textBaseStats{
-        margin-top: 30px;
+        margin-top: 15px;
         margin-left: 10px;
         align-self: flex-start;
         font-family: 'inter', sans-serif;
@@ -163,6 +165,7 @@ export const Container=styled.div`
         grid-row: 1/3;
         grid-column: 1/6;
         color: #000000;
+        position: absolute;
     }
     
     

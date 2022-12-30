@@ -9,6 +9,9 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Modal from "react-modal";
 import { useNavigate } from 'react-router-dom';
+import modalShow from './components/modal/modal';
+import ModalShow from './components/modal/modal';
+
 
 
 Modal.setAppElement("#root")
@@ -21,7 +24,8 @@ function App() {
   const [pokedex, setPokedex] = useState(pokedexFromLocalStorage)
   const [pokemons, setPokemons] = useState(pokemonFromLocalStorage)
   const [deletePokemonPokedex, setDeletePokemonPokedex]=useState(false)
-  const [modalIsOpen, setIsOpen]= useState(false)
+  const [isOpen, setIsOpen]= useState(false)
+  const [isOpenDel,setIsOpenDel]=useState(false)
   const [modalIncludeDelete, setModalIncludeDelete]=useState(true)
   // const [pokemonShow, setPokemonShow] = useState([])
   const [pokemonDetails,setPokemonDetails]=useState([])
@@ -59,7 +63,7 @@ function App() {
         const copyPokemons=[...pokemons]//pois quando o mesmo é encontrado ele não é feito push na pokedex, assim ela fica atualizada
         copyPokemons.push(pokemonFilter)
         setPokemons(copyPokemons)
-        openModal()
+        // openModal()
       }
     }
     )
@@ -90,7 +94,8 @@ function App() {
     console.log(pokedex)
     removePokemonHome(pokemonCaptured)
     setModalIncludeDelete(true)
-    openModal()
+    // openModal()
+    // ModalShow()
   }
   console.log(pokemons)
   console.log(pokedex)
@@ -141,16 +146,16 @@ function App() {
     pokemonFromPageDetails,
     openModal,
     closeModal,
-    modalIsOpen,
+    isOpen,
     setIsOpen,
     modalIncludeDelete,
     setCallPlace,
     callPlace,
-    // pokemonShow,
-    // setPokemonShow,
     pokemonDetails,
     setPokemonDetails,
-    deletePokedex
+    deletePokedex,
+    isOpenDel,
+    setIsOpenDel
   }
   
   return (

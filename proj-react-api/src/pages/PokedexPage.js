@@ -19,6 +19,7 @@ const PokedexPage = () => {
     wrap={'wrap'}
     justifyContent={"space-around"}
     flexDirection={"row"}
+    w="1440px"
     h="100vh">
       
       <Heading

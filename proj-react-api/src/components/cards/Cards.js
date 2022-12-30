@@ -16,8 +16,15 @@ import {
   Box,
   VStack,
   position,
-  // Modal
+  useDisclosure,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton
 } from '@chakra-ui/react';
+
 import axios from 'axios';
 import { GlobalContext } from '../../context/GlobalContext';
 import React, { useContext, useEffect, useState } from 'react';
@@ -27,6 +34,7 @@ import { getTypesPokemon } from '../../assets/pokemon-types/pokemons_types';
 import { getColorCard } from '../../assets/pokemon-types/getColorCard';
 import { goToPageDetails } from '../../router/coordinator';
 import { useParams } from 'react-router-dom';
+import ModalShow from "../modal/modal";
 
 
 <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins:wght@700&display=swap');
@@ -37,14 +45,20 @@ export default function Card(props) {
   const navigate = useNavigate()
   const location=useLocation()
   const params = useParams()
+  const {onClose,onOpen}=useDisclosure()
   const { capturePokemon,
           pokedex,
           setPokedex,
           backPokemonHome,
           modalIsOpen,
           closeModal,
-          modalIncludeDelete
+          modalIncludeDelete,
+          isOpen,
+          setIsOpen,
+          isOpenDel,
+          setIsOpenDel
                   } = context
+  const [openTheModal,setOpenTheModal]=useState(false)
   // const [pokedex,setPokedex]=useState([])
   // // useEffect(() => { getTypePokemons() }, [])
  
@@ -58,10 +72,13 @@ export default function Card(props) {
   // }
   // console.log(location)
   // console.log(props.pokedex.data.name)
+  function openModal(){
+    setOpenTheModal(true)
+  }
 
   return(
    
-    
+    <>
     <Flex width="440px"
           height="210px"
           borderRadius="12px"
@@ -112,9 +129,17 @@ export default function Card(props) {
                                   marginBottom={"1rem"}
                                   color={"#000000"}
                                   bgColor={"#ffffff"}
-                                  marginLeft={"190px"}
+                                  marginLeft={"175px"}
+                                  // fontFamily='poppins'
+                                  fontWeight={"400"}
+                                  lineHeight={"24px"}
+                                  fontStyle="normal"
+                                  fontSize={"16px"}
                                   // zIndex="101"
-                                  onClick={() => capturePokemon(props.pokemon)} 
+                                  onClick={() =>{ 
+                                    capturePokemon(props.pokemon)
+                                    setIsOpen(true)
+                                  } }
                                   
                                   >
                                       Capturar!
@@ -125,9 +150,11 @@ export default function Card(props) {
                                   marginBottom={"1rem"}
                                   color={"#000000"}
                                   bgColor={"#ffffff"}
-                                  marginLeft={"190px"}
+                                  marginLeft={"175px"}
                                   // zIndex="101"
-                                  onClick={() => backPokemonHome(props.pokemon)
+                                  onClick={() => {
+                                    backPokemonHome(props.pokemon)
+                                    setIsOpenDel(true)}
                                   }
                                   >
                                   Excluir!
@@ -139,8 +166,8 @@ export default function Card(props) {
             // src={'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
             src={props.pokemon.data.sprites.other["official-artwork"].front_default} 
             alt={"imagem"}
-            // position={"absolute"}
-            // marginLeft={"250px"}
+            position={"absolute"}
+            marginLeft={"250px"}
             marginTop={"-40px"}
             // zIndex="100"
              maxH="200px"
@@ -148,64 +175,19 @@ export default function Card(props) {
 
           </Image>
           <Image 
-          marginLeft={"-250"} 
+          marginLeft={"-200"} 
           src='../imgs/pokebola.png' >
           </Image>
-         
-          <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          // animationType='slide'
-          // zIndex="102"
-          // display="flex"
-          // justifyContent="center"
-          // alignItems="center"
-          // position="absolute"
-          style={
-            {content:{
-              width:'451px',
-              height: '222px',
-              display:'flex',
-              alignItems:'center',
-              // marginLeft:'150px',
-              // justifyContent:'rown',
-              // position: 'absolute',
-              top:'50%',
-              left:'50%',
-              right:'auto',
-              bottom:'auto',
-              transform:'translate(-50%,-50%)',
-              WbebkitOverflowScrolling: 'touch',
-              borderRadius:'25px',
-              outline:'none',
-
-            }
-
-
-            }
-          }
+          </Flex>
           
-          >
-            <h1>go</h1>
-            <p>ok</p>
-            
-            {/* <Heading
-            
-            display={"flex"}
-            >{modalIncludeDelete?"Gotcha!":"Oh, no!"}</Heading>
-                    <Text fontWeight={"bold"} display={"flex"}>
-                       {modalIncludeDelete?" O Pokémon foi adicionado a sua Pokédex":"O Pokémon foi removido de sua Pokedéx"}
-                    </Text> */}
-                   
-          </Modal>
-
+          {/* {isOpen ? <ModalShow></ModalShow> : <></>}
+          {isOpenDel ? <ModalShow></ModalShow> : <></>} */}
           
 
 
+        
 
-        </Flex>
-
-     
+</>
     
   )
 

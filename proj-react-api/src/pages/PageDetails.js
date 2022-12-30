@@ -145,11 +145,13 @@ const PageDetails = (props) => {
           </div>
           <div className='Div4'>
             <img className='imgPokemonBig' src={pokemonDetails.data && pokemonDetails.data.sprites?.other["official-artwork"].front_default}></img>
-            <img className='imgPokebola' src='../imgs/pokebola.png'></img>
+            <img className='imgPokebola' src='../imgs/pokebolaBig.png'></img>
             
 
           </div>
         </Container>
+        {/* <img className='imgPokebolaEB' src='../imgs/pokebolaEB.png'></img> */}
+
       </ContainerDetails>
 
     </>

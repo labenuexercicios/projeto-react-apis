@@ -7,13 +7,14 @@ import axios from 'axios'
 import { baseUrl } from '../components/utils/baseUrl'
 import { GlobalContext } from '../context/GlobalContext'
 import { Flex, Heading } from '@chakra-ui/react'
+import ModalShow from '../components/modal/modal'
 
 
 const Homepage = () => {
     const navigate = useNavigate()
     
     const context = useContext(GlobalContext)
-    const {pokemons, setPokemons, getPokemons,setCallPlace}=context
+    const {pokemons, setPokemons, getPokemons,setCallPlace, isOpen}=context
     useEffect(()=>{setCallPlace(1)},[])
     
     
@@ -50,7 +51,7 @@ const Homepage = () => {
     wrap={'wrap'}
     justifyContent={"space-around"}
     flexDirection={"row"}
-    w='1440px'>
+    minWidth='1440px'>
       
       <Heading
       color={"white"}
@@ -67,6 +68,7 @@ const Homepage = () => {
         })
       }
     </Flex>
+    {isOpen?<ModalShow></ModalShow>: <></>}
     </>
   )
 }
