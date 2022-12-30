@@ -6,7 +6,7 @@ export const PokemonCardContainer = styled.div`
     color:#5E5E5E;
     
     .div-card-externo{
-        width: 385px;
+        width: 395px;
         height: 263px;
         border: 2px solid red;
         position: relative;
@@ -53,10 +53,20 @@ export const PokemonCardContainer = styled.div`
         font-size: 14px;
         text-decoration: underline;
     }
+
+    .pokemon-img{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
     
     .pokebol-symbol{
-        position: relative;
+        position: absolute;
         top: 0;
-        right: -164px;
+        right: 0;
+    }
+
+    .descricao{
+         margin-top: 20px;
     }
 `

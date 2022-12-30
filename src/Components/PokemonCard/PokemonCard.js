@@ -63,7 +63,7 @@ function PokemonCard(props) {
     <PokemonCardContainer  color={corFundo(props.tipo)}>
       <div className="div-card-externo">
 
-        <img className="icon-tipo" width={193} src={props.img} alt={props.nome}></img>
+        <img className="pokemon-img" width={170} src={props.img} alt={props.nome}></img>
         
         <div className="div-card-interno">
           <img className="pokebol-symbol" width={193} src={pokebolSymbol} alt={props.nome}></img>
