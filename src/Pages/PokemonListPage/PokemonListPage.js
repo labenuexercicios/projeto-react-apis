@@ -1,0 +1,100 @@
+import PokemonCard from "../../Components/PokemonCard/PokemonCard";
+import { PokemonListPageContainer } from "./PokemonListPage.styled";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ClickMe from "../../Components/Chakra/ClickMe";
+
+
+function PokemonListPage(){
+    const [pokemonList, setPokemonList] = useState([]);
+    const [pageNumber, setPageNumber] = useState(1);
+    const [pageLimit, setPageLimit] = useState(1);
+    const [nextPageLink, setNextPageLink] = useState('');
+  
+    async function getPokemons (){
+      const response = await axios.create({
+        baseURL: nextPageLink !=''? nextPageLink:"https://pokeapi.co/api/v2/pokemon"
+      }).get("")
+      .then((response)=> {
+        setNextPageLink(response.data.next);
+        setPageLimit(Math.floor(response.data.count/20));
+        setPokemonList(response.data.results);
+        return response;
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+  
+      let promises = [];
+      let pokemons = [];
+  
+      response.data.results.forEach(pokemon => {
+        promises.push( 
+  
+          axios.create({
+            baseURL: "https://pokeapi.co/api/v2/"
+          }).get(`pokemon/${pokemon.name}`)
+          .then((resposta)=> {
+            let tipos = [...resposta.data.types];
+            const pokemonDetalhado = {
+              name: pokemon.name,
+              img: resposta.data.sprites.other['official-artwork'].front_default,
+              id: resposta.data.id,
+              types: tipos.map((value,index)=> value.type.name),
+              stats: resposta.data.stats,
+              moves: resposta.data.moves
+            }
+            pokemons.push(pokemonDetalhado);
+          })
+          .catch((error)=>{
+            console.log(error)
+          })
+  
+        );
+      });
+  
+      Promise.all(promises).then(()=>{
+        setPokemonList(pokemons);
+      })
+    }
+    
+    useEffect(()=>{ getPokemons();}, [pageNumber]);
+  
+    function nextPage(){
+        setPageNumber(pageNumber+1)
+    }
+    const isButtonDisabledNext = pageNumber >= pageLimit;
+
+    function previousPage(){
+        if(pageNumber>1){
+            setPageNumber(pageNumber-1)
+        }
+        
+    }
+    const isButtonDisabledPrevious = pageNumber === 1;
+  
+    return (
+      <PokemonListPageContainer>
+        <h1>Todos os Pokémons</h1>
+        
+        <div className="container-card">
+          {
+            pokemonList.map((pokemon) => {
+              return <PokemonCard
+              key={pokemon.name.length + Math.random()}
+              id={pokemon.id}
+              nome={pokemon.name}
+              types={pokemon.types}
+              img={pokemon.img}
+              />
+            })
+          }
+        </div>
+        <ClickMe disabled={isButtonDisabledPrevious} onClick={()=> previousPage()} text={'Anterior'}></ClickMe>
+        <h2>Página {pageNumber} de { pageLimit }</h2>
+        <ClickMe disabled={isButtonDisabledNext} onClick={()=> nextPage()} text={'Próximo'}></ClickMe>
+  
+      </PokemonListPageContainer>
+    )
+}
+export default PokemonListPage;
