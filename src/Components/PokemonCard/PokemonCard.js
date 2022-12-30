@@ -37,35 +37,35 @@ function PokemonCard(props) {
     },
     'dark': {
       button: dark,
-      background: ''
+      background: '#352d3d'
     },
     'dragon': {
       button: dragon,
-      background: ''
+      background: '#097286'
     },
     'electric': {
       button: electric,
-      background: '#ffeb14'
+      background: '#deb504'
     },
     'fairy': {
       button: fairy,
-      background: ''
+      background: '#d151a1'
     },
     'fighting': {
       button: fighting,
-      background: ''
+      background: '#7f2841'
     },
     'fire': {
       button: fire,
-      background: '#EAAB7D'
+      background: '#e9904e'
     },
     'flying': {
       button: flying,
-      background: ''
+      background: '#3b6786'
     },
     'ghost': {
       button: ghost,
-      background: ''
+      background: '#686f86'
     },
     'grass': {
       button: grass,
@@ -73,11 +73,11 @@ function PokemonCard(props) {
     },
     'ground': {
       button: ground,
-      background: ''
+      background: '#9e5129'
     },
     'ice': {
       button: ice,
-      background: ''
+      background: '#539a8f'
     },
     'normal': {
       button: normal,
@@ -89,19 +89,19 @@ function PokemonCard(props) {
     },
     'psychic': {
       button: psychic,
-      background: ''
+      background: '#d88083'
     },
     'rock': {
       button: rock,
-      background: ''
+      background: '#706648'
     },
     'steel': {
       button: steel,
-      background: ''
+      background: '#817a7a'
     },
     'water': {
       button: water,
-      background: '#33A4F5'
+      background: '#257bba'
     }
   };
   
