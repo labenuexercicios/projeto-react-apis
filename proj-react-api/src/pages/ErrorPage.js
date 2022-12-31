@@ -1,8 +1,9 @@
 import React from 'react'
+import { ContainerCard } from './ErrorPage.styled'
 
 const ErrorPage = () => {
   return (
-    <div>ErrorPage</div>
+    <ContainerCard><img src='../imgs/paginaNaoEncontrada.jpg'></img></ContainerCard>
   )
 }
 

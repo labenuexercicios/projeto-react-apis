@@ -3,30 +3,23 @@ import React, { useEffect, useState } from 'react';
 import Router from './router/Router';
 import { ChakraProvider } from '@chakra-ui/react';
 import { GlobalContext } from "../src/context/GlobalContext"
-import { json, useLocation } from 'react-router-dom';
+// import { json, useLocation } from 'react-router-dom';
 import { baseUrl } from './components/utils/baseUrl';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Modal from "react-modal";
-import { useNavigate } from 'react-router-dom';
-import modalShow from './components/modal/modal';
-import ModalShow from './components/modal/modal';
-
-
-
-Modal.setAppElement("#root")
-
+import { GlobalStyles } from './GlobalSytle';
+// import Modal from "react-modal";
 
 function App() {
 
-  const pokemonFromLocalStorage = JSON.parse(localStorage.getItem("pokeId")|| "[]")
+  // const pokemonFromLocalStorage = JSON.parse(localStorage.getItem("pokeId")|| "[]")
   const pokedexFromLocalStorage = JSON.parse(localStorage.getItem("pokedexId") || "[]")
   const [pokedex, setPokedex] = useState(pokedexFromLocalStorage)
-  const [pokemons, setPokemons] = useState(pokemonFromLocalStorage)
+  const [pokemons, setPokemons] = useState([])
   const [deletePokemonPokedex, setDeletePokemonPokedex]=useState(false)
   const [isOpen, setIsOpen]= useState(false)
   const [isOpenDel,setIsOpenDel]=useState(false)
-  const [modalIncludeDelete, setModalIncludeDelete]=useState(true)
+  // const [modalIncludeDelete, setModalIncludeDelete]=useState(true)
   // const [pokemonShow, setPokemonShow] = useState([])
   const [pokemonDetails,setPokemonDetails]=useState([])
   const pokemonFromPageDetails = []
@@ -34,10 +27,10 @@ function App() {
   
   const [callPlace,setCallPlace]=useState(true)//Constante que determinará de onde foi a chamada para detalhes true é Home, e false é Pokedex, para configurar botão do header
   // useEffect(()=>{setCallPlace(true)},[])
-  useEffect(() => { checkPokemons()}, [])
-  useEffect(()=>{
-    localStorage.setItem("pokeId",JSON.stringify(pokemons))
-  },[pokemons])
+  useEffect(() => { getPokemons()}, [])
+  // useEffect(()=>{
+  //   localStorage.setItem("pokeId",JSON.stringify(pokemons))
+  // },[pokemons])
 
   useEffect(()=>{
     localStorage.setItem("pokedexId",JSON.stringify(pokedex))
@@ -54,7 +47,7 @@ function App() {
     function closeModal(){
       setIsOpen(false)
     }
-  const callBackPokemonHome =(params)=>{
+  const callBackPokemonHome =(params)=>{ //devolve da pokedex para a
     const copyPokedex=[]
     let pokemonOutPokedex = pokedex.filter((pokemonFilter)=>{
       if(pokemonFilter.data.name !== params.pokemonName){
@@ -74,13 +67,12 @@ function App() {
     // console.log(pokemons)
     setDeletePokemonPokedex(false)
   }
-  const getPokemons = ()=>{
+  const getPokemons = async ()=>{
     var endpoints = []
     for (let i=1; i<=21; i++){
       endpoints.push(`${baseUrl}/pokemon/${i}/`);
-      console.log(endpoints)
     }
-    let response= axios.all(endpoints.map((endpoint)=>axios.get(endpoint)))
+    let response= await axios.all(endpoints.map((endpoint)=>axios.get(endpoint)))
     .then((res)=>{setPokemons(res)
     })
     .catch((error)=>{console.log(error)})
@@ -91,14 +83,9 @@ function App() {
     const copyPokedex = [...pokedex]
     copyPokedex.push(pokemonCaptured)
     setPokedex(copyPokedex)
-    console.log(pokedex)
     removePokemonHome(pokemonCaptured)
-    setModalIncludeDelete(true)
-    // openModal()
-    // ModalShow()
+    // setModalIncludeDelete(true)
   }
-  console.log(pokemons)
-  console.log(pokedex)
   const removePokemonHome = (pokemonARemover)=>{
     const copyPokemons = []
     let pokemonOutHome = pokemons.filter((pokemonFilter)=>{
@@ -128,10 +115,9 @@ function App() {
     const copyPokemons=[...pokemons]
     copyPokemons.push(pokemonARemover)
     setPokemons(copyPokemons)
-    console.log(pokemons)
-    setDeletePokemonPokedex(false)
-    setModalIncludeDelete(false)
-    openModal()
+    // setDeletePokemonPokedex(false)
+    // setModalIncludeDelete(false)
+    // openModal()
   }
   const context = {
     pokedex,
@@ -144,11 +130,11 @@ function App() {
     setDeletePokemonPokedex,
     callBackPokemonHome,
     pokemonFromPageDetails,
-    openModal,
-    closeModal,
+    // openModal,
+    // closeModal,
     isOpen,
     setIsOpen,
-    modalIncludeDelete,
+    // modalIncludeDelete,
     setCallPlace,
     callPlace,
     pokemonDetails,
@@ -160,6 +146,7 @@ function App() {
   
   return (
     <>
+          <GlobalStyles></GlobalStyles>
       <GlobalContext.Provider value={context}>
           <ChakraProvider>
              <Router />

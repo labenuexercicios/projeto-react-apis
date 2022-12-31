@@ -1,12 +1,12 @@
-import React from 'react'
+// import React from 'react'
 
  
 
-const Pokedex = () => {
-  return (
-    <>
-    </>
-  )
-}
+// const Pokedex = () => {
+//   return (
+//     <>
+//     </>
+//   )
+// }
 
-export default Pokedex
+// export default Pokedex

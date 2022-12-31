@@ -21,29 +21,25 @@ function ModalShow() {
     const { isOpen, setIsOpen, isOpenDel, setIsOpenDel } = context
     return (
         <>
-
             <Modal isOpen={isOpen || isOpenDel} onClose={() => {
                 setIsOpen(false)
                 setIsOpenDel(false)
-            }
-            }>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalBody>
+            } }
+                   
+            >
+                <ModalOverlay position={"absolute"}/>
+                <ModalContent left={"225px"}>
+                    <ModalBody >
                         <Flex
                             w={"450px"}
                             h={"220px"}
                             justifyContent={"center"}
                             alignItems={"center"}
                             flexDirection={"column"}
-
+                            
                         >
-                            {console.log(isOpen)}
-                            {console.log(isOpenDel)}
-
                             {isOpenDel ?
                                 <>
-                                    
                                     <Heading>Oh,no!</Heading>
                                     <Text fontWeight={"bold"}>
                                         O Pokémon foi removido da sua Pokédex
@@ -56,9 +52,6 @@ function ModalShow() {
                                     </Text>
 
                                 </>}
-
-
-                            
                         </Flex>
                     </ModalBody>
 

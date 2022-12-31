@@ -58,7 +58,7 @@ export default function Card(props) {
           isOpenDel,
           setIsOpenDel
                   } = context
-  const [openTheModal,setOpenTheModal]=useState(false)
+  // const [openTheModal,setOpenTheModal]=useState(false)
   // const [pokedex,setPokedex]=useState([])
   // // useEffect(() => { getTypePokemons() }, [])
  
@@ -72,9 +72,9 @@ export default function Card(props) {
   // }
   // console.log(location)
   // console.log(props.pokedex.data.name)
-  function openModal(){
-    setOpenTheModal(true)
-  }
+  // function openModal(){
+  //   setOpenTheModal(true)
+  // }
 
   return(
    
