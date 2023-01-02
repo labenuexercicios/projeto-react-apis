@@ -45,4 +45,8 @@ export const HeaderContainer = styled.header`
         /* border-width: 50px; */
         /* height: 20vh; */
     }
+
+    .img-logo:hover{
+        cursor: pointer;
+    }
 `

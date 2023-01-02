@@ -1,14 +1,13 @@
 import Header from "./Components/Header/Header";
-import PokemonListPage from "./Pages/PokemonListPage/PokemonListPage";
-import PokedexPage from "./Pages/PokedexPage/PokedexPage";
 import { GlobalStyle } from "./GlobalStyle"
 import { ChakraProvider } from '@chakra-ui/react'
+import { Router } from "./Routes/Router";
+
 
 function App() {
   return (
       <ChakraProvider>
-        <Header/>
-        <PokemonListPage/>
+        <Router/>
         <GlobalStyle/>
       </ChakraProvider>
   )

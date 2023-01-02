@@ -3,6 +3,7 @@ import { PokemonListPageContainer } from "./PokemonListPage.styled";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ClickMe from "../../Components/Chakra/ClickMe";
+import Header from "../../Components/Header/Header";
 
 
 function PokemonListPage(){
@@ -96,9 +97,13 @@ function PokemonListPage(){
         
     }
     const isButtonDisabledPrevious = pageNumber === 1;
+
+    
   
     return (
-      <PokemonListPageContainer>
+      <>
+        <Header></Header>
+        <PokemonListPageContainer>
         <h1>Todos os Pokémons</h1>
         
         <div className="container-card">
@@ -118,7 +123,8 @@ function PokemonListPage(){
         <h2>Página {pageNumber} de { pageLimit }</h2>
         <ClickMe disabled={isButtonDisabledNext} onClick={()=> nextPage()} text={'Próximo'}></ClickMe>
   
-      </PokemonListPageContainer>
+        </PokemonListPageContainer>
+      </>
     )
 }
 export default PokemonListPage;
