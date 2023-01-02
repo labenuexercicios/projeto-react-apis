@@ -1,5 +1,5 @@
 
-# Projeto introdução WEB
+# Projeto React Api
 
 Um projeto com o objetivo de criar um site com três páginas usando a Poke Api, utilizando Integração de APIs, React Router,
 Design Systems e Estado Global.
