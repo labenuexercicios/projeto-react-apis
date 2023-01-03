@@ -27,7 +27,10 @@ function ModalShow() {
             } }
                    
             >
-                <ModalOverlay position={"absolute"}/>
+                <ModalOverlay 
+                w="100%"
+                h="100%"
+                position={"absolute"}/>
                 <ModalContent left={"225px"}>
                     <ModalBody >
                         <Flex

@@ -110,6 +110,7 @@ const PageDetails = (props) => {
                       backgroundColor={'white'}
                       w='150px' 
                       spacing='10px'
+                      // paddingTop={"10px"}
                       />
                     </text>
                   )
