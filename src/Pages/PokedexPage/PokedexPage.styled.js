@@ -17,5 +17,9 @@ export const PokedexPageContainer = styled.div`
         gap: 30px;
     }
 
+   .h1-pokedex{
+        font-size: 35px;
+        font-weight: bold;
+    }
 
 `

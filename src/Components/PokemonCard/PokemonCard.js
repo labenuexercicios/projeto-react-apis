@@ -18,6 +18,8 @@ import rock  from "../../assets/img/iconsHabilidades/rock.png"
 import steel  from "../../assets/img/iconsHabilidades/steel.png"
 import water  from "../../assets/img/iconsHabilidades/water.png"
 import pokebolSymbol  from "../../assets/img/cardDesign/simbolpokemoncard.png"
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 
 
@@ -105,6 +107,12 @@ function PokemonCard(props) {
     }
   };
   
+  const navigate = useNavigate()
+
+  const goToDetail = () => {
+    navigate("/pokemonDetalhes")
+  }
+
   return (
     <PokemonCardContainer  color={corFundo(props.types)}>
       <div className="div-card-externo">
@@ -128,7 +136,7 @@ function PokemonCard(props) {
             </div>
           </div>
           <div className="div-botoes">
-            <button className="btn-detalhes">Detalhes</button>
+            <button onClick={goToDetail} className="btn-detalhes">Detalhes</button>
             <button className="btn-capturar">Capturar!</button>
           </div>
         </div>

@@ -98,13 +98,13 @@ function PokemonListPage(){
     }
     const isButtonDisabledPrevious = pageNumber === 1;
 
-    
+
   
     return (
       <>
         <Header></Header>
         <PokemonListPageContainer>
-        <h1>Todos os Pokémons</h1>
+        <h1 className="h1-pokedex-list">Todos os Pokémons</h1>
         
         <div className="container-card">
           {

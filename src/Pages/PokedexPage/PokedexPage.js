@@ -22,7 +22,7 @@ function PokedexPage() {
     <Header></Header>
       
       <PokedexPageContainer>
-      <h1>Meus Pokémons - Página {pageNumber} de { pageLimit }</h1>
+      <h1 className="h1-pokedex">Meus Pokémons</h1>
       
       <div className="container-card">
         {
@@ -38,7 +38,7 @@ function PokedexPage() {
         }
       </div>
 
-      <ClickMe disabled={isButtonDisabled} onClick={()=> nextPage()} text={'Next'}></ClickMe>
+      {/* <ClickMe disabled={isButtonDisabled} onClick={()=> nextPage()} text={'Next'}></ClickMe> */}
 
     </PokedexPageContainer>
     </>

@@ -17,5 +17,10 @@ export const PokemonListPageContainer = styled.div`
         gap: 30px;
     }
 
+    .h1-pokedex-list{
+        font-size: 35px;
+        font-weight: bold;
+    }
+
 
 `
