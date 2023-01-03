@@ -24,10 +24,14 @@ function App() {
   const [pokemonDetails,setPokemonDetails]=useState([])
   const pokemonFromPageDetails = []
   const params =useParams()
+  const [nextPage,setNextPage]=useState(21)
   
   const [callPlace,setCallPlace]=useState(true)//Constante que determinará de onde foi a chamada para detalhes true é Home, e false é Pokedex, para configurar botão do header
   // useEffect(()=>{setCallPlace(true)},[])
-  useEffect(() => { getPokemons()}, [])
+  useEffect(() => {
+     getPokemons()
+      console.log(nextPage)
+    }, [nextPage])
   // useEffect(()=>{
   //   localStorage.setItem("pokeId",JSON.stringify(pokemons))
   // },[pokemons])
@@ -41,12 +45,22 @@ function App() {
       getPokemons()
     }
   }
-    function openModal(){
-      setIsOpen(true)
+    // function openModal(){
+    //   setIsOpen(true)
+    // }
+    // function closeModal(){
+    //   setIsOpen(false)
+    // }
+    const nextPageFunction = ()=>{
+      setNextPage(nextPage+21)
     }
-    function closeModal(){
-      setIsOpen(false)
+    const previousPageFunction = ()=>{
+      setNextPage(nextPage-21)
     }
+    const firstPageFunction = ()=>{
+      setNextPage(21)
+    }
+
   const callBackPokemonHome =(params)=>{ //devolve da pokedex para a
     const copyPokedex=[]
     let pokemonOutPokedex = pokedex.filter((pokemonFilter)=>{
@@ -69,7 +83,7 @@ function App() {
   }
   const getPokemons = async ()=>{
     var endpoints = []
-    for (let i=1; i<=21; i++){
+    for (let i=nextPage-20; i<=nextPage; i++){
       endpoints.push(`${baseUrl}/pokemon/${i}/`);
     }
     let response= await axios.all(endpoints.map((endpoint)=>axios.get(endpoint)))
@@ -141,7 +155,12 @@ function App() {
     setPokemonDetails,
     deletePokedex,
     isOpenDel,
-    setIsOpenDel
+    setIsOpenDel,
+    nextPageFunction,
+    nextPage,
+    previousPageFunction,
+    firstPageFunction
+
   }
   
   return (
