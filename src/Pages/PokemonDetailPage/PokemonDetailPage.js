@@ -166,16 +166,28 @@ function PokemonDetailPage(props) {
                 <div className="stats">
                   <div className="stats-name">
                     <h3>Hp</h3>
+                    <h3>Hp</h3>
+                    <h3>Hp</h3>
+                    <h3>Hp</h3>
+                    <h3>Hp</h3>
                   </div>
                   <div className="stats-value">
+                    <h3>49</h3>
+                    <h3>49</h3>
+                    <h3>49</h3>
+                    <h3>49</h3>
                     <h3>49</h3>
                   </div>
                   <div className="stats-progress">
                     <Progress colorScheme='green' size='sm' value={20} />
+                    <Progress colorScheme='green' size='sm' value={20} />
+                    <Progress colorScheme='green' size='sm' value={20} />
+                    <Progress colorScheme='green' size='sm' value={20} />
+                    <Progress colorScheme='green' size='sm' value={20} />
                   </div>
                 </div>
 
-                <div className="stats">
+                {/* <div className="stats">
                   <div className="stats-name">
                     <h3>Attack</h3>
                   </div>
@@ -214,7 +226,7 @@ function PokemonDetailPage(props) {
                 <div className="total-stats">
                   <h3>Total</h3>
                   <h3>49</h3>
-                </div>
+                </div> */}
 
               </div>
               <div className="type-moves-pokemon">

@@ -23,6 +23,9 @@ export const PokemonCardContainer = styled.div`
         padding: 0 20px 20px 20px;
         border-radius:15px;
     }
+    .pokemon-nome{
+        font-size: 30px;;
+    }
 
     .div-type{
         display: flex;
@@ -33,7 +36,7 @@ export const PokemonCardContainer = styled.div`
     .div-botoes{
         display: flex;
         justify-content :space-between;
-        margin-top:45px ;
+        margin-top:35px ;
         font-weight: bold;
     }
     .btn-capturar{
@@ -49,7 +52,7 @@ export const PokemonCardContainer = styled.div`
     .btn-detalhes{
         font-family: 'Poppins', sans-serif;
         /* font-weight: bold; */
-        font-size: 14px;
+        font-size: 20px;
         text-decoration: underline;
     }
 

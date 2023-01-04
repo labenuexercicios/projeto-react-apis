@@ -147,21 +147,31 @@ export const PokemonDetailPageContainer = styled.div`
         /* display: grid;
         grid-template-columns: 1fr 1fr 1fr; */
 
-        display: flex;
+        /* display: flex;
         margin-bottom: 15px;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-around; */
+        //antigo
+        display: flex;
+        justify-content: flex-start;
+        
+
     }
 
-    .stats-name{
+    /* .stats-name{
         display: flex;
         justify-content: end;
         padding-right: 15px;
+    } */
+
+    .stats-name{
+
     }
+
     .stats-value{
-        display: flex;
+        /* display: flex;
         justify-content: start;
-        width: fit-content;
+        width: fit-content; */
     }
     .stats-progress{
     }
