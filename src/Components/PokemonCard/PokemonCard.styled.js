@@ -14,13 +14,13 @@ export const PokemonCardContainer = styled.div`
     .div-card-interno{
         width: 100%;
         height: 210px;
-        border:2px solid black;
         background-color: ${props => props.color};
         position: absolute;
         bottom: 0;
         color: white;
         font-family: 'Poppins', sans-serif;
         padding: 0 20px 20px 20px;
+        border-radius:15px;
     }
 
     .div-type{

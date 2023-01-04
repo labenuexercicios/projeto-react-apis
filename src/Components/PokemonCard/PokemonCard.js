@@ -109,8 +109,8 @@ function PokemonCard(props) {
   
   const navigate = useNavigate()
 
-  const goToDetail = () => {
-    navigate("/pokemonDetalhes")
+  const goToDetail = (id) => {
+    navigate(`/pokemonDetalhes/${id}`)
   }
 
   return (
@@ -123,7 +123,7 @@ function PokemonCard(props) {
           <img className="pokebol-symbol" width={193} src={pokebolSymbol} alt={props.nome}></img>
           <div className="descricao">
             <h3 className="pokemon-id">#{props.id}</h3>
-            <h2 className="pokemon-nome">{props.nome}</h2>
+            <h2 className="pokemon-nome">{props?.nome?.charAt(0).toUpperCase() +""+ props?.nome?.slice(1)}</h2>
             <div className="div-type">
 
               {
@@ -136,7 +136,7 @@ function PokemonCard(props) {
             </div>
           </div>
           <div className="div-botoes">
-            <button onClick={goToDetail} className="btn-detalhes">Detalhes</button>
+            <button onClick={()=>{ goToDetail(props.id) }} className="btn-detalhes">Detalhes</button>
             <button className="btn-capturar">Capturar!</button>
           </div>
         </div>
