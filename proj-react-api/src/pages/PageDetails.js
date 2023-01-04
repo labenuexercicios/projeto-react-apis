@@ -99,17 +99,22 @@ const PageDetails = (props) => {
                   {totalStats+= stat.base_stat}
                   return (
                     <text className='textStats'>
-                      {`${stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}${" "}`} 
+                      <text> </text>
+                      {`${stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1).replace("pecial-attack", "p.Atk").replace("pecial-defense","p.Def")}${" "} `} 
                       <text className='textValue'>{`${" "} ${stat.base_stat} `}</text>
                       <Progress 
+                      h={"10px"}
+                      value={stat.base_stat}
                       className='Progress'
                       colorScheme={stat.base_stat < 50 ? "orange" : stat.base_stat < 80 ? "yellow" : "green"} 
-                      size='md' 
-                      value={stat.base_stat}
+                      // size='md' 
+                      
                       borderRadius='4px' 
                       backgroundColor={'white'}
                       w='150px' 
-                      spacing='10px'
+                      // spacing='10px'
+                      // border={"1px solid black"}
+                      // marginLeft="0"
                       // paddingTop={"10px"}
                       />
                     </text>
@@ -124,7 +129,11 @@ const PageDetails = (props) => {
           </div>
           <div className='Div3'>
             <div className='Details'>
+              {pokemonDetails.data && pokemonDetails.data.id <=9?
               <p className='idText'>#0{pokemonDetails.data && pokemonDetails?.data.id}</p>
+              :
+              <p className='idText'>#{pokemonDetails.data && pokemonDetails?.data.id}</p>
+              }
               <p className='idName'>{pokemonDetails.data && pokemonDetails.data.name?.charAt(0).toUpperCase() + pokemonDetails.data.name?.slice(1)}</p>
               <div className='Types'>
                  <Image src={getTypesPokemon(type1)}></Image>

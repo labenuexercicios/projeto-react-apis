@@ -6,14 +6,7 @@ background-color: #5E5E5E;
 width: 1440px;
 height: 100vh;
 
-
-    
-
 .textDetailsOverall{
-    /* position: absolute; */
-    /* left: 40px;
-    height: 72px; */
-    /* top: 820px; */
     padding: 20px;
     color: #fff;
     font-size: 48px;
@@ -22,12 +15,8 @@ height: 100vh;
     font-weight: 700;
     line-height: 72px;
     font-style: normal;
-    /* border: 2px solid white; */
     margin-left: 30px;
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    
     
 }
 `
@@ -37,7 +26,6 @@ export const Container=styled.div`
     height: 663px;
     left: 40px;
     display: flex;
-    /* border: 3px solid yellow; */
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -46,7 +34,6 @@ export const Container=styled.div`
 
 
 .Div1{
-    /* border: 2px solid white; */
     border-radius: 10px;
     width: 330px;
     height: 600px;
@@ -59,9 +46,8 @@ export const Container=styled.div`
     .img{
         display: flex;
         width: 282px;
-        height: 282px;
+        height: 270px;
         border-radius: 10px;
-        /* border: 2px solid black; */
         align-items: center;
         justify-content: center;
         margin: 10px;
@@ -73,12 +59,7 @@ export const Container=styled.div`
     }
 }
 .Div2{
-    
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
     background-color: #fff;
-    /* border: 2px solid white; */
     border-radius: 10px;
     width: 330px;
     height: 560px;
@@ -89,50 +70,36 @@ export const Container=styled.div`
         display: grid;
         display: block;
         margin-top: 80px;
-        /* border: 3px solid yellow; */
-        grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px;
-        grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px;
         justify-content: flex-start;
         align-items: center;
 
         .textStats{
         display: grid; 
         font-family: 'inter', sans-serif;
-        grid-row: 4/10;
-        grid-column: 1/3; 
         font-weight: 400;
         font-size: 12px;
         margin-left: 10px;
         color: #6b6b6b;
-        padding: 0;
-        align-self: flex-end;
         border-top: 1px solid #d9d9db;
+        margin-top: 18px;
     }
     .textValue{
         display: grid;
         font-family: 'inter', sans-serif;
-        grid-column: 3/4;
         font-weight: 400;
         font-size: 12px;
         margin-left: 100px;
         position: absolute;
         color: #000000;
         align-self: flex-start;
+        margin-top: 5px;
+        
 
     }
-    .Progress{
-        display: grid;
-        grid-column: 4/9;
-        justify-self: flex-start;
-        margin-left:140px;
-        position: absolute;
-        margin-top: 3px;
-    }
+    
     .textTotal{
         display: grid; 
         font-family: 'inter', sans-serif;
-         /* grid-row: 7/10; */
-        /* grid-column: 1/3;   */
         font-weight: 400;
         font-size: 12px;
         margin-left: 10px;
@@ -140,18 +107,21 @@ export const Container=styled.div`
         padding: 0;
         align-self: flex-start;
         border-top: 1px solid #a6ada7;
+        margin-top: 15px;
+        height: 20px;
     }
     .valueTotal{
         display: grid; 
         font-family: 'inter', sans-serif;
-        /* grid-row: 7/10; */
         grid-column: 3/4; 
         font-weight: 800;
         font-size: 12px;
         margin-left: -125px;
-        color: #6b6b6b;
+        color: black;
         padding: 0;
         align-self: flex-start;
+        margin-top: 1px;
+
     }
     }
     
@@ -167,38 +137,33 @@ export const Container=styled.div`
         grid-column: 1/6;
         color: #000000;
         position: absolute;
+        
     }
     
     
 }
 .Div3{
-    /* background-color: pink; */
-    /* border: 2px solid white; */
     border-radius: 10px;
     width: 330px;
     height: 600px;
     margin-right: 30px;
+    margin-top: 20px;
     .Moves{
             position: absolute;
             display: flex;
             flex-direction: column;
             align-self: flex-start;
-            /* align-items: flex-start; */
             border-radius: 8px;
             padding: 10px;
             gap: 10px;
-            /* margin-left: 5px; */
+            margin-top: 30px;
             background-color: #fff;
-            /* border: 1px solid black; */
-            /* position: absolute; */
             width: 292px;
             height: 400px;
             
 
             label{
-                /* left: 803px; */
                 display: flex;
-                /* top: 712px; */
                 width: auto;
                 margin-left: 10px;
                 padding: 10px;
@@ -220,8 +185,6 @@ export const Container=styled.div`
 }
 }
 .Div4{
-    /* background-color: yellowgreen; */
-    /* border: 2px solid white; */
     border-radius: 10px;
     width: 330px;
     height: 600px;
@@ -248,7 +211,6 @@ export const Container=styled.div`
     color: #fff;
     font-weight: 700;
     padding: 5px;
-    margin-left: 10px;
     .idText{
         font-size: 16px;
     }
@@ -257,13 +219,20 @@ export const Container=styled.div`
     }
     .Types{
         display: flex;
-        flex-direction:row;
-        /* padding: 5px; */
+        justify-self: flex-start;
+        width: 225px;
+        margin-left: -12px;
         img{
             margin-left:5px;
+            margin-right: auto;
         }
     }
 }
+.Progress{
+        margin-left:140px;
+        position: absolute;
+        margin-top: 10px;
+    }
 
 `
 
