@@ -6,7 +6,7 @@ export const PokemonDetailPageContainer = styled.div`
     color:white;
     padding: 20px;
     padding-left:20px;
-    gap:20px;
+    
     font-family: 'Poppins', sans-serif;
     
     .container-card{
@@ -27,7 +27,11 @@ export const PokemonDetailPageContainer = styled.div`
         font-weight: bold;
        
     }
-
+    
+    .pokemon-nome{
+        font-size: 42px;
+        font-weight: bold;
+    }
    
   
     .detail-page{
@@ -39,7 +43,7 @@ export const PokemonDetailPageContainer = styled.div`
     .green-div-page{
         /* display: flex;
         flex-wrap: wrap; */
-        width: 1300px;
+        width: 1600px;
         height: 680px;
         background-color: #729F92;
         padding: 35px;
@@ -51,7 +55,7 @@ export const PokemonDetailPageContainer = styled.div`
     .pokebol-symbol{
         display: flex;
         justify-content: flex-end;
-        margin-left:592px;
+        margin-left:890px;
         margin-top:0;
         position: absolute;
        
@@ -64,12 +68,13 @@ export const PokemonDetailPageContainer = styled.div`
         position: absolute;
     }
     .pokemon-front-back{
-        width: 287px;
+        width: 350px;
         height: 611px;
+        margin-left:15px;
     }
 
     .img-pokemon-front{
-        width: 287px;
+        width: 350px;
         height: 285px;
         background-color: white;
         border-radius: 12px;
@@ -79,7 +84,7 @@ export const PokemonDetailPageContainer = styled.div`
     }
 
     .img-pokemon-back{
-        width: 285px;
+        width: 350px;
         height: 285px;
         background-color: white;
         margin-top: 35px;
@@ -90,9 +95,9 @@ export const PokemonDetailPageContainer = styled.div`
     }
     
     .base-stats-pokemon{
-        width: 347px;
+        width: 450px;
         height: 611px;
-        margin-left:30px;
+        margin-left:50px;
         background-color: white;
         border-radius: 12px;
         color: black;
@@ -104,17 +109,24 @@ export const PokemonDetailPageContainer = styled.div`
         width: 287px;
         height: 611px;
         margin-left:30px;
-        border: 5px solid black;
+        margin-left:50px;
+        
     }
 
     .name-type-pokemon{
-        width: 287px;
+        width: 300px;
         height: 150px;
-        border: 5px solid red;
+        
     }
+
+    .div-type{
+        display: flex;
+        gap:5px;
+    }
+
     
     .moves-pokemon{
-        width: 287px;
+        width: 350px;
         height: 423px;
         margin-top: 35px;
         background-color: white;
@@ -124,10 +136,10 @@ export const PokemonDetailPageContainer = styled.div`
     }
 
     .img-pokemon-detail{
-        width: 270px;
+        width: 290px;
         position: absolute;
         z-index:999;
-        margin-left:1050px;
+        margin-left:1300px;
         margin-bottom: 900px;
     }
 

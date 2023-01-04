@@ -219,7 +219,7 @@ function PokemonDetailPage(props) {
               </div>
               <div className="type-moves-pokemon">
                 <div className="name-type-pokemon">
-                  <h3 className="pokemon-id">#{pokemon.id}</h3>
+                  <h2 className="pokemon-id">#{pokemon.id}</h2>
                   <h2 className="pokemon-nome">{pokemon?.name?.charAt(0).toUpperCase() +""+ pokemon?.name?.slice(1)}</h2>
                   <div className="div-type">
 
