@@ -19,7 +19,7 @@ import steel  from "../../assets/img/iconsHabilidades/steel.png"
 import water  from "../../assets/img/iconsHabilidades/water.png"
 import pokebolSymbol  from "../../assets/img/cardDesign/simbolpokemoncard.png"
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { PAGES, getPokedexFromStorage, updatePokedex } from "../../utils";
+import { PAGES, getPokedexFromStorage, updatePokedex, capitalize } from "../../utils";
 
 
 
@@ -27,6 +27,7 @@ import { PAGES, getPokedexFromStorage, updatePokedex } from "../../utils";
 function PokemonCard(props) {
 
   const location = useLocation();
+  const { pokemon, setIsDeleted, openModal, closeModal } = props
 
   function corFundo(types){
     if(types){
@@ -121,6 +122,10 @@ function PokemonCard(props) {
       let pokedex = getPokedexFromStorage();
       pokedex.push(pokemon);
       updatePokedex(pokedex);
+      openModal();
+      setTimeout(()=>{
+        closeModal()
+      },2000)
     }
   }
 
@@ -135,10 +140,6 @@ function PokemonCard(props) {
     return pokedex.filter((value)=> value.name === pokemon.name).length > 0
   }
 
-  const { pokemon, setIsDeleted } = props
-
-
-
   return (
     <PokemonCardContainer  color={corFundo(pokemon.types)}>
       <div className="div-card-externo">
@@ -149,7 +150,7 @@ function PokemonCard(props) {
           <img className="pokebol-symbol" width={193} src={pokebolSymbol} alt={pokemon.nome}></img>
           <div className="descricao">
             <h3 className="pokemon-id">#{pokemon.id}</h3>
-            <h2 className="pokemon-nome">{pokemon?.name?.charAt(0).toUpperCase() +""+ pokemon?.name?.slice(1)}</h2>
+            <h2 className="pokemon-nome">{capitalize(pokemon.name)}</h2>
             <div className="div-type">
 
               {

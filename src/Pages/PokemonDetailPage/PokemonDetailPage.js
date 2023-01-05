@@ -23,7 +23,7 @@ import { Progress } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { PAGES } from "../../utils";
+import { capitalize, moveFormatter, PAGES } from "../../utils";
 
 function PokemonDetailPage(props) {
 
@@ -233,7 +233,7 @@ function PokemonDetailPage(props) {
               <div className="type-moves-pokemon">
                 <div className="name-type-pokemon">
                   <h2 className="pokemon-id">#{pokemon.id}</h2>
-                  <h2 className="pokemon-nome">{pokemon?.name?.charAt(0).toUpperCase() +""+ pokemon?.name?.slice(1)}</h2>
+                  <h2 className="pokemon-nome">{capitalize(pokemon.name)}</h2>
                   <div className="div-type">
 
                     {
@@ -252,8 +252,8 @@ function PokemonDetailPage(props) {
                   
                       {
                         pokemon.moves &&
-                        pokemon.moves.map((move) => {
-                          return <div key={pokemon.id + Math.random()}>{move}</div>
+                        pokemon.moves.slice(0,7).map((move) => {
+                          return <div key={pokemon.id + Math.random()}>{moveFormatter(move)}</div>
                         })
                       }
                     </h2>

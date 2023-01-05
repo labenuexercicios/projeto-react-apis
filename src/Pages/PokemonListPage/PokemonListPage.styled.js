@@ -4,10 +4,8 @@ export const PokemonListPageContainer = styled.div`
 
     background-color:#5E5E5E;
     color:white;
-    /* padding: 40px; */
     display:flex;
     flex-wrap: wrap;
-    /* padding-left:40px; */
     gap:20px;
     font-family: 'Poppins', sans-serif;
     
@@ -16,8 +14,7 @@ export const PokemonListPageContainer = styled.div`
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
-        padding-left:40px;
-        
+        padding-left:40px;   
     }
 
     .h1-pokedex-list{
@@ -25,6 +22,5 @@ export const PokemonListPageContainer = styled.div`
         font-weight: bold;
         padding-left:40px;
     }
-
 
 `

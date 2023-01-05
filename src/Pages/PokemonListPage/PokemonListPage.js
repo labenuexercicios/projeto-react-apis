@@ -5,6 +5,20 @@ import axios from "axios";
 import ClickMe from "../../Components/Chakra/ClickMe";
 import Header from "../../Components/Header/Header";
 import { PAGES } from "../../utils";
+import {
+  Button,
+  Center,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure
+} from "@chakra-ui/react";
+
 
 
 function PokemonListPage(){
@@ -14,6 +28,7 @@ function PokemonListPage(){
     const [pageLimit, setPageLimit] = useState(1);
     const [nextPageLink, setNextPageLink] = useState('');
     const [previousPageLink,setPreviousPageLink]=useState('');
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     function URL(){
         let url = "https://pokeapi.co/api/v2/pokemon";
@@ -98,21 +113,37 @@ function PokemonListPage(){
         
     }
     const isButtonDisabledPrevious = pageNumber === 1;
-
-
   
     return (
       <>
         <Header page={PAGES.POKEMON_LIST_PAGE}></Header>
         <PokemonListPageContainer>
         <h1 className="h1-pokedex-list">Todos os Pokémons</h1>
-        
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalBody>
+              <Center>
+                <Text as={'b'} fontSize={'50px'}>Gotcha!</Text>
+              </Center>
+              <Center>
+                <Text as={'b'}>O Pokémon foi adicionado a sua Pokédex</Text>
+              </Center>
+            </ModalBody>
+            <ModalFooter>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+
         <div className="container-card">
           {
             pokemonList.map((pokemon) => {
               return <PokemonCard
               key={pokemon.name.length + Math.random()}
               pokemon={pokemon}
+              openModal={onOpen}
+              closeModal={onClose}
               />
             })
           }
