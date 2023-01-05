@@ -1,5 +1,7 @@
-export const CONSTS = {
-    POKEMON_LIST_PAGE: '/'
+export const PAGES = {
+    POKEMON_LIST_PAGE: '/',
+    POKEDEX: 'pokedex',
+    POKEMON_DETAILS: 'pokemonDetalhes/:id',
 };
 
 

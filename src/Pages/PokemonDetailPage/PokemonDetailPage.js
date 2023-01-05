@@ -23,6 +23,7 @@ import { Progress } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { PAGES } from "../../utils";
 
 function PokemonDetailPage(props) {
 
@@ -143,7 +144,7 @@ function PokemonDetailPage(props) {
   };
   return (
     <>
-      <Header></Header>
+      <Header page={PAGES.POKEMON_DETAILS}></Header>
       <PokemonDetailPageContainer>
 
         <div className="detail-page">

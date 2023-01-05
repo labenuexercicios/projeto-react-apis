@@ -19,7 +19,7 @@ import steel  from "../../assets/img/iconsHabilidades/steel.png"
 import water  from "../../assets/img/iconsHabilidades/water.png"
 import pokebolSymbol  from "../../assets/img/cardDesign/simbolpokemoncard.png"
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { CONSTS, getPokedexFromStorage, updatePokedex } from "../../utils";
+import { PAGES, getPokedexFromStorage, updatePokedex } from "../../utils";
 
 
 
@@ -165,7 +165,7 @@ function PokemonCard(props) {
             <button onClick={()=>{ goToDetail(pokemon.id) }} className="btn-detalhes">Detalhes</button>
             <div>
             {
-              location.pathname === CONSTS.POKEMON_LIST_PAGE ?
+              location.pathname === PAGES.POKEMON_LIST_PAGE ?
               <button onClick={()=> capturar(pokemon)} className="btn-capturar">Capturar</button>
                 : 
               <button onClick={()=> remove(pokemon)} className="btn-capturar">Excluir</button>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ClickMe from "../../Components/Chakra/ClickMe";
 import Header from "../../Components/Header/Header";
+import { PAGES } from "../../utils";
 
 
 function PokemonListPage(){
@@ -102,7 +103,7 @@ function PokemonListPage(){
   
     return (
       <>
-        <Header></Header>
+        <Header page={PAGES.POKEMON_LIST_PAGE}></Header>
         <PokemonListPageContainer>
         <h1 className="h1-pokedex-list">Todos os Pokémons</h1>
         
