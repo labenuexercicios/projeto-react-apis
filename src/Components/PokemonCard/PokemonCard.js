@@ -18,12 +18,15 @@ import rock  from "../../assets/img/iconsHabilidades/rock.png"
 import steel  from "../../assets/img/iconsHabilidades/steel.png"
 import water  from "../../assets/img/iconsHabilidades/water.png"
 import pokebolSymbol  from "../../assets/img/cardDesign/simbolpokemoncard.png"
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { CONSTS, getPokedexFromStorage, updatePokedex } from "../../utils";
 
 
 
 
 function PokemonCard(props) {
+
+  const location = useLocation();
 
   function corFundo(types){
     if(types){
@@ -113,31 +116,61 @@ function PokemonCard(props) {
     navigate(`/pokemonDetalhes/${id}`)
   }
 
+  function capturar(pokemon){
+    if(!isDuplicated(pokemon)){
+      let pokedex = getPokedexFromStorage();
+      pokedex.push(pokemon);
+      updatePokedex(pokedex);
+    }
+  }
+
+  function remove(pokemon){
+    let pokedex = getPokedexFromStorage().filter((p) => p.name !== pokemon.name);
+    updatePokedex(pokedex);
+    setIsDeleted(true);
+  }
+
+  const isDuplicated = (pokemon)=>{
+    let pokedex = getPokedexFromStorage();
+    return pokedex.filter((value)=> value.name === pokemon.name).length > 0
+  }
+
+  const { pokemon, setIsDeleted } = props
+
+
+
   return (
-    <PokemonCardContainer  color={corFundo(props.types)}>
+    <PokemonCardContainer  color={corFundo(pokemon.types)}>
       <div className="div-card-externo">
 
-        <img className="pokemon-img" width={170} src={props.img} alt={props.nome}></img>
+        <img className="pokemon-img" width={170} src={pokemon.img} alt={pokemon.nome}></img>
         
         <div className="div-card-interno">
-          <img className="pokebol-symbol" width={193} src={pokebolSymbol} alt={props.nome}></img>
+          <img className="pokebol-symbol" width={193} src={pokebolSymbol} alt={pokemon.nome}></img>
           <div className="descricao">
-            <h3 className="pokemon-id">#{props.id}</h3>
-            <h2 className="pokemon-nome">{props?.nome?.charAt(0).toUpperCase() +""+ props?.nome?.slice(1)}</h2>
+            <h3 className="pokemon-id">#{pokemon.id}</h3>
+            <h2 className="pokemon-nome">{pokemon?.name?.charAt(0).toUpperCase() +""+ pokemon?.name?.slice(1)}</h2>
             <div className="div-type">
 
               {
-                props.types &&
-                props.types.map((tipo) => {
-                  return <img key={props.id + Math.random()} className="icon-tipo" src={typesButtons[tipo].button} alt="img tipo"></img>
+                pokemon.types &&
+                pokemon.types.map((tipo) => {
+                  return <img key={pokemon.id + Math.random()} className="icon-tipo" src={typesButtons[tipo].button} alt="img tipo"></img>
                 })
               }
 
             </div>
           </div>
           <div className="div-botoes">
-            <button onClick={()=>{ goToDetail(props.id) }} className="btn-detalhes">Detalhes</button>
-            <button className="btn-capturar">Capturar!</button>
+            <button onClick={()=>{ goToDetail(pokemon.id) }} className="btn-detalhes">Detalhes</button>
+            <div>
+            {
+              location.pathname === CONSTS.POKEMON_LIST_PAGE ?
+              <button onClick={()=> capturar(pokemon)} className="btn-capturar">Capturar</button>
+                : 
+              <button onClick={()=> remove(pokemon)} className="btn-capturar">Excluir</button>
+            }
+            </div>
           </div>
         </div>
       </div>

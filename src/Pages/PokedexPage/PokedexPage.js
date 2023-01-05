@@ -3,11 +3,13 @@ import { PokedexPageContainer } from "./PokedexPage.styled";
 import { useEffect, useState } from "react";
 import ClickMe from "../../Components/Chakra/ClickMe";
 import Header from "../../Components/Header/Header";
+import { getPokedexFromStorage } from "../../utils";
 
 
 function PokedexPage() {
 
-  const [pokemonList, setPokemonList] = useState([]);
+  const [pokemonList, setPokemonList] = useState(getPokedexFromStorage());
+  const [isDeleted, setIsDeleted] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const [pageLimit, setPageLimit] = useState(1);
   const [nextPageLink, setNextPageLink] = useState('');
@@ -16,6 +18,11 @@ function PokedexPage() {
     setPageNumber(pageNumber+1)
   }
   const isButtonDisabled = pageNumber >= pageLimit;
+
+  useEffect(()=>{
+    setPokemonList(getPokedexFromStorage());
+    setIsDeleted(false);
+  },[isDeleted]);
 
   return (
     <>
@@ -29,10 +36,8 @@ function PokedexPage() {
           pokemonList.map((pokemon) => {
             return <PokemonCard
             key={pokemon.name.length + Math.random()}
-            id={pokemon.id}
-            nome={pokemon.name}
-            types={pokemon.types}
-            img={pokemon.img}
+            pokemon={pokemon}
+            setIsDeleted={setIsDeleted}
             />
           })
         }

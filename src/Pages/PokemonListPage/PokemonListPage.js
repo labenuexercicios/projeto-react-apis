@@ -111,10 +111,7 @@ function PokemonListPage(){
             pokemonList.map((pokemon) => {
               return <PokemonCard
               key={pokemon.name.length + Math.random()}
-              id={pokemon.id}
-              nome={pokemon.name}
-              types={pokemon.types}
-              img={pokemon.img}
+              pokemon={pokemon}
               />
             })
           }
