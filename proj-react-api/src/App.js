@@ -3,24 +3,19 @@ import React, { useEffect, useState } from 'react';
 import Router from './router/Router';
 import { ChakraProvider } from '@chakra-ui/react';
 import { GlobalContext } from "../src/context/GlobalContext"
-// import { json, useLocation } from 'react-router-dom';
 import { baseUrl } from './components/utils/baseUrl';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { GlobalStyles } from './GlobalSytle';
-// import Modal from "react-modal";
 
 function App() {
 
-  // const pokemonFromLocalStorage = JSON.parse(localStorage.getItem("pokeId")|| "[]")
   const pokedexFromLocalStorage = JSON.parse(localStorage.getItem("pokedexId") || "[]")
   const [pokedex, setPokedex] = useState(pokedexFromLocalStorage)
   const [pokemons, setPokemons] = useState([])
   const [deletePokemonPokedex, setDeletePokemonPokedex]=useState(false)
   const [isOpen, setIsOpen]= useState(false)
   const [isOpenDel,setIsOpenDel]=useState(false)
-  // const [modalIncludeDelete, setModalIncludeDelete]=useState(true)
-  // const [pokemonShow, setPokemonShow] = useState([])
   const [pokemonDetails,setPokemonDetails]=useState([])
   const pokemonFromPageDetails = []
   const params =useParams()
@@ -45,12 +40,6 @@ function App() {
       getPokemons()
     }
   }
-    // function openModal(){
-    //   setIsOpen(true)
-    // }
-    // function closeModal(){
-    //   setIsOpen(false)
-    // }
     const nextPageFunction = ()=>{
       setNextPage(nextPage+21)
     }
