@@ -44,11 +44,23 @@ export const PokemonCardContainer = styled.div`
         width: 125px;
         height: 40px;
         font-family: 'Poppins', sans-serif;
-        font-size: 14px;
+        font-size: 16px;
         color: black;
         border-radius: 8px;
+        
       
     }
+
+    .btn-excluir{
+        background-color: #FF6262;
+        width: 125px;
+        height: 40px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 18px;
+        color:white;
+        border-radius: 8px;
+    }
+
     .btn-detalhes{
         font-family: 'Poppins', sans-serif;
         /* font-weight: bold; */

@@ -152,9 +152,9 @@ export const PokemonDetailPageContainer = styled.div`
         align-items: center;
         justify-content: space-around; */
         //antigo
-        display: flex;
-        justify-content: flex-start;
-        
+        /* display: flex;
+        justify-content: flex-start; */
+        text-align: right;
 
     }
 
@@ -165,7 +165,8 @@ export const PokemonDetailPageContainer = styled.div`
     } */
 
     .stats-name{
-
+        display: flex;
+        text-align: left;
     }
 
     .stats-value{
@@ -181,10 +182,12 @@ export const PokemonDetailPageContainer = styled.div`
         width: 155px;
     }
 
-    .hp-stats{
-        /* display: flex;
-        justify-content: flex-start;
-        gap: 10px; */
+    .stats-value{
+        display: grid;
+        grid-template-columns: 2fr 1fr 6fr;
+        margin:10px;
+        gap: 10px;
     }
+
 
 `

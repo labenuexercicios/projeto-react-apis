@@ -19,11 +19,14 @@ import rock from "../../assets/img/iconsHabilidades/rock.png"
 import steel from "../../assets/img/iconsHabilidades/steel.png"
 import water from "../../assets/img/iconsHabilidades/water.png"
 import pokebolSymbol from "../../assets/img/cardDesign/simbolpokemoncard.png"
-import { Progress } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { capitalize, moveFormatter, PAGES } from "../../utils";
+import CustomModal from "../../Components/Chakra/CustomModal";
+import { useDisclosure } from "@chakra-ui/react";
+import { CustomProgressBar } from "../../Components/Chakra/CustomProgress/CustomProgressBar";
+
 
 function PokemonDetailPage(props) {
 
@@ -31,7 +34,10 @@ function PokemonDetailPage(props) {
     id
   } = useParams();
 
+  const { progress } = props
+
   const [pokemon, setPokemon] = useState({});
+  const { isOpen: isRemoveOpen, onOpen: onRemoveOpen, onClose: onRemoveClose } = useDisclosure();
 
   async function getPokemonDetails(pokemonId){
     axios.create({
@@ -165,27 +171,64 @@ function PokemonDetailPage(props) {
                 <h2 className="h2-style">Base stats</h2>
 
                 <div className="stats">
-                  <div className="stats-name">
+                  <div className="stats-value">
+                    <div className="stats-name">
                     <h3>Hp</h3>
-                    <h3>Hp</h3>
-                    <h3>Hp</h3>
-                    <h3>Hp</h3>
-                    <h3>Hp</h3>
+                    </div>
+                    <h3>49</h3>
+                    <CustomProgressBar progress={5}/>
                   </div>
                   <div className="stats-value">
+                    <div className="stats-name">
+                    <h3>Attack</h3>
+                    </div>
                     <h3>49</h3>
-                    <h3>49</h3>
-                    <h3>49</h3>
-                    <h3>49</h3>
-                    <h3>49</h3>
+                    <CustomProgressBar progress={5}/>
                   </div>
-                  <div className="stats-progress">
-                    <Progress colorScheme='green' size='sm' value={20} />
-                    <Progress colorScheme='green' size='sm' value={20} />
-                    <Progress colorScheme='green' size='sm' value={20} />
-                    <Progress colorScheme='green' size='sm' value={20} />
-                    <Progress colorScheme='green' size='sm' value={20} />
+                  <div className="stats-value">
+                    <div className="stats-name">
+                    <h3>Defense</h3>
+                    </div>
+                    <h3>49</h3>
+                    <CustomProgressBar progress={5}/>
                   </div>
+                  <div className="stats-value">
+                    <div className="stats-name">
+                    <h3>SP.Atk</h3>
+                    </div>
+                    <h3>49</h3>
+                    <CustomProgressBar progress={5}/>
+                  </div>
+                  <div className="stats-value">
+                    <div className="stats-name">
+                    <h3>SP. Def</h3>
+                    </div>
+                    <h3>49</h3>
+                    <CustomProgressBar progress={5}/>
+                  </div>
+                  <div className="stats-value">
+                    <div className="stats-name">
+                    <h3>Speed</h3>
+                    </div>
+                    <h3>49</h3>
+                    <CustomProgressBar progress={5}/>
+                  </div>
+                  <div className="stats-value">
+                    <div className="stats-name">
+                    <h3>Total</h3>
+                    </div>
+                    <h3>49</h3>
+                    
+                  </div>
+                 
+                  {/* <div className="stats-progress">
+                    <Progress colorScheme='green' size='sm' value={20} />
+                    <Progress colorScheme='green' size='sm' value={20} />
+                    <Progress colorScheme='green' size='sm' value={20} />
+                    <Progress colorScheme='green' size='sm' value={20} />
+                    <Progress colorScheme='green' size='sm' value={20} />
+                  </div> */}
+                  
                 </div>
 
                 {/* <div className="stats">

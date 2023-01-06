@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
 
     .navegar-home{
        
-        display:flex;
+        /* display:flex;
         justify-content:space-between;
         align-items: center;
         padding:20px;
@@ -22,16 +22,32 @@ export const HeaderContainer = styled.header`
         height: 20vh;
         padding-right:15px;
         padding-left:150px;
-        font-family: 'Poppins', sans-serif;
-        
-    
+        font-family: 'Poppins', sans-serif; */
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-left:30px;
+        height: 25vh;
+        font-family: 'Poppins', sans-serif;  
     }
+
+        .link{
+            display: flex;
+            justify-content: center;
+        }
+
     
     *, *::before, ::after {
     border-color: white;
     
 }
-  
+   .button-todos-pokemons{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+   }
    
 
     .logo {
@@ -48,5 +64,10 @@ export const HeaderContainer = styled.header`
 
     .img-logo:hover{
         cursor: pointer;
+    }
+
+    .button-excluir{
+        width: 300px;
+        background-color: red;
     }
 `

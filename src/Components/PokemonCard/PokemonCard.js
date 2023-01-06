@@ -27,7 +27,14 @@ import { PAGES, getPokedexFromStorage, updatePokedex, capitalize } from "../../u
 function PokemonCard(props) {
 
   const location = useLocation();
-  const { pokemon, setIsDeleted, openModal, closeModal } = props
+  const { 
+    pokemon, 
+    setIsDeleted, 
+    openModal, 
+    closeModal,
+    openModal2, 
+    closeModal2,
+  } = props
 
   function corFundo(types){
     if(types){
@@ -133,6 +140,10 @@ function PokemonCard(props) {
     let pokedex = getPokedexFromStorage().filter((p) => p.name !== pokemon.name);
     updatePokedex(pokedex);
     setIsDeleted(true);
+    openModal2();
+      setTimeout(()=>{
+        closeModal2()
+      },2000)
   }
 
   const isDuplicated = (pokemon)=>{
@@ -169,7 +180,7 @@ function PokemonCard(props) {
               location.pathname === PAGES.POKEMON_LIST_PAGE ?
               <button onClick={()=> capturar(pokemon)} className="btn-capturar">Capturar</button>
                 : 
-              <button onClick={()=> remove(pokemon)} className="btn-capturar">Excluir</button>
+              <button onClick={()=> remove(pokemon)} className="btn-excluir">Excluir</button>
             }
             </div>
           </div>

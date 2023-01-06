@@ -12,9 +12,11 @@ export const PokedexPageContainer = styled.div`
     font-family: 'Poppins', sans-serif;
     
     .container-card{
+        width: 2000px;
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
+        padding-left:40px; 
     }
 
    .h1-pokedex{

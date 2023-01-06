@@ -5,19 +5,9 @@ import axios from "axios";
 import ClickMe from "../../Components/Chakra/ClickMe";
 import Header from "../../Components/Header/Header";
 import { PAGES } from "../../utils";
-import {
-  Button,
-  Center,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Text,
-  useDisclosure
-} from "@chakra-ui/react";
+import CustomModal from "../../Components/Chakra/CustomModal";
+import { useDisclosure } from "@chakra-ui/react";
+
 
 
 
@@ -28,7 +18,8 @@ function PokemonListPage(){
     const [pageLimit, setPageLimit] = useState(1);
     const [nextPageLink, setNextPageLink] = useState('');
     const [previousPageLink,setPreviousPageLink]=useState('');
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen: isGotchaOpen, onOpen: onGotchaOpen, onClose: onGotchaClose } = useDisclosure();
+    // const { isOpen: isRemoveOpen, onOpen: onRemoveOpen, onClose: onRemoveClose } = useDisclosure();
 
     function URL(){
         let url = "https://pokeapi.co/api/v2/pokemon";
@@ -120,21 +111,21 @@ function PokemonListPage(){
         <PokemonListPageContainer>
         <h1 className="h1-pokedex-list">Todos os Pokémons</h1>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalBody>
-              <Center>
-                <Text as={'b'} fontSize={'50px'}>Gotcha!</Text>
-              </Center>
-              <Center>
-                <Text as={'b'}>O Pokémon foi adicionado a sua Pokédex</Text>
-              </Center>
-            </ModalBody>
-            <ModalFooter>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
+        <CustomModal 
+          isOpen={isGotchaOpen}
+          onOpen={onGotchaOpen}
+          onClose={onGotchaClose}
+          title={'Gotcha!'}
+          subtitle={'O Pokémon foi adicionado a sua Pokédex'}
+        />
+
+        {/* <CustomModal 
+          isOpen={isRemoveOpen}
+          onOpen={onRemoveOpen}
+          onClose={onRemoveClose}
+          title={'REMOVE!'}
+          subtitle={'O Pokémon foi adicionado a sua Pokédex'}
+        /> */}
 
         <div className="container-card">
           {
@@ -142,16 +133,20 @@ function PokemonListPage(){
               return <PokemonCard
               key={pokemon.name.length + Math.random()}
               pokemon={pokemon}
-              openModal={onOpen}
-              closeModal={onClose}
+              openModal={onGotchaOpen}
+              closeModal={onGotchaClose}
+
               />
             })
           }
         </div>
+        <div className="page-prev-next">
         <ClickMe disabled={isButtonDisabledPrevious} onClick={()=> previousPage()} text={'Anterior'}></ClickMe>
         <h2>Página {pageNumber} de { pageLimit }</h2>
         <ClickMe disabled={isButtonDisabledNext} onClick={()=> nextPage()} text={'Próximo'}></ClickMe>
   
+        </div>
+        
         </PokemonListPageContainer>
       </>
     )

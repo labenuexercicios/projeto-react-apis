@@ -20,7 +20,16 @@ export const PokemonListPageContainer = styled.div`
     .h1-pokedex-list{
         font-size: 35px;
         font-weight: bold;
-        padding-left:40px;
+        padding:40px;
     }
 
+    .page-prev-next{
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        gap:20px;
+        margin-left: 550px;
+        padding:50px;
+        
+    }
 `
