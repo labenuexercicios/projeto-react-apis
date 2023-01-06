@@ -19,7 +19,7 @@ import steel  from "../../assets/img/iconsHabilidades/steel.png"
 import water  from "../../assets/img/iconsHabilidades/water.png"
 import pokebolSymbol  from "../../assets/img/cardDesign/simbolpokemoncard.png"
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { PAGES, getPokedexFromStorage, updatePokedex, capitalize } from "../../utils";
+import { PAGES, getPokedexFromStorage, updatePokedex, capitalize, isDuplicated } from "../../utils";
 
 
 
@@ -125,7 +125,7 @@ function PokemonCard(props) {
   }
 
   function capturar(pokemon){
-    if(!isDuplicated(pokemon)){
+    if(!isDuplicated(pokemon.id)){
       let pokedex = getPokedexFromStorage();
       pokedex.push(pokemon);
       updatePokedex(pokedex);
@@ -144,11 +144,6 @@ function PokemonCard(props) {
       setTimeout(()=>{
         closeModal2()
       },2000)
-  }
-
-  const isDuplicated = (pokemon)=>{
-    let pokedex = getPokedexFromStorage();
-    return pokedex.filter((value)=> value.name === pokemon.name).length > 0
   }
 
   return (

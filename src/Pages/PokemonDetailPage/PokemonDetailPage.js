@@ -22,7 +22,7 @@ import pokebolSymbol from "../../assets/img/cardDesign/simbolpokemoncard.png"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { capitalize, nameFormatter, PAGES } from "../../utils";
+import { capitalize, getPokedexFromStorage, nameFormatter, PAGES } from "../../utils";
 import { useDisclosure } from "@chakra-ui/react";
 import { CustomProgressBar } from "../../Components/Chakra/CustomProgress/CustomProgressBar";
 
@@ -33,10 +33,7 @@ function PokemonDetailPage(props) {
     id
   } = useParams();
 
-  const { progress } = props
-
   const [pokemon, setPokemon] = useState({});
-  const { isOpen: isRemoveOpen, onOpen: onRemoveOpen, onClose: onRemoveClose } = useDisclosure();
 
   async function getPokemonDetails(pokemonId){
     axios.create({
@@ -174,7 +171,7 @@ function PokemonDetailPage(props) {
                   {
                     pokemon.stats && 
                     pokemon.stats.map((stat) =>{
-                      return <div className="stats-value">
+                      return <div key={stat.base_stat + Math.random()} className="stats-value">
                       <div className="stats-name">
                         <h3>{nameFormatter(stat.name)}</h3>
                       </div>

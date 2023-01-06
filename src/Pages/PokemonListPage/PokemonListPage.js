@@ -90,6 +90,7 @@ function PokemonListPage(){
     function nextPage(){
         setPageDirection("next")
         setPageNumber(pageNumber+1)
+        window.scrollTo(0,0)
     }
     const isButtonDisabledNext = pageNumber >= pageLimit;
 
@@ -98,8 +99,8 @@ function PokemonListPage(){
         if(pageNumber>1){
             setPageDirection("previous")
             setPageNumber(pageNumber-1)
+            window.scrollTo(0,0)
         }
-        
     }
     const isButtonDisabledPrevious = pageNumber === 1;
   

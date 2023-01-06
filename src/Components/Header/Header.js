@@ -1,15 +1,18 @@
 import { HeaderContainer } from "./HeaderStyle";
 import imgLogo from "../../assets/img/logoimg.png";
 import ClickMe from "../Chakra/ClickMe";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { PAGES } from "../../utils";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { isDuplicated, PAGES, remove } from "../../utils";
 import imgSeta from "../../assets/img/eva_arrow-ios-back-outline.png"
-
+import CustomModal from "../Chakra/CustomModal";
+import { useDisclosure } from "@chakra-ui/react";
 
 
 function Header(props){
+    const { id } = useParams();
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { isOpen: isRemoveOpen, onOpen: onRemoveOpen, onClose: onRemoveClose } = useDisclosure();
 
     const goToPokedex = () => {
       navigate("/pokedex")
@@ -18,15 +21,37 @@ function Header(props){
         navigate("/")
     }
 
+    const isRemoveValid = (id) => {
+        console.log(isDuplicated(id))
+        return (page && page === PAGES.POKEMON_DETAILS) && isDuplicated(id);
+    }
+
+    function removePokemon(id){
+        remove(id);
+        onRemoveOpen();
+        setTimeout(()=>{
+            onRemoveClose();
+            goToPokedex();
+        },2500);
+    }
+    
+
     const { page } = props;
 
     return(
         <HeaderContainer>
+            <CustomModal 
+                isOpen={isRemoveOpen}
+                onOpen={onRemoveOpen}
+                onClose={onRemoveClose}
+                title={'Oh, no!'}
+                subtitle={'O Pokémon foi removido da sua Pokédex'}
+            />
             <div className="navegar-home">
            
                 <div className="link">
                     {
-                        page && page !== PAGES.POKEMON_LIST_PAGE  && <button onClick={goToPokedex} className="button-todos-pokemons"> <img  className="img-seta" src={imgSeta} alt="seta icon"/>Todos os Pokémons </button>
+                        page && page !== PAGES.POKEMON_LIST_PAGE  && <button onClick={goToHome} className="button-todos-pokemons"> <img  className="img-seta" src={imgSeta} alt="seta icon"/>Todos os Pokémons </button>
                     }
                 </div>
 
@@ -38,7 +63,7 @@ function Header(props){
             }
 
             {
-                page && page === PAGES.POKEMON_DETAILS &&  <ClickMe className="button-excluir"onClick={goToPokedex} text={'Excluir da Pokédex'}/>
+                isRemoveValid(id) && <ClickMe className="button-excluir"onClick={()=>{ removePokemon(id) }} text={'Excluir da Pokédex'}/>
             }
                 
             </div>

@@ -26,3 +26,13 @@ export function nameFormatter(name){
     let namesString = namesMaiusculo.join(' ');
     return namesString;
 }
+
+export const isDuplicated = (id)=>{
+    let pokedex = getPokedexFromStorage();
+    return pokedex.filter((value)=> value.id === Number(id)).length > 0
+  }
+
+export function remove(id){
+    let pokedex = getPokedexFromStorage().filter((p) => p.id !== Number(id));
+    updatePokedex(pokedex);
+  }
