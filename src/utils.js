@@ -20,9 +20,9 @@ export function capitalize(text){
     return '';
 }
 
-export function moveFormatter(move){
-    let movesSeparado = move.split('-');
-    let movesMaiusculo = movesSeparado.map((move)=> capitalize(move));
-    let movesString = movesMaiusculo.join(' ');
-    return movesString;
+export function nameFormatter(name){
+    let namesSeparado = name.split('-');
+    let namesMaiusculo = namesSeparado.map((name)=> capitalize(name));
+    let namesString = namesMaiusculo.join(' ');
+    return namesString;
 }

@@ -6,7 +6,7 @@ export const PokemonDetailPageContainer = styled.div`
     color:white;
     padding: 20px;
     padding-left:20px;
-    
+    pointer-events: none  !important;
     font-family: 'Poppins', sans-serif;
     
     .container-card{
@@ -19,13 +19,11 @@ export const PokemonDetailPageContainer = styled.div`
         font-size: 45px;
         font-weight: bold;
         padding: 20px;
-        
     }
 
     .h2-style{
         font-size: 30px;
         font-weight: bold;
-       
     }
     
     .pokemon-nome{
@@ -33,36 +31,27 @@ export const PokemonDetailPageContainer = styled.div`
         font-weight: bold;
     }
    
-  
     .detail-page{
         width: 1300px;
         height: 900px;
     }
     
-
     .green-div-page{
-        /* display: flex;
-        flex-wrap: wrap; */
         width: 1600px;
         height: 680px;
         background-color: #729F92;
         padding: 35px;
         border-radius: 12px;
         position: relative;
-       
-        /* bottom: 0; */
     }
+
     .pokebol-symbol{
-        display: flex;
-        justify-content: flex-end;
-        margin-left:890px;
-        margin-top:0;
         position: absolute;
-       
+        top: 0;
+        right: 0;
     }
     
     .div-test{
-       
         display: flex;
         flex-wrap: wrap;
         position: absolute;
@@ -105,25 +94,21 @@ export const PokemonDetailPageContainer = styled.div`
     }
 
     .type-moves-pokemon{
-
         width: 287px;
         height: 611px;
         margin-left:30px;
         margin-left:50px;
-        
     }
 
     .name-type-pokemon{
         width: 300px;
         height: 150px;
-        
     }
 
     .div-type{
         display: flex;
         gap:5px;
     }
-
     
     .moves-pokemon{
         width: 350px;
@@ -143,38 +128,9 @@ export const PokemonDetailPageContainer = styled.div`
         margin-bottom: 900px;
     }
 
-    .stats {
-        /* display: grid;
-        grid-template-columns: 1fr 1fr 1fr; */
-
-        /* display: flex;
-        margin-bottom: 15px;
-        align-items: center;
-        justify-content: space-around; */
-        //antigo
-        /* display: flex;
-        justify-content: flex-start; */
-        text-align: right;
-
-    }
-
-    /* .stats-name{
-        display: flex;
-        justify-content: end;
-        padding-right: 15px;
-    } */
-
     .stats-name{
         display: flex;
-        text-align: left;
-    }
-
-    .stats-value{
-        /* display: flex;
-        justify-content: start;
-        width: fit-content; */
-    }
-    .stats-progress{
+        justify-content: end;
     }
     
     .progress-base, .stats-progress{
@@ -184,9 +140,13 @@ export const PokemonDetailPageContainer = styled.div`
 
     .stats-value{
         display: grid;
-        grid-template-columns: 2fr 1fr 6fr;
+        grid-template-columns: 4fr 1fr 6fr;
         margin:10px;
         gap: 10px;
+
+        h3{
+            text-align: right;  
+        }
     }
 
 

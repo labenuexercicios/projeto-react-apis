@@ -70,8 +70,6 @@ function PokemonListPage(){
               img: resposta.data.sprites.other['official-artwork'].front_default,
               id: resposta.data.id,
               types: tipos.map((value,index)=> value.type.name),
-              stats: resposta.data.stats,
-              moves: resposta.data.moves
             }
             pokemons.push(pokemonDetalhado);
           })

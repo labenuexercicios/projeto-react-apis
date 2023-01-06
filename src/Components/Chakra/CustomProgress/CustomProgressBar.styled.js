@@ -12,6 +12,6 @@ export const CustomProgressBarContainer = styled.div `
     ::before{
         content: "";
         width: ${props => props.progress}%;
-        background-color: orange;
+        background-color: ${props => props.color};
     }
 `

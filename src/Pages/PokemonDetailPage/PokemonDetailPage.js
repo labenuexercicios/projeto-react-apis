@@ -22,8 +22,7 @@ import pokebolSymbol from "../../assets/img/cardDesign/simbolpokemoncard.png"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { capitalize, moveFormatter, PAGES } from "../../utils";
-import CustomModal from "../../Components/Chakra/CustomModal";
+import { capitalize, nameFormatter, PAGES } from "../../utils";
 import { useDisclosure } from "@chakra-ui/react";
 import { CustomProgressBar } from "../../Components/Chakra/CustomProgress/CustomProgressBar";
 
@@ -45,13 +44,14 @@ function PokemonDetailPage(props) {
     }).get(`pokemon/${pokemonId}`)
     .then((resposta) => {
       let moves = [...resposta.data.moves]
+      let stats = [...resposta.data.stats]
       let tipos = [...resposta.data.types];
       setPokemon({
               name: resposta.data.name,
               img: resposta.data.sprites.other['official-artwork'].front_default,
               id: resposta.data.id,
-              types: tipos.map((value,index)=> value.type.name),
-              stats: resposta.data.stats,
+              types: tipos.map((value,index)=> { return value.type.name}),
+              stats: stats.map((value) =>{ return {name: value.stat.name, base_stat: value.base_stat}}),
               moves: moves.map((value)=> value.move.name),
               img_front: resposta.data.sprites.front_default,
               img_back: resposta.data.sprites.back_default,
@@ -171,106 +171,26 @@ function PokemonDetailPage(props) {
                 <h2 className="h2-style">Base stats</h2>
 
                 <div className="stats">
-                  <div className="stats-value">
-                    <div className="stats-name">
-                    <h3>Hp</h3>
+                  {
+                    pokemon.stats && 
+                    pokemon.stats.map((stat) =>{
+                      return <div className="stats-value">
+                      <div className="stats-name">
+                        <h3>{nameFormatter(stat.name)}</h3>
+                      </div>
+                      <h3>{stat.base_stat}</h3>
+                      <CustomProgressBar progress={stat.base_stat}/>
                     </div>
-                    <h3>49</h3>
-                    <CustomProgressBar progress={5}/>
-                  </div>
-                  <div className="stats-value">
-                    <div className="stats-name">
-                    <h3>Attack</h3>
-                    </div>
-                    <h3>49</h3>
-                    <CustomProgressBar progress={5}/>
-                  </div>
-                  <div className="stats-value">
-                    <div className="stats-name">
-                    <h3>Defense</h3>
-                    </div>
-                    <h3>49</h3>
-                    <CustomProgressBar progress={5}/>
-                  </div>
-                  <div className="stats-value">
-                    <div className="stats-name">
-                    <h3>SP.Atk</h3>
-                    </div>
-                    <h3>49</h3>
-                    <CustomProgressBar progress={5}/>
-                  </div>
-                  <div className="stats-value">
-                    <div className="stats-name">
-                    <h3>SP. Def</h3>
-                    </div>
-                    <h3>49</h3>
-                    <CustomProgressBar progress={5}/>
-                  </div>
-                  <div className="stats-value">
-                    <div className="stats-name">
-                    <h3>Speed</h3>
-                    </div>
-                    <h3>49</h3>
-                    <CustomProgressBar progress={5}/>
-                  </div>
+                    })
+                  }
+
                   <div className="stats-value">
                     <div className="stats-name">
                     <h3>Total</h3>
                     </div>
-                    <h3>49</h3>
-                    
-                  </div>
-                 
-                  {/* <div className="stats-progress">
-                    <Progress colorScheme='green' size='sm' value={20} />
-                    <Progress colorScheme='green' size='sm' value={20} />
-                    <Progress colorScheme='green' size='sm' value={20} />
-                    <Progress colorScheme='green' size='sm' value={20} />
-                    <Progress colorScheme='green' size='sm' value={20} />
-                  </div> */}
-                  
+                    <h3>{ pokemon.stats && pokemon.stats.reduce((previous,current)=> previous + current.base_stat,0)}</h3>
+                  </div>                  
                 </div>
-
-                {/* <div className="stats">
-                  <div className="stats-name">
-                    <h3>Attack</h3>
-                  </div>
-                  <div className="stats-value">
-                    <h3>49</h3>
-                  </div>
-                  <div className="stats-progress">
-                    <Progress colorScheme='green' size='sm' value={20} />
-                  </div>
-                </div>
-
-                <div className="stats">
-                  <div className="stats-name">
-                    <h3>Defense</h3>
-                  </div>
-                  <div className="stats-value">
-                    <h3>49</h3>
-                  </div>
-                  <div className="stats-progress">
-                    <Progress colorScheme='green' size='sm' value={20} />
-                  </div>
-                </div>
-
-                <div className="stats">
-                  <div className="stats-name">
-                    <h3>Sp. Atk</h3>
-                  </div>
-                  <div className="stats-value">
-                    <h3>49</h3>
-                  </div>
-                  <div className="stats-progress">
-                    <Progress colorScheme='green' size='sm' value={20} />
-                  </div>
-                </div>
-
-                <div className="total-stats">
-                  <h3>Total</h3>
-                  <h3>49</h3>
-                </div> */}
 
               </div>
               <div className="type-moves-pokemon">
@@ -296,7 +216,7 @@ function PokemonDetailPage(props) {
                       {
                         pokemon.moves &&
                         pokemon.moves.slice(0,7).map((move) => {
-                          return <div key={pokemon.id + Math.random()}>{moveFormatter(move)}</div>
+                          return <div key={pokemon.id + Math.random()}>{nameFormatter(move)}</div>
                         })
                       }
                     </h2>
