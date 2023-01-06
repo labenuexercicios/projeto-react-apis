@@ -1,27 +1,37 @@
 import { GlobalContext } from "./contexts/GlobalContext";
+import { createGlobalStyle } from "styled-components";
 import Router from "./router/Router";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { BASE_URL } from "./constants/url";
+
+const GlobalStyle = createGlobalStyle`
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }`;
 
 export default function App() {
 
   const [pokelist, setPokelist] = useState([]);
   const [pokedex, setPokedex] = useState([]);
+  const [flow, setFlow] = useState(2)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [nextPage, setNextPage] = useState(0)
+  const [counter, setCounter] = useState(1)
+  const amountPoke = 21
 
+  const fetchPokelist = async (url) => {
+    const APIResponse = await fetch(url)
+    const data = await APIResponse.json();
+    setPokelist(data.results)
+    setPokedex(pokelist)
+  }
+  
   useEffect(() => {
-    fetchPokelist();
-  }, []);
-
-  const fetchPokelist = async () => {
-    try {
-      const response = await axios.get(BASE_URL);
-      setPokelist(response.data.results);
-    } catch (error) {
-      console.log("Erro ao buscar lista de pokemons");
-      console.log(error.response);
-    } 
-  };
+    if(counter >= 1){
+    fetchPokelist(`https://pokeapi.co/api/v2/pokemon/?offset=${nextPage}&limit=${amountPoke}`)
+    }
+  }, [counter])
 
   const addToPokedex = (pokemonToAdd) => {
     const isAlreadyOnPokedex = pokedex.find(
@@ -31,8 +41,18 @@ export default function App() {
     if (!isAlreadyOnPokedex) {
       const newPokedex = [...pokedex, pokemonToAdd];
       setPokedex(newPokedex);
+      setFlow(1);
+      const pokedexString = JSON.stringify(newPokedex)
+      window.localStorage.setItem("pokemon", pokedexString)
     }
   };
+
+  useEffect(()=>{
+    if(localStorage.getItem("pokemon")){
+      const newListaPokedex = localStorage.getItem("pokemon")
+      const pokedex2 = JSON.parse(newListaPokedex)
+      setPokedex(pokedex2)}
+  },[pokedex])
 
   const removeFromPokedex = (pokemonToRemove) => {
     const newPokedex = pokedex.filter(
@@ -40,22 +60,44 @@ export default function App() {
     );
 
     setPokedex(newPokedex);
+    const pokedexString = JSON.stringify(newPokedex)
+    window.localStorage.setItem("pokemon", pokedexString)
   };
 
-  
+  function nextPageHome () {
+    if(counter <= 40){
+    setNextPage(nextPage + 21)
+    setCounter(counter + 1)
+    }
+  }
 
-  const filteredPokelist = () =>
-    pokelist.filter(
-      (pokemonInList) =>
-        !pokedex.find(
-          (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
-        )
-    );
+  function backPageHome () {
+    if(counter >= 1){
+    setNextPage(nextPage - 21)
+    setCounter(counter - 1)
+    }
+  }
 
-    
+  function openModalCapture(){
+    setModalOpen(true)
+  }
 
- 
-  
+  function closeModalCapture(){
+    setModalOpen(false)
+  }
+
+  const customStyle = {
+    content : {
+      top: '50%',
+      left: '50%',
+      bottom: 'auto',
+      right: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      borderRadius: '12px',
+    }
+  }
+
   const context = {
     pokelist,
     setPokelist,
@@ -64,11 +106,21 @@ export default function App() {
     fetchPokelist,
     addToPokedex,
     removeFromPokedex,
-    filteredPokelist
+    flow,
+    setFlow,
+    modalOpen,
+    closeModalCapture,
+    openModalCapture,
+    customStyle,
+    nextPageHome,
+    backPageHome,
+    counter,
+    nextPage,
   }
 
   return (
     <>
+    <GlobalStyle />
     <GlobalContext.Provider value={context}>
       <Router />
     </GlobalContext.Provider>

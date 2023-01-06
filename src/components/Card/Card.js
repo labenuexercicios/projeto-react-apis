@@ -1,22 +1,22 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { GlobalContext } from '../../contexts/GlobalContext'
+import { useEffect, useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { goToDetalhes } from "../../router/Coordinator";
-import { Container, Img, ImgPoke, DireitoCard, PokemonType, 
-  Superior, LadoEsquerdo, Nome, Id, Types, Button, Detalhes, ButtonCapturar, ButtonRemover } from "./styled";
+import { goToDetails } from "../../router/Coordinator";
+import { Container, Img, ImgPoke, RightSide, PokemonType, Higher, LeftSide, 
+  Name, Id, Types, Button, Details, CaptureButton, RemoveButton } from "./Card.styled";
 import { typesPokemon } from "../../utils/typesPokemon";
 import { getColors } from "../../utils/getColors";
 import poke from "../../assets/poke.png"
 
-
 const Card = (props) => {
-  const { pokemonUrl, addToPokedex, removeFromPokedex } = props;
+  const { pokemonUrl, addToPokedex, removeFromPokedex, pokemons} = props;
 
+  const context = useContext(GlobalContext)
+  const { openModalCapture } = context
 
-  // hook para saber nosso path atual
   const location = useLocation();
 
-  // hook para redirecionar
   const navigate = useNavigate();
 
   const [pokemon, setPokemon] = useState({});
@@ -35,7 +35,7 @@ const Card = (props) => {
     } catch (error) {
       console.log("Erro ao buscar lista de pokemons");
       console.log(error);
-    }console.log(pokemon)
+    }
   };
 
   const fetchPokemonType = async () => {
@@ -45,45 +45,49 @@ const Card = (props) => {
     } catch (error) {
       console.log("Erro ao buscar lista de tipos de pokemons");
       console.log(error);
-    }console.log(types)
+    }
   };
   
-  
+  function modalEaddToPokedex () {
+    openModalCapture()
+    addToPokedex(pokemons)
+  };
+
+  function modalRemoveToPokedex () {
+    openModalCapture()
+    removeFromPokedex(pokemon)
+  };
 
   return (
     <Container cardColor={getColors(types)}>
-      <Superior>
-        <LadoEsquerdo>
+      <Higher>
+        <LeftSide>
           <Id>{pokemon.id < 10 ? (<span>{"#0"+pokemon.id}</span>):(<span>{"#"+pokemon.id}</span>)}</Id>
-          <Nome>{pokemon.name}</Nome>
+          <Name>{pokemon.name}</Name>
           <Types>{pokemon.types?.map((typePokemon) => {
-            return (
+             return (
               <PokemonType src={typesPokemon(typePokemon.type.name)} alt={`${typePokemon.type.name}`}/>
           )})}
           </Types>
-        </LadoEsquerdo>
-        <DireitoCard>
-          <Img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
+        </LeftSide>
+        <RightSide>
+          <Img src={pokemon.sprites?.other['official-artwork'].front_default} alt={pokemon.name} />
           <ImgPoke src={poke} />
-        </DireitoCard>
-      </Superior>
+        </RightSide>
+      </Higher>
       <Button>
-      <Detalhes onClick={() => goToDetalhes(navigate, pokemon.id)}>
+      <Details onClick={() => goToDetails(navigate, pokemon.id)}>
           Detalhes
-      </Detalhes>
-      
-        {location.pathname === "/" ? (
-          <ButtonCapturar onClick={() => addToPokedex(pokemon)}>
-            {console.log(pokemon)}Capturar!
-          </ButtonCapturar>
+      </Details>
+      {location.pathname === "/" ? (
+        <CaptureButton onClick={() => modalEaddToPokedex()}>
+          Capturar!
+        </CaptureButton>
         ) : (
-          <ButtonRemover onClick={() => removeFromPokedex(pokemon)}>
-            Excluir
-          </ButtonRemover>
+        <RemoveButton onClick={() => modalRemoveToPokedex()}>
+          Excluir
+        </RemoveButton>
         )}
-
-        
-        
       </Button>
     </Container>
   );

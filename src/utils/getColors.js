@@ -1,4 +1,3 @@
-
 export const getColors = (types) => {
     switch(types) {
       case "bug":
@@ -40,4 +39,4 @@ export const getColors = (types) => {
       default:
         return "#8A8A8A";
     }
-  };
+};

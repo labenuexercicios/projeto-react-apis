@@ -12,14 +12,6 @@ export const Container = styled.div`
   margin-bottom: 60px;
   margin-left: 10px;
   margin-right: 10px;
-  
-
-
-  button {
-    width: 50%;
-    height: 40px;
-  }
-
 `;
 
 export const PokemonType = styled.img`
@@ -30,15 +22,15 @@ export const PokemonType = styled.img`
   top: 89px;
 `;
 
-export const Superior = styled.div`
+export const Higher = styled.div`
   display: flex;
   flex-direction: row;
   width: 440px;
   margin-left: 40px;
 `;
 
-export const Nome = styled.div`
-  width: 116px;
+export const Name = styled.div`
+  width: 196px;
   height: 39px;
   left: 23px;
   top: 40px;
@@ -63,11 +55,13 @@ export const Id = styled.span`
   color: #FFFFFF;
 `;
 
-export const DireitoCard = styled.div`
+export const RightSide = styled.div`
   width: 100%;
   height: 130px;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
 `;
 
 export const Img = styled.img`
@@ -78,7 +72,6 @@ export const Img = styled.img`
   position: relative;
   top: -70px;
   left: 25px;
-  z-index: 1;
 `;
 
 export const ImgPoke = styled.img`
@@ -87,10 +80,10 @@ export const ImgPoke = styled.img`
   position: relative;
   bottom: 206px;
   right: 15px;
-  z-index: 0;
+  z-index: -1;
 `;
 
-export const LadoEsquerdo = styled.div`
+export const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
   width: 350px;
@@ -113,7 +106,7 @@ export const Button = styled.div`
   margin-top: 12px;
 `;
 
-export const Detalhes = styled.a`
+export const Details = styled.a`
   width: 74px;
   height: 24px;
   font-family: 'Poppins';
@@ -128,7 +121,7 @@ export const Detalhes = styled.a`
   color: #FFFFFF;
 `;
 
-export const ButtonCapturar = styled.button`
+export const CaptureButton = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -146,10 +139,10 @@ export const ButtonCapturar = styled.button`
   font-size: 16px;
   line-height: 24px;
   cursor: pointer;
-  z-index: 1;
+  position: relative;
 `;
 
-export const ButtonRemover = styled.button`
+export const RemoveButton = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -168,7 +161,7 @@ export const ButtonRemover = styled.button`
   font-size: 16px;
   line-height: 24px;
   cursor: pointer;
-  z-index: 1;
+  position: relative;
 `;
 
 
