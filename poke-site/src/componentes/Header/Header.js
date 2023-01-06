@@ -1,16 +1,35 @@
 import React from 'react'
 import NomePokemon from "../../imagens/NomePokemon.svg"
 import HeaderStyle from "./Header.style"
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import { vaiParaDetalhes, vaiParaHome, vaiParaPokedex } from '../../Rotas/cordenation'
+import { useContext } from 'react'
+import { GlobalContext } from "../../Rotas/Context/GlobalContext"
 
 
+const Header = (props) => {
 
-const Header = () => {
 
+  const context = useContext(GlobalContext)
+  const {
+    arrayPokedex,
+    setArrayPokedex,
+  } = context
+
+  const params = useParams()
 
   const navigate = useNavigate()
   const local = useLocation()
+
+
+
+  const removeDaPokedex = (removePokemon) => {
+    const novoArrayPokedex = arrayPokedex
+      .filter((pokemonNaPokedex) => pokemonNaPokedex.name !== removePokemon.data?.name)
+    setArrayPokedex(novoArrayPokedex)
+    console.log('AQUI', novoArrayPokedex)
+    localStorage.setItem("pokedex", JSON.stringify(novoArrayPokedex))
+  }
 
   const botaoHeader = () => {
 
@@ -39,24 +58,24 @@ const Header = () => {
               <img src={NomePokemon} alt="marca pokemon"></img>
             </div>
             <div className='vazia'>
-              
+
             </div>
           </div>
         )
-        case "/detalhes/":
-          return (
-            <div className='todo-header'>
-              <div className='botao'>
-                <a onClick={() => vaiParaHome(navigate)}><h2>Todos os Pokemons</h2></a>
-              </div>
-              <div className='imagem'>
-                <img src={NomePokemon} alt="marca pokemon"></img>
-              </div>
-              <div className='vazia'>
-                <button >Excluir da Pokedex</button>
-              </div>
+      case `/detalhes/${params.nomePokemon}`:
+        return (
+          <div className='todo-header'>
+            <div className='botao'>
+              <a onClick={() => vaiParaHome(navigate)}><h2>Todos os Pokemons</h2></a>
             </div>
-          )
+            <div className='imagem'>
+              <img src={NomePokemon} alt="marca pokemon"></img>
+            </div>
+            <div className='vazia'>
+              <button onClick={() => removeDaPokedex(props.detalhes)} >Excluir da Pokedex</button>
+            </div>
+          </div>
+        )
       default:
         return (
           <div className='botão'>
@@ -70,21 +89,7 @@ const Header = () => {
       {botaoHeader()}
     </HeaderStyle>
   )
-  // return (
-  //   <HeaderStyle>
-  //     <div className='todo-header'>
-  //       <div className='botão'>
-  //         <button onClick={()=>vaiParaPokedex(navigate)}><h1>Pokedex</h1></button>
-  //       </div>
-  //       <div className='nome-pokemon'>
-  //         <img src={NomePokemon} alt="marca pokemon"></img>
-  //       </div>
-  //       <div className='botão-detalhes'>
-  //         <button onClick={() => vaiParaDetalhes(navigate)}><h1>Detalhes</h1></button>
-  //       </div>
-  //     </div>
-  //   </HeaderStyle>
-  // )
+
 }
 
 export default Header

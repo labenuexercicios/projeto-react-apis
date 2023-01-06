@@ -4,12 +4,13 @@ import { GlobalStyle } from './GlobalStyle'
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { GlobalContext } from './Rotas/Context/GlobalContext'
-
+import { UsarModal } from './componentes/Modal'
 
 const App = () => {
   const [resposta, setResposta] = useState([])
   const [arrayPokedex, setArrayPokedex] = useState([])
-
+  const [ isOpen, setIsOpen] = useState(false)
+  const [isOpenDel, setIsOpenDel] =useState(false)
   useEffect(() => {
     todosPokemons()
   
@@ -23,7 +24,11 @@ const App = () => {
   }
 
   const context = {
-     resposta,
+    isOpenDel, 
+    setIsOpenDel,
+    isOpen, 
+    setIsOpen,
+    resposta,
     setResposta,
     todosPokemons,
     arrayPokedex,
@@ -34,6 +39,7 @@ const App = () => {
     <>
       <GlobalStyle />
       <GlobalContext.Provider value={context} >
+       < UsarModal/>
         <Rotas />
       </GlobalContext.Provider>
     </>

@@ -5,7 +5,6 @@ import PokeCardStyle from "./PokeCard.style"
 import { cores } from "../utilitarios/Cores"
 import { useContext } from 'react'
 import { GlobalContext } from '../Rotas/Context/GlobalContext'
-// import { json } from 'react-router-dom'
 import { vaiParaDetalhes } from '../Rotas/cordenation'
 import { useNavigate } from 'react-router-dom'
 import { ImgTipo } from '../utilitarios/Tipo'
@@ -14,7 +13,10 @@ import { useLocation } from 'react-router-dom'
 
 
 
+
 const Pokecard = (props) => {
+
+
   const { propsPokemon } = props
 
   const navigate = useNavigate()
@@ -30,6 +32,8 @@ const Pokecard = (props) => {
   const {
     arrayPokedex,
     setArrayPokedex,
+    setIsOpen,
+    setIsOpenDel
   } = context
 
   useEffect(() => {
@@ -57,10 +61,10 @@ const Pokecard = (props) => {
   const tipo = () => {
     if (tipoFuncionar && pokemon.types[1]) {
       return (
-        <>
+        <div className='tipo'>
           <img src={ImgTipo(pokemon.types[0].type.name)} />
           <img src={ImgTipo(pokemon.types[1].type.name)} />
-        </>
+        </div>
       )
     }
     return (
@@ -71,24 +75,25 @@ const Pokecard = (props) => {
 
   const adcPokedex = (pokeadd) => {
     const estaNaPokedex = arrayPokedex.find((pokemonNaPokedex) => pokemonNaPokedex.name === pokeadd.name)
-    console.log("entrou")
+
     if (!estaNaPokedex) {
       const novoArrayPokedex = [...arrayPokedex, pokeadd]
       setArrayPokedex(novoArrayPokedex)
-
+      setIsOpen(true)
       localStorage.setItem("pokedex", JSON.stringify(novoArrayPokedex))
     }
 
   }
   const removeDaPokedex = (removePokemon) => {
-    const novoArrayPokedex = arrayPokedex
-      .filter((pokemonNaPokedex) => pokemonNaPokedex.name !== removePokemon.name)
+    const novoArrayPokedex = arrayPokedex.filter((pokemonNaPokedex) => pokemonNaPokedex.name !== removePokemon.name)
     setArrayPokedex(novoArrayPokedex)
-
+    console.log('--->',novoArrayPokedex)
+    setIsOpenDel(true)
+    localStorage.setItem("pokedex", JSON.stringify(novoArrayPokedex))
   }
 
-  return (
 
+  return (
 
     <PokeCardStyle color={cores(cor)}>
       <div className='lado-esquerdo'>
@@ -127,14 +132,7 @@ const Pokecard = (props) => {
           }
         </div>
       </div>
-      {/* <div>
-        {location.name === "/" ? (
-          <button onClick={() => adcPokedex(propsPokemon)}>Capturar</button>)
-          :
-          (<button onClick={() => removeDaPokedex(propsPokemon)}>Excluir</button>)
-        }
-        <a onClick={() => vaiParaDetalhes(navigate, propsPokemon.name)}>Detalhes</a>
-      </div> */}
+
 
 
     </PokeCardStyle>

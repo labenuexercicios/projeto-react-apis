@@ -80,6 +80,8 @@ top: -52px;
     margin-left: 26px;
 }
 button{
+background-color: white;
+color:black;
 position:absolute;
 z-index:1;
 height: 38px;

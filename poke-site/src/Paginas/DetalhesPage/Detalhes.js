@@ -9,13 +9,13 @@ import { Text, Image, Stack, } from '@chakra-ui/react'
 import { Progress } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import pokeBola from "../../imagens/pokeBola.png"
+
+
 const Detalhes = () => {
 
   const params = useParams()
 
-  const [detalhes, setDetalhes] = useState([])
-
-
+  const [detalhes, setDetalhes] = useState({})
 
 
   useEffect(() => {
@@ -32,10 +32,11 @@ const Detalhes = () => {
         console.log(err)
       })
   }
-  console.log(detalhes)
+
+
   return (
     <ChakraProvider>
-      <Header />
+      <Header detalhes={detalhes} />
       <DetalhesStyle color={() => cores(detalhes.data?.types[0].type.name)}>
         <div className='margem-total'>
           <h1>Detalhes</h1>
@@ -63,96 +64,39 @@ const Detalhes = () => {
                 <Text fontSize={'24px'} marginTop={'18px'} marginBottom={'24px'} fontWeight={'700'} fontFamily={'Inter'}>
                   Base Stats</Text>
 
-                <div className='box-individual'>
-                  <span> {detalhes.data?.stats[0].stat.name}:</span>
-                  <span>{detalhes.data?.stats[0].base_stat}</span>
+                {detalhes.data?.stats.map((valorStat) => {
+                  return (<div className='box-individual'>
+                    <span> {valorStat.stat.name}:</span>
+                    <span>{valorStat.base_stat}</span>
 
-                  <Progress
-                    spacing='10px'
-                    size='md'
-                    borderRadius="8px"
-                    bg='white'
-                    // colorScheme={'value' < 50 ? 'orange' : 'value' < 80 ? 'yellow' : 'green'}
-                    width={'24vw'}
-                    value={detalhes.data?.stats[0].base_stat}
-                  />
-                </div>
-                <div className='box-individual'>
-                  <span >{detalhes.data?.stats[1].stat.name}:</span>
-                  <span>{detalhes.data?.stats[1].base_stat}</span>
-                  <Progress
-                    spacing='10px'
-                    size='md'
-                    borderRadius="8px"
-                    bg='white'
-                    width={'24vw'}
-                    colorScheme={'value' < 50 ? 'orange' : 'value' < 80 ? 'yellow' : 'green'}
-                    value={detalhes.data?.stats[1].base_stat}
-                  />
-                </div>
-                <div className='box-individual'>
-                  <span >{detalhes.data?.stats[2].stat.name}:</span>
-                  <span>{detalhes.data?.stats[2].base_stat}</span>
-                  <Progress spacing='10px'
-                    size='md'
-                    borderRadius="8px"
-                    bg='white'
-                    width={'24vw'}
-                    colorScheme={'value' < 50 ? 'orange' : 'value' < 80 ? 'yellow' : 'green'}
-                    value={detalhes.data?.stats[2].base_stat}
-                  />
-                </div>
-                <div className='box-individual'>
-                  <span >{detalhes.data?.stats[3].stat.name}:</span>
-                  <span>{detalhes.data?.stats[3].base_stat}</span>
-                  <Progress spacing='10px'
-                    size='md'
-                    borderRadius="8px"
-                    bg='white'
-                    width={'24vw'}
-                    colorScheme={'value' < 50 ? 'orange' : 'value' < 80 ? 'yellow' : 'green'}
-                    value={detalhes.data?.stats[3].base_stat}
-                  />
-                </div>
-                <div className='box-individual'>
-                  <span >{detalhes.data?.stats[4].stat.name}:</span>
-                  <span>{detalhes.data?.stats[4].base_stat}</span>
-                  <Progress spacing='10px'
-                    size='md'
-                    borderRadius="8px"
-                    bg='white'
-                    width={'24vw'}
-                    colorScheme={'value' < 50 ? 'orange' : 'value' < 80 ? 'yellow' : 'green'}
-                    value={detalhes.data?.stats[4].base_stat}
-                  />
-                </div>
-                <div className='box-individual'>
+                    <Progress
+                      spacing='10px'
+                      size='md'
+                      borderRadius="8px"
+                      bg='white'
+                      colorScheme={valorStat.base_stat < 50 ? 'orange' : valorStat.base_stat < 80 ? 'yellow' : 'green'}
+                      width={'24vw'}
+                      value={valorStat.base_stat}
 
-                  <span >{detalhes.data?.stats[5].stat.name}:</span>
-                  <span>{detalhes.data?.stats[5].base_stat}</span>
-                  <Progress spacing='10px'
-                    size='md'
-                    borderRadius="8px"
-                    bg='white'
-                    width={'24vw'}
-                    colorScheme={'value' < 50 ? 'orange' : 'value' < 80 ? 'yellow' : 'green'}
-                    value={detalhes.data?.stats[5].base_stat} />
-                </div>
+                    />
+                  </div>
+
+                  )
+                })}
                 <div className='total'>
-                <p>Total: </p><span>{detalhes.data?.stats[0].base_stat +
-                  detalhes.data?.stats[1].base_stat +
-                  detalhes.data?.stats[2].base_stat +
-                  detalhes.data?.stats[3].base_stat +
-                  detalhes.data?.stats[4].base_stat +
-                  detalhes.data?.stats[5].base_stat}
-                </span>
-                </div>
+                  <p>Total: </p><span> {detalhes.data?.stats.reduce((acc,valor)=>{
+                    return acc + valor.base_stat
+                  }, 0)}
+                    
+                  </span>
+                </div> 
+
               </Stack>
 
             </div>
             <div className='componente-final'>
               <div className='pokebola'>
-                  <img src={pokeBola} alt='pokebola'></img>
+                <img src={pokeBola} alt='pokebola'></img>
               </div>
 
               <div >
