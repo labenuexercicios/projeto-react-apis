@@ -2,15 +2,14 @@ import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { goToDetails } from "../../routes/coordinator";
-import { 
-  MainCard, 
-  DetailsLink, 
-  ImageTypes, 
-  PokeImage, 
-  DeletePokemon, 
-  CatchPokemon,
-  Cards , 
-  Loading  } from "./styleCard";
+import { MainCard } from "./styleCard"
+import { DetailsLink } from "./styleCard"
+import { ImageTypes } from "./styleCard"
+import { PokeImage } from "./styleCard"
+import { CatchPokemon } from "./styleCard"
+import { Cards } from "./styleCard"
+import { DeletePokemon } from "./styleCard"
+import { Loading } from "./styleCard"
 import bug from "../../assets/bug.svg"
 import dark from "../../assets/dark.svg"
 import dragon from "../../assets/dragon.svg"
