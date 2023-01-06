@@ -185,7 +185,7 @@ function PokemonDetailPage(props) {
                     <div className="stats-name">
                     <h3>Total</h3>
                     </div>
-                    <h3>{ pokemon.stats && pokemon.stats.reduce((previous,current)=> previous + current.base_stat,0)}</h3>
+                    <h3 style={{fontWeight: 'bold'}} >{ pokemon.stats && pokemon.stats.reduce((previous,current)=> previous + current.base_stat,0)}</h3>
                   </div>                  
                 </div>
 
@@ -208,17 +208,12 @@ function PokemonDetailPage(props) {
                   </div>
                 </div>
                 <div className="moves-pokemon">
-                  <h2 className="h2-style"> 
-                  
-                      {
-                        pokemon.moves &&
-                        pokemon.moves.slice(0,7).map((move) => {
-                          return <div key={pokemon.id + Math.random()}>{nameFormatter(move)}</div>
-                        })
-                      }
-                    </h2>
-                
-
+                    {
+                      pokemon.moves &&
+                      pokemon.moves.slice(0,7).map((move) => {
+                        return <div className="move-item" key={pokemon.id + Math.random()}>{nameFormatter(move)}</div>
+                      })
+                    }
                 </div>
               </div>
             </div>

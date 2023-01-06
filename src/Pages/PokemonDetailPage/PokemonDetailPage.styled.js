@@ -26,6 +26,16 @@ export const PokemonDetailPageContainer = styled.div`
         font-weight: bold;
     }
     
+    .move-item{
+        font-size: 15px;
+        background-color: #edebeb;
+        width: fit-content;
+        padding: 10px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        border: 1px dashed gray;
+    }
+
     .pokemon-nome{
         font-size: 42px;
         font-weight: bold;
