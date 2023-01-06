@@ -87,7 +87,7 @@ const Pokecard = (props) => {
   const removeDaPokedex = (removePokemon) => {
     const novoArrayPokedex = arrayPokedex.filter((pokemonNaPokedex) => pokemonNaPokedex.name !== removePokemon.name)
     setArrayPokedex(novoArrayPokedex)
-    console.log('--->',novoArrayPokedex)
+   
     setIsOpenDel(true)
     localStorage.setItem("pokedex", JSON.stringify(novoArrayPokedex))
   }
