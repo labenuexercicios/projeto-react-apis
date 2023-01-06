@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { goToDetailsPage } from "../../routes/coordinator";
 import { TypesContainer, Container, CatchButton, PokemonNumber, PokemonName, Pokeball, Pokemon, ExtButton,PokemonType } from "./styled";
 import pokeball from '../../assets/pngwing 2.png'
-import {getTypes} from '../../utils/ReturnPokemonType'
+import {getColors} from '../../utils/ReturnCardColor'
 
 function Card(props) {
   const { pokemonUrl, addToPokedex, removeFromPokedex, } = props;
@@ -34,11 +34,12 @@ function Card(props) {
 
   return (
     <Container >
+      <Pokemon src={pokemon.sprites?.front_default} alt={pokemon.name} />
+      <Pokeball src={pokeball} alt="pokeball" />
+     
       <div>
       <PokemonNumber>{pokemon.id}</PokemonNumber>
       <PokemonName>{pokemon.name}</PokemonName>
-     
-      <Pokemon src={pokemon.sprites?.front_default} alt={pokemon.name} />
         {location.pathname === "/" ? (
           <CatchButton onClick={() => addToPokedex(pokemon)}>
             Capturar!
@@ -48,14 +49,10 @@ function Card(props) {
             Excluir
           </ExtButton>
         )}
-        <TypesContainer>
-           
-          </TypesContainer>
         <p typeof="submit" onClick={() => goToDetailsPage(navigate, pokemon.name)}>
           Ver detalhes
         </p>
       </div>
-      <Pokeball src={pokeball} alt="pokeball" />
     </Container>
   );
 }

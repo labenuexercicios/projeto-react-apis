@@ -32,6 +32,7 @@ function Header() {
            Todos Pokémons
         </p>
         </P>
+       
           
             <PokemonLogo src={`${url}`} alt="" />
           

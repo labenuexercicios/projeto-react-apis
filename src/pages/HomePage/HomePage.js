@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import styled, { createGlobalStyle } from "styled-components";
 import { Container } from "./styled";
+import { getColors } from "../../utils/ReturnCardColor";
 
 function HomePage() {
   const context = useContext(GlobalContext);
@@ -43,6 +44,7 @@ function HomePage() {
       <section>
         {filteredPokelist().map((pokemon) => (
           <Card
+         
             key={pokemon.url}
             pokemonUrl={pokemon.url}
             addToPokedex={addToPokedex}

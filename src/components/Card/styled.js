@@ -3,15 +3,14 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 16px;
   min-height: 200px;
-  max-height: 400px;
-  min-width: 300px;
-  max-width: 400px;
+  min-width: 350px;
   background-color: black;
   border-radius: 12px;
   display: flex;
   position: relative;
   margin: 50px;
   color: #ffffff;
+  z-index: 0;
 `;
 
 export const CatchButton = styled.button`
@@ -27,12 +26,13 @@ export const CatchButton = styled.button`
   border: none;
   cursor: pointer;
   position: relative;
-  bottom: -10vh;
+  top: 85px;
   right: 0vh;
   left: 27vh;
   z-index: 2;
   color: #000;
   `;
+
   export const ExtButton = styled.button`
   display: flex;
   flex-direction: row;
@@ -46,50 +46,51 @@ export const CatchButton = styled.button`
   border: none;
   cursor: pointer;
   position: relative;
-  bottom: -100px;
+  top: 85px;
   right: 0vh;
-  left: 35vh;
-  z-index: 2;
+  left: 27vh;
   color: white;
   background: red;
+  z-index: 2;
   `;
   
 export const PokemonNumber = styled.p`
 font-family: "Inter", sans-serif;
-font-size: 15px;
+font-size: 20px;
 font-weight: 600;
 text-align: left;
+
 `;
 export const PokemonName = styled.h1`
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 0em;
   text-align: left;
-  margin-bottom: 10px;
+ 
 `;
 
 export const Pokeball = styled.img`
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 30vh;
-  width: 10vw;
-  height: 30vh;
+  margin-left: 20vh;
+  width: 15vw;
+  height: 25vh;
+  top: 5vh;
+ 
 `;
 
 export const Pokemon = styled.img`
 width: 193px;
 height: 193px;
 position: absolute;
-top: -1vw;
+bottom: 35px;
 left: 25vh;
 z-index: 1;
 `
 
 
 export const PokemonType = styled.img`
-  max-width: 100%;
-  height: 100%;
+  max-width: 100px;
+  height: 100px;
   border-radius: 8px;
   overflow: hidden;
   border: 1px dashed #ffffff;

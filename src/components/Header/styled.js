@@ -4,11 +4,7 @@ export const P = styled.div`
 display: grid;
 flex-direction: row;
 justify-content: center;
-min-height: 15vh;
-min-height: 25vh;
-min-width: 15vw;
-max-width: 20vw;
-right: 30%;
+right: 30vw;
 bottom: 0;
 position: relative;
 `;
@@ -16,7 +12,7 @@ position: relative;
 export const Container = styled.header`
 position: relative;
 height: 100px;
-width: 100%;
+width: 1200px;
 font-size: 24px;
 font-weight: 700;
 
@@ -29,16 +25,12 @@ display: grid;
 flex-direction: row;
 justify-content: center;
 min-height: 15vh;
-max-height: 20vh;
+max-height: 25vh;
 min-width: 15vw;
-max-width: 20vw;
-
-position: relative;
+max-width: 25vw;
+position: absolute;
+left: 45%;
 `;
-
-
-
-
 
 export const Button = styled.button`
 font-size: 17px;
@@ -55,7 +47,6 @@ border: none;
 cursor: pointer;
 position: relative;
 bottom: 0;
-left: 49%;
-
+left: 55%;
 color: white;
 `;

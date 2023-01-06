@@ -13,7 +13,7 @@ bottom: 0px;
 position: relative;
 `;
 
-export const H = styled.h1`
+export const H = styled.div`
 position: relative;
 min-height: 100px;
 min-width: 100px;
@@ -29,7 +29,7 @@ export const Container = styled.div`
   section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
+    grid-gap: 1px;
     background: grey;
   }
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const P = styled.p`
+export const P = styled.div`
 display: grid;
 flex-direction: row;
 justify-content: center;
@@ -14,10 +14,9 @@ bottom: 0px;
 position: relative;
 `;
 
-export const H = styled.h1`
+export const H = styled.div`
 position: relative;
 min-height: 100px;
-min-width: 1320px;
 font-size: 30px;
 font-weight: 700;
 background: grey;

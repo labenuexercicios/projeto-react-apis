@@ -22,7 +22,6 @@ export default function App() {
       console.log(error.response);
     }
   };
-
   const addToPokedex = (pokemonToAdd) => {
     const isAlreadyOnPokedex = pokedex.find(
       (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
@@ -40,6 +39,7 @@ export default function App() {
     );
 
     setPokedex(newPokedex);
+  
   };
 
   const context = {
@@ -47,7 +47,6 @@ export default function App() {
     addToPokedex: addToPokedex,
     pokedex: pokedex,
     removeFromPokedex: removeFromPokedex,
-    
     
   };
 
