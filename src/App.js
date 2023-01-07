@@ -21,12 +21,12 @@ const App = () => {
       setPokelist(response.data.results)
       console.log(pokelist)
 
-
     } catch (error) {
       console.log(error)
 
     }
   }
+  
   const addToPokedex = (pokemonToAdd) => {
     const isAlreadyOnPokedex = pokedex.find((pokemonInPokedex) => pokemonInPokedex.data?.name === pokemonToAdd.data?.name);
 
@@ -43,8 +43,6 @@ const App = () => {
     let pokemonRemove = pokelist.filter((pokeRemove) => {
       if (pokeRemove.name !== remove.data?.name) {
         copyPokelist.push(pokeRemove)
-        console.log(pokeRemove.name)
-        console.log(remove.data?.name)
       }
     })
     setPokelist(copyPokelist)
