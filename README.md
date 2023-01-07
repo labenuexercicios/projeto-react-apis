@@ -9,7 +9,7 @@
 ## Telas
 ### Pokémon List
 ![Página Inicial](https://raw.githubusercontent.com/RafaellaEstecio/projeto-react-apis/main/public/pokemonlist.png)
-![Página Pokédex](https://raw.githubusercontent.com/RafaellaEstecio/projeto-react-apis/main/public/pokedex.png)
+![Página Pokédex](https://raw.githubusercontent.com/RafaellaEstecio/projeto-react-apis/main/public/)
 ![Página Detalhes](https://raw.githubusercontent.com/RafaellaEstecio/projeto-react-apis/main/public/pokemondetalhes.png)
 
 ## Demonstração
