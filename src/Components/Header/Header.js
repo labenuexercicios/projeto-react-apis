@@ -2,7 +2,7 @@ import { HeaderContainer } from "./HeaderStyle";
 import imgLogo from "../../assets/img/logoimg.png";
 import ClickMe from "../Chakra/ClickMe";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { isDuplicated, PAGES, remove } from "../../utils";
+import { isDuplicated, PAGES, remove, add } from "../../utils";
 import imgSeta from "../../assets/img/eva_arrow-ios-back-outline.png"
 import CustomModal from "../Chakra/CustomModal";
 import { useDisclosure } from "@chakra-ui/react";
@@ -13,6 +13,7 @@ function Header(props){
     const location = useLocation();
     const navigate = useNavigate();
     const { isOpen: isRemoveOpen, onOpen: onRemoveOpen, onClose: onRemoveClose } = useDisclosure();
+    const { isOpen: isAddOpen, onOpen: onAddOpen, onClose: onAddClose } = useDisclosure();
 
     const goToPokedex = () => {
       navigate("/pokedex")
@@ -22,8 +23,11 @@ function Header(props){
     }
 
     const isRemoveValid = (id) => {
-        console.log(isDuplicated(id))
         return (page && page === PAGES.POKEMON_DETAILS) && isDuplicated(id);
+    }
+
+    const isAddValid = (id) => {
+        return (page && page === PAGES.POKEMON_DETAILS) && !isDuplicated(id);
     }
 
     function removePokemon(id){
@@ -33,6 +37,20 @@ function Header(props){
             onRemoveClose();
             goToPokedex();
         },2500);
+    }
+
+    function addPokemon(id){
+        console.log('ENTREI PRA ADICIONAR: '+id)
+        if(!isDuplicated(id)){
+            console.log('É VALIDO: '+id)
+            console.log('OBJ: ',JSON.parse(localStorage.getItem('pokemon')))
+            add(JSON.parse(localStorage.getItem('pokemon')));
+            onAddOpen();
+            setTimeout(()=>{
+                onAddClose();
+                goToPokedex();
+            },2500);
+        }
     }
     
 
@@ -46,6 +64,13 @@ function Header(props){
                 onClose={onRemoveClose}
                 title={'Oh, no!'}
                 subtitle={'O Pokémon foi removido da sua Pokédex'}
+            />
+            <CustomModal 
+                isOpen={isAddOpen}
+                onOpen={onAddOpen}
+                onClose={onAddClose}
+                title={'Gotcha!'}
+                subtitle={'O Pokémon foi adicionado a sua Pokédex'}
             />
             <div className="navegar-home">
            
@@ -63,7 +88,11 @@ function Header(props){
             }
 
             {
-                isRemoveValid(id) && <ClickMe className="button-excluir"onClick={()=>{ removePokemon(id) }} text={'Excluir da Pokédex'}/>
+                isRemoveValid(id) && <ClickMe className="button-excluir" onClick={()=>{ removePokemon(id) }} text={'Excluir da Pokédex'}/>
+            }
+
+            {
+                isAddValid(id) && <ClickMe onClick={()=>{ addPokemon(id) }} text={'Capturar'}/>
             }
                 
             </div>

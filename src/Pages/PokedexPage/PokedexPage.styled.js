@@ -2,21 +2,24 @@ import styled from "styled-components";
 
 export const PokedexPageContainer = styled.div`
 
-    background-color:#5E5E5E;
-    color:white;
-    padding: 40px;
-    display:flex;
+    background-color: #5E5E5E;
+    color: white;
     flex-wrap: wrap;
-    padding-left:60px;
-    gap:20px;
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
     
+    h1{
+        font-size: 35px;
+        font-weight: bold;
+        padding: 40px 40px 0 40px;
+    }
+
     .container-card{
-        width: 2000px;
         display: flex;
         flex-wrap: wrap;
-        gap: 30px;
-        padding-left:40px; 
+        gap: 10px;
+        background-color: #5E5E5E;
+    
     }
 
    .h1-pokedex{

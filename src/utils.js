@@ -30,9 +30,15 @@ export function nameFormatter(name){
 export const isDuplicated = (id)=>{
     let pokedex = getPokedexFromStorage();
     return pokedex.filter((value)=> value.id === Number(id)).length > 0
-  }
+}
 
 export function remove(id){
     let pokedex = getPokedexFromStorage().filter((p) => p.id !== Number(id));
     updatePokedex(pokedex);
-  }
+}
+
+export function add(pokemon){
+    let pokedex = getPokedexFromStorage();
+    pokedex.push(pokemon);
+    updatePokedex(pokedex);
+}

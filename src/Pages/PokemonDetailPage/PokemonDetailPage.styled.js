@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const PokemonDetailPageContainer = styled.div`
 
-    background-color:#5E5E5E;
-    color:white;
+    background-color: #5E5E5E;
+    color: white;
     padding: 20px;
     padding-left:20px;
     pointer-events: none  !important;
@@ -40,17 +40,11 @@ export const PokemonDetailPageContainer = styled.div`
         font-size: 42px;
         font-weight: bold;
     }
-   
-    .detail-page{
-        width: 1300px;
-        height: 900px;
-    }
-    
+       
     .green-div-page{
-        width: 1600px;
-        height: 680px;
+        height: 630px;
         background-color: #729F92;
-        padding: 35px;
+        padding: 25px;
         border-radius: 12px;
         position: relative;
     }
@@ -67,26 +61,29 @@ export const PokemonDetailPageContainer = styled.div`
         position: absolute;
     }
     .pokemon-front-back{
-        width: 350px;
-        height: 611px;
+        width: 250px;
+        height: 590px;
         margin-left:15px;
+        
+        
     }
 
     .img-pokemon-front{
-        width: 350px;
-        height: 285px;
+        width: 250px;
+        height: 274px;
         background-color: white;
         border-radius: 12px;
         display: flex;
         justify-content: center;
         align-items: center;
+        /* border: 15px solid red; */
     }
 
     .img-pokemon-back{
-        width: 350px;
-        height: 285px;
+        width: 250px;
+        height: 274px;
         background-color: white;
-        margin-top: 35px;
+        margin-top: 30px;
         border-radius: 12px;
         display: flex;
         justify-content: center;
@@ -94,20 +91,20 @@ export const PokemonDetailPageContainer = styled.div`
     }
     
     .base-stats-pokemon{
-        width: 450px;
-        height: 611px;
-        margin-left:50px;
+        width: 320px;
+        height: 580px;
+        margin-left:25px;
         background-color: white;
         border-radius: 12px;
         color: black;
-        padding:20px;
+        padding:10px;
     }
 
     .type-moves-pokemon{
         width: 287px;
         height: 611px;
-        margin-left:30px;
-        margin-left:50px;
+        margin-left:25px;
+        
     }
 
     .name-type-pokemon{
@@ -121,21 +118,21 @@ export const PokemonDetailPageContainer = styled.div`
     }
     
     .moves-pokemon{
-        width: 350px;
-        height: 423px;
+        width: 320px;
+        height: 395px;
         margin-top: 35px;
         background-color: white;
         border-radius: 12px;
-        color:black;
-        padding:20px;
+        color: black;
+        padding: 20px;
     }
 
     .img-pokemon-detail{
         width: 290px;
         position: absolute;
-        z-index:999;
-        margin-left:1300px;
-        margin-bottom: 900px;
+        z-index: 999;
+        top: 220px;
+        right: 35px;
     }
 
     .stats-name{
@@ -159,5 +156,9 @@ export const PokemonDetailPageContainer = styled.div`
         }
     }
 
+    .fundo-div{
+        padding-top:35px;
+        
+    }
 
 `

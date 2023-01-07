@@ -6,8 +6,8 @@ export const PokemonCardContainer = styled.div`
     color:#5E5E5E;
     
     .div-card-externo{
-        width: 450px;
-        height: 285px;
+        width: 395px;
+        height: 263px;
         position: relative;
         margin: 0 20px 20px 20px;
     }

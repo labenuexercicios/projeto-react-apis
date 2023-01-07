@@ -33,13 +33,13 @@ function PokedexPage() {
       
       <PokedexPageContainer>
 
-      {/* <CustomModal 
+      <CustomModal 
           isOpen={isRemoveOpen}
           onOpen={onRemoveOpen}
           onClose={onRemoveClose}
           title={'Oh, no!'}
           subtitle={'O Pokémon foi removido da sua Pokédex'}
-        /> */}
+        />
       <h1 className="h1-pokedex">Meus Pokémons</h1>
       
       <div className="container-card">

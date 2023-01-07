@@ -35,33 +35,35 @@ function PokemonDetailPage(props) {
 
   const [pokemon, setPokemon] = useState({});
 
-  async function getPokemonDetails(pokemonId){
+  async function getPokemonDetails(pokemonId) {
     axios.create({
       baseURL: "https://pokeapi.co/api/v2/"
     }).get(`pokemon/${pokemonId}`)
-    .then((resposta) => {
-      let moves = [...resposta.data.moves]
-      let stats = [...resposta.data.stats]
-      let tipos = [...resposta.data.types];
-      setPokemon({
-              name: resposta.data.name,
-              img: resposta.data.sprites.other['official-artwork'].front_default,
-              id: resposta.data.id,
-              types: tipos.map((value,index)=> { return value.type.name}),
-              stats: stats.map((value) =>{ return {name: value.stat.name, base_stat: value.base_stat}}),
-              moves: moves.map((value)=> value.move.name),
-              img_front: resposta.data.sprites.front_default,
-              img_back: resposta.data.sprites.back_default,
-            })
-    }
+      .then((resposta) => {
+        let moves = [...resposta.data.moves]
+        let stats = [...resposta.data.stats]
+        let tipos = [...resposta.data.types];
+        let pokemonMapeado = {
+          name: resposta.data.name,
+          img: resposta.data.sprites.other['official-artwork'].front_default,
+          id: resposta.data.id,
+          types: tipos.map((value, index) => { return value.type.name }),
+          stats: stats.map((value) => { return { name: value.stat.name, base_stat: value.base_stat } }),
+          moves: moves.map((value) => value.move.name),
+          img_front: resposta.data.sprites.front_default,
+          img_back: resposta.data.sprites.back_default,
+        }
+        setPokemon(pokemonMapeado)
+        localStorage.setItem('pokemon',JSON.stringify(pokemonMapeado));
+      }
 
-    )
+      )
   }
 
 
-    useEffect(() => {
-      getPokemonDetails(id)
-    },[])
+  useEffect(() => {
+    getPokemonDetails(id)
+  }, [])
 
 
   function corFundo(types) {
@@ -148,13 +150,17 @@ function PokemonDetailPage(props) {
   return (
     <>
       <Header page={PAGES.POKEMON_DETAILS}></Header>
+
       <PokemonDetailPageContainer>
 
-        <div className="detail-page">
+        <h1 className="h1-detail">Detalhes</h1>
+        <div className="fundo-div">
           <img className="img-pokemon-detail" src={pokemon.img} alt="Pokemon perfil" />
-          <h1 className="h1-detail">Detalhes</h1>
+
           <div className="green-div-page">
+
             <img className="pokebol-symbol" width={675} src={pokebolSymbol} alt={props.nome}></img>
+
             <div className="div-test">
               <div className="pokemon-front-back">
                 <div className="img-pokemon-front">
@@ -169,24 +175,24 @@ function PokemonDetailPage(props) {
 
                 <div className="stats">
                   {
-                    pokemon.stats && 
-                    pokemon.stats.map((stat) =>{
+                    pokemon.stats &&
+                    pokemon.stats.map((stat) => {
                       return <div key={stat.base_stat + Math.random()} className="stats-value">
-                      <div className="stats-name">
-                        <h3>{nameFormatter(stat.name)}</h3>
+                        <div className="stats-name">
+                          <h3>{nameFormatter(stat.name)}</h3>
+                        </div>
+                        <h3>{stat.base_stat}</h3>
+                        <CustomProgressBar progress={stat.base_stat} />
                       </div>
-                      <h3>{stat.base_stat}</h3>
-                      <CustomProgressBar progress={stat.base_stat}/>
-                    </div>
                     })
                   }
 
                   <div className="stats-value">
                     <div className="stats-name">
-                    <h3>Total</h3>
+                      <h3>Total</h3>
                     </div>
-                    <h3 style={{fontWeight: 'bold'}} >{ pokemon.stats && pokemon.stats.reduce((previous,current)=> previous + current.base_stat,0)}</h3>
-                  </div>                  
+                    <h3 style={{ fontWeight: 'bold' }} >{pokemon.stats && pokemon.stats.reduce((previous, current) => previous + current.base_stat, 0)}</h3>
+                  </div>
                 </div>
 
               </div>
@@ -208,19 +214,17 @@ function PokemonDetailPage(props) {
                   </div>
                 </div>
                 <div className="moves-pokemon">
-                    {
-                      pokemon.moves &&
-                      pokemon.moves.slice(0,7).map((move) => {
-                        return <div className="move-item" key={pokemon.id + Math.random()}>{nameFormatter(move)}</div>
-                      })
-                    }
+                  {
+                    pokemon.moves &&
+                    pokemon.moves.slice(0, 7).map((move) => {
+                      return <div className="move-item" key={pokemon.id + Math.random()}>{nameFormatter(move)}</div>
+                    })
+                  }
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
 
       </PokemonDetailPageContainer>
     </>
