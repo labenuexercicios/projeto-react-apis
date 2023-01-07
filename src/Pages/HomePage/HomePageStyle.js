@@ -6,7 +6,6 @@ export const Container = styled.div`
 `;
 
 export const Selection = styled.div`
-
 font-family: 'Poppins';
 font-weight: 700;
 font-style: normal;

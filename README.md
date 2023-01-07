@@ -32,11 +32,11 @@ Os conteúdos principais  a serem estudados são:
 - **Página Pokédex**
 	- [x] Renderizar a lista de pokémons adicionados na pokedex;
 	- [x] Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
-	- [ ] Header deve ter um botão para voltar para a Home
-	- [ ] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
+	- [x] Header deve ter um botão para voltar para a Home
+	- [x] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
 - **Página de Detalhes**
-	- [ ] Mostrar os detalhes do Pokemon selecionado, com informações descritas
-	- [ ] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
+	- [x] Mostrar os detalhes do Pokemon selecionado, com informações descritas
+	- [x] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
 - [ ] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
 
 

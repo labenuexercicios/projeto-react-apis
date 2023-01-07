@@ -19,7 +19,7 @@ const DetailsPage = () => {
 
   const getPokemon = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/${params.bananinha}`)
+      const response = await axios.get(`${BASE_URL}/${params.pokemonName}`)
       setPokemonDetails(response)
       console.log(response)
     } catch (error) {
@@ -65,21 +65,26 @@ const DetailsPage = () => {
             <img className='img-back' src={pokemonDetails.data?.sprites?.back_default}></img>
 
             <Stats>
-
               <div className='base-stats'>Base stats</div>
               {pokemonDetails.data?.stats?.map((stats) => {
                 { totalValue += stats.base_stat }
 
                 return (
-                  <div>
+                  <div className='organization'>
                     <div className='stats-names'>{stats.stat.name.charAt(0).toUpperCase() + stats.stat.name.slice(1)}</div>
                     <div className='stats-value'>{stats.base_stat}</div>
-                    <Progress colorScheme='green' size='md' value={stats.base_stat} />
+                    <div className='progress'>
+                      <Progress width={'120px'} colorScheme={stats.base_stat < 50 ? 'orange' : stats.base_stat < 80 ? 'yellow'
+                        : 'green'} size='md' value={stats.base_stat}
+                      />
+                    </div>
                   </div>
                 )
               })}
-              <div>{totalValue}</div>
-
+              <div className='total-value'>
+                <text>Total:</text>
+                <text>{totalValue}</text>
+              </div>
             </Stats>
 
             <Moves>

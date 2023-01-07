@@ -61,6 +61,31 @@ border-radius: 12px;
  font-weight: 900;
  font-family: 'Inter';
 }
+
+.organization{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    .stats-names{
+        width: 130px ;
+        padding: 5px;
+        margin-left: 5px;
+    }
+    .stats-value{
+        padding: 5px;
+        width: 50px;
+    }
+
+    .progress {
+        padding: 10px;
+    }
+}
+.total-value{
+    display: flex;
+    gap: 101px;
+    margin-left: 10px;
+}
 `
 export const Moves = styled.div`
 
