@@ -7,10 +7,14 @@
  
 
 ## Telas
+### Pokémon List
+![Página Inicial](https://raw.githubusercontent.com/RafaellaEstecio/projeto-react-apis/main/public/pokemonlist.png)
+![Página Pokédex](https://raw.githubusercontent.com/RafaellaEstecio/projeto-react-apis/main/public/pokedex.png)
+![Página Detalhes](https://raw.githubusercontent.com/RafaellaEstecio/projeto-react-apis/main/public/pokemondetalhes.png)
 
 ## Demonstração
 
-[Live demo]
+[Live demo](https://pokedex.rafaella.surge.sh/)
 
 ## Utilizando o projeto
 
