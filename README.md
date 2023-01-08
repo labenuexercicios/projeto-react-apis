@@ -1,68 +1,72 @@
-# **Projeto React e API's**
-O Projeto React e APIs é um site de pokémons que possui três páginas: Home, Pokedex e Detalhes. O projeto está subdivido em temas de acordo com os conteúdos que estudado durante o Módulo 2 - Frontend.
+# Projeto React e API's
+![Pokedex](https://pluspng.com/img-png/pokemon-logo-png-pokemon-logo-text-png-1428-1390.png)
 
-Este projeto terá como fonte de dados para a sua criação a [Poke Api](https://pokeapi.co/ "Poke Api"), uma Api pública, muito usada para aplicações focadas em aprendizado de programação e também usada em cases de processos seletivos.
+O Projeto React e APIs é um site de pokémons que possui três páginas: Home, Pokedex e Detalhes.
 
-Os conteúdos principais  a serem estudados são:
+## Índice 
+- <a href ="#funcionalidades">Funcionalidades do Projeto</a>
+- <a href="#Layout">Layout</a>
+- <a href="#demonstraçao">Demonstração</a>
+- <a href="#rodar">Como rodar este Projeto?</a>
+- <a href="#tecnologias">Tecnologias Utilizadas</a>
+- <a href="#autoras">Pessoas Autoras</a>
+- <a href="#passos">Próximos Passos</a>
 
-- Integração de APIs
-- React Router
-- Design Systems
-- Estado Global
-
-## **Enunciado**
-É objetivo deste projeto criar um site com três páginas usando a Poke Api com as seguintes ferramentas:
-
-- React
-- React Router
-- Styled-components
-- React Context
-- Axios
-
-### **Requisitos**
-- **Gerais:**
-	- [ ] O site deve ter 3 páginas: Home, Pokedex e Detalhes;
-	- [ ] Projeto deve seguir o [design](https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?t=AEi3zEmWmarf1FbP-0 "design") proposto;
-	- [ ] O fluxo de trocas de páginas devem ser semelhante ao [fluxograma](https://www.figma.com/proto/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?page-id=0%3A1&node-id=2%3A2&viewport=358%2C197%2C0.27&scaling=scale-down&starting-point-node-id=2%3A2 "fluxograma");
-- **Página Home:**
-	- [ ]  Mostrar uma lista de Pokemons, contendo ao menos 20 Pokemons;
-	- [ ] Cada Pokemon será representado por um Card;
-	- [ ] Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
-	- [ ] Header dessa página terá um botão para acessar a página da Pokedex
-- **Página Pokédex**
-	- [ ] Renderizar a lista de pokémons adicionados na pokedex;
-	- [ ] Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
-	- [ ] Header deve ter um botão para voltar para a Home
-	- [ ] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
-- **Página de Detalhes**
-	- [ ] Mostrar os detalhes do Pokemon selecionado, com informações descritas
-	- [ ] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
-- [ ] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
+## Funcionalidades do Projeto
+- [x] Página Home
+- [x] Página Pokedéx
+- [x] Página de Detalhes
 
 
-### Instruções de entrega
+## Layout
 
-- Faça o fork desse repositório e realize o clone da sua cópia `seu-nome-de-usuario/projeto-intro-web`.
-   <details>
-   <summary>Quer uma dica?</summary>
-   <img src="https://firebasestorage.googleapis.com/v0/b/assets-conteudo.appspot.com/o/gerais%2Ffork.png?alt=media&token=7030e997-246a-41fe-a75f-2a2ced61e54d" alt="Como adicionar o projeto no repositório"/>
-   </details>
-- Crie os arquivos do projeto dentro deste repo;
-- Execute o fluxo de entrega do git. **Lembre-se de abrir os PRs para seu próprio repositório.**
-- Para isso, você precisará fazer o projeto utilizando **branches**. Evite fazer as alterações direto na branch ```main```
-    <details>
-       <summary>Dúvidas sobre o Git & Github?</summary>
-       <p>Adiciomos um vídeo explicando o <strong>processo de entrega</strong> [do fork ao pull request] no Material Assincrono da Aula de <a href="https://estudante.labenu.com.br/conteudos/tecnico/mod1/Git%20e%20Github">Git e Github</a>. Esse vídeo também exemplifica situações que podem acontecer durante o fluxo de utilização do Git.</p>
-    </details>
-- Faça o deploy do projeto. Pode ser ultilizado o surge, Github pages ou outra ferramenta que faça a disponibilização do seu site para acesso público;
-				
-	dica para usar o surge:
-	* Instalar surge (só 1a vez): `npm install -g surge`
-	* Buildar app React: `npm run build`
-	* Corrigir a nomeação do arquivo (por causa do router)
-		 `cp ./build/index.html ./build/200.html`
-	* Deployar com surge: `surge ./build`
-- Adicionar o link do deploy no readme do seu projeto/repositório:
+![Home](https://codaio.imgix.net/docs/uQBJ-J3TJr/blobs/bl-RJ_sX0DL4T/7455d10f2af0244c8db4147c0f0c653f62c192faf4afed7152b4d0533a6e5ae088eba120ee25841ffca075ff1e513a895ddb48dbd0f5bdd27b3c4881e6fcac916c17cab56ce9bccb046d12ad55b7cbd36a59f1883e41e6892f5c53a5a2f75bff0e14c846?auto=format%2Ccompress&fit=max&lossless=true)
+![Pokedex](https://codaio.imgix.net/docs/uQBJ-J3TJr/blobs/bl-lKHG4JTn8x/5b5507a2882f6b7ad884b45e3fbcfa5ecc05e93920efae0da33398bd575666d10bdcb3984721a17cc094c717f41dc61faf44a85269c017b9ba360b5c54276b0b7158d02db59f871021b5bf13a8187c0d60fb31f9424c8a9c7ff6b81f796242b43e4c7e09?auto=format%2Ccompress&fit=max&lossless=true)
+![Pagina de detalhes](https://codaio.imgix.net/docs/uQBJ-J3TJr/blobs/bl-sHPBx8AAtj/316d669cb444c5915f993498f7275669f3d01fa39600a1551ab2239b2f3b3ebfaef0e1522620099f9171d78da66dd77e48639f3e15ba678604cfd43721d11e5eda1eb0188a9170ebe9aa74b937a656be83a119b319b1a7be68a4acee57ed881368b18bd4?auto=format%2Ccompress&fit=max&lossless=true)
+
+## Demonstração
+
+[Link demostração](vagabond-increase.surge.sh)
+
+## Como rodar este projeto?
+
+```bash
+# Clone este repositório
+$ git clone Linkrepo
+
+# Acesse a pasta do projeto no seu terminal
+$ cd Pokedex
+
+# Instale as dependencias
+$ npm install
+
+# Execute a aplicação
+$ npm run start 
+
+# A aplicação será iniciada na porta 3000, acesse pelo navegador: http://localhost:3000
+```
+
+## Tecnologias utilizadas
+
+1. [Integração de APIs]()
+2. [React Router]()
+3. [Design System]()
+4. [Estado Global]()
+5. [Styled-components]()
+6. [React Context]()
+7. [Axios]()
+
+## Pessoas Autoras
+
+<img style= "hidth:200px" src = "" alt="Imagem do Desenvolvedor">
+
+[Linkedin](https://www.linkedin.com/in/alexandreshirotaresende/)
+
+## Proximos passos 
+
+- [ ] 
+- [ ] 
+- [ ]
 
 
-- Entregue o projeto no [Formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
+
