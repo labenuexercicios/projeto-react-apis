@@ -26,7 +26,7 @@ O Projeto React e APIs é um site de pokémons que possui três páginas: Home, 
 
 ## Demonstração
 
-[Link demostração]()
+[Link demostração](vagabond-increase.surge.sh)
 
 ## Como rodar este projeto?
 
@@ -60,7 +60,7 @@ $ npm run start
 
 <img style= "hidth:200px" src = "" alt="Imagem do Desenvolvedor">
 
-[Linkedin]()
+[Linkedin](https://www.linkedin.com/in/alexandreshirotaresende/)
 
 ## Proximos passos 
 
