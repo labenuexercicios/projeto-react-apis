@@ -6,6 +6,6 @@ axios
 styled components
 
 
-gitHub pages / 
+Link to access the project!
 
-https://mailsonandradecardoso.github.io/projeto-react-apis/
+projetoreactapismailsoncardoso.surge.sh
