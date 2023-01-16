@@ -8,16 +8,14 @@ const HomePage = () => {
   const context = useContext(UserContext);
   const { pokemon, isLoading } = context;
 
-  //console.log(pokemon.results.map());
-
   return (
     <div>
       <Header page={"home"} home={true} />
       <Container>
         Todos Pokémons
         <ContainerCards>
-          {pokemon.results?.map((pokemon) => (
-            <Card url={pokemon.url} />
+          {pokemon.results?.map((pokemon, index) => (
+            <Card url={pokemon.url} key={index} />
           ))}
         </ContainerCards>
       </Container>

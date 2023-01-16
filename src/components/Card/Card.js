@@ -1,6 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { CardItem, Id, Left, Name } from "./styled";
+import { getColors } from "./ReturnCardColor";
+import { getTypes } from "./ReturnTypes";
+import pokebal from "../../img/pokebal.png";
+import {
+  Capturar,
+  CardItem,
+  Details,
+  DetailsContent,
+  Id,
+  Left,
+  Name,
+  PokebalContent,
+  PokeImage,
+  Right,
+  Type,
+  TypeContent,
+} from "./styled";
 
 const Card = ({ url }) => {
   const [pokemon, setPokemon] = useState({});
@@ -22,12 +38,35 @@ const Card = ({ url }) => {
     }
   };
 
+  const cardColor = () => {
+    const pokemonTypes = pokemon.types;
+    const firstPokemonType = pokemonTypes ? pokemonTypes[0] : {};
+    const firstPokemonTypeName = firstPokemonType.type?.name;
+    return getColors(firstPokemonTypeName);
+  };
+
   return (
-    <CardItem>
+    <CardItem color={cardColor()}>
       <Left>
         <Id>#{pokemon.id}</Id>
         <Name>{pokemon.name}</Name>
+        <TypeContent>
+          {pokemon.types?.map((pokemonType, index) => {
+            const imageTypeLink = getTypes(pokemonType.type.name);
+            return <Type key={index} src={imageTypeLink} alt="" />;
+          })}
+        </TypeContent>
+        <DetailsContent>
+          <Details>Detalhes</Details>
+          <Capturar>Capturar!</Capturar>
+        </DetailsContent>
       </Left>
+      <Right>
+        <PokeImage
+          src={pokemon.sprites?.other["official-artwork"]["front_default"]}
+        />
+        <PokebalContent src={pokebal} />
+      </Right>
     </CardItem>
   );
 };
