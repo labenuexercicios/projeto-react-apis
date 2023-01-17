@@ -7,3 +7,7 @@ export const Body = styled.div`
     height: 100vh;
     width: 100%;
 `
+export const Main = styled.main`
+    display: flex;
+    flex-wrap: nowrap;
+`

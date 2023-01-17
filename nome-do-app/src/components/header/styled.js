@@ -36,10 +36,13 @@ export const ImagemTitle = styled.img`
 `
 
 export const StyledButton = styled.button`
-    height: 7vh;
-    width: 14vw;
+    height: 74px;
+    width: 287px;
     background-color:#33A4F5;
     color:white;
     font-size:1vw;
     text-transform:capitalize;
+    border-radius:8px;
+    padding: 4px, 10px, 4px, 10px;
+    border:none;
 `
