@@ -7,7 +7,9 @@ function Router(props) {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index path="/" element={<Desktop1 listPokemons={props.listPokemons} />} />
+                <Route index path="/" element={<Desktop1
+                    pokemons={props.pokemons} setPokemons={props.setPokemons}
+                />} />
                 <Route path="/Desktop2" element={<Desktop2 />} />
                 <Route path="/Desktop3" element={<Desktop3 />} />
             </Routes>

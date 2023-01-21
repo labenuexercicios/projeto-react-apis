@@ -45,4 +45,6 @@ export const StyledButton = styled.button`
     border-radius:8px;
     padding: 4px, 10px, 4px, 10px;
     border:none;
+    cursor: pointer;
+
 `
