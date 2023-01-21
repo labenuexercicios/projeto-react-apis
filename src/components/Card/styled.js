@@ -47,9 +47,10 @@ export const DetailsContent = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const Details = styled.div`
+export const Details = styled.a`
   text-decoration: underline;
   color: #ffffff;
+  cursor: pointer;
 `;
 export const Capturar = styled.button`
   width: 146px;

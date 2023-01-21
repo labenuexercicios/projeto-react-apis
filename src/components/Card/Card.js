@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { getColors } from "./ReturnCardColor";
-import { getTypes } from "./ReturnTypes";
+import { getColors } from "../../utils/ReturnCardColor";
+import { getTypes } from "../../utils/ReturnTypes";
 import pokebal from "../../img/pokebal.png";
+import { useNavigate } from "react-router-dom";
+import { goToPokemonDetails } from "../../routes/Coordinator";
 import {
   Capturar,
   CardItem,
@@ -21,6 +23,7 @@ import {
 const Card = ({ url }) => {
   const [pokemon, setPokemon] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPokemon();
@@ -57,7 +60,13 @@ const Card = ({ url }) => {
           })}
         </TypeContent>
         <DetailsContent>
-          <Details>Detalhes</Details>
+          <Details
+            onClick={() => {
+              goToPokemonDetails(navigate, pokemon.name);
+            }}
+          >
+            Detalhes
+          </Details>
           <Capturar>Capturar!</Capturar>
         </DetailsContent>
       </Left>
