@@ -1,23 +1,32 @@
 import React from 'react'
-import { DivButtons, DivButtonVoltar, DivLogo, ImagemTitle, StyledButton, StyledHeader } from './styled'
+import { ButtonBack, DivButtons, DivButtonVoltar, DivLogo, ImagemTitle, StyledButton, StyledHeader } from './styled'
 import Logo from "../../img/image1.png"
-import { useNavigate } from 'react-router-dom'
+import { notShowButton, showButton } from '../funcoes'
 
-const Header = () => {
-    const navigate = useNavigate()
 
-    const desktop2 = () => {
-        navigate("/Desktop2")
-    }
+const Header = (props) => {
+
+
+
     return (
         <StyledHeader>
             <DivButtonVoltar>
+                {props.showCart && (
+                    <div>
+                        <ButtonBack onClick={() => {
+                            notShowButton(props.setShowCart)
+                        }}>TODOS OS POKEMONS</ButtonBack>
+                    </div>
+                )}
             </DivButtonVoltar>
+
             <DivLogo>
                 <ImagemTitle src={Logo} alt="" />
             </DivLogo>
             <DivButtons>
-                <StyledButton onClick={() => { desktop2() }}>
+                <StyledButton onClick={() => {
+                    showButton(props.setShowCart)
+                }}>
                     pokedex
                 </StyledButton>
             </DivButtons>

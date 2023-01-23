@@ -1,24 +1,28 @@
 import React from 'react'
 import Header from '../../components/header'
-import Pokemos from '../../components/pokemons'
-import { Body, Main, SectionPokemons } from './styled'
+import SectionPokemons from '../../components/sectionPokemons'
+import TxtMain from '../../components/txtMain'
+import Desktop3 from '../desktop3'
+import { Body, Main } from './styled'
 
-const Desktop1 = (props) => {
+const Desktop1 = ({ pokedex, pokemons, setPokedex, setPokemons, showCart, setShowCart }) => {
+
+
+
+
     return (
         <Body>
-            <Header />
+            <Header
+                showCart={showCart} setShowCart={setShowCart}
+            />
             <Main>
-                <div>
-                    <h1>todos os pokemons</h1>
-                </div>
-                <SectionPokemons>
-                    {
-                        props.pokemons.map((pokemon, index) => (
-                            <Pokemos key={index} pk={pokemon} index={index}
-                                pokemons={props.pokemons} setPokemons={props.setPokemons} />
-                        ))
-                    }
-                </SectionPokemons>
+                <TxtMain />
+                <SectionPokemons
+                    pokemons={pokemons} pokedex={pokedex}
+                    setPokedex={setPokedex} setPokemons={setPokemons}
+                    showCart={showCart} setShowCart={setShowCart}
+
+                />
             </Main>
         </Body>
     )

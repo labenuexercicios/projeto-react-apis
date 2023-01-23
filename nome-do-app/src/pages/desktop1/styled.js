@@ -14,12 +14,6 @@ export const Main = styled.main`
     background: #DDDDDD;
     gap:100px;
     padding: 50px;
-`
-
-export const SectionPokemons = styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
+    background-color: #3e4144;
 
 `

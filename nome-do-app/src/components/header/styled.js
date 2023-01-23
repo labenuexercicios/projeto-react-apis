@@ -9,6 +9,7 @@ export const StyledHeader = styled.div`
         @media(max-width:706px) {
         display: flex;
         flex-direction: column;
+        margin-bottom: 80px;
     }
 `;
 
@@ -46,5 +47,19 @@ export const StyledButton = styled.button`
     padding: 4px, 10px, 4px, 10px;
     border:none;
     cursor: pointer;
+
+`
+
+export const ButtonBack = styled.button`
+    border:none;
+    background-color: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #1A1A1A;
+    text-decoration: underline;
+    left: 33.3%;
+    right: 37.54%;
+    top: 20.83%;
+    bottom: 20.83%;
 
 `

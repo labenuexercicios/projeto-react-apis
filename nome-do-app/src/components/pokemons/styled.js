@@ -25,6 +25,14 @@ export const ContainerTypes = styled(ContainerName)`
     list-style: none;
     justify-content: space-around;
     font-size: 17px;
+    margin-left: 15px;
+`
+
+export const LiTipo = styled.li`
+    background-color:${(props) => props.bgColor};
+    border:2px solid;
+    padding:20px;
+
 
 `
 export const ContainerButtons = styled(ContainerName)`
@@ -55,6 +63,7 @@ export const TxtName = styled(TxtId)`
 
 font-size: 32px;
 line-height: 39px;
+text-transform:uppercase;
 `
 
 
@@ -79,7 +88,8 @@ export const ButtonCaptured = styled.button`
     border-radius: 8px;
     border: none;
     cursor: pointer;
-
+    background-color: ${(props) => props.bgColorButton};
+    color:${(props) => props.colorLetter}
 
 `
 export const Image = styled.img`
@@ -89,4 +99,8 @@ export const Image = styled.img`
     left: 274px;
     top: -150px;
     z-index: 1;
+`
+
+export const StyledLi = styled.li`
+
 `
