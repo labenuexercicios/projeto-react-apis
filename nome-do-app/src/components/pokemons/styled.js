@@ -21,17 +21,26 @@ export const ContainerName = styled.div`
 export const ContainerTypes = styled(ContainerName)`
     flex-direction: row;
     height: 20%;
-    width: 160px;
+    width: 200px;
     list-style: none;
-    justify-content: space-around;
+    justify-content: flex-start;
     font-size: 17px;
-    margin-left: 15px;
+    gap: 10px;
+    align-items: center;
 `
 
 export const LiTipo = styled.li`
     background-color:${(props) => props.bgColor};
-    border:2px solid;
-    padding:20px;
+    height: 31px;
+    width: 95px;
+    left: 1099px;
+    top: 2029px;
+    border-radius: 8px;
+    padding: 5px 8px 5px 8px;
+    text-transform: capitalize;
+    color: white;
+
+
 
 
 `
@@ -63,7 +72,7 @@ export const TxtName = styled(TxtId)`
 
 font-size: 32px;
 line-height: 39px;
-text-transform:uppercase;
+text-transform:capitalize;
 `
 
 
