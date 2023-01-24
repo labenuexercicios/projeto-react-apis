@@ -2,10 +2,11 @@ import axios from "axios";
 
 
 export const getPokemons = async (estado, array) => {
+    const quantPokemons = 25
     const copiaPokemons = [...array]
     try {
         const response = await axios.get(`
-            https://pokeapi.co/api/v2/pokemon?limit=21&offset=0
+            https://pokeapi.co/api/v2/pokemon?limit=${quantPokemons}&offset=0
         `)
         const nameAndUrl = response.data.results
         for (let i in nameAndUrl) {
@@ -13,7 +14,6 @@ export const getPokemons = async (estado, array) => {
             try {
                 const pokemon = await axios.get(URL)
                 let dadosPoke = pokemon.data
-                // console.log("", dadosPoke.types)
                 copiaPokemons.push({
                     id: dadosPoke.id,
                     name: dadosPoke.name,

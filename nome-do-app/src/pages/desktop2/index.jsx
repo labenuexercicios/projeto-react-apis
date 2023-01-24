@@ -1,17 +1,17 @@
 import React from 'react'
-import CardDetails from '../../components/cardDetailsPokemon'
 import Header from '../../components/header'
+import SectionPokedex from '../../components/sectionPokedex'
 import { Main } from '../desktop1/styled'
 
-const Detalhes = () => {
+const PokedexPage = () => {
     return (
         <div>
             <Header />
             <Main>
-                <CardDetails />
+                <SectionPokedex />
             </Main>
         </div>
     )
 }
 
-export default Detalhes
+export default PokedexPage

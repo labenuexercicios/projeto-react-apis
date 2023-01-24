@@ -1,31 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PokedexContext } from '../Context/Pokedex'
+import { PokemonsContext } from '../Context/Pokemons'
 import Pokemons from "../pokemons/index"
 import { SectionPoke } from './styled'
 
-const SectionPokemons = (props) => {
+
+const SectionPokemons = () => {
+    const estadoPokemon = useContext(PokemonsContext)
+    const estadoPokedex = useContext(PokedexContext)
+
+    const { pokemons, setPokemons } = estadoPokemon
+    const { pokedex, setPokedex } = estadoPokedex
     return (
         <SectionPoke>
-            {props.showCart ? (
-                <SectionPoke>
-                    {
-                        props.pokedex.map((pokemon, index) => (
-                            <Pokemons key={index} pk={pokemon} index={index}
-                                pokemons={props.pokemons} setPokemons={props.setPokemons}
-                                pokedex={props.pokedex} setPokedex={props.setPokedex} showCart={props.showCart} setShowCart={props.setShowCart} />
-                        ))
-                    }
-                </SectionPoke>
-            ) : (
-                <SectionPoke>
-                    {
-                        props.pokemons.map((pokemon, index) => (
-                            <Pokemons key={index} pk={pokemon} index={index}
-                                pokemons={props.pokemons} setPokemons={props.setPokemons}
-                                pokedex={props.pokedex} setPokedex={props.setPokedex} showCart={props.showCart} setShowCart={props.setShowCart} />
-                        ))
-                    }
-                </SectionPoke>
-            )}
+            {pokemons.map((pokemon, index) => (
+                <Pokemons
+                    key={index} pk={pokemon} index={index}
+                />
+            ))
+            }
         </SectionPoke>
     )
 }

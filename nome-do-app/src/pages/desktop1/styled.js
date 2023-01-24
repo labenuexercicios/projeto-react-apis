@@ -15,5 +15,4 @@ export const Main = styled.main`
     gap:100px;
     padding: 50px;
     background-color: #3e4144;
-
 `

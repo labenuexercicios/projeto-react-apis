@@ -10,6 +10,7 @@ export const StyledHeader = styled.div`
         display: flex;
         flex-direction: column;
         margin-bottom: 80px;
+        gap: 25px;
     }
 `;
 

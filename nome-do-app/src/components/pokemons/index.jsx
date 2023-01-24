@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ButtonCaptured, ButtonDetails, ContainerButtons, ContainerDiv, ContainerName, ContainerTypes, Image, LiTipo, StyledLi, TxtId, TxtName } from './styled'
 import { addPokemonInPokedex, removePokemon } from "../funcoes/index"
 import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Vector from "../../img/Vector.png"
 import Vector1 from "../../img/grass.png"
 import Vector2 from "../../img/fire.png"
@@ -9,17 +10,18 @@ import Vector3 from "../../img/flying.png"
 import Vector4 from "../../img/water.png"
 import Vector5 from "../../img/bug.png"
 import Vector6 from "../../img/normal.png"
+import { details, goDetails } from '../navegacao'
+import { PokedexContext } from '../Context/Pokedex'
 
 
-const Pokemos = ({ pk, pokedex, setPokedex, showCart, setShowCart }) => {
+const Pokemos = ({ pk }) => {
+    const estadoPokedex = useContext(PokedexContext)
+    const { pokedex, setPokedex } = estadoPokedex
+
+
     const navigate = useNavigate()
+    const params = useParams()
 
-
-
-    const goDestaque = () => {
-        navigate('/Desktop3')
-        setShowCart(true)
-    }
 
     let imagem = ''
     let cor = ""
@@ -98,24 +100,28 @@ const Pokemos = ({ pk, pokedex, setPokedex, showCart, setShowCart }) => {
             </ContainerTypes>
             <ContainerButtons>
                 <ButtonDetails
-                    onClick={() => { goDestaque() }}
+                    onClick={() => {
+                        goDetails(navigate, true)
+                        details()
+                    }}
                 >
                     detalhes
                 </ButtonDetails>
-                {!showCart ? (
+
+
+                {!params.showButton ?
                     <ButtonCaptured bgColorButton='#FFFFFF' colorLetter='#0F0F0F'
                         onClick={() => { addPokemonInPokedex(pk, pokedex, setPokedex) }}
                     >
                         capturar
                     </ButtonCaptured>
-                ) : (
+                    :
                     <ButtonCaptured bgColorButton='#FF6262' colorLetter='#FFFFFF'
                         onClick={() => { removePokemon(pk, pokedex, setPokedex) }}
                     >
-                        remover
+                        capturar
                     </ButtonCaptured>
-                )}
-
+                }
             </ContainerButtons>
         </ContainerDiv>
     )

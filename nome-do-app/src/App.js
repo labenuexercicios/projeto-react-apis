@@ -2,13 +2,23 @@ import Routes from "./routers/Router"
 import { React, useEffect, useState } from "react";
 import { getPokemons } from "./components/APIs/getPokemons";
 import { GlobalStyled } from "./GlobalStyled";
+import { PokemonsContext } from "./components/Context/Pokemons";
+import { PokedexContext } from "./components/Context/Pokedex";
 
 function App() {
   const [pokemons, setPokemons] = useState(Array)
   const [pokedex, setPokedex] = useState([])
   const [showCart, setShowCart] = useState(false)
-  // console.log(pokemons)
 
+  const context = {
+    pokemons: pokemons,
+    setPokemons: setPokemons
+  }
+
+  const pokedexContext = {
+    pokedex: pokedex,
+    setPokedex: setPokedex
+  }
 
 
   useEffect(() => {
@@ -17,11 +27,11 @@ function App() {
   return (
     <div >
       <GlobalStyled />
-      <Routes
-        pokemons={pokemons} setPokemons={setPokemons}
-        pokedex={pokedex} setPokedex={setPokedex}
-        showCart={showCart} setShowCart={setShowCart}
-      />
+      <PokemonsContext.Provider value={context}>
+        <PokedexContext.Provider value={pokedexContext}>
+          <Routes />
+        </PokedexContext.Provider>
+      </PokemonsContext.Provider>
     </div>
   );
 }
