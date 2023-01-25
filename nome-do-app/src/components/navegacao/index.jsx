@@ -4,18 +4,10 @@ export const goHome = (navigate, booleano) => {
 }
 
 export const goDetails = (navigate, booleano) => {
-    navigate(`details/${booleano}`)
+    navigate(`/details/${booleano}`)
 }
 
 
 export const goPokedex = (navigate, booleano) => {
-    navigate(`pokedex/${booleano}`)
-}
-
-
-export const details = (listaPoke, pokeId, setPokemon) => {
-    const pokemon = listaPoke.filter((poke) => {
-        return poke.id === pokeId.id
-    })
-    setPokemon(pokemon)
+    navigate(`/pokedex/${booleano}`)
 }

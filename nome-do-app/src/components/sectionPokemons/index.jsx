@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
-import { PokedexContext } from '../Context/Pokedex'
-import { PokemonsContext } from '../Context/Pokemons'
+import { PokedexContext, PokemonsContext } from '../Context/Pokedex'
 import Pokemons from "../pokemons/index"
 import { SectionPoke } from './styled'
 

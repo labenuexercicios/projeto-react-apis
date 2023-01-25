@@ -22,3 +22,8 @@ export const removePokemon = (pokemon, pokedex, setPokedex) => {
     const newPokedex = arrayAux.filter((pk) => { return pk.id !== pokemon.id })
     setPokedex(newPokedex)
 }
+
+export const pokemomDetails = (poke, setPokemon) => {
+    const pokemon = { ...poke }
+    setPokemon(pokemon)
+}

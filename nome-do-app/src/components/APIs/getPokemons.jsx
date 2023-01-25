@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const getPokemons = async (estado, array) => {
-    const quantPokemons = 25
+    const quantPokemons = 21
     const copiaPokemons = [...array]
     try {
         const response = await axios.get(`
@@ -14,11 +14,16 @@ export const getPokemons = async (estado, array) => {
             try {
                 const pokemon = await axios.get(URL)
                 let dadosPoke = pokemon.data
+                // console.log(dadosPoke.moves)
                 copiaPokemons.push({
                     id: dadosPoke.id,
                     name: dadosPoke.name,
                     tipo: dadosPoke.types,
-                    image: dadosPoke.sprites.other['official-artwork'].front_default
+                    image: dadosPoke.sprites.other['official-artwork'].front_default,
+                    back_default: dadosPoke.sprites.back_default,
+                    front_default: dadosPoke.sprites.front_default,
+                    stats: dadosPoke.stats,
+                    moves: dadosPoke.moves
                 })
                 estado(copiaPokemons)
             } catch (error) {

@@ -2,13 +2,12 @@ import Routes from "./routers/Router"
 import { React, useEffect, useState } from "react";
 import { getPokemons } from "./components/APIs/getPokemons";
 import { GlobalStyled } from "./GlobalStyled";
-import { PokemonsContext } from "./components/Context/Pokemons";
-import { PokedexContext } from "./components/Context/Pokedex";
+import { PokeContext, PokedexContext, PokemonsContext } from "./components/Context/Pokedex";
 
 function App() {
   const [pokemons, setPokemons] = useState(Array)
   const [pokedex, setPokedex] = useState([])
-  const [showCart, setShowCart] = useState(false)
+  const [pokemonDetails, setPokemonDetais] = useState([])
 
   const context = {
     pokemons: pokemons,
@@ -20,6 +19,11 @@ function App() {
     setPokedex: setPokedex
   }
 
+  const pokeDetails = {
+    pokemonDetails: pokemonDetails,
+    setPokemonDetais: setPokemonDetais
+  }
+
 
   useEffect(() => {
     getPokemons(setPokemons, pokemons)
@@ -29,7 +33,9 @@ function App() {
       <GlobalStyled />
       <PokemonsContext.Provider value={context}>
         <PokedexContext.Provider value={pokedexContext}>
-          <Routes />
+          <PokeContext.Provider value={pokeDetails}>
+            <Routes />
+          </PokeContext.Provider>
         </PokedexContext.Provider>
       </PokemonsContext.Provider>
     </div>

@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import { ButtonCaptured, ButtonDetails, ContainerButtons, ContainerDiv, ContainerName, ContainerTypes, Image, LiTipo, StyledLi, TxtId, TxtName } from './styled'
-import { addPokemonInPokedex, removePokemon } from "../funcoes/index"
+import React, { useContext, useState } from 'react'
+import { ButtonCaptured, ButtonDetails, ContainerButtons, ContainerDiv, ContainerName, ContainerTypes, Image, LiTipo, TxtId, TxtName } from './styled'
+import { addPokemonInPokedex, pokemomDetails, removePokemon } from "../funcoes/index"
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import Vector from "../../img/Vector.png"
@@ -10,13 +10,18 @@ import Vector3 from "../../img/flying.png"
 import Vector4 from "../../img/water.png"
 import Vector5 from "../../img/bug.png"
 import Vector6 from "../../img/normal.png"
-import { details, goDetails } from '../navegacao'
-import { PokedexContext } from '../Context/Pokedex'
+import { PokedexContext, PokeContext } from '../Context/Pokedex'
+import { goDetails } from '../navegacao'
 
 
 const Pokemos = ({ pk }) => {
+    const pokeDetails = useContext(PokeContext)
+
     const estadoPokedex = useContext(PokedexContext)
     const { pokedex, setPokedex } = estadoPokedex
+    const { pokemonDetails, setPokemonDetais } = pokeDetails
+
+
 
 
     const navigate = useNavigate()
@@ -102,7 +107,7 @@ const Pokemos = ({ pk }) => {
                 <ButtonDetails
                     onClick={() => {
                         goDetails(navigate, true)
-                        details()
+                        pokemomDetails(pk, setPokemonDetais)
                     }}
                 >
                     detalhes

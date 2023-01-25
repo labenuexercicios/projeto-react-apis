@@ -105,7 +105,7 @@ export const Image = styled.img`
     position: relative;
     width: 193px;
     height: 193px;
-    left: 274px;
+    left: 260px;
     top: -150px;
     z-index: 1;
 `
