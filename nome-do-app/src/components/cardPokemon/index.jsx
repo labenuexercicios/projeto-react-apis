@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../../context/GlobalContext'
 import { BoxImagem, BoxNameAndId, ButtonCapturar, ButtonDetalhes, Container, ContainerButtons, ContainerImgName, Id, ImgPoke, ListType, LiType, Name } from './styled'
+import { goDetails } from "../navegacao/navegacao"
+import { useNavigate } from 'react-router-dom'
 
 const CardPokemon = (props) => {
     const { pokemon } = props
+    const context = useContext(GlobalContext)
+    const { addPokedex, exibir, removePokedex, exibirBtn } = context
+    const navigate = useNavigate()
     let cor = ""
     let corType = ''
 
@@ -77,8 +83,16 @@ const CardPokemon = (props) => {
                 })}
             </ListType>
             <ContainerButtons>
-                <ButtonDetalhes>detalhes</ButtonDetalhes>
-                <ButtonCapturar bgColor='#FFFFF'>capturar</ButtonCapturar>
+                <ButtonDetalhes onClick={(() => {
+                    goDetails(navigate)
+                    exibirBtn()
+                })}>detalhes</ButtonDetalhes>
+                {exibir ? (
+                    <ButtonCapturar bgColor='#FF6262' onClick={(() => { removePokedex(pokemon) })}>remover</ButtonCapturar>
+
+                ) :
+                    <ButtonCapturar bgColor='#FFFFF' onClick={(() => { addPokedex(pokemon) })}>capture</ButtonCapturar>
+                }
             </ContainerButtons>
 
         </Container>

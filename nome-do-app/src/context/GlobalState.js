@@ -5,6 +5,23 @@ import axios from "axios"
 const GlobalState = ({ children }) => {
     const [pokemons, setPokemons] = useState([])
     const [exibir, setExibir] = useState(false)
+    const [pokedex, setPokedex] = useState([])
+
+    const addPokedex = (pokemonId) => {
+        const copiaPokedex = [...pokedex]
+        const pokemon = copiaPokedex.find((pk) => pk.id === pokemonId.id)
+        !pokemon ? copiaPokedex.push(pokemonId) : alert("Pokemom ja incluido")
+        setPokedex(copiaPokedex)
+    }
+
+    const removePokedex = (pokemonId) => {
+        const copiaPokedex = [...pokedex]
+        console.log(copiaPokedex.length)
+        const novoArray = copiaPokedex.filter((pk) => {
+            return pokemonId.id !== pk.id
+        })
+        setPokedex(novoArray)
+    }
 
     const getPokemons = async () => {
         const copiaPokemons = []
@@ -43,10 +60,12 @@ const GlobalState = ({ children }) => {
 
     const data = {
         pokemons,
-        setPokemons,
         exibir,
         exibirBtn,
-        ocultarBtn
+        ocultarBtn,
+        addPokedex,
+        pokedex,
+        removePokedex
     }
     return (
         <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
