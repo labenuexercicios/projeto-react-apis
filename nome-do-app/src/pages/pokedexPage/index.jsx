@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../../components/headers'
 import SectionPokedex from '../../components/sectionPokedex'
 import SectionPokemons from '../../components/sectionPokemons'
+import TxtMain from '../../components/TxtMaIn'
 import { ContainerMain, Section } from '../home/styled'
 
 const PokedexPage = () => {
@@ -9,9 +10,7 @@ const PokedexPage = () => {
         <div>
             <Header />
             <ContainerMain>
-                <div>
-                    <h1>???</h1>
-                </div>
+                <TxtMain texto = {`Meus Pokemons`}/>
                 <Section>
                     <SectionPokedex />
                 </Section>

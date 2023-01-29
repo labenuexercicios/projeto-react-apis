@@ -6,6 +6,14 @@ const GlobalState = ({ children }) => {
     const [pokemons, setPokemons] = useState([])
     const [exibir, setExibir] = useState(false)
     const [pokedex, setPokedex] = useState([])
+    const [pokemonDetalhes, setPokemonDetalhes] = useState([])
+
+    const detailsPokemon = (pokemonId) => {
+        const pokemon = pokemons.find((pk) => pk.id === pokemonId.id)
+        setPokemonDetalhes(pokemon)
+    }
+
+
 
     const addPokedex = (pokemonId) => {
         const copiaPokedex = [...pokedex]
@@ -65,7 +73,9 @@ const GlobalState = ({ children }) => {
         ocultarBtn,
         addPokedex,
         pokedex,
-        removePokedex
+        removePokedex,
+        detailsPokemon,
+        pokemonDetalhes
     }
     return (
         <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>

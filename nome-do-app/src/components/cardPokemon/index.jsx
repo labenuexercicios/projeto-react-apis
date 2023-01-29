@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom'
 const CardPokemon = (props) => {
     const { pokemon } = props
     const context = useContext(GlobalContext)
-    const { addPokedex, exibir, removePokedex, exibirBtn } = context
+    const { addPokedex, exibir, removePokedex, exibirBtn, detailsPokemon } = context
     const navigate = useNavigate()
     let cor = ""
     let corType = ''
 
 
-
+    console.log(pokemon)
     switch (pokemon.types[0].type.name) {
         case 'grass':
             cor = ' #729F92'
@@ -86,6 +86,7 @@ const CardPokemon = (props) => {
                 <ButtonDetalhes onClick={(() => {
                     goDetails(navigate)
                     exibirBtn()
+                    detailsPokemon(pokemon)
                 })}>detalhes</ButtonDetalhes>
                 {exibir ? (
                     <ButtonCapturar bgColor='#FF6262' onClick={(() => { removePokedex(pokemon) })}>remover</ButtonCapturar>

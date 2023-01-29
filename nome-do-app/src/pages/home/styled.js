@@ -16,5 +16,9 @@ export const ContainerMain = styled.main`
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width:100%;
+    width: 98vw;
+    box-sizing: border-box;
+    @media (max-width:360px){
+        width: 100%;
+    }
 `;

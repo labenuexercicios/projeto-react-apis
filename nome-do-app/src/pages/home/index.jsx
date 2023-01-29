@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from "react";
 import Header from '../../components/headers';
 import SectionPokemons from '../../components/sectionPokemons';
+import TxtMain from '../../components/TxtMaIn';
 import { GlobalContext } from "../../context/GlobalContext";
 import { ContainerMain, Section } from "./styled"
 
@@ -14,9 +15,7 @@ const HomePage = () => {
         <div>
             <Header />
             <ContainerMain>
-                <div>
-                    <h1>???</h1>
-                </div>
+                <TxtMain texto = {`Todos os Pokemons`}/>
                 <Section>
                     <SectionPokemons />
                 </Section>
