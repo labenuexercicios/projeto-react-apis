@@ -8,7 +8,7 @@ import logo from "../../img/logoPokemon.png"
 const Header = () => {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
-    const { exibir, exibirBtn, ocultarBtn } = context
+    const { exibir, exibirBtn, ocultarBtn, notExibirBtnRemoverHeaderFunction,exibirBtnRemoverHeader } = context
 
     return (
         <Container>
@@ -20,6 +20,7 @@ const Header = () => {
                         onClick={() => {
                             ocultarBtn()
                             goHome(navigate)
+                            notExibirBtnRemoverHeaderFunction()
                         }}
                     >todos pokemons
                     </BotaoVoltar>}
@@ -30,14 +31,24 @@ const Header = () => {
             </div>
 
             <BotaoPokedex >
+                {exibirBtnRemoverHeader ?
+                <BtnPokedex bgColor='#FF6262' txtColor='#FFFFFF'
+                    onClick={() => {
+                        exibirBtn()
+                        goPokedes(navigate)
+                    }}
+                >
+                    Remover
+                    </BtnPokedex>
+                    :
                 <BtnPokedex bgColor='#33A4F5' txtColor='#FFFFFF'
                     onClick={() => {
                         exibirBtn()
                         goPokedes(navigate)
                     }}
                 >
-                    pokedex
-                </BtnPokedex>
+                    Pokedex
+                </BtnPokedex>}
             </BotaoPokedex>
         </Container>
     )
