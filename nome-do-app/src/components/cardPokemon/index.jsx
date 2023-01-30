@@ -9,7 +9,7 @@ import ImgFundo from "../../img/Rectangle2.png"
 const CardPokemon = (props) => {
     const { pokemon } = props
     const context = useContext(GlobalContext)
-    const { addPokedex, exibir, removePokedex, exibirBtn, detailsPokemon } = context
+    const { addPokedex, exibir, removePokedex, exibirBtn, detailsPokemon,exibirBtnRemoverHeaderFunction } = context
     const navigate = useNavigate()
     let cor = ""
     let corType = ''
@@ -89,6 +89,7 @@ const CardPokemon = (props) => {
                     goDetails(navigate)
                     exibirBtn()
                     detailsPokemon(pokemon)
+                    exibirBtnRemoverHeaderFunction()
                 })}>detalhes</ButtonDetalhes>
                 {exibir ? (
                     <ButtonCapturar bgColor='#FF6262' onClick={(() => { removePokedex(pokemon) })}>remover</ButtonCapturar>

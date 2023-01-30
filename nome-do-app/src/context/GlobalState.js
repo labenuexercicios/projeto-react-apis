@@ -7,6 +7,16 @@ const GlobalState = ({ children }) => {
     const [exibir, setExibir] = useState(false)
     const [pokedex, setPokedex] = useState([])
     const [pokemonDetalhes, setPokemonDetalhes] = useState([])
+    const [exibirBtnRemover, setExibirBtnRemover] = useState(false)
+    const [exibirBtnRemoverHeader, setExibirBtnRemoverHeader] = useState(false)
+
+    const exibirBtnRemoverHeaderFunction = () => {
+        setExibirBtnRemoverHeader(true)
+    }
+    const notExibirBtnRemoverHeaderFunction = () => {
+        setExibirBtnRemoverHeader(false)
+    }
+
 
     const detailsPokemon = (pokemonId) => {
         const pokemon = pokemons.find((pk) => pk.id === pokemonId.id)
@@ -75,7 +85,11 @@ const GlobalState = ({ children }) => {
         pokedex,
         removePokedex,
         detailsPokemon,
-        pokemonDetalhes
+        pokemonDetalhes,
+        exibirBtnRemover,
+        exibirBtnRemoverHeaderFunction,
+        notExibirBtnRemoverHeaderFunction,
+        exibirBtnRemoverHeader
     }
     return (
         <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
