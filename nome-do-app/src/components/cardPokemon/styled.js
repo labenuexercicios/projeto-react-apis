@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import ImgFundo from "../../img/Rectangle2.png"
 
 export const Container = styled.div`
 height: 210px;
@@ -9,7 +10,9 @@ padding-left: 20px;
 padding-top:20px;
 justify-content: space-between;
 border-radius: 12px;
-background-color:${(props) => props.bgColor}
+background-color:${(props) => props.bgColor};
+/* background-image: url(${ImgFundo}); */
+
 `
 export const BoxNameAndId = styled.div`
     display: flex;
@@ -32,11 +35,13 @@ export const ListType = styled(BoxNameAndId)`
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    gap:10px;
 `
 export const LiType = styled(Name)`
     font-size:14px;
     background-color: ${(props) => props.bgColor};
-    width: 45%;
+    width: 150px;
+    height: 30px;
     border-radius:4px;
     text-align:center;
     padding:7px;
@@ -47,6 +52,7 @@ export const ContainerButtons = styled.div`
     justify-content: space-between;
     padding-right: 10px;
     margin-bottom:10px;
+    z-index: 1;
 `
 export const ButtonDetalhes = styled.button`
     border:none;
@@ -66,14 +72,16 @@ export const ButtonCapturar = styled.button`
 
 `
 export const ImgPoke = styled.img`
-    height: 230px;
-    width: 230px;
+    height: 200px;
+    width: 200px;
     position: relative;
-    top:-85px;
+    top:-280px;
     left: 30px;
+    z-index: 1;
 `
 export const ContainerImgName = styled.div`
     display: flex;
+    height: 70px;
 
 `
 
@@ -81,4 +89,13 @@ export const ContainerImgName = styled.div`
 export const BoxImagem = styled.div`
     width: 50%;
     height: 14vh;
+
+`
+export const ImgFundoPk = styled.img`
+    position: relative;
+    top:-20px;
+    width: 250px;
+    height: 200px;
+    right: 39px;
+    opacity: 100%;
 `

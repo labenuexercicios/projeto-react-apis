@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
-import { BoxImagem, BoxNameAndId, ButtonCapturar, ButtonDetalhes, Container, ContainerButtons, ContainerImgName, Id, ImgPoke, ListType, LiType, Name } from './styled'
+import { BoxImagem, BoxNameAndId, ButtonCapturar, ButtonDetalhes, Container, ContainerButtons, ContainerImgName, Id, ImgFundoPk, ImgPoke, ListType, LiType, Name } from './styled'
 import { goDetails } from "../navegacao/navegacao"
 import { useNavigate } from 'react-router-dom'
+import ImgFundo from "../../img/Rectangle2.png"
+
 
 const CardPokemon = (props) => {
     const { pokemon } = props
@@ -13,7 +15,6 @@ const CardPokemon = (props) => {
     let corType = ''
 
 
-    console.log(pokemon)
     switch (pokemon.types[0].type.name) {
         case 'grass':
             cor = ' #729F92'
@@ -38,10 +39,11 @@ const CardPokemon = (props) => {
         <Container bgColor={cor}>
             <ContainerImgName>
                 <BoxNameAndId>
-                    <Id>{pokemon.id}</Id>
+                    <Id>#{pokemon.id}</Id>
                     <Name>{pokemon.name}</Name>
                 </BoxNameAndId>
                 <BoxImagem>
+                    <ImgFundoPk src={ImgFundo} alt="" />
                     <ImgPoke src={pokemon.sprites.other['official-artwork'].front_default} alt="" />
                 </BoxImagem>
             </ContainerImgName>

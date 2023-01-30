@@ -4,7 +4,7 @@ export const goDetails = (navigate) => {
 }
 
 export const goHome = (navigate) => {
-    navigate(-1)
+    navigate(`/`)
 }
 
 export const goPokedes = (navigate) => {
