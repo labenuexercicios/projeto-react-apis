@@ -34,18 +34,20 @@ export const ListType = styled(BoxNameAndId)`
     list-style: none;
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap:10px;
 `
 export const LiType = styled(Name)`
     font-size:14px;
     background-color: ${(props) => props.bgColor};
-    width: 150px;
-    height: 30px;
+    width: auto;
+    height: 35px;
     border-radius:4px;
-    text-align:center;
-    padding:7px;
-
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
 `
 export const ContainerButtons = styled.div`
     display: flex;

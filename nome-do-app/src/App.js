@@ -1,3 +1,4 @@
+import Header from "./components/headers";
 import GlobalState from "./context/GlobalState";
 import { GlobalStyled } from "./GlobalStyled";
 import { Router } from "./routers/Routers";
@@ -5,12 +6,12 @@ import { Router } from "./routers/Routers";
 function App() {
 
   return (
-    <div >
+    <>
       <GlobalStyled />
       <GlobalState>
         <Router />
       </GlobalState>
-    </div>
+    </>
   );
 }
 

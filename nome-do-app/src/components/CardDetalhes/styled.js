@@ -112,6 +112,9 @@ export const BoxMoves = styled.div`
     list-style: none;
     border-radius: 8px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 
 `
 
@@ -127,12 +130,10 @@ export const ImgPoke = styled.img`
 
 export const LiMoves = styled.li`
     height: 37px;
-width: 114px;
-left: 814px;
-top: 656px;
-border-radius: 12px;
-padding: 10px;
-
+    width: 300px;
+    left: 814px;
+    top: 656px;
+    padding: 10px;
 `
 
 export const NameTxt = styled.h1`
@@ -142,3 +143,42 @@ export const NameTxt = styled.h1`
     text-transform: capitalize;
 `
 
+
+export const LiStats = styled.li`
+`
+
+export const ContainerProgressBar = styled.div`
+    height: 24px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+`
+
+export const ContainerTr = styled.tr`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+`
+
+export const ProgressBar = styled.div`
+    height: 10px;
+    width: ${(props) => props.width}%;
+    background-color: #fca61d;
+`
+
+export const NameTh = styled.th` 
+    width: 150px;
+`
+
+export const ListMoves = styled.li`
+    background-color: #00000024;
+    padding: 15px;
+    border-radius: 8px;
+    width: 120px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+`

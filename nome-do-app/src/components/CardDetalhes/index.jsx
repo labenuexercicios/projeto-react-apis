@@ -1,5 +1,7 @@
 import React from 'react'
-import { BoxMoves, Container, ContainerBaseStats, ContainerImagens, ContainerImgAndMoves, DivImagem, ImgPoke, LiMoves, ListaStats, ListaTipos, NameContainer, NameTxt } from './styled'
+import {
+  BoxMoves, Container, ContainerBaseStats, ContainerImagens, ContainerImgAndMoves, ContainerProgressBar, ContainerTr, DivImagem, ImgPoke, ListaStats, ListaTipos, ListMoves, NameContainer, NameTh, NameTxt, ProgressBar,
+LiMoves} from './styled'
 import { useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
 import Rectangle2 from "../../img/Rectangle2.png"
@@ -25,7 +27,18 @@ const CardDetalhes = () => {
         <h1>Bases Stats</h1>
         <ListaStats>
           {pokemonDetalhes.stats.map((p, i) => (
-            <LiMoves key={i}>{p.stat.name} {p.base_stat}</LiMoves>
+            <LiMoves key={i}>
+              <ContainerTr>
+                <NameTh>{p.stat.name}</NameTh>
+                <td>{p.base_stat}</td>
+                <ContainerProgressBar>
+                  <ProgressBar
+                    width = {p.base_stat}
+                  >
+                  </ProgressBar>
+                </ContainerProgressBar>
+              </ContainerTr>
+            </LiMoves>
           ))}
         </ListaStats>
       </ContainerBaseStats>
@@ -76,7 +89,7 @@ const CardDetalhes = () => {
           <h1>Moves</h1>
           {pokemonDetalhes.moves.map((p, i) => {
             if (i <= 3) {
-               return <li key={i}>{p.move.name}</li>
+               return <ListMoves key={i}>{p.move.name}</ListMoves>
             }
           })}
           </BoxMoves>

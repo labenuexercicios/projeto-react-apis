@@ -4,6 +4,14 @@ import { BoxImagem, BoxNameAndId, ButtonCapturar, ButtonDetalhes, Container, Con
 import { goDetails } from "../navegacao/navegacao"
 import { useNavigate } from 'react-router-dom'
 import ImgFundo from "../../img/Rectangle2.png"
+import Poison from "../../img/Vector-Poison.png"
+import Grass from "../../img/Grass.png"
+import Fire from "../../img/Fire.png"
+import Flying from "../../img/Flying.png"
+import Water from "../../img/Water.png"
+import Bug from "../../img/Bug.png"
+import Normal from "../../img/normal.png"
+
 
 
 const CardPokemon = (props) => {
@@ -12,7 +20,6 @@ const CardPokemon = (props) => {
     const { addPokedex, exibir, removePokedex, exibirBtn, detailsPokemon,exibirBtnRemoverHeaderFunction } = context
     const navigate = useNavigate()
     let cor = ""
-    let corType = ''
 
 
     switch (pokemon.types[0].type.name) {
@@ -49,39 +56,41 @@ const CardPokemon = (props) => {
             </ContainerImgName>
             <ListType>
                 {pokemon.types.map((tipo, index) => {
+                    let corType = ''
+                    let imgType = ''
                     switch (tipo.type.name) {
                         case 'flying':
                             corType = '#6892B0'
-                            // imagem = Vector3
+                            imgType = Flying 
                             break
-                        case 'grass':
-                            corType = '#70B873'
-                            // imagem = Vector1
+                            case 'grass':
+                                corType = '#70B873'
+                                imgType = Grass 
                             break;
-                        case 'poison':
-                            corType = '#AD61AE'
-                            // imagem = Vector
+                            case 'poison':
+                                corType = '#AD61AE'
+                                imgType = Poison 
                             break;
                         case 'fire':
                             corType = '#F44900'
-                            // imagem = Vector2
+                            imgType = Fire 
                             break
-                        case 'water':
+                            case 'water':
                             corType = '#33A4F5'
-                            // imagem = Vector4
+                            imgType = Water 
                             break
-                        case 'bug':
+                            case 'bug':
                             corType = '#316520'
-                            // imagem = Vector5
+                            imgType = Bug
                             break
                         case 'normal':
                             corType = '#8A8A8A'
-                            // imagem = Vector6
+                            imgType = Normal
                             break
                         default:
                             break;
                     }
-                    return <LiType key={index} bgColor={corType}> <img src='' alt="" /> {tipo.type.name}</LiType>
+                    return <LiType key={index} bgColor={corType}> <img src={imgType} alt="" /> {tipo.type.name}</LiType>
                 })}
             </ListType>
             <ContainerButtons>
