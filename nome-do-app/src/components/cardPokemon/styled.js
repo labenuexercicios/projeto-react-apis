@@ -60,7 +60,6 @@ export const ButtonDetalhes = styled.button`
     border:none;
     background-color: transparent;
     text-decoration:underline;
-    cursor:pointer;
     text-transform: capitalize;
 
 `
@@ -68,7 +67,6 @@ export const ButtonCapturar = styled.button`
     padding:10px;
     width: 150px;
     background-color: ${(props) => props.bgColor};
-    cursor: pointer;
     border-radius: 8px;
     text-transform: capitalize;
 
