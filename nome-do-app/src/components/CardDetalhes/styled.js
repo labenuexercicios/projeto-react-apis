@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
+
 export const Container = styled.div`
-background-image: ${(props)=> props.bgImg};
 height: 663px;
 width: 1389.14px;
 background-color: #729F92;
@@ -12,10 +12,13 @@ display: flex;
 justify-content: flex-start;
 align-items: center;
 gap: 20px;
-@media (max-width:361px){
+@media (max-width:743px){
     flex-direction: column;
-    width: 300px;
-    gap: 2px;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    width: 400px;
+    height: auto;
 }
 `
 
@@ -27,13 +30,16 @@ display: flex;
 flex-direction: column;
 justify-content: space-around;
 align-items: center;
-@media (max-width:361px) {
+z-index: 1;
+@media (max-width:743px) {
     flex-direction: row;
     width: 100%;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
     align-items: center;
     height: 150px;
+    padding-right: 10px;
+    order: 1;
+
 }
 `
 
@@ -45,11 +51,9 @@ align-items: center;
 justify-content: center;
 border-radius: 8px;
 padding: 10px;
-@media (max-width:361px) {
-    flex-direction: row;
-    width: 71%;
-    justify-content: center;
-    margin-left: 17px;
+@media (max-width:743px){
+    width: 100%;
+    order: 4;
 
 }
 `
@@ -62,9 +66,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 8px;
-@media (max-width:361px) {
-    width: 100px;
-    height: 100px;
+z-index: 1;
+ @media (max-width:743px){
+   height: 150px;
+   width: 150px;
 }
 `
 
@@ -80,11 +85,20 @@ export const ListaStats = styled.ul`
 export const ContainerImgAndMoves = styled.div`
 display: flex;
 flex-direction: column;
-height: 600px;
+height: 400px;
 width: 400px;
 padding: 10px;
 border-radius: 8px;
 padding: 10px;
+position: relative;
+left: -450px;
+top: 100px;
+  @media (max-width:743px){
+    align-items: center;
+    padding: 0;
+    height: auto;
+    margin-top: 25px;
+}
 
 `
 
@@ -94,20 +108,19 @@ export const NameContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    @media (max-width:743px){
+        order: 0;
+}
 
 `
 
 
-export const ListaTipos = styled.ul`
-    display: flex;
-    list-style: none;
-    gap: 15px;
-`
+
 
 
 export const BoxMoves = styled.div`
     height: 400px;
-    width: 60%;
+    width: 100%;
     background-color: #FFFFFF;
     list-style: none;
     border-radius: 8px;
@@ -115,6 +128,15 @@ export const BoxMoves = styled.div`
     display: flex;
     flex-direction: column;
     gap: 25px;
+    position: relative;
+    left: 250px;
+    @media (max-width:743px){
+     order: 2;
+    left: 450px;
+    top: -100px;
+    width: 90%;
+     
+}
 
 `
 
@@ -122,7 +144,7 @@ export const BoxMoves = styled.div`
 export const ImgPoke = styled.img`
     z-index: 10;
     position: absolute;
-    top: 100px;
+    top: 200px;
     left: 1150px;
     height: 330px;
     width: 330px;
@@ -141,10 +163,20 @@ export const NameTxt = styled.h1`
     size: 60px;
     color: white;
     text-transform: capitalize;
+    z-index: 1;
+
 `
 
 
-export const LiStats = styled.li`
+export const ContainerName = styled.div`
+    position: relative;
+    top: -250px;
+    left: 15px;
+     @media(max-width:743px){
+        position: relative;
+        top: 0px;
+    }
+    
 `
 
 export const ContainerProgressBar = styled.div`
@@ -154,7 +186,7 @@ export const ContainerProgressBar = styled.div`
     align-items: center;
 `
 
-export const ContainerTr = styled.tr`
+export const ContainerTr = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -167,7 +199,7 @@ export const ProgressBar = styled.div`
     background-color: #fca61d;
 `
 
-export const NameTh = styled.th` 
+export const NameTh = styled.p` 
     width: 150px;
 `
 
@@ -181,4 +213,17 @@ export const ListMoves = styled.li`
     font-weight: 400;
     font-size: 14px;
     text-transform: capitalize;
+`
+
+export const BackgroundContainer = styled.img`
+    position: relative;
+    left: 780px;
+    top:150px;
+`
+export const ListaTipos = styled.ul`
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    z-index: 1;
+
 `

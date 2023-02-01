@@ -6,7 +6,6 @@ export const Section = styled.section`
     justify-content: center;
     align-items: center;
     gap: 50px;
-    margin-bottom: 50px;
 `
 export const ContainerMain = styled.main`
     background-color: #5E5E5E;
@@ -16,9 +15,10 @@ export const ContainerMain = styled.main`
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 98vw;
+    width: 100%;
     box-sizing: border-box;
-    @media (max-width:360px){
-        width: 100%;
-    }
+    padding-bottom: 250px;
+    @media (max-width: 743px){
+        justify-content: center;
+}
 `;
