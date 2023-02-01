@@ -6,11 +6,15 @@ export const LiType = styled.li`
     width: auto;
     height: 35px;
     border-radius:4px;
-    padding: 10px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
     gap: 10px;
+    width: 85px;
+    padding: 5px;
+    @media (max-width:743px) {
+        
+    }
 `
 
 
@@ -19,4 +23,12 @@ export const BoxType = styled.div`
     gap: 20px;
     align-items: center;
     justify-content: flex-start;
+    width: 200px;
+    @media (max-width:743px) {
+        position: relative;
+        left: -20px;
+        width: 210px;
+        gap: 10px;
+        padding: 10px;
+    }
 `

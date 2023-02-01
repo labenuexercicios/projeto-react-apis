@@ -33,9 +33,8 @@ const GlobalState = ({ children }) => {
     }
 
     const removePokedex = (pokemonId) => {
-        const copiaPokedex = [...pokedex]
-        console.log(copiaPokedex.length)
-        const novoArray = copiaPokedex.filter((pk) => {
+        // const copiaPokedex = [...pokedex]
+        const novoArray = pokedex.filter((pk) => {
             return pokemonId.id !== pk.id
         })
         setPokedex(novoArray)
