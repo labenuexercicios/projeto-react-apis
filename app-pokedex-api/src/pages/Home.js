@@ -5,6 +5,7 @@ import PokemonCard from '../components/PokemonCard';
 export const Home = () => {
   return (
     <div>
+        oi
         <NavBar/>
     <PokemonCard/>
     </div>
