@@ -48,11 +48,15 @@ Uma pagina que mostra dados de alguns Pokemons
 ```bash
 # clone este repositorio
 $ git clone link
+
 # Acesse a pasta do projeto no seu terminal
-$ cd nomeDaPasta
+$  cd PokeAPI/
+
 #instale as depedências
 $ npm install
+
 # Execute a aplicação
+$ npm run start
 # A aplicação sera iniciada na porta 300, 
 acesse pelo navegador: http:http://localhost:3000
 ```
