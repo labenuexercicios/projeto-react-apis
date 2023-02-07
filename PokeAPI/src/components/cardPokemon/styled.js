@@ -33,6 +33,8 @@ export const ButtonDetalhes = styled.button`
     background-color: transparent;
     text-decoration:underline;
     text-transform: capitalize;
+    color: white;
+    font-size: 18px;
 
 `
 export const ButtonCapturar = styled.button`

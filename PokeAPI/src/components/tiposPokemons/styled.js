@@ -12,6 +12,10 @@ export const LiType = styled.li`
     gap: 10px;
     width: 85px;
     padding: 5px;
+    color: white;
+    font-size: 18px;
+    padding: 5px;
+    text-transform: capitalize;
     @media (max-width:743px) {
         
     }

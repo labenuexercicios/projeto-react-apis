@@ -11,6 +11,10 @@ const GlobalState = ({ children }) => {
     const [exibirBtnRemoverHeader, setExibirBtnRemoverHeader] = useState(false)
     const [buttonAdd, setButtonAdd] = useState()
 
+    const ButtoRemove = () => {
+        setButtonAdd(false)
+    }
+
 
     const getPokemonDetails = async (id) => {
         try {
@@ -37,7 +41,11 @@ const GlobalState = ({ children }) => {
 
     const detailsPokemon = (pokemonId) => {
         const pokemon = pokemons.find((pk) => pk.id === pokemonId.id)
-        setPokemonDetalhes(pokemon)
+        const pokeString = JSON.stringify(pokemon)
+        localStorage.setItem("details", pokeString)
+        const pokeAux = localStorage.getItem("details")
+        const pokeObj = JSON.parse(pokeAux)
+        setPokemonDetalhes(pokeObj)
     }
 
 
@@ -106,7 +114,8 @@ const GlobalState = ({ children }) => {
         notExibirBtnRemoverHeaderFunction,
         exibirBtnRemoverHeader,
         buttonAdd,
-        getPokemonDetails
+        getPokemonDetails,
+        ButtoRemove
     }
     return (
         <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>

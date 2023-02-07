@@ -9,7 +9,7 @@ import {
   ContainerButaoVoltar,
   Logo,
 } from "./styled";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import logo from "../../img/logoPokemon.png";
 
 const Header = () => {
@@ -25,7 +25,11 @@ const Header = () => {
     pokemonDetalhes,
     buttonAdd,
     addPokedex,
+    exibirBtnRemoverHeaderFunction,
+    ButtoRemove,
   } = context;
+
+  const params = useParams();
 
   return (
     <Container>
@@ -65,6 +69,8 @@ const Header = () => {
             txtColor="#FFFFFF"
             onClick={() => {
               addPokedex(pokemonDetalhes);
+              // exibirBtnRemoverHeaderFunction(params.id);
+              ButtoRemove();
             }}
           >
             adicionar
@@ -75,6 +81,7 @@ const Header = () => {
             txtColor="#FFFFFF"
             onClick={() => {
               removePokedex(pokemonDetalhes);
+              // exibirBtnRemoverHeaderFunction(params.id);
             }}
           >
             remover

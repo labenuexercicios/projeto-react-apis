@@ -26,6 +26,7 @@ const CardPokemon = (props) => {
     detailsPokemon,
     exibirBtnRemoverHeaderFunction,
     getPokemonDetails,
+    pokedex,
   } = context;
   const navigate = useNavigate();
   let cor = "";
@@ -65,7 +66,7 @@ const CardPokemon = (props) => {
       <ContainerButtons>
         <ButtonDetalhes
           onClick={() => {
-            goDetails(navigate, pokemon.name);
+            goDetails(navigate, pokemon.id);
             exibirBtn();
             detailsPokemon(pokemon);
             // getPokemonDetails(pokemon.id);
@@ -83,6 +84,15 @@ const CardPokemon = (props) => {
           >
             remover
           </ButtonCapturar>
+        ) : pokedex.find((pk) => pk.id === pokemon.id) === undefined ? (
+          <ButtonCapturar
+            bgColor="#FFFFF"
+            onClick={() => {
+              addPokedex(pokemon);
+            }}
+          >
+            Capturar!
+          </ButtonCapturar>
         ) : (
           <ButtonCapturar
             bgColor="#FFFFF"
@@ -90,7 +100,7 @@ const CardPokemon = (props) => {
               addPokedex(pokemon);
             }}
           >
-            capture
+            Capturado!
           </ButtonCapturar>
         )}
       </ContainerButtons>
