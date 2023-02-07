@@ -15,5 +15,8 @@ export const Navbar = styled.nav`
 export const PokemonContainer = styled.section`
   margin-top: 15px;
   display: flex;
-  
+  flex-wrap: wrap;
+  gap: 30px;
+  /* align-items: center; */
+  justify-content: center;
 `

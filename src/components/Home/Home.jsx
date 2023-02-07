@@ -6,6 +6,7 @@ import { GlobalContext } from "../Context/GlobalContext"
 export default function Home () {
   const context = useContext(GlobalContext)
   const {Pokemons} = context;
+  
   return (
     <MainContainer>
       <Navbar>
@@ -13,8 +14,8 @@ export default function Home () {
         <h2>Ir para Pokedex</h2>
       </Navbar>
       <PokemonContainer>
-        {/* {console.log(Pokemons.results)} */}
-        {Pokemons.map(pokemon => <Card name={pokemon.name} id={pokemon.id}/>)}
+        {/* {console.log(Pokemons)} */}
+        {Pokemons.map(pokemon => <Card key={pokemon.name} name={pokemon.name} url={pokemon.url}/>)}
       </PokemonContainer>
       
     </MainContainer>

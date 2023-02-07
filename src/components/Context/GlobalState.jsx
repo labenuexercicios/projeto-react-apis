@@ -8,18 +8,13 @@ export default function GlobalState(props) {
 
   useEffect(() => {getPokemonApi()},[])
 
-  async function getPokemonApi() {
-
-    for (let i = 1; i <= 20; i += 1) {
-      await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+  function getPokemonApi() {
+    axios.get(`https://pokeapi.co/api/v2/pokemon`)
       .then(response => {
-        const pokemonToAdd = [...Pokemons, response.data]
-        setPokemons(pokemonToAdd)
-        console.log(Pokemons)
+        setPokemons(response.data.results)
+        // console.log(response.data.results)
       })
-      .catch(err => console.log(err))
-    }
-
+      .catch(error => console.log(error))
   }
 
   const context = {
