@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BoxMoves,
   Container,
@@ -17,11 +17,11 @@ import {
   ProgressBar,
   LiMoves,
   ContainerName,
+  getPokemonDetails,
 } from "./styled";
 import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import Rectangle2 from "../../img/Rectangle2.png";
-import TiposPokemon from "../tiposPokemons";
 import NameAndId from "../nameAndId";
 
 const CardDetalhes = () => {
@@ -29,7 +29,7 @@ const CardDetalhes = () => {
   const { pokemonDetalhes } = context;
 
   return (
-    <Container bgImg={Rectangle2}>
+    <Container>
       <ContainerImagens>
         <DivImagem>
           <img src={pokemonDetalhes.sprites.front_default} alt="" />

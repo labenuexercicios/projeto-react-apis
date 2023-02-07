@@ -9,11 +9,28 @@ const GlobalState = ({ children }) => {
     const [pokemonDetalhes, setPokemonDetalhes] = useState([])
     const [exibirBtnRemover, setExibirBtnRemover] = useState(false)
     const [exibirBtnRemoverHeader, setExibirBtnRemoverHeader] = useState(false)
+    const [buttonAdd, setButtonAdd] = useState()
 
-    const exibirBtnRemoverHeaderFunction = () => {
-        setExibirBtnRemoverHeader(true)
+
+    const getPokemonDetails = async (id) => {
+        try {
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+            setPokemonDetalhes(response.data)
+        } catch (error) {
+
+        }
     }
-    const notExibirBtnRemoverHeaderFunction = () => {
+
+    const exibirBtnRemoverHeaderFunction = (id) => {
+        setExibirBtnRemoverHeader(true)
+        const pokeInPokedex = pokedex.find(pk => pk.id === id)
+        pokeInPokedex === undefined ? (setButtonAdd(true)) : (setButtonAdd(false))
+    }
+
+
+
+
+    const notExibirBtnRemoverHeaderFunction = (id) => {
         setExibirBtnRemoverHeader(false)
     }
 
@@ -33,7 +50,6 @@ const GlobalState = ({ children }) => {
     }
 
     const removePokedex = (pokemonId) => {
-        // const copiaPokedex = [...pokedex]
         const novoArray = pokedex.filter((pk) => {
             return pokemonId.id !== pk.id
         })
@@ -47,7 +63,6 @@ const GlobalState = ({ children }) => {
             https://pokeapi.co/api/v2/pokemon?limit=21&offset=0
             `)
             const poke = response.data.results
-            console.log(poke)
             try {
                 for (let key in poke) {
                     let pokemom = await axios.get(poke[key].url)
@@ -89,7 +104,9 @@ const GlobalState = ({ children }) => {
         exibirBtnRemover,
         exibirBtnRemoverHeaderFunction,
         notExibirBtnRemoverHeaderFunction,
-        exibirBtnRemoverHeader
+        exibirBtnRemoverHeader,
+        buttonAdd,
+        getPokemonDetails
     }
     return (
         <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>

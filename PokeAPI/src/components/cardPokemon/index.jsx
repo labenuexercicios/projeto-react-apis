@@ -25,6 +25,7 @@ const CardPokemon = (props) => {
     exibirBtn,
     detailsPokemon,
     exibirBtnRemoverHeaderFunction,
+    getPokemonDetails,
   } = context;
   const navigate = useNavigate();
   let cor = "";
@@ -64,10 +65,11 @@ const CardPokemon = (props) => {
       <ContainerButtons>
         <ButtonDetalhes
           onClick={() => {
-            goDetails(navigate);
+            goDetails(navigate, pokemon.name);
             exibirBtn();
             detailsPokemon(pokemon);
-            exibirBtnRemoverHeaderFunction();
+            // getPokemonDetails(pokemon.id);
+            exibirBtnRemoverHeaderFunction(pokemon.id);
           }}
         >
           detalhes
