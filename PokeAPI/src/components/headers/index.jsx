@@ -23,13 +23,10 @@ const Header = () => {
     exibirBtnRemoverHeader,
     removePokedex,
     pokemonDetalhes,
-    buttonAdd,
     addPokedex,
-    exibirBtnRemoverHeaderFunction,
     ButtoRemove,
+    pokedex,
   } = context;
-
-  const params = useParams();
 
   return (
     <Container>
@@ -63,13 +60,12 @@ const Header = () => {
           >
             Pokedex
           </BtnPokedex>
-        ) : buttonAdd === true ? (
+        ) : pokedex.find((pk) => pk.id === pokemonDetalhes.id) === undefined ? (
           <BtnPokedex
             bgColor="#33A4F5"
             txtColor="#FFFFFF"
             onClick={() => {
               addPokedex(pokemonDetalhes);
-              // exibirBtnRemoverHeaderFunction(params.id);
               ButtoRemove();
             }}
           >
@@ -81,7 +77,6 @@ const Header = () => {
             txtColor="#FFFFFF"
             onClick={() => {
               removePokedex(pokemonDetalhes);
-              // exibirBtnRemoverHeaderFunction(params.id);
             }}
           >
             remover

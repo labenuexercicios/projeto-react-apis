@@ -7,13 +7,8 @@ const GlobalState = ({ children }) => {
     const [exibir, setExibir] = useState(false)
     const [pokedex, setPokedex] = useState([])
     const [pokemonDetalhes, setPokemonDetalhes] = useState([])
-    const [exibirBtnRemover, setExibirBtnRemover] = useState(false)
     const [exibirBtnRemoverHeader, setExibirBtnRemoverHeader] = useState(false)
     const [buttonAdd, setButtonAdd] = useState()
-
-    const ButtoRemove = () => {
-        setButtonAdd(false)
-    }
 
 
     const getPokemonDetails = async (id) => {
@@ -43,9 +38,10 @@ const GlobalState = ({ children }) => {
         const pokemon = pokemons.find((pk) => pk.id === pokemonId.id)
         const pokeString = JSON.stringify(pokemon)
         localStorage.setItem("details", pokeString)
-        const pokeAux = localStorage.getItem("details")
-        const pokeObj = JSON.parse(pokeAux)
-        setPokemonDetalhes(pokeObj)
+        const poke = localStorage.getItem("details")
+
+        console.log(typeof poke)
+        setPokemonDetalhes(pokemon)
     }
 
 
@@ -109,13 +105,11 @@ const GlobalState = ({ children }) => {
         removePokedex,
         detailsPokemon,
         pokemonDetalhes,
-        exibirBtnRemover,
         exibirBtnRemoverHeaderFunction,
         notExibirBtnRemoverHeaderFunction,
         exibirBtnRemoverHeader,
         buttonAdd,
-        getPokemonDetails,
-        ButtoRemove
+        getPokemonDetails
     }
     return (
         <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>

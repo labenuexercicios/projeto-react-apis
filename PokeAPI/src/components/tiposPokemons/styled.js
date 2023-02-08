@@ -28,10 +28,11 @@ export const BoxType = styled.div`
     align-items: center;
     justify-content: flex-start;
     width: 200px;
+    z-index: 2;
     @media (max-width:743px) {
         position: relative;
-        left: -20px;
-        width: 210px;
+        left: -10px;
+        width: 170px;
         gap: 10px;
         padding: 10px;
     }

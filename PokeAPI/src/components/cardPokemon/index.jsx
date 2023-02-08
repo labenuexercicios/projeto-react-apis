@@ -7,6 +7,7 @@ import {
   Container,
   ContainerButtons,
   ContainerImgName,
+  Gotcha,
   ImgFundoPk,
   ImgPoke,
 } from "./styled";
@@ -25,7 +26,6 @@ const CardPokemon = (props) => {
     exibirBtn,
     detailsPokemon,
     exibirBtnRemoverHeaderFunction,
-    getPokemonDetails,
     pokedex,
   } = context;
   const navigate = useNavigate();
@@ -69,7 +69,6 @@ const CardPokemon = (props) => {
             goDetails(navigate, pokemon.id);
             exibirBtn();
             detailsPokemon(pokemon);
-            // getPokemonDetails(pokemon.id);
             exibirBtnRemoverHeaderFunction(pokemon.id);
           }}
         >

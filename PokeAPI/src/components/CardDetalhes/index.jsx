@@ -18,6 +18,7 @@ import {
   LiMoves,
   ContainerName,
   getPokemonDetails,
+  BackgroundImagem,
 } from "./styled";
 import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
@@ -71,6 +72,7 @@ const CardDetalhes = () => {
         src={pokemonDetalhes.sprites.other["official-artwork"].front_default}
         alt=""
       />
+      <BackgroundImagem src={Rectangle2} alt="" />
     </Container>
   );
 };

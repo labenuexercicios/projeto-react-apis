@@ -148,6 +148,13 @@ export const ImgPoke = styled.img`
     left: 1150px;
     height: 330px;
     width: 330px;
+     @media(max-width:743px){
+    position: absolute;
+    height: auto;
+    width: 400px;
+        left: -5px;
+        top: 1000px;
+    }
 `
 
 export const LiMoves = styled.li`
@@ -225,5 +232,16 @@ export const ListaTipos = styled.ul`
     list-style: none;
     gap: 15px;
     z-index: 1;
+
+`
+
+export const BackgroundImagem = styled.img`
+position: relative;
+left: -470px;
+ @media(max-width:743px){
+    height: auto;
+    width: 470px;
+        left: -35px;
+    }
 
 `

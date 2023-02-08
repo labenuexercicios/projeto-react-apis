@@ -15,10 +15,11 @@ export const ContainerMain = styled.main`
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     box-sizing: border-box;
     padding-bottom: 250px;
     @media (max-width: 743px){
         justify-content: center;
+
 }
 `;

@@ -54,7 +54,7 @@ export const ImgPoke = styled.img`
     z-index: 1;
        @media (max-width: 743px){
         left: -100px;
-        top: -120px;
+        top: -100px;
 }
 `
 export const ContainerImgName = styled.div`
@@ -79,5 +79,11 @@ export const ImgFundoPk = styled.img`
     @media (max-width:743px){
     left: -155px;
     top: 125px;
+
 }
+
+`
+export const Gotcha = styled.div`
+    z-index: 20;
+    position: absolute;
 `
