@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
+  /* position: absolute; */
   width: 100vw;
   min-height: 15vh;
   max-height: 20vh;

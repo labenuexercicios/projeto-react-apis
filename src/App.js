@@ -1,10 +1,8 @@
 import Router from "./Routes/Router";
 import Header from "./components/Header/Header";
 import { createGlobalStyle } from "styled-components";
-import GlobalState from "./components/Context/GlobalState";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { GlobalContext } from "./components/Context/GlobalContext";
+import GlobalState from "./Context/GlobalState";
+import { ChakraProvider } from '@chakra-ui/react'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -17,9 +15,11 @@ function App() {
   
   return (
     <GlobalState>
+      <ChakraProvider>
       <GlobalStyle />
       <Header />
       <Router />
+      </ChakraProvider>
     </GlobalState>
   );
 }

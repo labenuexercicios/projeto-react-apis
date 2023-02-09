@@ -12,7 +12,6 @@ export default function GlobalState(props) {
     axios.get(`https://pokeapi.co/api/v2/pokemon`)
       .then(response => {
         setPokemons(response.data.results)
-        // console.log(response.data.results)
       })
       .catch(error => console.log(error))
   }

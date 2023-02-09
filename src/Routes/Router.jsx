@@ -12,7 +12,7 @@ function Router() {
         />
         <Route path="/pokedex" element={<Pokedex />}
         />
-        <Route path="/details" element={ <Details />}
+        <Route path="/details/:name" element={ <Details />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
