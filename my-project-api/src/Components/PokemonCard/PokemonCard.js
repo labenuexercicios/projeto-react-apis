@@ -1,18 +1,22 @@
-import { Container, Detalhes, Capturar, Titulo, Numero, Poison, Glass } from "./pokemonStyle";
+import { Container, Detalhes, Capturar, Titulo, Numero, Poison, Glass, Pokemon } from "./pokemonStyle";
 
 
-export function PokemonCard(){
+export function PokemonCard({name}) {
     
-    
 
-    return(
-        <Container>
-            <Numero>#01</Numero>
-            <Titulo>Poke Card</Titulo>
-            <Glass>Glass</Glass>
-            <Poison>Poison</Poison>
-            <Capturar>Capturar</Capturar>
-            <Detalhes>Detalhes</Detalhes>
-        </Container>
+
+
+    return (
+        
+            <Container>
+                <Titulo>{name}</Titulo>
+                <Numero>#01</Numero>
+                <Glass>Glass</Glass>
+                <Poison>Poison</Poison>
+                <Detalhes>Detalhes</Detalhes>
+                <Pokemon>Imagem</Pokemon>
+                <Capturar>Capturar</Capturar>
+            </Container>
+        
     )
 };

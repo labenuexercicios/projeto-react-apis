@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const Head = styled.header`
-    position: absolute;
-    width: 1440px;
-    height: 160px;
-    left: 0px;
-    top: 0px;
-
-    background: #FFFFFF;
-`;
-
 export const Fundo = styled.div`
         position: relative;
         width: 1440px;

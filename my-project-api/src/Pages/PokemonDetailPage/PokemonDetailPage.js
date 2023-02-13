@@ -1,7 +1,13 @@
 
 import React from "react";
 
-import { Corpo, Status, Number, Name, Poison, Glass, Moves, FirstCard, SecondCard, Itens, Text, Head, Fundo  } from "./pokemonDetailStyle";
+import { Corpo, Status, Number, Name, Poison, Glass, Moves, FirstCard, SecondCard, Itens, Text, Fundo  } from "./pokemonDetailStyle";
+
+
+ 
+
+
+
 
 
 
@@ -9,11 +15,9 @@ export function PokemonDetailPage() {
     
     return (
         <div>
-            <Head>
-                <h3>Todos os Pokemons</h3>
-                <h2>Pokemon</h2>
-                <button><p>Excluir da Pokedex</p></button>
-            </Head>
+
+           
+            
 
             <Fundo>
                 <Corpo>

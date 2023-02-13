@@ -1,33 +1,57 @@
 import styled from 'styled-components';
 
+// export const Pai = styled.div`
+//         /* position: relative; */
+//         width: 100%;
+//         height: 100%;
+//         background-color: #5E5E5E;
+//         display: grid;
+//         grid-template-rows: 2fr 1fr 1fr;
+//         grid-template-columns: 1fr 1fr 100px;
+//     /* row-gap: 5px;
+//     column-gap: 5px; */
+// `;
+
+
 export const Container = styled.div`
-    background-color : #729F92;
-    position: absolute;
+    
+    
+    position: relative;
     width: 440px;
     height: 210px;
     left: 0px;
-    top: 0px ;
+    top: 0px;
+    background: green;
     border-radius: 12px;
+    
 `;
 
 export const Capturar = styled.button`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 10px;
+    
+    position: absolute;
+    top: 150px;
+    left: 280px;
+    width: 146px;
+    height: 38px;
+    border-radius: 8px;
 
+    
+
+    
+    
+
+`;
+export const Detalhes = styled.button`
+    position: absolute;
+    top: 150px;
+    left: 0px;
     width: 146px;
     height: 38px;
 
-    background: #FFFFFF;
-    border-radius: 8px;
-`;
-export const Detalhes = styled.button`
-    width: 74px;
-    height: 24px;
 
-    font-family: Poppins ;
+    
+
+    font-family: 'Poppins' ;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -37,18 +61,16 @@ export const Detalhes = styled.button`
 
     color: #FFFFFF;
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    
 `;
 export const Titulo = styled.h1`
     position: absolute;
-    width: 196px;
+    width: 159px;
     height: 39px;
     left: 23px;
-    top: 40px;
+    top: 0px;
 
-    font-family: Inter ;
+    font-family: 'Inter' ;
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -62,49 +84,63 @@ export const Numero = styled.p`
     width: 30px;
     height: 19px;
     left: 23px;
-    top: 25px;
-
+    top: -5px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-
     color: #FFFFFF; 
 `;
 
-export const Glass = styled.p`
+
+
+export const Glass = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 5px 8px;
     gap: 17px;
-
+    
     position: absolute;
     width: 91px;
     height: 31px;
-    left: 129px;
-    top: 89px;
+    left: 150px;
+    top: 60px;
 
-    background: #70B873;
+    background-color: #70B873;
     border: 1px dashed rgba(255, 255, 255, 0.47);
     border-radius: 8px;
-`;
 
-export const Poison = styled.a`
+    
+
+`; 
+
+export const Poison = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 5px 8px;
     gap: 17px;
-
     position: absolute;
     width: 99px;
     height: 31px;
     left: 23px;
-    top: 89px;
-
+    top: 60px;
     background: #AD61AE;
-    border: 1px dashed rgba(255, 255, 255, 0.47)
-    
+    border: 1px dashed rgba(255, 255, 255, 0.47);
+    border-radius: 8px;
+    `;
+
+export const Pokemon = styled.div`
+    position: absolute;
+    width: 193px;
+    height: 193px;
+    left: 280px;
+    top: 0px;
 `;
+    
+
+
+    
+

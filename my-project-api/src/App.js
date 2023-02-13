@@ -1,14 +1,5 @@
-
-
 import { GlobalStyled } from './GlobalStyle';
 import Router  from "./router/Router";
-
-
-
-
-
-
-
 
 function App() {
 
@@ -20,6 +11,19 @@ function App() {
     );
   }  
 export default App;     
+      
+      
+
+
+
+
+
+
+
+
+
+
+
       
 
 
