@@ -11,26 +11,13 @@ import {
   LeftContainer,
   RightContainer
 } from './style'
-import pokebola from '../../img/types/pokebal.png'
 
-export default function Card(props) {
+export default function PokedexCard(props) {
+  const {pokemon} = props
+  const navigate = useNavigate()
+
   const context = useContext(GlobalContext)
   const{addToPokedex} = context;
-  const navigate = useNavigate()
-  const url = props.url
-  const [pokemon, setPokemon] = useState([])
-
-  useEffect(() => {getPokemonData(url)},[])
-  
-
-  const getPokemonData = async url => {
-    await axios.get(url)
-      .then(response => {
-        setPokemon(response.data)
-        // console.log(pokemon.name)
-      })
-      .catch(error => console.log(error))
-  }
 
   return(
     <CardContainer>
@@ -45,7 +32,6 @@ export default function Card(props) {
 
         <RightContainer>
           <img alt='' src={pokemon.sprites?.other["official-artwork"]["front_default"]}></img>
-          {/* <img alt='' src={pokebola}/> */}
         </RightContainer>
         
       </MainCardContainer>
@@ -55,7 +41,7 @@ export default function Card(props) {
         <Heading size='md'>
           <button onClick={() => goToDetailsPage(navigate, pokemon.name)}>Detalhes</button>
         </Heading>
-        <Button colorScheme='teal' onClick={() => addToPokedex(pokemon)} >Capturar!</Button>
+        <Button colorScheme='teal' onClick={() => addToPokedex(pokemon)} >Remover da Pokedex</Button>
       </CardLink>
       
       

@@ -9,7 +9,7 @@ import {goToPokedexPage} from '../../Routes/cordinator'
 
 export default function Home () {
   const context = useContext(GlobalContext)
-  const {Pokemons} = context;
+  const {Pokemons, Pokedex} = context;
   const navigate = useNavigate();
   
   return (
@@ -20,7 +20,10 @@ export default function Home () {
       </Navbar>
       <PokemonContainer>
         {/* {console.log(Pokemons)} */}
-        {Pokemons.map(pokemon => <Card key={pokemon.name} name={pokemon.name} url={pokemon.url}/>)}
+        {Pokemons
+          .filter(pokemon => pokemon.name !== Pokedex.map(pokedex => pokedex.name))
+          .map(pokemon => <Card key={pokemon.name} name={pokemon.name} url={pokemon.url}/>)
+        }
       </PokemonContainer>
       
     </MainContainer>

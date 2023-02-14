@@ -23,7 +23,6 @@ export default function Details() {
   }
 
   return(
-    <>
       <DetailsMain>
         <DetailsNav>
           <Button colorScheme='teal' onClick={() => goToHomePage(navigate)}>Ir para Pokemons</Button>
@@ -33,6 +32,5 @@ export default function Details() {
         {pokemonDetails.name}
         </DetaisContent>
       </DetailsMain>
-    </>
   )
 }

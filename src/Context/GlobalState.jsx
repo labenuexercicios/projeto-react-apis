@@ -1,10 +1,11 @@
 import axios from "axios";
 import { GlobalContext } from "./GlobalContext";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function GlobalState(props) {
 
   const [Pokemons, setPokemons] = useState([])
+  const [Pokedex, setPokedex] = useState([])
 
   useEffect(() => {getPokemonApi()},[])
 
@@ -16,8 +17,16 @@ export default function GlobalState(props) {
       .catch(error => console.log(error))
   }
 
+  const addToPokedex = (pokemon) => {
+    setPokedex([...Pokedex, pokemon])
+    console.log(Pokedex)
+  }
+
   const context = {
-    Pokemons: Pokemons
+    Pokemons: Pokemons,
+    Pokedex,
+    setPokedex,
+    addToPokedex
   }
 
   return(
