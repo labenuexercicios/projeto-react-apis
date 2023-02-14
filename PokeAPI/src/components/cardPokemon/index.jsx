@@ -12,7 +12,7 @@ import {
   ImgPoke,
 } from "./styled";
 import { goDetails } from "../navegacao/navegacao";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ImgFundo from "../../img/Rectangle2.png";
 import NameAndId from "../nameAndId";
 
@@ -27,8 +27,14 @@ const CardPokemon = (props) => {
     detailsPokemon,
     exibirBtnRemoverHeaderFunction,
     pokedex,
+    getPokemonDetails,
+    showCart,
+    cardAddPk,
   } = context;
   const navigate = useNavigate();
+  // const { id } = useParams();
+  // console.log(id);
+
   let cor = "";
 
   switch (pokemon.types[0].type.name) {
@@ -68,7 +74,6 @@ const CardPokemon = (props) => {
           onClick={() => {
             goDetails(navigate, pokemon.id);
             exibirBtn();
-            detailsPokemon(pokemon);
             exibirBtnRemoverHeaderFunction(pokemon.id);
           }}
         >
@@ -88,6 +93,7 @@ const CardPokemon = (props) => {
             bgColor="#FFFFF"
             onClick={() => {
               addPokedex(pokemon);
+              showCart();
             }}
           >
             Capturar!

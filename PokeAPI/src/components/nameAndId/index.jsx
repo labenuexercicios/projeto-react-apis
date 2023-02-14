@@ -6,8 +6,8 @@ const NameAndId = (props) => {
   const { pokemon } = props;
   return (
     <BoxNameAndId>
-      <Id>#{pokemon.id}</Id>
-      <Name>{pokemon.name}</Name>
+      <Id>#{pokemon?.id}</Id>
+      <Name>{pokemon?.name}</Name>
       <TiposPokemon pokemon={pokemon} />
     </BoxNameAndId>
   );

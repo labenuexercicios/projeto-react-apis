@@ -12,7 +12,7 @@ const TiposPokemon = (props) => {
   const { pokemon } = props;
   return (
     <BoxType>
-      {pokemon.types.map((tipo, index) => {
+      {pokemon?.types?.map((tipo, index) => {
         let corType = "";
         let imgType = "";
         switch (tipo.type.name) {

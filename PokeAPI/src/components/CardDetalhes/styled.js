@@ -120,7 +120,7 @@ export const NameContainer = styled.div`
 
 export const BoxMoves = styled.div`
     height: 400px;
-    width: 100%;
+    width: 300px;
     background-color: #FFFFFF;
     list-style: none;
     border-radius: 8px;
@@ -237,7 +237,7 @@ export const ListaTipos = styled.ul`
 
 export const BackgroundImagem = styled.img`
 position: relative;
-left: -470px;
+left: -630px;
  @media(max-width:743px){
     height: auto;
     width: 470px;

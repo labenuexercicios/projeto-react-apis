@@ -15,7 +15,7 @@ export const ContainerMain = styled.main`
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     padding-bottom: 250px;
     @media (max-width: 743px){
