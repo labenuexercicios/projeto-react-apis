@@ -1,21 +1,23 @@
 import styled from "styled-components";
 
 export const Pai = styled.div`
-        /* position: relative; */
-        width: 1000px;
-        height: 1000px;
+
+
+        
+        /* display: grid;
+        width: 100%;
+        height: 100%;
         background-color: #5E5E5E;
-        display: grid;
-        grid-template-rows: 2fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 100px;
-        row-gap: 50px;
-        column-gap: 5px;
+        row-gap: 15px;
+        column-gap: 15px; */
 `;
 
 export const Principal = styled.body`
     position: relative;
-    max-width: 1440px;
-    max-height: 2455px;
+    max-width: 100vw;
+    max-height: 100vh;
     background-color: black;
 `;
 

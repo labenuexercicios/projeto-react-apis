@@ -1,10 +1,10 @@
 
 import React from "react";
+import { Header } from "../../Components/Header/Header";
+import { Corpo, Status, Number, Name, Poison, Glass, Moves, FirstCard, SecondCard, Itens, Text, Fundo } from "./pokemonDetailStyle";
 
-import { Corpo, Status, Number, Name, Poison, Glass, Moves, FirstCard, SecondCard, Itens, Text, Fundo  } from "./pokemonDetailStyle";
 
 
- 
 
 
 
@@ -12,54 +12,56 @@ import { Corpo, Status, Number, Name, Poison, Glass, Moves, FirstCard, SecondCar
 
 
 export function PokemonDetailPage() {
-    
+
     return (
         <div>
-
-           
             
+            <Header />
 
             <Fundo>
                 <Corpo>
 
-                <FirstCard>
-                    <h1>Detalhes</h1>
-                </FirstCard>
-                    
+                    <FirstCard>
+                        <h1>Detalhes</h1>
+                    </FirstCard>
 
-                <SecondCard>
-                    <h1>Detalhes</h1>
-                </SecondCard>
+                    <SecondCard>
+                        <h1>Detalhes</h1>
+                    </SecondCard>
 
-                <Number>#01</Number>
-                <Name>Bulbasauro</Name>
-                <Poison>Poison</Poison>
-                <Glass>Glass</Glass>
+                    <Number>#01</Number>
+                    <Name>Bulbasauro</Name>
+                    <Poison>Poison</Poison>
+                    <Glass>Glass</Glass>
 
-                
+                    <Status>
+                        <div>
+                            <h1>Base stats</h1>
+                        </div>
+                    </Status>
 
-                
-                        
-                <Status>
-                    <div>
-                        <h1>Base stats</h1>
-                    </div>
-                </Status>
-
-                        
-
-                <Moves>
-                    <h2>Moves:</h2>
-                    <Itens><Text>Razor Wind</Text></Itens>
-                    <Itens><Text>Razor Wind</Text></Itens>
-                    <Itens><Text>Razor Wind</Text></Itens>
-                    <Itens><Text>Razor Wind</Text></Itens>
-                </Moves>    
+                    <Moves>
+                        <h2>Moves:</h2>
+                        <Itens><Text>Razor Wind</Text></Itens>
+                        <Itens><Text>Razor Wind</Text></Itens>
+                        <Itens><Text>Razor Wind</Text></Itens>
+                        <Itens><Text>Razor Wind</Text></Itens>
+                    </Moves>
                 </Corpo>
             </Fundo>
-    
-    </div>    
+
+        </div>
 
     )
 };
+
+
+
+
+
+
+
+
+
+
 

@@ -1,108 +1,77 @@
-import { Head, PokedexButton, Image } from "./HeaderStyle";
+import { Head, PokedexButton, Image, LeftButton } from "./HeaderStyle";
 import {  useNavigate } from "react-router-dom"
 import Logo from "../Images/Logo.png";
-// import { PokemonDetailPage } from "../../Pages/PokemonDetailPage/PokemonDetailPage";
-// import { getFormSubmissionInfo } from "react-router-dom/dist/dom";
-// import { PokemonsListPage } from "../../Pages/PokemonsListPage/PokemonsListPage";
-// import { PokedexPage } from "../../Pages/PokedexPage/PokedexPage";
-// import { useState } from "react";
-// import { PokemonDetailPage } from "../../Pages/PokemonDetailPage/PokemonDetailPage";
+import { useState } from "react";
+import { goToPokedexPage } from "../../router/Codinator";
 
 
 
 export function Header(){
-    // const [header, setReader] = useState('1')
-    // const changeHeader = (header) => {
-    //     setReader(header)};
-
-    const navigate = useNavigate('pokemondetailpage');
+    const [tela, setTela] = useState(1)
+    // const [button, setButton] = useState()
     
-    const goToListPage = () => {
-        navigate('/lista');
-    };
     
-    // const renderHeader = () => {
-    //     switch(header) {
-    //         case 'pokemondetailpage':
-    //             return<Head>
-    //             <Image src={Logo}/>
-    //             <PokedexButton onClick={()=>{changeHeader}}>Pokedex</PokedexButton>
-    //         </Head>
-    //         case 'pokedexpage' :
-    //             return<Head>
-    //             <Image src={Logo}/>
-    //             <PokedexButton onClick={()=>{changeHeader}}>Pokedex</PokedexButton>
-    //         </Head>
-    //         case 'pokemonlistpage':
-    //             return<Head>
-    //             <Image src={Logo}/>
-    //             <PokedexButton onClick={changeHeader}>Pokedex</PokedexButton>
-    //         </Head>
-    //     }
-    // };
+    const navigate = useNavigate();
 
-    // if(header === 1){
-    //     return( <Head>
-    //                 <Image src={Logo}/>
-    //                 <PokedexButton onClick={()=>changeHeader(1)}>Pokedex</PokedexButton>
-    //             </Head>
-    //     )
-    // }if(header === 2){
-            
+    function saveFunction () {
+        goToPokedexPage(navigate);
+        changeTela(2);
+    }
+        // setButton(saveFunction);
         
-    //     return(<Head>
-    //                     <Image src={Logo}/>
-    //                      <PokedexButton onClick={()=>changeHeader(2)}>Pokedex</PokedexButton>
-    //                </Head>
+    
+    
+    
+    
+
+
+    const changeTela = (tela) => setTela(tela);
+
+
+    if(tela === 1) {
+        return (
+            <Head>
+                <Image src={Logo}/>
+                    <PokedexButton onClick={saveFunction}>Pokedex</PokedexButton> 
+            </Head>
+            );
+        }
+    
             
-    //     )
-    // }};
+        if(tela === 2){
+            return (
+                <Head>
+                    <Image src={Logo}/>
+                    <LeftButton onClick={saveFunction}>Todos Pokémons </LeftButton>
+                </Head>
+            );
+        }
+    
+
+        if(tela === 3){
+        return ( 
+                <Head>
+                    <Image src={Logo}/>
+                    <LeftButton onClick={saveFunction}>Todos Pokémons </LeftButton>
+                    <button onClick={()=>{}}>Excluir da Pokedex</button>
+                </Head>
+
+            );
+        }
+    }
+
+    
+
+    
+    
+    
 
 
-    return(
-        
-        <Head>
-            <Image src={Logo}/>
-            <PokedexButton onClick={goToListPage}>Pokedex</PokedexButton>
-        </Head>
-    )
-    };
+
     
     
     
     
 
 
-    // const renderPage = () => {
-    //     switch(changeHeader){
-    //         case 'detailpage':
-    //             return 
-    //                     <Head>
-    //                             <Image src={Logo}/>
-    //                            <PokedexButton onClick={goToListPage}>Pokedex</PokedexButton>
-    //                     </Head>
-    //         case 'pokedexpage':
-    //             return
-    //                         <Head>
-    //                                 <Image src={Logo}/>
-    //                                 <PokedexButton onClick={goToListPage}>Pokedex</PokedexButton>
-    //                         </Head>
-    //         case 'listpage':
-    //             return 
-    //                         <Head>
-    //                                 <Image src={Logo}/>
-    //                                 <PokedexButton onClick={goToListPage}>Pokedex</PokedexButton>
-    //                         </Head>
-    //                         }
-    //                         return(
-    //                             <Head>
-    //                                     <Image src={Logo}/>
-    //                                    <PokedexButton onClick={goToListPage}>Pokedex</PokedexButton>
-    //                             </Head>
-    //                         )
-    //             ;
-    //                     };
-
-
-                        
-                    
+    

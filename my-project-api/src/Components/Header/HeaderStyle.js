@@ -1,37 +1,53 @@
 import styled from "styled-components";
 
 export const Head = styled.header`
-    /* position: absolute; */
-    width: 100vh;
-    height: 130px;
-    left: 0px;
-    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    /* left: 0px;
+    top: 0px; */
 
-    background: #FFFFFF;
+    background: aquamarine;
 `;
 
 export const PokedexButton = styled.button`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    display: relative;
     padding: 4px 10px;
 
     position: absolute;
-    width: 287px;
-    height: 74px;
-    left: 1112px;
-    top: 41px;
+    width: 210px;
+    height: 36px; 
+    left: 780px;
+    top: 30px;
 
     background-color: #33A4F5;
     border-radius: 8px;
 `;
 
 export const Image = styled.img`
+    
     position: absolute;
-    width: 200px;
-    height: 100px;
-    left: 566px;
-    top: 21px;
+    width: 100px;
+    height: 200px;
+    left: 600px;
+    top: -50px;
     transform: rotate(-90deg);
 `
+
+export const LeftButton = styled.h3`
+    
+    position: relative;
+    width: 210px;
+    height: 36px; 
+    left: 100px;
+    top: 10px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700px;
+    font-size: 24px;
+    line-height: 36px;
+    text-decoration-line: underline;
+    color: #1a1a1a;
+    `

@@ -1,14 +1,16 @@
 
 
-export const goToListPage = (navigate) => {
-    navigator('/lista');
+export const goToPokedexPage = (navigate) => {
+    navigator('/pokedex');
 }
+
+
 
 export const goToDetailsPage = (navigate) => {
     navigator('detalhes');
 }
 
-export const gotoPokedexPage = (navigate) => {
+export const goToListPage = (navigate) => {
     navigator('/');
 }
 
