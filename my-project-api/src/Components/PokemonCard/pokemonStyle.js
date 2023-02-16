@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Pai = styled.div`
-        position: relative;
+        /* position: relative;
         width: 100%;
         height: 100%;
         background-color: #5E5E5E;
@@ -9,7 +9,7 @@ export const Pai = styled.div`
         grid-template-rows: 2fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 100px;
     row-gap: 20px;
-    column-gap: 5px;
+    column-gap: 5px; */
 `;
 
 
@@ -47,6 +47,7 @@ export const Detalhes = styled.button`
     left: 0px;
     width: 146px;
     height: 38px;
+    
 
 
     
@@ -59,7 +60,8 @@ export const Detalhes = styled.button`
 
     text-decoration-line: underline;
 
-    color: #FFFFFF;
+    color: black;
+    background-color: green;
 
     
 `;

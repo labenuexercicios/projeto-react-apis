@@ -21,9 +21,9 @@ export function PokemonDetailPage() {
             <Fundo>
                 <Corpo>
 
-                    <FirstCard>
+                    {/* <FirstCard>
                         <h1>Detalhes</h1>
-                    </FirstCard>
+                    </FirstCard> */}
 
                     <SecondCard>
                         <h1>Detalhes</h1>

@@ -1,17 +1,23 @@
 
 
-export const goToPokedexPage = (navigate) => {
-    navigator('/pokedex');
-}
+export const goToPokedexPage = (navigate, set) => {
+    navigate('/pokedex');
+    set(2)
+    
+    
+
+};
 
 
 
 export const goToDetailsPage = (navigate) => {
-    navigator('detalhes');
-}
+    navigate('/detalhes');
+    
+};
 
 export const goToListPage = (navigate) => {
-    navigator('/');
-}
+    navigate('/');
+    
+};
 
 

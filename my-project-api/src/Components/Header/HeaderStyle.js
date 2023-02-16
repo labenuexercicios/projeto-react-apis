@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Head = styled.header`
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    height: 100px;
+    width: 100vw;
+    height: 20vh;
     /* left: 0px;
     top: 0px; */
 
@@ -18,7 +18,7 @@ export const PokedexButton = styled.button`
     position: absolute;
     width: 210px;
     height: 36px; 
-    left: 780px;
+    left: 1000px;
     top: 30px;
 
     background-color: #33A4F5;
