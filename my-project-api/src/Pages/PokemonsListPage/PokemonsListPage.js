@@ -45,7 +45,7 @@ export function PokemonsListPage() {
         </Pai>
     </>
     )
-}
+};
 
 
 
