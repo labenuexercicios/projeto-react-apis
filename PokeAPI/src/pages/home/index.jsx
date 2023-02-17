@@ -9,14 +9,14 @@ import { ContainerMain, Section } from "./styled";
 
 const HomePage = () => {
   const context = useContext(GlobalContext);
-  const { showGotcha, showRemove } = context;
+  const { showGotcha, showRemove, pokemons } = context;
   return (
     <div>
       <Header />
       <ContainerMain>
         <TxtMain texto={`Todos os Pokemons`} />
         <Section>
-          <SectionPokemons />
+          <SectionPokemons pokemons={pokemons} />
         </Section>
         {showGotcha === true && (
           <CardGotcha

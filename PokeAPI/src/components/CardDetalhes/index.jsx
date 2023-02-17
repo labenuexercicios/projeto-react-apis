@@ -29,7 +29,6 @@ const CardDetalhes = () => {
     pokemonDetalhes,
     getPokemonDetails,
     exibirBtn,
-    exibir,
     exibirBtnRemoverHeaderFunction,
   } = context;
   const { id } = useParams();
@@ -53,6 +52,7 @@ const CardDetalhes = () => {
         <h1>Bases Stats</h1>
         <ListaStats>
           {pokemonDetalhes?.stats?.map((p, i) => (
+            //MAP QUE DEVOLVE CADA STAT E CRIA A BARRA DE PROGESSO
             <LiMoves key={i}>
               <ContainerTr>
                 <NameTh>{p.stat.name}</NameTh>
@@ -72,6 +72,7 @@ const CardDetalhes = () => {
         <BoxMoves>
           <h1>Moves</h1>
           {pokemonDetalhes?.moves?.map((p, i) => {
+            // MAP QUE RETORNA CADA MOVE
             if (i <= 3) {
               return <ListMoves key={i}>{p.move.name}</ListMoves>;
             }

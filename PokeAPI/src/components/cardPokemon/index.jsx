@@ -30,12 +30,11 @@ const CardPokemon = (props) => {
     setShowRemove,
   } = context;
   const navigate = useNavigate();
-  // const { id } = useParams();
-  // console.log(id);
 
   let cor = "";
 
   switch (pokemon.types[0].type.name) {
+    // SWITCH QUE DETERMINA BACKGROUND DO CARD
     case "grass":
       cor = " #729F92";
       break;
@@ -78,6 +77,7 @@ const CardPokemon = (props) => {
           detalhes
         </ButtonDetalhes>
         {exibir ? (
+          // CONDICAO QUE DETERMINA QUAL BOTAO VAI SER EXIBIDO; BOTAO DE ADICIONAR/BOTAO DE REMOVER
           <ButtonCapturar
             bgColor="#FF6262"
             onClick={() => {
@@ -88,6 +88,8 @@ const CardPokemon = (props) => {
             remover
           </ButtonCapturar>
         ) : pokedex.find((pk) => pk.id === pokemon.id) === undefined ? (
+          // CONDICAO QUE DETERMINA QUAL BOTAO VAI SER EXIBIDO; BOTAO DE CAPTURAR/BOTAO DE CAPTURADO
+
           <ButtonCapturar
             bgColor="#FFFFF"
             onClick={() => {

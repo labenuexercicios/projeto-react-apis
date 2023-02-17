@@ -34,6 +34,7 @@ const Header = () => {
     <Container>
       <ContainerButaoVoltar>
         {exibir && (
+          // IF TERNARIO QUE EXIBI O BOTAO VOLTAR
           <BotaoVoltar
             onClick={() => {
               ocultarBtn();
@@ -52,6 +53,7 @@ const Header = () => {
 
       <BotaoPokedex>
         {exibir === false && (
+          // CONDICAO QUE EXIBI O BOTAO POKEDEX
           <BtnPokedex
             bgColor="#33A4F5"
             txtColor="#FFFFFF"
@@ -69,6 +71,7 @@ const Header = () => {
         ) : (
           <>
             {pokedex.find((pk) => pk.id === pokemonDetalhes.id) ===
+            // CONDICAO QUE DETERMINA QUAL BOTAO VAI SER EXIBIDO; BOTAO DE ADICIONAR/BOTAO DE REMOVER
             undefined ? (
               <BtnPokedex
                 bgColor="#33A4F5"

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import Header from "../../components/headers";
-import SectionDetalhes from "../../components/SectionDetalhes";
 import TxtMain from "../../components/TxtMaIn";
 import { GlobalContext } from "../../context/GlobalContext";
 import { ContainerMain } from "../home/styled";
 import CardGotcha from "../../components/cardGotcha";
+import CardDetalhes from "../../components/CardDetalhes";
 
 const Details = () => {
   const context = useContext(GlobalContext);
@@ -14,7 +14,7 @@ const Details = () => {
       <Header />
       <ContainerMain>
         <TxtMain texto={`Detalhes`} />
-        <SectionDetalhes />
+        <CardDetalhes />
       </ContainerMain>
       {showGotcha === true && (
         <CardGotcha

@@ -1,21 +1,21 @@
 import React, { useContext } from "react";
 import CardGotcha from "../../components/cardGotcha";
 import Header from "../../components/headers";
-import SectionPokedex from "../../components/sectionPokedex";
+import SectionPokemons from "../../components/sectionPokemons";
 import TxtMain from "../../components/TxtMaIn";
 import { GlobalContext } from "../../context/GlobalContext";
 import { ContainerMain, Section } from "../home/styled";
 
 const PokedexPage = () => {
   const context = useContext(GlobalContext);
-  const { showRemove } = context;
+  const { showRemove, pokedex } = context;
   return (
     <div>
       <Header />
       <ContainerMain>
         <TxtMain texto={`Meus Pokemons`} />
         <Section>
-          <SectionPokedex />
+          <SectionPokemons pokemons={pokedex} />
         </Section>
         {showRemove === true && (
           <CardGotcha

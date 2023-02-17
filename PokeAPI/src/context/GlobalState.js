@@ -9,7 +9,6 @@ const GlobalState = ({ children }) => {
     const [pokemonDetalhes, setPokemonDetalhes] = useState({})
     const [exibirBtnRemoverHeader, setExibirBtnRemoverHeader] = useState(false)
     const [buttonAdd, setButtonAdd] = useState()
-    const [cardAddPk, setCardAddPk] = useState(false)
     const [showGotcha, setShowGotcha] = useState(false)
     const [showRemove, setShowRemove] = useState(false)
 
@@ -20,6 +19,7 @@ const GlobalState = ({ children }) => {
 
 
     const getPokemonDetails = async (id) => {
+        //FUNÇÃO QUE PEGA UM POKEMON PARA RENDERIZAR NA PAGINA DE DETALHES
         try {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
             setPokemonDetalhes(response.data)
@@ -29,32 +29,21 @@ const GlobalState = ({ children }) => {
     }
 
     const exibirBtnRemoverHeaderFunction = (id) => {
+        // FUNÇÃO QUE FAZ O BOTÃO DE VOLTAR SER EXIBIDO
         setExibirBtnRemoverHeader(true)
         const pokeInPokedex = pokedex.find(pk => pk.id === id)
         pokeInPokedex === undefined ? (setButtonAdd(true)) : (setButtonAdd(false))
     }
 
 
-
-
     const notExibirBtnRemoverHeaderFunction = (id) => {
+        // FUNÇÃO QUE FAZ O BOTÃO DE VOLTAR NÃO SER EXIBIDO
         setExibirBtnRemoverHeader(false)
     }
 
 
-    const detailsPokemon = (pokemonId) => {
-        const pokemon = pokemons.find((pk) => pk.id === pokemonId.id)
-        localStorage.setItem('detalhes', JSON.stringify(pokemon))
-        const setLocalStorage = localStorage.getItem("detalhes")
-        const getPokemonLocalStorage = JSON.parse(setLocalStorage)
-        setPokemonDetalhes(getPokemonLocalStorage)
-    }
-
-
-
-
-
     const addPokedex = (pokemonId) => {
+        //FUNÇÃO QUE ADICIONA POKEMON NA POKEDEX
         const copiaPokedex = [...pokedex]
         const pokemon = copiaPokedex.find((pk) => pk.id === pokemonId.id)
         !pokemon ? copiaPokedex.push(pokemonId) : alert("Pokemom ja incluido")
@@ -62,6 +51,7 @@ const GlobalState = ({ children }) => {
     }
 
     const removePokedex = (pokemonId) => {
+        // FUNNÇÃO QUE REMOVE POKEMON NA POKEDEX
         const novoArray = pokedex.filter((pk) => {
             return pokemonId.id !== pk.id
         })
@@ -69,6 +59,7 @@ const GlobalState = ({ children }) => {
     }
 
     const getPokemons = async () => {
+        // FUNÇÃO QUE PEGA OS DADOS DE TODOS OS POKEMONS
         const copiaPokemons = []
         try {
             const response = await axios.get(`
@@ -111,7 +102,6 @@ const GlobalState = ({ children }) => {
         addPokedex,
         pokedex,
         removePokedex,
-        detailsPokemon,
         pokemonDetalhes,
         exibirBtnRemoverHeaderFunction,
         notExibirBtnRemoverHeaderFunction,
@@ -119,7 +109,6 @@ const GlobalState = ({ children }) => {
         buttonAdd,
         getPokemonDetails,
         showCart,
-        cardAddPk,
         showGotcha,
         setShowGotcha,
         showRemove,
