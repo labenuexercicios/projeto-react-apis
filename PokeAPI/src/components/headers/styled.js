@@ -28,6 +28,7 @@ export const BotaoPokedex = styled.div`
     }
 `
 export const BotaoVoltar = styled.button`
+    display: block;
     border: none;
     background-color: transparent;
     text-decoration: underline;
@@ -49,6 +50,7 @@ export const BtnPokedex = styled.button`
     font-size: 1rem;
     border:none;
     border-radius:8px;
+    display: ${(props) => props.display};
     @media(max-width: 864px){
         width: 100%;
     }

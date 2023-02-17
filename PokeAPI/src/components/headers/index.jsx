@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import { goHome, goPokedes } from "../navegacao/navegacao";
 import {
@@ -26,6 +26,8 @@ const Header = () => {
     addPokedex,
     ButtoRemove,
     pokedex,
+    setShowGotcha,
+    setShowRemove,
   } = context;
 
   return (
@@ -49,38 +51,51 @@ const Header = () => {
       </div>
 
       <BotaoPokedex>
-        {exibirBtnRemoverHeader === false ? (
+        {exibir === false && (
           <BtnPokedex
             bgColor="#33A4F5"
             txtColor="#FFFFFF"
+            display="block"
             onClick={() => {
               exibirBtn();
               goPokedes(navigate);
             }}
           >
-            Pokedex
+            Pokedex true
           </BtnPokedex>
-        ) : pokedex.find((pk) => pk.id === pokemonDetalhes.id) === undefined ? (
-          <BtnPokedex
-            bgColor="#33A4F5"
-            txtColor="#FFFFFF"
-            onClick={() => {
-              addPokedex(pokemonDetalhes);
-              ButtoRemove();
-            }}
-          >
-            adicionar
-          </BtnPokedex>
+        )}
+        {exibirBtnRemoverHeader === false ? (
+          <></>
         ) : (
-          <BtnPokedex
-            bgColor="#FF6262"
-            txtColor="#FFFFFF"
-            onClick={() => {
-              removePokedex(pokemonDetalhes);
-            }}
-          >
-            remover
-          </BtnPokedex>
+          <>
+            {pokedex.find((pk) => pk.id === pokemonDetalhes.id) ===
+            undefined ? (
+              <BtnPokedex
+                bgColor="#33A4F5"
+                txtColor="#FFFFFF"
+                onClick={() => {
+                  setShowGotcha(true);
+                  addPokedex(pokemonDetalhes);
+                  ButtoRemove();
+                }}
+              >
+                adicionar
+              </BtnPokedex>
+            ) : (
+              <>
+                <BtnPokedex
+                  bgColor="#FF6262"
+                  txtColor="#FFFFFF"
+                  onClick={() => {
+                    setShowRemove(true);
+                    removePokedex(pokemonDetalhes);
+                  }}
+                >
+                  remover
+                </BtnPokedex>
+              </>
+            )}
+          </>
         )}
       </BotaoPokedex>
     </Container>

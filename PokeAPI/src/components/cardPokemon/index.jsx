@@ -7,12 +7,11 @@ import {
   Container,
   ContainerButtons,
   ContainerImgName,
-  Gotcha,
   ImgFundoPk,
   ImgPoke,
 } from "./styled";
 import { goDetails } from "../navegacao/navegacao";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ImgFundo from "../../img/Rectangle2.png";
 import NameAndId from "../nameAndId";
 
@@ -24,12 +23,11 @@ const CardPokemon = (props) => {
     exibir,
     removePokedex,
     exibirBtn,
-    detailsPokemon,
     exibirBtnRemoverHeaderFunction,
     pokedex,
-    getPokemonDetails,
     showCart,
-    cardAddPk,
+    setShowGotcha,
+    setShowRemove,
   } = context;
   const navigate = useNavigate();
   // const { id } = useParams();
@@ -83,6 +81,7 @@ const CardPokemon = (props) => {
           <ButtonCapturar
             bgColor="#FF6262"
             onClick={() => {
+              setShowRemove(true);
               removePokedex(pokemon);
             }}
           >
@@ -94,6 +93,7 @@ const CardPokemon = (props) => {
             onClick={() => {
               addPokedex(pokemon);
               showCart();
+              setShowGotcha(true);
             }}
           >
             Capturar!

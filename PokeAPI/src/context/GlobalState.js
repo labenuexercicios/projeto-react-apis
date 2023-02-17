@@ -10,12 +10,16 @@ const GlobalState = ({ children }) => {
     const [exibirBtnRemoverHeader, setExibirBtnRemoverHeader] = useState(false)
     const [buttonAdd, setButtonAdd] = useState()
     const [cardAddPk, setCardAddPk] = useState(false)
+    const [showGotcha, setShowGotcha] = useState(false)
+    const [showRemove, setShowRemove] = useState(false)
 
     const showCart = () => {
         setTimeout(function () {
             console.log()
         }, 3000)
     }
+
+    console.log(showGotcha)
 
     const getPokemonDetails = async (id) => {
         try {
@@ -117,7 +121,11 @@ const GlobalState = ({ children }) => {
         buttonAdd,
         getPokemonDetails,
         showCart,
-        cardAddPk
+        cardAddPk,
+        showGotcha,
+        setShowGotcha,
+        showRemove,
+        setShowRemove
     }
     return (
         <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
