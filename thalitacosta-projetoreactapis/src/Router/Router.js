@@ -8,7 +8,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route index path="/" element={<PokemonListPage/>}/>
-                <Route path="/pokemondetail" element={<PokemonDetailPage/>}/>
+                <Route path="/pokemondetail/:pokemonName" element={<PokemonDetailPage/>}/>
                 <Route path="/pokedex" element={<PokedexPage/>}/>
             </Routes>
         </BrowserRouter>

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-/* export const Container = styled.div`
+export const Container = styled.div`
 padding: 16px;
 min-width: 400px;
 max-width: 440px;
-background-color: azure;
+background-color: ${(props) => props.color};
 border-radius: 12px;
 display: flex;
 position: relative;
 margin: 50px;
 color: #ffffff;
-`; */
+`;
 
 export const FotoPokemon = styled.img`
   width: 180px;
@@ -75,3 +75,12 @@ export const CatchButton = styled.button`
   color: #000;
 `;
 
+export const ButtonDetalhes = styled.button`
+  border: none;
+  background: none;
+  color: white;
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+`;

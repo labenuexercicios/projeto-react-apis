@@ -1,10 +1,9 @@
-import {NameMoves, FotoPokemonDireita, Dados, PokemonType, PokemonName, PokemonNumber, ImagePokemon, Title, BlocoMoves, ContainerDetails, BgImagePokemon, BlocoImagensPokemon, BlocoBaseStates, BlocoDados, Pokeball, BlocoFotoPokemon} from "./Styled"
-import bulbasaur from "../../Assets/PokemonImages/bulbasaur.png"
+import {Moves, States, Move, FotoPokemonDireita, Dados, PokemonType, PokemonName, PokemonNumber, ImagePokemon, Title, BlocoMoves, ContainerDetails, BgImagePokemon, BlocoImagensPokemon, BlocoBaseStates, BlocoDados, Pokeball, BlocoFotoPokemon} from "./Styled"
 import pokeball from "../../Assets/pokeboll.png"
-import ice from "../../Assets/PokemonTypes/ice.png"
+import { getImg } from "../../Utils/ReturnPokemonImage";
+import {getTypes} from "../../Utils/ReturnPokemonType"
 
-function CardDetail(props) {
-
+function CardDetail({detailPokemon}) {
 
     return (
         <>
@@ -12,28 +11,50 @@ function CardDetail(props) {
             <ContainerDetails>
               <BlocoImagensPokemon>
                 <BgImagePokemon>
-                  <ImagePokemon src={bulbasaur}/>
+                  <ImagePokemon src={detailPokemon.sprites?.back_default}/>
                 </BgImagePokemon>
                 <BgImagePokemon>
-                  <ImagePokemon src={bulbasaur}/>
+                  <ImagePokemon src={detailPokemon.sprites?.front_default}/>
                 </BgImagePokemon>
               </BlocoImagensPokemon>
               <BlocoBaseStates>
                 <h2>Base stats</h2>
+                <States>
+                  <div>
+                    {detailPokemon.stats?.map((stat) => {   
+                    const stats = stat.stat.name  
+                    return (<p>{stats}</p>);
+                    })}
+                  </div>
+                  <div>
+                    {detailPokemon.stats?.map((statnumber) => {   
+                    const statsnumber = statnumber.base_stat 
+                    return (<p>{statsnumber}</p>);
+                    })}
+                  </div>
+                </States>
               </BlocoBaseStates>
               <BlocoDados>
                 <Dados>
-                  <PokemonNumber>#01</PokemonNumber>
-                  <PokemonName>Bulbasaur</PokemonName>
-                  <PokemonType src={ice}/>
+                  <PokemonNumber>#{detailPokemon.id}</PokemonNumber>
+                  <PokemonName>{detailPokemon.name}</PokemonName>
+                  {detailPokemon.types?.map((type) => {   
+                  const tipo = type.type.name  
+                  return (<PokemonType key={tipo} src={getTypes(tipo)} alt={tipo} />);
+                  })}
                 </Dados>
                 <BlocoMoves>
                   <h2>Moves:</h2>
-                  <NameMoves>Name Moves</NameMoves>
+                  <Moves>
+                    {detailPokemon.moves?.map((movee) => {   
+                    const move = movee.move.name  
+                    return (<Move><p>{move}</p></Move>);
+                    })}
+                  </Moves>
                 </BlocoMoves>
               </BlocoDados>
               <BlocoFotoPokemon>
-                <FotoPokemonDireita src={bulbasaur}/>
+                <FotoPokemonDireita src={getImg(detailPokemon.name)}/>
               </BlocoFotoPokemon>
               <Pokeball src={pokeball}/>
             </ContainerDetails>

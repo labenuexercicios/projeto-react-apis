@@ -18,7 +18,9 @@ export const BlocoBaseStates = styled.div `
     border-radius: 10px;
     width: 23vw;
     display: flex;
+    flex-direction: column;
     padding: 20px;
+    gap: 30px
 `
 
 export const BlocoMoves = styled.div `
@@ -133,3 +135,30 @@ export const Pokeball = styled.img `
     top: 0;
     right: 0;
 `
+
+export const States = styled.div `
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+`
+
+export const Move = styled.div `
+    background-color: #ECECEC;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+width: 114px;
+height: 37px;
+left: 814px;
+top: 656px;
+border: 1px dashed rgba(0, 0, 0, 0.14);
+border-radius: 12px;
+`
+
+export const Moves = styled.div `
+    gap: 5px
+`
+

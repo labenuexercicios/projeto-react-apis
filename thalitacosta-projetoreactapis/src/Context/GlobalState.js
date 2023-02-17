@@ -9,7 +9,7 @@ const GlobalState = (props) => {
     const [pokedex, setPokedex] = useState([]);
     const [detail, setDetail] = useState([])
     
-    console.log(pokedex)
+    /* console.log(pokedex) */
 
     const getPokemons = async() => {
 
@@ -17,7 +17,7 @@ const GlobalState = (props) => {
           const response = await axios.get(BASE_URL);
         
           setPokemonList(response.data.results)
-          console.log(response.data.results)
+          /* console.log(response.data.results) */
         } catch (error) {
           console.log(error)
         }
@@ -26,6 +26,7 @@ const GlobalState = (props) => {
     useEffect(() => {
         getPokemons()
       }, [])
+      
 
     const addToPokedex = (pokemonToAdd) => {
         const isAlreadyOnPokedex = pokedex.find(
