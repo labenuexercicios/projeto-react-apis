@@ -1,4 +1,3 @@
-import Header from "./components/headers";
 import GlobalState from "./context/GlobalState";
 import { GlobalStyled } from "./GlobalStyled";
 import { Router } from "./routers/Routers";

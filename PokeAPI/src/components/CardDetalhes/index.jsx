@@ -33,7 +33,6 @@ const CardDetalhes = () => {
     exibirBtnRemoverHeaderFunction,
   } = context;
   const { id } = useParams();
-  console.log(pokemonDetalhes);
   useEffect(() => {
     getPokemonDetails(id);
     exibirBtn();

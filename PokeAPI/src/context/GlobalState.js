@@ -15,11 +15,9 @@ const GlobalState = ({ children }) => {
 
     const showCart = () => {
         setTimeout(function () {
-            console.log()
         }, 3000)
     }
 
-    console.log(showGotcha)
 
     const getPokemonDetails = async (id) => {
         try {
