@@ -61,7 +61,7 @@ const Header = () => {
               goPokedes(navigate);
             }}
           >
-            Pokedex true
+            Pokedex
           </BtnPokedex>
         )}
         {exibirBtnRemoverHeader === false ? (
