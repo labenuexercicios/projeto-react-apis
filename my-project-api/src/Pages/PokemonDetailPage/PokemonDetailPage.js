@@ -12,6 +12,13 @@ import { Corpo, Status, Number, Name, Poison, Glass, Moves, FirstCard, SecondCar
 
 
 export function PokemonDetailPage() {
+    
+
+    // const [details, SetDetails] = useState(1)
+
+    // const changeForDetails = () => {
+
+    // }
 
     return (
         <div>
@@ -21,9 +28,9 @@ export function PokemonDetailPage() {
             <Fundo>
                 <Corpo>
 
-                    {/* <FirstCard>
+                    <FirstCard>
                         <h1>Detalhes</h1>
-                    </FirstCard> */}
+                    </FirstCard>
 
                     <SecondCard>
                         <h1>Detalhes</h1>

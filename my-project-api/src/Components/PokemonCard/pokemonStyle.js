@@ -134,10 +134,10 @@ export const Poison = styled.div`
     border-radius: 8px;
     `;
 
-export const Pokemon = styled.div`
+export const Pokemon = styled.img`
     position: absolute;
-    width: 193px;
-    height: 193px;
+    width: 100px;
+    height: 100px;
     left: 280px;
     top: 0px;
 `;
