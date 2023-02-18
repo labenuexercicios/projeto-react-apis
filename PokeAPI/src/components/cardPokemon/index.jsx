@@ -33,29 +33,25 @@ const CardPokemon = (props) => {
 
   let cor = "";
 
-  switch (pokemon.types[0].type.name) {
-    // SWITCH QUE DETERMINA BACKGROUND DO CARD
-    case "grass":
-      cor = " #729F92";
-      break;
-    case "fire":
-      cor = "#EAAB7D";
-      break;
-    case "water":
-      cor = "#71C3FF";
-      break;
-    case "bug":
-      cor = "#76A866";
-      break;
-    case "normal":
-      cor = "#BF9762";
-      break;
-    default:
-      cor = "";
-      break;
-  }
+  let getColor = () => {
+    switch (pokemon.types[0].type.name) {
+      // SWITCH QUE DETERMINA BACKGROUND DO CARD
+      case "grass":
+        return "#729F92";
+      case "fire":
+        return "#EAAB7D";
+      case "water":
+        return "#71C3FF";
+      case "bug":
+        return "#76A866";
+      case "normal":
+        return "#BF9762";
+      default:
+        return "";
+    }
+  };
   return (
-    <Container bgColor={cor}>
+    <Container bgColor={getColor()}>
       <ContainerImgName>
         <NameAndId pokemon={pokemon} />
         <BoxImagem>

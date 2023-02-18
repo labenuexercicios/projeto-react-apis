@@ -42,44 +42,31 @@ const GlobalState = ({ children }) => {
     }
 
 
-    const addPokedex = (pokemonId) => {
+    const addPokedex = (pokemon) => {
         //FUNÇÃO QUE ADICIONA POKEMON NA POKEDEX
-        const copiaPokedex = [...pokedex]
-        const pokemon = copiaPokedex.find((pk) => pk.id === pokemonId.id)
-        !pokemon ? copiaPokedex.push(pokemonId) : alert("Pokemom ja incluido")
-        setPokedex(copiaPokedex)
+        if (pokedex.some((p) => p.id === pokemon.id)) {
+            alert("Pokemon já incluído")
+        } else {
+            setPokedex((pokedex) => [...pokedex, pokemon])
+        }
     }
 
-    const removePokedex = (pokemonId) => {
-        // FUNNÇÃO QUE REMOVE POKEMON NA POKEDEX
-        const novoArray = pokedex.filter((pk) => {
-            return pokemonId.id !== pk.id
-        })
-        setPokedex(novoArray)
+    const removePokedex = (pokemon) => {
+        // FUNÇÃO QUE REMOVE POKEMON NA POKEDEX
+        setPokedex((pokedex) => pokedex.filter((p) => p.id !== pokemon.id))
     }
 
     const getPokemons = async () => {
-        // FUNÇÃO QUE PEGA OS DADOS DE TODOS OS POKEMONS
-        const copiaPokemons = []
         try {
-            const response = await axios.get(`
-            https://pokeapi.co/api/v2/pokemon?limit=21&offset=0
-            `)
-            const poke = response.data.results
-            try {
-                for (let key in poke) {
-                    let pokemom = await axios.get(poke[key].url)
-                    copiaPokemons.push(pokemom.data)
-                }
-                setPokemons(copiaPokemons)
-            } catch (error) {
-                console.log(error)
-            }
-
+            const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=21&offset=0')
+            const pokeUrls = response.data.results.map((result) => result.url)
+            const pokemons = await Promise.all(pokeUrls.map((url) => axios.get(url)))
+            setPokemons(pokemons.map((pokemon) => pokemon.data))
         } catch (error) {
             console.log(error)
         }
     }
+
 
     useEffect(() => {
         getPokemons()
