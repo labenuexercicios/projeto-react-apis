@@ -135,14 +135,13 @@ export const Poison = styled.div`
     `;
 
 export const Pokemon = styled.img`
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    left: 280px;
+    position: relative;
+    width: 20vw;
+    height: 20vh;
+    left: 210px;
     top: 0px;
 `;
     
-
 
     
 

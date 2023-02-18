@@ -1,40 +1,56 @@
+import React from "react";
 import { Header } from "../../Components/Header/Header"
 import { PokemonCard } from "../../Components/PokemonCard/PokemonCard"
-import axios from 'axios';
-import { useEffect, useState } from "react";
 import { Pai } from './pokemonsListStyle'
+import { GlobalContext } from "../../contexts/GlobalContext";
+import { useContext } from "react";
+// import axios from 'axios';
+// import { useEffect, useState } from "react";
+
 
 
 export function PokemonsListPage() {
-    const [pokemons, setPokemons] = useState([]);
+    
+    const context = useContext(GlobalContext);
+
+    console.log(context);
+
+    const { pokemons } = context;
    
 
-    useEffect(() => {
+    // useEffect(() => {
         
-        getPokemons();
-    },[]);
+    //     getPokemons();
+    // },[]);
 
-    const getPokemons = () => {
-        const endpoints = [];
-        for (let i = 1; i < 31; i++ ) {
-            endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
-        }
-        console.log(endpoints);
-        const response = axios.all(endpoints.map((endpoints) => axios.get(endpoints)))
-        .then((response) => setPokemons(response))
-        .catch((erro)=>{
-            console.log(erro.response)
-        })
-    }
+    // const getPokemons = () => {
+    //     const endpoints = [];
+    //     for (let i = 1; i < 31; i++ ) {
+    //         endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+    //     }
+    //     console.log(endpoints);
+    //     const response = axios.all(endpoints.map((endpoints) => axios.get(endpoints)))
+    //     .then((response) => setPokemons(response))
+    //     .catch((erro)=>{
+    //         console.log(erro.response)
+    //     })
+    // }
+    
+
+        
+    
 
     const cardScreen = pokemons.map((pokemon)=>{
         return(
-            <PokemonCard name={pokemon.data.name} image={pokemon.data.sprites.front_defalt} number={pokemon.data.order} />
+            <PokemonCard 
+            key={pokemon.url}
+            name={pokemon.data.name} 
+            image={pokemon.data.sprites.front_shiny} 
+            number={pokemon.data.order}/>
         )
     });
 
-    console.log(pokemons)
-
+    
     return (
     <>
         <Header />
@@ -44,6 +60,13 @@ export function PokemonsListPage() {
     </>
     )
 };
+   
+
+        
+
+
+    
+
     
 
     // const getPokemons = async () => {

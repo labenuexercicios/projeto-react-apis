@@ -11,56 +11,58 @@ import { Corpo, Status, Number, Name, Poison, Glass, Moves, FirstCard, SecondCar
 
 
 
+
+
 export function PokemonDetailPage() {
+
+    
+    
     
 
-    // const [details, SetDetails] = useState(1)
-
-    // const changeForDetails = () => {
-
-    // }
-
-    return (
-        <div>
-            
-            <Header />
-
-            <Fundo>
-                <Corpo>
-
-                    <FirstCard>
-                        <h1>Detalhes</h1>
-                    </FirstCard>
-
-                    <SecondCard>
-                        <h1>Detalhes</h1>
-                    </SecondCard>
-
-                    <Number>#01</Number>
-                    <Name>Bulbasauro</Name>
-                    <Poison>Poison</Poison>
-                    <Glass>Glass</Glass>
-
-                    <Status>
-                        <div>
-                            <h1>Base stats</h1>
-                        </div>
-                    </Status>
-
-                    <Moves>
-                        <h2>Moves:</h2>
-                        <Itens><Text>Razor Wind</Text></Itens>
-                        <Itens><Text>Razor Wind</Text></Itens>
-                        <Itens><Text>Razor Wind</Text></Itens>
-                        <Itens><Text>Razor Wind</Text></Itens>
-                    </Moves>
-                </Corpo>
-            </Fundo>
-
-        </div>
-
-    )
-};
+    
+        
+        return (
+            <>
+                
+    
+                <Header/>
+                <Fundo>
+                    <Corpo>
+    
+                        <FirstCard >
+                            <h1>Detalhes</h1>
+                        
+                        </FirstCard>
+    
+                        <SecondCard >
+                            <h1>Detalhes</h1>
+                        </SecondCard>
+    
+                        <Number>#01</Number>
+                        <Name>Bulbasauro</Name>
+                        <Poison>Poison</Poison>
+                        <Glass>Glass</Glass>
+    
+                        <Status>
+                            <div>
+                                <h1>Base stats</h1>
+                            </div>
+                        </Status>
+    
+                        <Moves>
+                            <h2>Moves:</h2>
+                            <Itens><Text>Razor Wind</Text></Itens>
+                            <Itens><Text>Razor Wind</Text></Itens>
+                            <Itens><Text>Razor Wind</Text></Itens>
+                            <Itens><Text>Razor Wind</Text></Itens>
+                        </Moves>
+                    </Corpo>
+                </Fundo>
+    
+            </>
+    
+        )}
+        
 
 
 

@@ -8,7 +8,7 @@ export const Head = styled.header`
     /* left: 0px;
     top: 0px; */
 
-    background: aquamarine;
+    background: #FFFFFF;
 `;
 
 export const PokedexButton = styled.button`

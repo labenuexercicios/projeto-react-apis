@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Fundo = styled.div`
         position: relative;
-        width: 1440px;
-        height: 2455px;
+        width: 100wh;
+        height: 100vh;
         background-color: #5E5E5E;
 `;
 
