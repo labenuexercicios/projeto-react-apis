@@ -27,53 +27,77 @@ const GlobalState = (props) => {
   };
 
   //FUNÇÃO QUE FAZ A REQUISIÇÃO
-  const getPokemon = async (arrayEstado, estado) => {
-    const copiaEstado = [...arrayEstado];
-    let pegaId = 0;
-    while (pegaId <= 20) {
-      pegaId = pegaId + 1;
-      try {
-        const response = await axios.get(`
-        https://pokeapi.co/api/v2/pokemon/${pegaId}
-        `);
-        //TRATAMENTO PARA PEGAR DADOS DE TIPO
-        let arrayTypes = [];
-        const objTypes = response.data.types;
-        for (let j in objTypes) {
-          let pegaTypes = objTypes[j].type.name;
-          arrayTypes.push(pegaTypes);
-          if (arrayTypes.length === 2) {
-            break;
-          }
-        }
-        //TRATAMENTO PARA PEGAR DADOS DE MOVIMENTOS
-        let arrayMoves = [];
-        const moves = response.data.moves;
-        for (let j in moves) {
-          let pegaMoves = moves[j].move.name;
-          arrayMoves.push(pegaMoves);
-          if (arrayMoves.length === 7) {
-            break;
-          }
-        }
+  // const getPokemon = async (arrayEstado, estado) => {
+  //   const copiaEstado = [...arrayEstado];
+  //   let pegaId = 0;
+  //   while (pegaId <= 20) {
+  //     pegaId = pegaId + 1;
+  //     try {
+  //       const response = await axios.get(`
+  //       https://pokeapi.co/api/v2/pokemon/${pegaId}
+  //       `);
+  //       //TRATAMENTO PARA PEGAR DADOS DE TIPO
+  //       let arrayTypes = [];
+  //       const objTypes = response.data.types;
+  //       for (let j in objTypes) {
+  //         let pegaTypes = objTypes[j].type.name;
+  //         arrayTypes.push(pegaTypes);
+  //         if (arrayTypes.length === 2) {
+  //           break;
+  //         }
+  //       }
+  //       //TRATAMENTO PARA PEGAR DADOS DE MOVIMENTOS
+  //       let arrayMoves = [];
+  //       const moves = response.data.moves;
+  //       for (let j in moves) {
+  //         let pegaMoves = moves[j].move.name;
+  //         arrayMoves.push(pegaMoves);
+  //         if (arrayMoves.length === 7) {
+  //           break;
+  //         }
+  //       }
 
-        copiaEstado.push({
-          name: response.data.name,
-          id: response.data.id,
-          type: arrayTypes,
-          img: response.data.sprites.other["official-artwork"].front_default,
-          moves: arrayMoves,
-          stats: response.data.stats,
-          frontDetail:
-            response.data.sprites.versions["generation-v"]["black-white"]
-              .front_default,
-          backDetail:
-            response.data.sprites.versions["generation-v"]["black-white"]
-              .back_default,
+  //       copiaEstado.push({
+  //         name: response.data.name,
+  //         id: response.data.id,
+  //         type: arrayTypes,
+  //         img: response.data.sprites.other["official-artwork"].front_default,
+  //         moves: arrayMoves,
+  //         stats: response.data.stats,
+  //         frontDetail:
+  //           response.data.sprites.versions["generation-v"]["black-white"]
+  //             .front_default,
+  //         backDetail:
+  //           response.data.sprites.versions["generation-v"]["black-white"]
+  //             .back_default,
+  //       });
+  //       estado(copiaEstado);
+  //     } catch (error) {
+  //       console.log(error.response);
+  //     }
+  //   }
+  // };
+
+  const getPokemon = async (state, setState) => {
+    const newState = [...state];
+    for (let id = 1; id <= 21; id++) {
+      try {
+        const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const types = data.types.slice(0, 2).map(({ type }) => type.name);
+        const moves = data.moves.slice(0, 7).map(({ move }) => move.name);
+        newState.push({
+          name: data.name,
+          id,
+          type: types,
+          img: data.sprites.other['official-artwork'].front_default,
+          moves,
+          stats: data.stats,
+          frontDetail: data.sprites.versions['generation-v']['black-white'].front_default,
+          backDetail: data.sprites.versions['generation-v']['black-white'].back_default,
         });
-        estado(copiaEstado);
+        setState(newState);
       } catch (error) {
-        console.log(error.response);
+        console.error(error);
       }
     }
   };
