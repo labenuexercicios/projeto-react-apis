@@ -12,8 +12,8 @@ export const PokedexLista2 = () =>{
 
     const Recebeositens =  async () =>{
         try{
-           const resposta = await axios.get("https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20")
-           console.log(resposta.data.results)
+           const resposta = await axios.get("https://pokeapi.co/api/v2/pokemon/")
+        //    console.log(resposta.data.results)
            setPokemons(resposta.data.results)
         }
         catch(error){
