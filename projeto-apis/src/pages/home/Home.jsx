@@ -17,8 +17,10 @@ export const Home=()=> {
   useEffect(()=>{
     pokemonReq()
   },[])
-  // console.log(pokemons)
   return (
+    <div>
+      <h1>Todos Os Pokemons</h1>
+
     <ContainerHome>
       
       {pokemons.map((pokemon)=>{
@@ -28,5 +30,6 @@ export const Home=()=> {
         />
       })}
     </ContainerHome>
+    </div>
   )
 }

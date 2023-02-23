@@ -11,7 +11,8 @@ height: 210px;
 border-radius: 12px;
 background: ${props=>props.cor};
 position:relative;
-
+padding:10px;
+margin-top: 40px;
 .BotaoDetails{
   width: 74px;
 height: 24px;

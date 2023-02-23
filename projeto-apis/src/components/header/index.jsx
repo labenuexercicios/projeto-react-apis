@@ -5,14 +5,18 @@ import { ContainerHeader } from './styled'
 export const Header = () => {
   return (
     <ContainerHeader>
-      <img src={logo}/>
-      <Link to={"/pokedex"}>
-      Pokedex
-      </Link>
-      <p/>
       <Link to={"/"}>
-      Todos os Pokemons
+      <img  src={logo}/>
       </Link>
+      
+      <div className='border'>
+        
+        <Link to={"/pokedex"}>
+        <p>Pokedex</p>
+      </Link>
+        
+      </div>
+            
     </ContainerHeader>
   )
 }
