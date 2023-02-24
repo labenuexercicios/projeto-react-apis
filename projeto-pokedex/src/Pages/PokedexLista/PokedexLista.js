@@ -22,6 +22,7 @@ export const PokedexLista2 = () =>{
 
     }
 
+    // console.log(pokemons)
 
     //Falta arrumar o global style, e arrumar o pokemoncard
 
