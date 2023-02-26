@@ -1,19 +1,16 @@
-import axios from "axios"
-import React, { useState } from "react"
+import { Card } from "./Card"
 
 
 export const PokemonCard = (props) =>{
 
-    const [guardapokemon, setGuardaPokemon] = useState([])
-
-    const recebeitemporid = async (id) =>{
-        const resposta = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        console.log(resposta)
-        setGuardaPokemon(resposta)
-    }
+    const {pokemons} =props 
     return(
         <div>
-            <button onClick={recebeitemporid}>Receber itens</button>
+            {pokemons.map((pokemon, index) =>{
+                return(
+                    <Card key={index} pokemon = {pokemon}/>
+                )
+            })}
         </div>
     )
 }

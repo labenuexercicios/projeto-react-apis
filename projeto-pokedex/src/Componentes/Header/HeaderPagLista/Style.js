@@ -28,3 +28,8 @@ export const HeaderPagListaDireita = styled.header`
 
 
 `
+
+export const Titulodapagina = styled.header`
+    display: grid;
+    grid-row: 1/2;
+`
