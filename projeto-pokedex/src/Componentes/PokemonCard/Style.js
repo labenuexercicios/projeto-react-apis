@@ -9,42 +9,80 @@ export const Containerdoscard = styled.body`
     //Boas Praticas
 
     display: grid;
-
     grid-row: 3/4;
-    grid-template-columns: repeat(4,1fr);
+    /* grid-template-columns: 100vw;
+    grid-template-rows: 1fr; */
+
 
 `
 
 export const CardStyle = styled.div`
 
-    //Card
+
     display: flex;
+    flex-wrap: wrap;
+
+    //Card
+    /* width: 440px;
+    height: 210px;
+    border-radius: 8px;
+    background-color: #729F92;
+    color: white; */
+    //Card
+
+    /* flex-direction: row;
+    flex-wrap: wrap;   */
+
+
+`
+
+export const Blocodocard = styled.div`
+    //Card
     width: 440px;
     height: 210px;
     border-radius: 8px;
     background-color: #729F92;
     color: white;
-    /* grid-column: 1/4; */
-
-    /* grid-row: 3/4; */
+    cursor: pointer;
+    /* opacity: 0; */
+    transform: translate3d(3000px,0,0)
     //Card
 
-    /* flex-direction: row;
-    flex-wrap: wrap;  */
-
-
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25);
+    padding: 20px 20px;
+    margin-bottom: 20px; 
+    margin-left: 20px;
 `
 
+
 export const Imagemdopokemon = styled.img`
-    margin-left: 200px;
-    /* margin-bottom: 300px; */
+    /* display: grid; */
+
     width: 193px;
     height: 193px;
+    /* position: static; */
+    /* position: fixed; */
+    margin-left: 250px;
+    /* gap: 100px; */
+    /* padding-bottom: 300px; */
 `
 
 export const Styledotype = styled.div`
     /* border: 1px solid black; */
+        /* display: flex; */
+    /* justify-content: space-between; */
+    gap: 10px;
+    /* align-items: center;
+    align-self: center;
+    align-content: center;
+    justify-content: start; */
     color: black;
-    
+    border: 3px solid black;
+    width: 50px;
+
 `
 
+export const Botao = styled.button`
+    cursor: pointer;
+
+`

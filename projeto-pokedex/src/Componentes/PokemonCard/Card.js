@@ -1,5 +1,5 @@
 import React from "react";
-import { CardStyle, Imagemdopokemon, Styledotype } from "./Style";
+import { Blocodocard, Botao, Imagemdopokemon, Styledotype } from "./Style";
 
 
 export const  Card = (props) =>{
@@ -14,21 +14,18 @@ export const  Card = (props) =>{
     }
 
     return(
-        <div>
-        {/* <Containerdoscard> */}
-        <CardStyle>
-            <div>Nome: {pokemon.name}</div>
-            <Imagemdopokemon alt={pokemon.name} src={pokemon.sprites.other.dream_world.front_default} className="pokemon-image"/>
-            <Styledotype>
-                {pokemon.types.map((pokemon, index) =>{
-                    return(
-                        <div key={index}>{pokemon.type.name}</div>
-                    )
-                })}
-            </Styledotype> 
-            <button onClick={capturar}>Capturar</button>
-        </CardStyle>
-        {/* </Containerdoscard> */}
-        </div>
+            <Blocodocard>
+                <div>Nome: {pokemon.name}</div>
+                <Styledotype>
+                    {pokemon.types.map((pokemon, index) =>{
+                        return(
+                            <Styledotype key={index}>{pokemon.type.name}</Styledotype>
+                        )
+                    })}
+                </Styledotype> 
+                <Botao onClick={capturar}>Capturar</Botao>
+                <Imagemdopokemon alt={pokemon.name} src={pokemon.sprites.other.dream_world.front_default} className="pokemon-image"/>
+            </Blocodocard>
+
     )
 }
