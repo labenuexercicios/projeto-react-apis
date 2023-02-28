@@ -8,8 +8,8 @@ export const Pokedexdetalhe = () =>{
 
     return(
         <PokedexListaCss>
-            <HeaderPagLista/>
-            <p>salve</p>
+            {/* <HeaderPagLista/> */}
+            {/* <p>salve</p> */}
             {/* <CardStyle>
             <PokemonCard/>
             </CardStyle> */}

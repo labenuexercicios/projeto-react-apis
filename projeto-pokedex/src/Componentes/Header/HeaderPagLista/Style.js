@@ -7,6 +7,14 @@ export const HeaderPagListaCss = styled.header`
     grid-template-columns: 1fr 3fr 1fr;
 
 `
+export const HeaderPagListaCss2 = styled.header`
+    display: grid;
+    grid-row: 2/3;
+    grid-template-columns: 1fr 1fr;
+    background-color: black;
+    color: white;
+
+`
 
 export const HeaderPagListaEsquerda = styled.header`
     display: grid;

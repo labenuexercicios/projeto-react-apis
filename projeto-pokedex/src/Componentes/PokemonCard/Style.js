@@ -14,6 +14,7 @@ export const Containerdoscard = styled.body`
     grid-template-rows: 1fr; */
 
 
+
 `
 
 export const CardStyle = styled.div`
@@ -21,6 +22,7 @@ export const CardStyle = styled.div`
 
     display: flex;
     flex-wrap: wrap;
+    background-color: black;
 
     //Card
     /* width: 440px;

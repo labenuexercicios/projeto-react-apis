@@ -1,4 +1,4 @@
-import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "./Style"
+import { HeaderPagListaCss, HeaderPagListaCss2, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "./Style"
 
 
 
@@ -22,5 +22,8 @@ export const HeaderPagLista = () =>{
                     Botao pokedex
                 </HeaderPagListaDireita>
             </HeaderPagListaCss>
+
+
+
     )
 }
