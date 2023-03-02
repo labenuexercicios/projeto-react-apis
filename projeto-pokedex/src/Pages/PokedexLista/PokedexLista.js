@@ -1,3 +1,4 @@
+import { Flex } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { Recebeositens, Rebecedadosdecadapokemon } from "../../Componentes/Api/Api"
 import { HeaderPagLista } from "../../Componentes/Header/HeaderPagLista/HeaderPagLista"
@@ -12,6 +13,8 @@ export const PokedexLista2 = () =>{
 
     const [pokemons, setPokemons] = useState([])
     const [carregando, setCarregando] = useState(false)
+    const [pokemonsEscolhidos, setPokemonsEscolhidos] = useState([])
+    console.log(pokemonsEscolhidos)
 
     const guardaosvalores = async () =>{
 
@@ -36,27 +39,23 @@ export const PokedexLista2 = () =>{
 
     return(
         <PokedexListaCss>
-        {carregando?
-        (
-            <h2>Carregando a lista patrão, guenta ai!</h2>
-        )
-        :(
-            <PokedexListaCss>
-                <HeaderPagLista/>
-                <HeaderPagListaCss2>
-                    <h1>TODOS OS POKEMONS</h1>
-                </HeaderPagListaCss2>
-                <Containerdoscard>
-                    <PokemonCard pokemons = {pokemons}  />
-                    {/* <PokemonCard pokemons = {pokemons}  /> */}
-                </Containerdoscard>
-            </PokedexListaCss>
+            {carregando?
+            (
+                <h2>Carregando a lista patrão, guenta ai!</h2>
+            )
+            :(
+                <div>
+                    <HeaderPagLista/>
+                    <HeaderPagListaCss2>
+                        <h1>TODOS OS POKEMONS</h1>
+                    </HeaderPagListaCss2>
+                    <PokemonCard pokemons = {pokemons} pokemonsEscolhidos= {pokemonsEscolhidos} setPokemonsEscolhidos = {setPokemonsEscolhidos} />
+                </div>
+
+
         )
         }
-            {/* <HeaderPagLista/>
-            <CardStyle>
-            <PokemonCard pokemons = {pokemons}  />
-            </CardStyle> */}
+
         </PokedexListaCss>
     )
 }

@@ -5,6 +5,7 @@ export const HeaderPagListaCss = styled.header`
     display: grid;
     grid-row: 1/2;
     grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 160px;
 
 `
 export const HeaderPagListaCss2 = styled.header`

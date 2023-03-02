@@ -15,7 +15,7 @@ export const HeaderPagLista = () =>{
                 </HeaderPagListaEsquerda>
 
                 <HeaderPagListaMeio>
-                     Logo
+                     Logoadsasddas
                 </HeaderPagListaMeio>
 
                 <HeaderPagListaDireita>

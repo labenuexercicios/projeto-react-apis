@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 export const Containerdoscard = styled.body`
     //Boas Praticas
-    margin: 0;
+    /* margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; */
     //Boas Praticas
 
-    display: grid;
-    grid-row: 3/4;
+    /* display: grid;
+    grid-row: 3/4; */
     /* grid-template-columns: 100vw;
     grid-template-rows: 1fr; */
 
