@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import { Router } from "./routes/Router";
 import Home from "./pages/HomePage";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (
     <div>
-      <Router>
-        <Home />
-      </Router>
+      <ChakraProvider resetCSS>
+        <Router>
+          <Home />
+        </Router>
+      </ChakraProvider>
     </div>
   );
 }

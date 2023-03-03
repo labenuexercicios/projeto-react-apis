@@ -1,10 +1,12 @@
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { goHome, goToDetails, goToPokedex } from "../routes/cordinator";
+import image from "../assets/image.png";
 
 function Header() {
   const navigate = useNavigate();
   return (
-    <header>
+    <Flex justifyContent="space-around">
       <button
         onClick={() => {
           goToPokedex(navigate, "pokedex");
@@ -12,6 +14,8 @@ function Header() {
       >
         ir para pokedex
       </button>
+      <Image src={image} alt="" />
+
       <button
         onClick={() => {
           goToDetails(navigate, "details");
@@ -26,7 +30,7 @@ function Header() {
       >
         ir para home
       </button>
-    </header>
+    </Flex>
   );
 }
 

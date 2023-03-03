@@ -1,66 +1,83 @@
 import { useContext } from "react";
+import { Box, ChakraProvider, Flex, Image } from "@chakra-ui/react";
+import theme from "../theme/theme";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import { PokemonContext } from "../context/pokemonContext";
 import { goToDetails, goToPokedex } from "../routes/cordinator";
-// import { PokemonContext } from "../../context/pokemonContext";
+import "@fontsource/content";
+import wing from "../assets/wing.png";
 
 function Home() {
   const navigate = useNavigate();
   const { pokemon } = useContext(PokemonContext);
-  console.log(pokemon);
+
   return (
-    <>
+    <ChakraProvider theme={theme} resetCSS>
       <Header />
-      {pokemon.map((pokemon) => (
-        <div key={pokemon.data.id}>
-          {" "}
-          {/*class card*/}
-          <article>
-            {" "}
-            {/*class top*/}
-            <div>
-              {/*class container1*/}
+      <Flex
+        justifyContent="center"
+        gap="16px"
+        wrap="wrap"
+        border="1px"
+        borderColor="violet"
+        bg="#5d5d5d"
+      >
+        {pokemon.map((pokemon) => (
+          <Box
+            border="1px"
+            borderColor="red"
+            color="white"
+            key={pokemon.data.id}
+          >
+            <article>
               <div>
-                {" "}
-                {/*class text1*/}
-                <p>#{pokemon.data.id}</p>
-                <h1>{pokemon.data.name}</h1>
+                <div>
+                  <p>#{pokemon.data.id}</p>
+                  <h1>{pokemon.data.name}</h1>
+                </div>
+
+                <Flex>{pokemon.data.types.map((type) => type.type.name)}</Flex>
               </div>
-              {/* <div>
-duas imagens dos tipos
-<p>{pokemon.data.types.type.name}</p> 
-</div> */}
-            </div>
+              <Box w={"28rem"} h={"12rem"}>
+                <Image
+                  left={"-1rem"}
+                  top={"-3.75rem"}
+                  w={"12rem"}
+                  h={"12rem"}
+                  zIndex={"1"}
+                  src={pokemon.data.sprites.other.dream_world.front_default}
+                  alt="image pokemon"
+                />
+                <Image
+                  left={"-0.625rem"}
+                  top={"1.25rem"}
+                  m={"1.5rem"}
+                  src={wing}
+                  alt="background image"
+                />
+              </Box>
+            </article>
             <div>
-              {/*class bulbasaur*/}
-              <img
-                src={pokemon.data.sprites.other.dream_world.front_default}
-                alt="imagem"
-              />
+              <a
+                onClick={() => {
+                  goToDetails(navigate, "details");
+                }}
+              >
+                Detalhes
+              </a>
+              <button
+                onClick={() => {
+                  goToPokedex(navigate, "pokedex");
+                }}
+              >
+                Capturar
+              </button>
             </div>
-          </article>
-          <div>
-            {" "}
-            {/*class details*/}
-            <a
-              onClick={() => {
-                goToDetails(navigate, "details");
-              }}
-            >
-              Detalhes
-            </a>
-            <button
-              onClick={() => {
-                goToPokedex(navigate, "pokedex");
-              }}
-            >
-              Capturar
-            </button>
-          </div>
-        </div>
-      ))}
-    </>
+          </Box>
+        ))}
+      </Flex>
+    </ChakraProvider>
   );
 }
 
