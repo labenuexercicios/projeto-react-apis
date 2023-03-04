@@ -11,12 +11,19 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react';
 import { wrap } from 'framer-motion';
+import { useEffect } from 'react';
   
   export default function Card2(props) {
 
     const Adicionapokemon = () =>{
         props.setPokemonsEscolhidos([... props.pokemonsEscolhidos, props.pokemon])
+        // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+
     }
+
+    useEffect(()=>{
+        localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+    },[props.pokemonsEscolhidos])
 
 
     return (

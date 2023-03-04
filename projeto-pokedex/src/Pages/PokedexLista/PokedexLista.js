@@ -9,12 +9,12 @@ import { PokedexListaCss } from "./Style"
 
 
 
-export const PokedexLista2 = () =>{
+export const PokedexLista2 = (props) =>{
 
     const [pokemons, setPokemons] = useState([])
     const [carregando, setCarregando] = useState(false)
-    const [pokemonsEscolhidos, setPokemonsEscolhidos] = useState([])
-    console.log(pokemonsEscolhidos)
+    // const [pokemonsEscolhidos, setPokemonsEscolhidos] = useState([])
+    // console.log(pokemonsEscolhidos)
 
     const guardaosvalores = async () =>{
 
@@ -49,7 +49,7 @@ export const PokedexLista2 = () =>{
                     <HeaderPagListaCss2>
                         <h1>TODOS OS POKEMONS</h1>
                     </HeaderPagListaCss2>
-                    <PokemonCard pokemons = {pokemons} pokemonsEscolhidos= {pokemonsEscolhidos} setPokemonsEscolhidos = {setPokemonsEscolhidos} />
+                    <PokemonCard pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
                 </div>
 
 
