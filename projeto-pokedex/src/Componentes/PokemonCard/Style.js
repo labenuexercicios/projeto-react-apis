@@ -1,3 +1,4 @@
+import { Image } from "@chakra-ui/react";
 import styled from "styled-components";
 
 
@@ -86,5 +87,18 @@ export const Styledotype = styled.div`
 
 export const Botao = styled.button`
     cursor: pointer;
+
+`
+export const Diminiumargemdaimagem = styled(Image)`
+    margin-top: -100px;
+    width: 193px;
+    height: 193px;
+
+`
+
+export const DeixarRoll = styled.img`
+    /* display: flex; */
+    /* justify-content: start;
+    flex-wrap: wrap; */
 
 `

@@ -12,6 +12,7 @@ import {
   } from '@chakra-ui/react';
 import { wrap } from 'framer-motion';
 import { useEffect } from 'react';
+import { Diminiumargemdaimagem } from './Style';
   
   export default function Card2(props) {
 
@@ -126,13 +127,10 @@ import { useEffect } from 'react';
               </Button>
             </Stack>
           </Stack>
-          <Flex flex={1} w={193} h={193} position ='relative' mb={20000}>
+          <Flex >
             {/* <img src={props.pokemon.sprites.other.dream_world.front_default}/> */}
-            <Image
-            //   objectFit="cover"
-            //   boxSize="100%"
-              src={props.pokemon.sprites.other.dream_world.front_default}
-            />
+            <Diminiumargemdaimagem src={props.pokemon.sprites.other['official-artwork'].front_default}/>
+
           </Flex>
         </Stack>
       </Center>
