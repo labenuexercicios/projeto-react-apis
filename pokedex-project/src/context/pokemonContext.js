@@ -12,7 +12,7 @@ const PokemonProvider = ({ children }) => {
 
   const getPokemon = () => {
     let pokemonPoint = [];
-    for (let i = 1; i < 21; i++) {
+    for (let i = 1; i < 22; i++) {
       const lenght = i;
       pokemonPoint.push(`https://pokeapi.co/api/v2/pokemon/${lenght}/`);
       //   console.log(pokemonPoint) acessando todas as apis

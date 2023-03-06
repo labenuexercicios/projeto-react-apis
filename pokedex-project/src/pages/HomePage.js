@@ -1,80 +1,112 @@
 import { useContext } from "react";
-import { Box, ChakraProvider, Flex, Image } from "@chakra-ui/react";
+import { ChakraProvider, Flex, Image, Text, Box } from "@chakra-ui/react";
 import theme from "../theme/theme";
-import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import { PokemonContext } from "../context/pokemonContext";
-import { goToDetails, goToPokedex } from "../routes/cordinator";
 import "@fontsource/content";
 import wing from "../assets/wing.png";
-
+import PokemonCard from "../components/pokemonCard/pokemonCard";
+import grass from "../assets/grass.png";
+import fire from "../assets/fire.png";
+import water from "../assets/water.png";
+import bug from "../assets/bug.png";
+import normal from "../assets/normal.png";
+import poison from "../assets/poison.png";
+import flying from "../assets/poison.png";
 function Home() {
-  const navigate = useNavigate();
   const { pokemon } = useContext(PokemonContext);
 
   return (
-    <ChakraProvider theme={theme} resetCSS>
+    <ChakraProvider theme={theme}>
       <Header />
+      <Text color={"white"} bg="#5d5d5d" p={"2rem"} fontSize="5xl">
+        Todos os Pokémons
+      </Text>
       <Flex
         justifyContent="center"
         gap="16px"
         wrap="wrap"
-        border="1px"
-        borderColor="violet"
         bg="#5d5d5d"
+        theme={theme}
       >
         {pokemon.map((pokemon) => (
-          <Box
-            border="1px"
-            borderColor="red"
-            color="white"
-            key={pokemon.data.id}
-          >
-            <article>
-              <div>
-                <div>
-                  <p>#{pokemon.data.id}</p>
-                  <h1>{pokemon.data.name}</h1>
-                </div>
+          <>
+            {pokemon.data.types.map((types, index) => {
+              let secondeType = "";
 
-                <Flex>{pokemon.data.types.map((type) => type.type.name)}</Flex>
-              </div>
-              <Box w={"28rem"} h={"12rem"}>
-                <Image
-                  left={"-1rem"}
-                  top={"-3.75rem"}
-                  w={"12rem"}
-                  h={"12rem"}
-                  zIndex={"1"}
-                  src={pokemon.data.sprites.other.dream_world.front_default}
-                  alt="image pokemon"
-                />
-                <Image
-                  left={"-0.625rem"}
-                  top={"1.25rem"}
-                  m={"1.5rem"}
-                  src={wing}
-                  alt="background image"
-                />
-              </Box>
-            </article>
-            <div>
-              <a
-                onClick={() => {
-                  goToDetails(navigate, "details");
-                }}
-              >
-                Detalhes
-              </a>
-              <button
-                onClick={() => {
-                  goToPokedex(navigate, "pokedex");
-                }}
-              >
-                Capturar
-              </button>
-            </div>
-          </Box>
+              switch (types.type.name) {
+                case "grass":
+                  return (
+                    <PokemonCard
+                      types={types}
+                      index={index}
+                      pokemon={pokemon}
+                      bg={"#729F92"}
+                      img={grass}
+                      secondeType={secondeType}
+                    />
+                  );
+                  break;
+                case "fire":
+                  return (
+                    <PokemonCard
+                      types={types}
+                      index={index}
+                      pokemon={pokemon}
+                      bg={"#EAAB7D"}
+                      img={fire}
+                      secondeType={secondeType}
+                    />
+                  );
+                  break;
+                case "bug":
+                  return (
+                    <PokemonCard
+                      types={types}
+                      index={index}
+                      pokemon={pokemon}
+                      bg={"#76A866"}
+                      img={bug}
+                      secondeType={secondeType}
+                    />
+                  );
+                  break;
+                case "water":
+                  return (
+                    <PokemonCard
+                      types={types}
+                      index={index}
+                      pokemon={pokemon}
+                      bg={"#71C3FF"}
+                      img={water}
+                      secondeType={secondeType}
+                    />
+                  );
+                  break;
+                case "normal":
+                  return (
+                    <PokemonCard
+                      types={types}
+                      index={index}
+                      pokemon={pokemon}
+                      bg={"#BF9762"}
+                      img={normal}
+                      secondeType={secondeType}
+                    />
+                  );
+                  break;
+                case "poison":
+                  secondeType = { poison };
+                  break;
+                case "flying":
+                  secondeType = { flying };
+                  break;
+
+                default:
+                  break;
+              }
+            })}
+          </>
         ))}
       </Flex>
     </ChakraProvider>
