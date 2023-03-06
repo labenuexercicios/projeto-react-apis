@@ -16,7 +16,7 @@ export default function Header({ calledFor }) {
     <ContainerStyled>
       <HeaderLeft>
         {calledFor == "pokedex" || calledFor == "details" ? (
-          <ButtonAllPokemons onClick={() => goToHome(navigate)}>
+          <ButtonAllPokemons onClick={() => goToHome(navigate, 0)}>
             All pokemons
           </ButtonAllPokemons>
         ) : (
@@ -31,7 +31,7 @@ export default function Header({ calledFor }) {
           <></>
         )}
         {calledFor == "home" ? (
-          <ButtonDeleteFromPokedex onClick={() => goToPokedex(navigate)}>
+          <ButtonDeleteFromPokedex onClick={() => goToPokedex(navigate, 0)}>
             Pokédex
           </ButtonDeleteFromPokedex>
         ) : (

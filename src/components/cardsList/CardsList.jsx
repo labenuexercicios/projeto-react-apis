@@ -1,58 +1,70 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import Card from "./card/Card";
-import { ContainerStyled } from "./Style";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { goToHome } from "../../router/Coordinator";
+import Card from "../card/Card";
+import Pagination from "../pagination/Pagination";
+import { ContainerStyled, Pokemons, PaginationContainer } from "./Style";
 
-export default function CardsList() {
+export default function CardsList({ calledFor }) {
+  const pathParams = useParams();
+
   const [count, setCount] = useState(0);
+  const [globaLimit, setGlobalLimit] = useState(20);
+  const [currentPokemons, setCurrentPokemons] = useState([]);
+  const [pokedex, setpokedex] = useState(
+    JSON.parse(
+      localStorage.getItem("pokedex") == null
+        ? "[]"
+        : localStorage.getItem("pokedex")
+    )
+  );
+  const [isLoading, setIsLoading] = useState(false);
 
-  let [pagnatedPokemons, setPagnatedPokemons] = useState([]);
-  const limit = 500;
-  const [offSet, setOffSet] = useState(0);
+  const globalOffSet = !pathParams.pageIndex
+    ? 0
+    : pathParams.pageIndex * globaLimit;
 
-  const getPokemons = async () => {
+  const getPokemons = async (url) => {
     try {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon`, {
-        params: {
-          limit: limit,
-          offset: offSet,
-        },
-      });
+      let response = await axios.get(url);
       setCount(response.data.count);
-      setPagnatedPokemons(response.data.results);
-      console.log(response.data);
+      setCurrentPokemons(response.data.results);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    getPokemons();
-  }, [offSet]);
+  useLayoutEffect(() => {
+    setIsLoading(true);
+    getPokemons(
+      `https://pokeapi.co/api/v2/pokemon?limit=${globaLimit}&offset=${globalOffSet}`
+    );
+    setIsLoading(false);
+  }, [pathParams.pageIndex, pokedex]);
+
+  const navigate = useNavigate();
 
   return (
     <ContainerStyled>
-      {pagnatedPokemons.map((pokemon) => (
-        <div key={pokemon.url}>
-          <Card url={pokemon.url} />
-        </div>
-      ))}
-      <button
-        onClick={() =>
-          offSet - limit >= 0 ? setOffSet(offSet - limit) : setOffSet(0)
-        }
-      >
-        Previous
-      </button>
-      <button
-        onClick={() =>
-          offSet + limit <= count
-            ? setOffSet(offSet + limit)
-            : setOffSet(offSet)
-        }
-      >
-        Next
-      </button>
+      {isLoading ? (
+        <>loading...</>
+      ) : (
+        <Pokemons>
+          {currentPokemons?.map((pokemon) => (
+            <div key={pokemon.url}>
+              <Card url={pokemon.url} setpokedex={setpokedex} />
+            </div>
+          ))}
+        </Pokemons>
+      )}
+
+      <Pagination
+        count={count}
+        globaLimit={globaLimit}
+        goTo={goToHome}
+        pageIndex={pathParams.pageIndex}
+      />
     </ContainerStyled>
   );
 }
