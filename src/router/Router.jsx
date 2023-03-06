@@ -6,9 +6,10 @@ import Pokedex from "../pages/pokedex/Pokedex";
 export const Router = () => {
   return (
     <Routes>
-      <Route index element={<Home />} />
-      <Route path="/pokedex" element={<Pokedex />} />
-      <Route path="/details" element={<Details />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/:pageIndex" element={<Home />} />
+      <Route path="/pokedex/:pageIndex" element={<Pokedex />} />
+      <Route path="/details/:pokemon" element={<Details />} />
     </Routes>
   );
 };
