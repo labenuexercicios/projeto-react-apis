@@ -1,15 +1,16 @@
+import { Image } from "@chakra-ui/react";
 import styled from "styled-components";
 
 
 export const Containerdoscard = styled.body`
     //Boas Praticas
-    margin: 0;
+    /* margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; */
     //Boas Praticas
 
-    display: grid;
-    grid-row: 3/4;
+    /* display: grid;
+    grid-row: 3/4; */
     /* grid-template-columns: 100vw;
     grid-template-rows: 1fr; */
 
@@ -86,5 +87,25 @@ export const Styledotype = styled.div`
 
 export const Botao = styled.button`
     cursor: pointer;
+
+`
+export const Diminiumargemdaimagem = styled(Image)`
+    margin-top: -100px;
+    width: 193px;
+    height: 193px;
+
+`
+
+export const DeixarRoll = styled.section`
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap; 
+
+`
+
+export const Posicaodocard = styled.body`
+    display: grid;
+    grid-row: 3/4;
 
 `
