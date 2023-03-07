@@ -1,20 +1,20 @@
 import { useNavigate } from "react-router-dom"
-import { HeaderPagListaCss, HeaderPagListaCss2, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "./Style"
+import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "../HeaderPagLista/Style"
+
+export const HeaderPagDetalhe = () =>{
 
 
-
-
-export const HeaderPagLista = () =>{
     const navigate = useNavigate()
-
-    function irParaPaginadeDetalhe(){
-        navigate("/detalhe")
+    function pagToLista() {
+        navigate("/")
     }
 
     return(
             <HeaderPagListaCss>
                 <HeaderPagListaEsquerda>
-                    <div>eai</div>
+                    <div>
+                    <button onClick={pagToLista}>Todos os pokemons</button>
+                    </div>
                 </HeaderPagListaEsquerda>
 
                 <HeaderPagListaMeio>
@@ -22,7 +22,7 @@ export const HeaderPagLista = () =>{
                 </HeaderPagListaMeio>
 
                 <HeaderPagListaDireita>
-                    <button onClick={irParaPaginadeDetalhe}>Pokédex</button>
+                    Botao pokedex
                 </HeaderPagListaDireita>
             </HeaderPagListaCss>
 

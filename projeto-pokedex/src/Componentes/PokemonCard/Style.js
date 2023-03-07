@@ -96,9 +96,16 @@ export const Diminiumargemdaimagem = styled(Image)`
 
 `
 
-export const DeixarRoll = styled.img`
-    /* display: flex; */
-    /* justify-content: start;
-    flex-wrap: wrap; */
+export const DeixarRoll = styled.section`
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap; 
+
+`
+
+export const Posicaodocard = styled.body`
+    display: grid;
+    grid-row: 3/4;
 
 `

@@ -6,7 +6,7 @@ import Card2 from "./Card2"
 import { CardStyle, DeixarRoll } from "./Style"
 
 
-export const PokemonCard = (props) =>{
+export const PokemonCard2 = (props) =>{
 
 
     const {pokemons} =props 
@@ -14,7 +14,7 @@ export const PokemonCard = (props) =>{
          <div gap={10}>
             {pokemons.map((pokemon, index) =>{
                 return(
-                    <Card2 key={index} pokemon = {pokemon} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
+                    <Card3 key={index} pokemon = {pokemon} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
                 )
             })}
         </div>

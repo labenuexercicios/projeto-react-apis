@@ -14,17 +14,15 @@ import { wrap } from 'framer-motion';
 import { useEffect } from 'react';
 import { Diminiumargemdaimagem } from './Style';
   
-  export default function Card2(props) {
+  export default function Card3(props) {
 
-    const Adicionapokemon = () =>{
-        props.setPokemonsEscolhidos([... props.pokemonsEscolhidos, props.pokemon])
+    const RemoverPokemon = (id) =>{
+        
         // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
 
     }
 
-    useEffect(()=>{
-        localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
-    },[props.pokemonsEscolhidos])
+    console.log("pokemons:", props.pokemonsEscolhidos)
 
 
 
@@ -109,7 +107,7 @@ import { Diminiumargemdaimagem } from './Style';
                 }}>
                 Detalhes
               </Button>
-              <Button onClick={Adicionapokemon}
+              <Button onClick={()=>RemoverPokemon(props.id)}
                 flex={1}
                 fontSize={'sm'}
                 rounded={'full'}
@@ -124,7 +122,7 @@ import { Diminiumargemdaimagem } from './Style';
                 _focus={{
                   bg: 'blue.500',
                 }}>
-                Capturar
+                Excluir
               </Button>
             </Stack>
           </Stack>
