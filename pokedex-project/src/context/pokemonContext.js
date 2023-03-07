@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 export const PokemonContext = createContext();
 const PokemonProvider = ({ children }) => {
   const [pokemon, setPokemon] = useState([]);
+  const [pokedex, setPokedex] = useState([]);
+
   useEffect(() => {
     getPokemon();
   }, []);
@@ -22,9 +24,36 @@ const PokemonProvider = ({ children }) => {
       .then((res) => setPokemon(res))
       .catch((erro) => console.log(erro));
   };
+  const addToPokedex = (pokemonToAdd) => {
+    console.log("adicionado");
+    const isAlreadyOnPokedex = pokedex.find(
+      (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
+    );
+
+    if (!isAlreadyOnPokedex) {
+      const newPokedex = [...pokedex, pokemonToAdd];
+      setPokedex(newPokedex);
+    }
+  };
+  const removeFromPokedex = (pokemonToRemove) => {
+    const newPokedex = pokedex.filter(
+      (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
+    );
+
+    setPokedex(newPokedex);
+  };
 
   return (
-    <PokemonContext.Provider value={{ pokemon, setPokemon }}>
+    <PokemonContext.Provider
+      value={{
+        pokemon,
+        setPokemon,
+        pokedex,
+        setPokedex,
+        addToPokedex,
+        removeFromPokedex,
+      }}
+    >
       {children}
     </PokemonContext.Provider>
   );

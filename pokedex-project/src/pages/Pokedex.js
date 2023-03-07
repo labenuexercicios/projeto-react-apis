@@ -1,10 +1,16 @@
 import Header from "../components/header";
+import { useContext } from "react";
+import { PokemonContext } from "../context/pokemonContext";
+import { Card } from "@chakra-ui/react";
 
 function Poke() {
+  const { pokedex } = useContext(PokemonContext);
   return (
     <div>
       <Header />
-      <h1>Pokedex </h1>
+      {pokedex.map((pokemon) => (
+        <h1>{pokemon.data.name}</h1>
+      ))}
     </div>
   );
 }

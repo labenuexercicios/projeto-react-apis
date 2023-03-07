@@ -12,9 +12,11 @@ import { useNavigate } from "react-router-dom";
 import { goToDetails, goToPokedex } from "../../routes/cordinator";
 import wyng from "../../assets/wing.png";
 import "@fontsource/content";
+import { useContext } from "react";
+import { PokemonContext } from "../../context/pokemonContext";
 
 function PokemonCard({ types, index, pokemon, bg, img, secondeType }) {
-  console.log(secondeType);
+  const { addToPokedex } = useContext(PokemonContext);
   const navigate = useNavigate();
 
   return (
@@ -84,13 +86,7 @@ function PokemonCard({ types, index, pokemon, bg, img, secondeType }) {
             </Text>
 
             <Button w={"8rem"} bg={"white"} color={"black"}>
-              <button
-                onClick={() => {
-                  goToPokedex(navigate, "pokedex");
-                }}
-              >
-                Capturar!
-              </button>
+              <button onClick={() => addToPokedex(pokemon)}>Capturar!</button>
             </Button>
           </Flex>
         </GridItem>

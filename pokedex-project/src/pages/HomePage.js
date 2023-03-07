@@ -4,7 +4,6 @@ import theme from "../theme/theme";
 import Header from "../components/header";
 import { PokemonContext } from "../context/pokemonContext";
 import "@fontsource/content";
-import wing from "../assets/wing.png";
 import PokemonCard from "../components/pokemonCard/pokemonCard";
 import grass from "../assets/grass.png";
 import fire from "../assets/fire.png";
