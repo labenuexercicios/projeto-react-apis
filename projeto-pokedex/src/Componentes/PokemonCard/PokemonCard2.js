@@ -9,12 +9,15 @@ import { CardStyle, DeixarRoll } from "./Style"
 export const PokemonCard2 = (props) =>{
 
 
-    const {pokemons} =props 
+    console.log(props.pokemons)
+    const {pokemons2} =props 
+
+    console.log(pokemons2)
     return(
          <div gap={10}>
-            {pokemons.map((pokemon, index) =>{
+            {pokemons2.map((pokemon, index) =>{
                 return(
-                    <Card3 key={index} pokemon = {pokemon} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
+                    <Card3 pokemons2 = {pokemons2} key={index} pokemon = {pokemon} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
                 )
             })}
         </div>

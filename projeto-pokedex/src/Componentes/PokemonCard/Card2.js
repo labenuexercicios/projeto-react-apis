@@ -28,11 +28,12 @@ import 'react-toastify/dist/ReactToastify.css';
   export default function Card2(props) {
     const navigate = useNavigate()
     // const [detalhe, setDetalhe] = useState([])
+    // console.log(props.pokemons)
 
     // console.log(props.pokemon.id)
 
     const adicionapokemon = (id) =>{
-      toast.success("Seu pc ta com virus!Parabéns vc instalou o .bin com sucesso!", {
+      toast.success("Pokemon capturado com sucesso!", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -42,7 +43,7 @@ import 'react-toastify/dist/ReactToastify.css';
         progress: undefined,
         theme: "light",
         });
-      console.log("to aqui")
+      // console.log("to aqui")
       // console.log(props.pokemon.id)
       // console.log(id)
       // Salva em pokemons o pokemon que foi clicado

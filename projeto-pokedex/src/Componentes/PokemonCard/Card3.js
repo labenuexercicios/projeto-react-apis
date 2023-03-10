@@ -17,12 +17,20 @@ import { Diminiumargemdaimagem } from './Style';
   export default function Card3(props) {
 
     const RemoverPokemon = (id) =>{
+
+      // const pokemons = props.pokemonsEscolhidos.find((item) => item.id === id)
+
+      // if(pokemons){
+        const carrinhoSemItem = props.salvaItens.filter((item) => item.id !== id);
+        props.setPokemons(carrinhoSemItem)
+        console.log(props.pokemons)
+      // }
         
         // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
 
     }
 
-    console.log("pokemons:", props.pokemonsEscolhidos)
+    // console.log("pokemons:", props.pokemonsEscolhidos)
 
 
 

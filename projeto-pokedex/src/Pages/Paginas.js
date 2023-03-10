@@ -10,6 +10,7 @@ import { PokedexLista2 } from "./PokedexLista/PokedexLista"
 
 export const Paginas = () =>{
     const [pokemonsEscolhidos, setPokemonsEscolhidos] = useState([])
+    // const [pokemons, setPokemons] = useState([])
     const [detalhe, setDetalhe] = useState([])
     // console.log(detalhe)
     // console.log("paginas:", pokemonsEscolhidos)

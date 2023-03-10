@@ -16,7 +16,7 @@ export const Pokedexdetalhe = (props) =>{
     
     const pegaospokemons = JSON.parse(localStorage.getItem("Pokemons escolhidos"))
     console.log("Os pokemons que estao no local:", pegaospokemons)
-    let pokemons = pegaospokemons
+    let pokemons2 = pegaospokemons
 
 
     return(
@@ -26,7 +26,7 @@ export const Pokedexdetalhe = (props) =>{
             <h1>TODOS OS POKEMONS</h1>
             </HeaderPagListaCss2> 
             <Posicaodocard>
-            <PokemonCard2 detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
+            <PokemonCard2 detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons2 = {pokemons2} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
             </Posicaodocard>
         </PokedexListaCss>
     )
