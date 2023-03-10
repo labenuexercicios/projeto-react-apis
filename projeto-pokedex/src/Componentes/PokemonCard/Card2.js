@@ -9,26 +9,80 @@ import {
     Stack,
     Text,
     useColorModeValue,
+    useDisclosure,
   } from '@chakra-ui/react';
 import { wrap } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Diminiumargemdaimagem } from './Style';
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
   
   export default function Card2(props) {
+    const navigate = useNavigate()
+    // const [detalhe, setDetalhe] = useState([])
 
-    const Adicionapokemon = () =>{
-        props.setPokemonsEscolhidos([... props.pokemonsEscolhidos, props.pokemon])
-        // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+    // console.log(props.pokemon.id)
 
+    const adicionapokemon = (id) =>{
+      toast.success("Seu pc ta com virus!Parabéns vc instalou o .bin com sucesso!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+      console.log("to aqui")
+      // console.log(props.pokemon.id)
+      // console.log(id)
+      // Salva em pokemons o pokemon que foi clicado
+     
+     
+     
+      const pokemons = props.pokemonsEscolhidos.find((item) => item.id === id)
+      // console.log(props.pokemonsEscolhidos)
+      // console.log(pokemons)
+
+      //Se existe o pokemon
+      if(pokemons){
+        // alert("Pokemon ja capturado")
+      }
+      else{
+          const itemencontrado = props.pokemons.filter((item) => item.id === id);
+          const novoItem = { ...itemencontrado[0],  amount: 1 };
+          const novaLista = [...props.pokemonsEscolhidos, novoItem];
+          props.setPokemonsEscolhidos(novaLista)
+          localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+  
+      }
+ 
     }
 
     useEffect(()=>{
         localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
     },[props.pokemonsEscolhidos])
 
+    const Detalhespokemon = () =>{
+      // props.setDetalhe(props.pokemon)
+      navigate("/cap")
+      // console.log(props.pokemon)
+      props.setDetalhe(props.pokemon)
 
+    }
 
+    // console.log(props.pokemon.name)
     return (
+
       <Center py={6}>
         <Stack
           borderWidth="1px"
@@ -59,40 +113,6 @@ import { Diminiumargemdaimagem } from './Style';
                         })}
                 </Text>
             </Flex>
-            {/* <Text
-            textAlign={'center'}
-            //   color={useColorModeValue('gray.700', 'gray.400')}
-              px={3}>
-              Actress, musician, songwriter and artist. PM for work inquires or
-              <Link href={'#'} color={'blue.400'}>
-                #tag
-              </Link>
-              me in your posts
-            </Text> */}
-            {/* <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-              <Badge
-                px={2}
-                py={1}
-                // bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}>
-                #art
-              </Badge>
-              <Badge
-                px={2}
-                py={1}
-                // bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}>
-                #photography
-              </Badge>
-              <Badge
-                px={2}
-                py={1}
-                // bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}>
-                #music
-              </Badge>
-            </Stack> */}
-  
             <Stack
               width={'100%'}
               mt={'2rem'}
@@ -100,7 +120,7 @@ import { Diminiumargemdaimagem } from './Style';
               padding={2}
               justifyContent={'space-between'}
               alignItems={'center'}>
-              <Button
+              <Button onClick={Detalhespokemon}
                 flex={1}
                 fontSize={'sm'}
                 rounded={'full'}
@@ -109,7 +129,7 @@ import { Diminiumargemdaimagem } from './Style';
                 }}>
                 Detalhes
               </Button>
-              <Button onClick={Adicionapokemon}
+              <Button onClick={() => adicionapokemon(props.pokemon.id)} 
                 flex={1}
                 fontSize={'sm'}
                 rounded={'full'}
@@ -124,7 +144,12 @@ import { Diminiumargemdaimagem } from './Style';
                 _focus={{
                   bg: 'blue.500',
                 }}>
+                {/* <Alert status='success'>
+                  <AlertIcon />
+                 Data uploaded to the server. Fire on!
+                </Alert> */}
                 Capturar
+                
               </Button>
             </Stack>
           </Stack>

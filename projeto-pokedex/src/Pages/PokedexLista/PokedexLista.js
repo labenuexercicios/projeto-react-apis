@@ -7,7 +7,14 @@ import { HeaderPagListaCss2 } from "../../Componentes/Header/HeaderPagLista/Styl
 import { PokemonCard } from "../../Componentes/PokemonCard/PokemonCard"
 import { Containerdoscard, DeixarRoll } from "../../Componentes/PokemonCard/Style"
 import { PokedexListaCss } from "./Style"
-
+import {
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+  } from '@chakra-ui/react'
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const PokedexLista2 = (props) =>{
@@ -41,34 +48,47 @@ export const PokedexLista2 = (props) =>{
 
 
     return(
-        <PokedexListaCss>
+        <div>
+        <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"/>
             {carregando?
             (
-                <div>
+                <PokedexListaCss>
                 <HeaderPagLista/>
                 <HeaderPagListaCss2>
                     <h1>TODOS OS POKEMONS</h1>
                 </HeaderPagListaCss2>
                     <h2>Carregando a lista patrão, guenta ai!</h2>
-                </div>
+                </PokedexListaCss>
 
             )
             :(
-                <div>
+                
+
+                <PokedexListaCss>
                     <HeaderPagLista/>
                     <HeaderPagListaCss2>
                         <h1>TODOS OS POKEMONS</h1>
                     </HeaderPagListaCss2>
-                    <DeixarRoll>
 
-                    <PokemonCard pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
+                    <DeixarRoll>
+                    <PokemonCard detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
                     </DeixarRoll>
-                </div>
+                </PokedexListaCss>
 
 
         )
         }
 
-        </PokedexListaCss>
+        </div>
     )
 }

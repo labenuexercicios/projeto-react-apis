@@ -26,7 +26,7 @@ export const Pokedexdetalhe = (props) =>{
             <h1>TODOS OS POKEMONS</h1>
             </HeaderPagListaCss2> 
             <Posicaodocard>
-            <PokemonCard2 pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
+            <PokemonCard2 detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
             </Posicaodocard>
         </PokedexListaCss>
     )
