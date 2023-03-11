@@ -12,14 +12,14 @@ export const PokedexCaptura = (props) =>{
 
     return(
         <PokedexCapCss>
-            <HeaderPagCap/>
+            <HeaderPagCap setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe={props.detalhe} setDetalhe={props.setDetalhe} pokemonsEscolhidos = {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
             {/* <HeaderPagListaCss2>
                 Opa
             </HeaderPagListaCss2> */}
             <Body>
                 <p>Detalhes</p>
                 {/* <CssdoCarddetalhe> */}
-                <Carddetalhe detalhe = {props.detalhe} setDetalhe ={props.setDetalhe}/>
+                <Carddetalhe  detalhe = {props.detalhe} setDetalhe ={props.setDetalhe}/>
                 {/* </CssdoCarddetalhe> */}
             </Body>
         </PokedexCapCss>

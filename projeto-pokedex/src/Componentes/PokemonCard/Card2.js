@@ -27,45 +27,38 @@ import 'react-toastify/dist/ReactToastify.css';
   
   export default function Card2(props) {
     const navigate = useNavigate()
-    // const [detalhe, setDetalhe] = useState([])
-    // console.log(props.pokemons)
 
-    // console.log(props.pokemon.id)
-
-    const adicionapokemon = (id) =>{
-      toast.success("Pokemon capturado com sucesso!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
-      // console.log("to aqui")
-      // console.log(props.pokemon.id)
-      // console.log(id)
-      // Salva em pokemons o pokemon que foi clicado
-     
-     
+    const Adicionapokemon = (id) =>{
      
       const pokemons = props.pokemonsEscolhidos.find((item) => item.id === id)
-      // console.log(props.pokemonsEscolhidos)
-      // console.log(pokemons)
 
       //Se existe o pokemon
       if(pokemons){
         // alert("Pokemon ja capturado")
       }
       else{
-          const itemencontrado = props.pokemons.filter((item) => item.id === id);
-          const novoItem = { ...itemencontrado[0],  amount: 1 };
+          const itemencontrado = props.pokemons.find((item) => item.id === id);
+          console.log(itemencontrado)
+          const novoItem = { ...itemencontrado,  amount: 1 };
           const novaLista = [...props.pokemonsEscolhidos, novoItem];
           props.setPokemonsEscolhidos(novaLista)
-          localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+          // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+          toast.success("Pokemon capturado com sucesso!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
   
       }
+
+      const carrinhoSemItem = props.pokemons.filter((item) => item.id !== id);
+      props.setPokemons(carrinhoSemItem)
+      localStorage.setItem("Pokemons Lista nova", JSON.stringify(carrinhoSemItem))
  
     }
 
@@ -74,9 +67,7 @@ import 'react-toastify/dist/ReactToastify.css';
     },[props.pokemonsEscolhidos])
 
     const Detalhespokemon = () =>{
-      // props.setDetalhe(props.pokemon)
       navigate("/cap")
-      // console.log(props.pokemon)
       props.setDetalhe(props.pokemon)
 
     }
@@ -130,7 +121,7 @@ import 'react-toastify/dist/ReactToastify.css';
                 }}>
                 Detalhes
               </Button>
-              <Button onClick={() => adicionapokemon(props.pokemon.id)} 
+              <Button onClick={() => Adicionapokemon(props.pokemon.id)} 
                 flex={1}
                 fontSize={'sm'}
                 rounded={'full'}
@@ -145,12 +136,7 @@ import 'react-toastify/dist/ReactToastify.css';
                 _focus={{
                   bg: 'blue.500',
                 }}>
-                {/* <Alert status='success'>
-                  <AlertIcon />
-                 Data uploaded to the server. Fire on!
-                </Alert> */}
                 Capturar
-                
               </Button>
             </Stack>
           </Stack>

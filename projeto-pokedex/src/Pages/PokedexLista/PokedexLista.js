@@ -19,33 +19,32 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const PokedexLista2 = (props) =>{
     
-    
 
-    const [pokemons, setPokemons] = useState([])
     const [carregando, setCarregando] = useState(false)
-    // const [pokemonsEscolhidos, setPokemonsEscolhidos] = useState([])
-    // console.log(pokemonsEscolhidos)
+
+
 
     const guardaosvalores = async () =>{
-
         setCarregando(true)
         try {
-            const result = await Recebeositens()
-            const promises = result.map((pokemon) =>{
-                return Rebecedadosdecadapokemon(pokemon.url)
-            })
-            const resultado = await Promise.all(promises)
-            setPokemons(resultado)
-            setCarregando(false)
+                const result = await Recebeositens()
+                const promises = result.map((pokemon) =>{
+                    return Rebecedadosdecadapokemon(pokemon.url)
+                })
+                const resultado = await Promise.all(promises)
+                props.setPokemons(resultado)
+                setCarregando(false)
+
         } catch (error) {
             console.log("erro:", error)
         }
     }
+    
     useEffect(()=>{
-        // console.log("carregou o guarda pokemons")
-        guardaosvalores()
+        if(props.pokemons.length === 0){
+            guardaosvalores()
+        }
     },[])
-
 
     return(
         <div>
@@ -81,7 +80,7 @@ export const PokedexLista2 = (props) =>{
                     </HeaderPagListaCss2>
 
                     <DeixarRoll>
-                    <PokemonCard detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
+                    <PokemonCard setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons = {props.pokemons} setPokemons = {props.setPokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
                     </DeixarRoll>
                 </PokedexListaCss>
 

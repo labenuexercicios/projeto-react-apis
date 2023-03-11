@@ -14,7 +14,7 @@ export const PokemonCard = (props) =>{
          <Posicaodocard>
             {pokemons.map((pokemon, index) =>{
                 return(
-                    <Card2 pokemons = {props.pokemons} setPokemons = {props.setPokemons} detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} key={index} pokemon = {pokemon} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
+                    <Card2 setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} pokemons = {props.pokemons} setPokemons = {props.setPokemons} detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} key={index} pokemon = {pokemon} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
                 )
             })}
         </Posicaodocard>

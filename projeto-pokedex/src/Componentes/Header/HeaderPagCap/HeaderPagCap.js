@@ -3,7 +3,15 @@ import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaEsquerda, Heade
 
 
 
-export const HeaderPagCap = () =>{
+export const HeaderPagCap = (props) =>{
+    console.log(props.pokemonEstanosescolhidos)
+    console.log(props.pokemon)
+
+    console.log(props.pokemonsEscolhidos)
+
+    const Excluirpokemon =() =>{
+
+    }
 
     
     const navigate = useNavigate()
@@ -12,21 +20,45 @@ export const HeaderPagCap = () =>{
     }
 
     return(
-            <HeaderPagListaCss>
-                <HeaderPagListaEsquerda>
-                    <div>
-                    <button onClick={pagToLista}>Todos os pokemons</button>
-                    </div>
-                </HeaderPagListaEsquerda>
+            <div>
+                {props.pokemonEstanosescolhidos === true ? (
+                <HeaderPagListaCss>
 
-                <HeaderPagListaMeio>
-                     Logoadsasddas
-                </HeaderPagListaMeio>
+                    <HeaderPagListaEsquerda>
+                        <div>
+                        <button onClick={pagToLista}>Todos os pokemons</button>
+                        </div>
+                    </HeaderPagListaEsquerda>
 
-                <HeaderPagListaDireita>
-                    Excluir da Pokedex
-                </HeaderPagListaDireita>
-            </HeaderPagListaCss>
+                    <HeaderPagListaMeio>
+                        Logoadsasddas
+                    </HeaderPagListaMeio>
+
+                    <HeaderPagListaDireita>
+                        <button onClick={Excluirpokemon} >Excluir da Pokedex</button>
+                    </HeaderPagListaDireita>
+
+                </HeaderPagListaCss>
+
+                    
+                ) :(
+                <HeaderPagListaCss>
+                    <HeaderPagListaEsquerda>
+                        <div>
+                        <button onClick={pagToLista}>Todos os pokemons</button>
+                        </div>
+                    </HeaderPagListaEsquerda>
+
+                    <HeaderPagListaMeio>
+                        Logoadsasddas
+                    </HeaderPagListaMeio>
+
+
+                </HeaderPagListaCss>
+
+                )
+                }
+            </div>
 
 
 

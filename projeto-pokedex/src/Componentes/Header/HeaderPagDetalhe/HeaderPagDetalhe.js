@@ -20,10 +20,6 @@ export const HeaderPagDetalhe = () =>{
                 <HeaderPagListaMeio>
                      Logoadsasddas
                 </HeaderPagListaMeio>
-
-                <HeaderPagListaDireita>
-                    Botao pokedex
-                </HeaderPagListaDireita>
             </HeaderPagListaCss>
 
 
