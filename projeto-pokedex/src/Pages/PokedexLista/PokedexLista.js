@@ -7,68 +7,87 @@ import { HeaderPagListaCss2 } from "../../Componentes/Header/HeaderPagLista/Styl
 import { PokemonCard } from "../../Componentes/PokemonCard/PokemonCard"
 import { Containerdoscard, DeixarRoll } from "../../Componentes/PokemonCard/Style"
 import { PokedexListaCss } from "./Style"
-
+import {
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+  } from '@chakra-ui/react'
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const PokedexLista2 = (props) =>{
     
-    
 
-    const [pokemons, setPokemons] = useState([])
     const [carregando, setCarregando] = useState(false)
-    // const [pokemonsEscolhidos, setPokemonsEscolhidos] = useState([])
-    // console.log(pokemonsEscolhidos)
+
+
 
     const guardaosvalores = async () =>{
-
         setCarregando(true)
         try {
-            const result = await Recebeositens()
-            const promises = result.map((pokemon) =>{
-                return Rebecedadosdecadapokemon(pokemon.url)
-            })
-            const resultado = await Promise.all(promises)
-            setPokemons(resultado)
-            setCarregando(false)
+                const result = await Recebeositens()
+                const promises = result.map((pokemon) =>{
+                    return Rebecedadosdecadapokemon(pokemon.url)
+                })
+                const resultado = await Promise.all(promises)
+                props.setPokemons(resultado)
+                setCarregando(false)
+
         } catch (error) {
             console.log("erro:", error)
         }
     }
+    
     useEffect(()=>{
-        // console.log("carregou o guarda pokemons")
-        guardaosvalores()
+        if(props.pokemons.length === 0){
+            guardaosvalores()
+        }
     },[])
 
-
     return(
-        <PokedexListaCss>
+        <div>
+        <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"/>
             {carregando?
             (
-                <div>
+                <PokedexListaCss>
                 <HeaderPagLista/>
                 <HeaderPagListaCss2>
                     <h1>TODOS OS POKEMONS</h1>
                 </HeaderPagListaCss2>
                     <h2>Carregando a lista patrão, guenta ai!</h2>
-                </div>
+                </PokedexListaCss>
 
             )
             :(
-                <div>
+                
+
+                <PokedexListaCss>
                     <HeaderPagLista/>
                     <HeaderPagListaCss2>
                         <h1>TODOS OS POKEMONS</h1>
                     </HeaderPagListaCss2>
-                    <DeixarRoll>
 
-                    <PokemonCard pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
+                    <DeixarRoll>
+                    <PokemonCard setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons = {props.pokemons} setPokemons = {props.setPokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
                     </DeixarRoll>
-                </div>
+                </PokedexListaCss>
 
 
         )
         }
 
-        </PokedexListaCss>
+        </div>
     )
 }

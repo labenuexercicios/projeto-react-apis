@@ -9,26 +9,72 @@ import {
     Stack,
     Text,
     useColorModeValue,
+    useDisclosure,
   } from '@chakra-ui/react';
 import { wrap } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Diminiumargemdaimagem } from './Style';
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
   
   export default function Card2(props) {
+    const navigate = useNavigate()
 
-    const Adicionapokemon = () =>{
-        props.setPokemonsEscolhidos([... props.pokemonsEscolhidos, props.pokemon])
-        // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+    const Adicionapokemon = (id) =>{
+     
+      const pokemons = props.pokemonsEscolhidos.find((item) => item.id === id)
 
+      //Se existe o pokemon
+      if(pokemons){
+        // alert("Pokemon ja capturado")
+      }
+      else{
+          const itemencontrado = props.pokemons.find((item) => item.id === id);
+          console.log(itemencontrado)
+          const novoItem = { ...itemencontrado,  amount: 1 };
+          const novaLista = [...props.pokemonsEscolhidos, novoItem];
+          props.setPokemonsEscolhidos(novaLista)
+          // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+          toast.success("Pokemon capturado com sucesso!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+  
+      }
+
+      const carrinhoSemItem = props.pokemons.filter((item) => item.id !== id);
+      props.setPokemons(carrinhoSemItem)
+      localStorage.setItem("Pokemons Lista nova", JSON.stringify(carrinhoSemItem))
+ 
     }
 
     useEffect(()=>{
         localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
     },[props.pokemonsEscolhidos])
 
+    const Detalhespokemon = () =>{
+      navigate("/cap")
+      props.setDetalhe(props.pokemon)
 
+    }
 
+    // console.log(props.pokemon.name)
     return (
+
       <Center py={6}>
         <Stack
           borderWidth="1px"
@@ -59,40 +105,6 @@ import { Diminiumargemdaimagem } from './Style';
                         })}
                 </Text>
             </Flex>
-            {/* <Text
-            textAlign={'center'}
-            //   color={useColorModeValue('gray.700', 'gray.400')}
-              px={3}>
-              Actress, musician, songwriter and artist. PM for work inquires or
-              <Link href={'#'} color={'blue.400'}>
-                #tag
-              </Link>
-              me in your posts
-            </Text> */}
-            {/* <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-              <Badge
-                px={2}
-                py={1}
-                // bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}>
-                #art
-              </Badge>
-              <Badge
-                px={2}
-                py={1}
-                // bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}>
-                #photography
-              </Badge>
-              <Badge
-                px={2}
-                py={1}
-                // bg={useColorModeValue('gray.50', 'gray.800')}
-                fontWeight={'400'}>
-                #music
-              </Badge>
-            </Stack> */}
-  
             <Stack
               width={'100%'}
               mt={'2rem'}
@@ -100,7 +112,7 @@ import { Diminiumargemdaimagem } from './Style';
               padding={2}
               justifyContent={'space-between'}
               alignItems={'center'}>
-              <Button
+              <Button onClick={Detalhespokemon}
                 flex={1}
                 fontSize={'sm'}
                 rounded={'full'}
@@ -109,7 +121,7 @@ import { Diminiumargemdaimagem } from './Style';
                 }}>
                 Detalhes
               </Button>
-              <Button onClick={Adicionapokemon}
+              <Button onClick={() => Adicionapokemon(props.pokemon.id)} 
                 flex={1}
                 fontSize={'sm'}
                 rounded={'full'}

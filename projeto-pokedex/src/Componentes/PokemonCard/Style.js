@@ -1,4 +1,4 @@
-import { Image } from "@chakra-ui/react";
+import { Image, Stack } from "@chakra-ui/react";
 import styled from "styled-components";
 
 
@@ -90,22 +90,49 @@ export const Botao = styled.button`
 
 `
 export const Diminiumargemdaimagem = styled(Image)`
-    margin-top: -100px;
+    margin-top: -80px;
     width: 193px;
     height: 193px;
 
 `
 
+export const Passarpragrid = styled(Stack)`
+    display: grid;
+
+`
+
 export const DeixarRoll = styled.section`
     display: flex; 
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap; 
 
 `
 
 export const Posicaodocard = styled.body`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* display: grid;
+    grid-row: 3/4; */
+
+`
+
+export const Formatodaimagemdetalhe = styled.img`
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    height: 282px;
+    width: 282px;
+
+`
+
+export const Formatodosbasestats = styled.div`
+    border: 2px solid black;
+    height: 613px;
+    width: 343px;
+
+`
+
+export const Center = styled.nav`
     display: grid;
-    grid-row: 3/4;
 
 `

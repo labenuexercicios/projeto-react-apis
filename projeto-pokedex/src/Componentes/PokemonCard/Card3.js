@@ -12,18 +12,48 @@ import {
   } from '@chakra-ui/react';
 import { wrap } from 'framer-motion';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Diminiumargemdaimagem } from './Style';
   
   export default function Card3(props) {
+    const navigate = useNavigate()    
+    // console.log(props.pokemonsEscolhidos)
 
-    const RemoverPokemon = (id) =>{
-        
-        // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+    const RemoverPokemon = (id, pokemonsEscolhidos) =>{
+
+      console.log(id)
+      console.log(props.pokemons)
+
+      // console.log("to na funcao de remover")
+      // console.log(props.pokemonsEscolhidos)
+
+        // console.log(pokemonsEscolhidos)
+        const carrinhoComItem = pokemonsEscolhidos.find((item) => item.id === id);
+
+        // console.log(carrinhoComItem)
+        // props.setPokemons.splice([...props.pokemons.splice(id - 1, 0, carrinhoComItem)])
+        const novoarray = props.pokemons
+        console.log(novoarray)
+        novoarray.splice(id - 1, 0, carrinhoComItem)
+        console.log(novoarray)
+        // console.log(props.pokemons)
+
+
+        const carrinhoSemItem = pokemonsEscolhidos.filter((item) => item.id !== id);
+        console.log(carrinhoSemItem)
+        props.setPokemonsEscolhidos(carrinhoSemItem)
+
+        console.log(pokemonsEscolhidos)
 
     }
 
-    console.log("pokemons:", props.pokemonsEscolhidos)
+    const Detalhespokemon = () =>{
+      props.setDetalhe(props.pokemon)
+      props.setPokemonsEstanosEscolhidos(true)
+      navigate("/cap")
 
+
+    }
 
 
     return (
@@ -98,7 +128,7 @@ import { Diminiumargemdaimagem } from './Style';
               padding={2}
               justifyContent={'space-between'}
               alignItems={'center'}>
-              <Button
+              <Button onClick={Detalhespokemon}
                 flex={1}
                 fontSize={'sm'}
                 rounded={'full'}
@@ -107,7 +137,7 @@ import { Diminiumargemdaimagem } from './Style';
                 }}>
                 Detalhes
               </Button>
-              <Button onClick={()=>RemoverPokemon(props.id)}
+              <Button onClick={()=>RemoverPokemon(props.pokemon.id, props.pokemonsEscolhidos)}
                 flex={1}
                 fontSize={'sm'}
                 rounded={'full'}

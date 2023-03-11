@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { json } from "react-router-dom";
 import { HeaderPagDetalhe } from "../../Componentes/Header/HeaderPagDetalhe/HeaderPagDetalhe";
 import { HeaderPagLista } from "../../Componentes/Header/HeaderPagLista/HeaderPagLista";
@@ -11,12 +11,17 @@ import { PokedexListaCss } from "../PokedexLista/Style";
 
 
 export const Pokedexdetalhe = (props) =>{
-        // console.log(pokemons)
-    console.log("pokemons escolhidos:", props.pokemonsEscolhidos)
+    // const [jatempokemonselecionado, setJatempokemonselecionado] = useState(true)
+    // console.log("pokemons escolhidos:", props.pokemonsEscolhidos)
     
-    const pegaospokemons = JSON.parse(localStorage.getItem("Pokemons escolhidos"))
-    console.log("Os pokemons que estao no local:", pegaospokemons)
-    let pokemons = pegaospokemons
+    // const pegaospokemons = JSON.parse(localStorage.getItem("Pokemons escolhidos"))
+    // // console.log("Os pokemons que estao no local:", pegaospokemons)
+    // if(props.pokemonsEscolhidos.length === 0){
+    //     // console.log("to aqui")
+    //     props.setPokemonsEscolhidos(pegaospokemons)
+    //     setJatempokemonselecionado(true)
+    // }
+    let pokemons2 = "pegaospokemons"
 
 
     return(
@@ -25,9 +30,14 @@ export const Pokedexdetalhe = (props) =>{
             <HeaderPagListaCss2>
             <h1>TODOS OS POKEMONS</h1>
             </HeaderPagListaCss2> 
+            {props.pokemonsEscolhidos.length > 0 ? (
             <Posicaodocard>
-            <PokemonCard2 pokemons = {pokemons} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} />
+            <PokemonCard2 setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons2 = {pokemons2} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} pokemons = {props.pokemons} setPokemons = {props.setPokemons}/>
             </Posicaodocard>
+                
+            ) : (
+                <h3>Eai patrão, vc n escolheu nenhum pokemon ainda :)</h3>
+            )}
         </PokedexListaCss>
     )
 }
