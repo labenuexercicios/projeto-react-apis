@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "../HeaderPagLista/Style"
-
-
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import logo from "../../../Imagens/image2.png"
 
 export const HeaderPagCap = (props) =>{
 
@@ -39,17 +39,15 @@ export const HeaderPagCap = (props) =>{
                 <HeaderPagListaCss>
 
                     <HeaderPagListaEsquerda>
-                        <div>
-                        <button onClick={pagToLista}>Todos os pokemons</button>
-                        </div>
+                    <Button colorScheme='teal' size='lg' onClick={pagToLista}>Todos os pokemons</Button>
                     </HeaderPagListaEsquerda>
 
                     <HeaderPagListaMeio>
-                        Logoadsasddas
+                      <img src={logo}></img>
                     </HeaderPagListaMeio>
 
                     <HeaderPagListaDireita>
-                        <button onClick={Excluirpokemon} >Excluir da Pokedex</button>
+                    <Button onClick={Excluirpokemon} backgroundColor="red" colorScheme='teal' size='lg' onClick={pagToLista}>Excluir</Button>
                     </HeaderPagListaDireita>
 
                 </HeaderPagListaCss>

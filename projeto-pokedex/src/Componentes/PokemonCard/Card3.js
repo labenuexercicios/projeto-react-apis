@@ -13,6 +13,8 @@ import {
 
 import { useNavigate } from 'react-router-dom';
 import { Diminiumargemdaimagem } from './Style';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
   
   export default function Card3(props) {
     const navigate = useNavigate()    
@@ -40,6 +42,16 @@ import { Diminiumargemdaimagem } from './Style';
         const carrinhoSemItem = pokemonsEscolhidos.filter((item) => item.id !== id);
 
         props.setPokemonsEscolhidos(carrinhoSemItem)
+        toast.success("Pokemon excluido com sucesso!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
 
 
 
@@ -64,7 +76,7 @@ import { Diminiumargemdaimagem } from './Style';
           height={{ sm: '100%', md: '210' }}
           direction={{ base: 'column', md: 'row' }}
         //   bg={useColorModeValue('white', 'gray.900')}
-          boxShadow={'2xl'}
+          boxShadow={'2xl'} backgroundColor = 'white'
           padding={4}>
           <Stack
             flex={1}

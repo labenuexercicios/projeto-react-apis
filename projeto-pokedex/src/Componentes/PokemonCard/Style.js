@@ -108,9 +108,10 @@ export const DeixarRoll = styled.section`
 
 export const Posicaodocard = styled.body`
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     flex-wrap: wrap;
     gap: 20px;
+    background-color: #523737;
     /* display: grid;
     grid-row: 3/4; */
 
