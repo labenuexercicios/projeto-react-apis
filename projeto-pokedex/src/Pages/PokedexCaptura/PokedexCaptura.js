@@ -12,7 +12,7 @@ export const PokedexCaptura = (props) =>{
 
     return(
         <PokedexCapCss>
-            <HeaderPagCap setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe={props.detalhe} setDetalhe={props.setDetalhe} pokemonsEscolhidos = {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
+            <HeaderPagCap pokemons = {props.pokemons} setPokemons = {props.setPokemons} setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe={props.detalhe} setDetalhe={props.setDetalhe} pokemonsEscolhidos = {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
             {/* <HeaderPagListaCss2>
                 Opa
             </HeaderPagListaCss2> */}

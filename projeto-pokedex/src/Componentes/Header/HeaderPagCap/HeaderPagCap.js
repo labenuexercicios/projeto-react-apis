@@ -4,13 +4,27 @@ import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaEsquerda, Heade
 
 
 export const HeaderPagCap = (props) =>{
-    console.log(props.pokemonEstanosescolhidos)
-    console.log(props.pokemon)
 
-    console.log(props.pokemonsEscolhidos)
 
     const Excluirpokemon =() =>{
 
+        const carrinhoComItem = props.pokemonsEscolhidos.find((item) => item.id === props.detalhe.id);
+        const novoarray = props.pokemons
+        novoarray.splice(props.detalhe.id - 1, 0, carrinhoComItem)
+        novoarray.sort(function(a,b) {
+            if(a.id < b.id){
+              return -1
+            }
+            if(a.id > b.id){
+              return 1
+            }
+          })
+        props.setPokemons(novoarray)
+
+
+        const carrinhoSemItem = props.pokemonsEscolhidos.filter((item) => item.id !== props.detalhe.id);
+        props.setPokemonsEscolhidos(carrinhoSemItem)
+        props.setPokemonsEstanosEscolhidos(false)
     }
 
     

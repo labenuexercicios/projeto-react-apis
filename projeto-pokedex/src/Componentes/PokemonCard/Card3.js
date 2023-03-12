@@ -10,8 +10,7 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
-import { wrap } from 'framer-motion';
-import { useEffect } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import { Diminiumargemdaimagem } from './Style';
   
@@ -21,35 +20,35 @@ import { Diminiumargemdaimagem } from './Style';
 
     const RemoverPokemon = (id, pokemonsEscolhidos) =>{
 
-      console.log(id)
-      console.log(props.pokemons)
-
-      // console.log("to na funcao de remover")
-      // console.log(props.pokemonsEscolhidos)
-
-        // console.log(pokemonsEscolhidos)
         const carrinhoComItem = pokemonsEscolhidos.find((item) => item.id === id);
 
-        // console.log(carrinhoComItem)
-        // props.setPokemons.splice([...props.pokemons.splice(id - 1, 0, carrinhoComItem)])
         const novoarray = props.pokemons
-        console.log(novoarray)
+
         novoarray.splice(id - 1, 0, carrinhoComItem)
-        console.log(novoarray)
-        // console.log(props.pokemons)
+        novoarray.sort(function(a,b) {
+          if(a.id < b.id){
+            return -1
+          }
+          if(a.id > b.id){
+            return 1
+          }
+        })
+        props.setPokemons(novoarray)
+
 
 
         const carrinhoSemItem = pokemonsEscolhidos.filter((item) => item.id !== id);
-        console.log(carrinhoSemItem)
+
         props.setPokemonsEscolhidos(carrinhoSemItem)
 
-        console.log(pokemonsEscolhidos)
+
 
     }
 
     const Detalhespokemon = () =>{
       props.setDetalhe(props.pokemon)
       props.setPokemonsEstanosEscolhidos(true)
+      // console.log("vo usar na pag cap:",props.pokemon)
       navigate("/cap")
 
 

@@ -38,7 +38,6 @@ import 'react-toastify/dist/ReactToastify.css';
       }
       else{
           const itemencontrado = props.pokemons.find((item) => item.id === id);
-          console.log(itemencontrado)
           const novoItem = { ...itemencontrado,  amount: 1 };
           const novaLista = [...props.pokemonsEscolhidos, novoItem];
           props.setPokemonsEscolhidos(novaLista)

@@ -10,22 +10,12 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
-import { wrap } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CssdoCarddetalhe } from '../../Pages/PokedexCaptura/Style';
-import { Diminiumargemdaimagem, Formatodaimagemdetalhe, Formatodosbasestats } from './Style';
+
+import { Formatodaimagemdetalhe, Formatodosbasestats } from './Style';
 import { Progress } from '@chakra-ui/react'
   
   export default function Carddetalhe(props) {
 
-    // useEffect(()=>{
-    //     console.log(props.detalhe)
-    // },[props.detalhe])
-    console.log(props.detalhe)
-    // console.log(props.detalhe)
-
-    // console.log(props.pokemon.name)
     return (
         <Center py={6}>
         <Stack

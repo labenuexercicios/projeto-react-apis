@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import { useState } from "react"
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
+import { BrowserRouter, Route, Routes} from "react-router-dom"
 import { Paginadeerro } from "./Paginadeerro"
 import { PokedexCaptura } from "./PokedexCaptura/PokedexCaptura"
 import { Pokedexdetalhe } from "./PokedexDetalhe/PokedexDetalhe"
@@ -11,11 +11,8 @@ import { PokedexLista2 } from "./PokedexLista/PokedexLista"
 export const Paginas = () =>{
     const [pokemonsEscolhidos, setPokemonsEscolhidos] = useState([])
     const [pokemons, setPokemons] = useState([])
-    console.log(pokemons)
     const [detalhe, setDetalhe] = useState([])
     const [pokemonEstanosescolhidos, setPokemonsEstanosEscolhidos] = useState(false)
-    // console.log(detalhe)
-    // console.log("paginas:", pokemonsEscolhidos)
 
     return(
         <ChakraProvider  >
