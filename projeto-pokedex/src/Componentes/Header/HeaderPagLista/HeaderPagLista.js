@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { HeaderPagListaCss, HeaderPagListaCss2, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "./Style"
-
+import logo from "../../../Imagens/image2.png"
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 
 
@@ -13,16 +14,15 @@ export const HeaderPagLista = () =>{
 
     return(
             <HeaderPagListaCss>
-                <HeaderPagListaEsquerda>
-                    <div>eai</div>
-                </HeaderPagListaEsquerda>
 
                 <HeaderPagListaMeio>
-                     Logoadsasddas
+                    <img src={logo}></img>
                 </HeaderPagListaMeio>
 
                 <HeaderPagListaDireita>
-                    <button onClick={irParaPaginadeDetalhe}>Pokédex</button>
+                <Button colorScheme='teal' size='lg' onClick={irParaPaginadeDetalhe}>
+                    Pokedex
+                </Button>
                 </HeaderPagListaDireita>
             </HeaderPagListaCss>
 

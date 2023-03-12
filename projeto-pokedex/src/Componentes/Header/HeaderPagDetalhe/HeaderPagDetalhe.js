@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "../HeaderPagLista/Style"
+import logo from "../../../Imagens/image2.png"
+import { Button, ButtonGroup } from '@chakra-ui/react'
+
 
 export const HeaderPagDetalhe = () =>{
 
@@ -12,13 +15,13 @@ export const HeaderPagDetalhe = () =>{
     return(
             <HeaderPagListaCss>
                 <HeaderPagListaEsquerda>
-                    <div>
-                    <button onClick={pagToLista}>Todos os pokemons</button>
-                    </div>
+                <Button colorScheme='teal' size='lg' onClick={pagToLista}>
+                    Todos os pokemons
+                </Button>
                 </HeaderPagListaEsquerda>
 
                 <HeaderPagListaMeio>
-                     Logoadsasddas
+                    <img src={logo}></img>
                 </HeaderPagListaMeio>
             </HeaderPagListaCss>
 

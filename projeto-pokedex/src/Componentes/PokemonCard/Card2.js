@@ -82,8 +82,9 @@ import 'react-toastify/dist/ReactToastify.css';
           height={{ sm: '100%', md: '210' }}
           direction={{ base: 'column', md: 'row' }}
         //   bg={useColorModeValue('white', 'gray.900')}
-          boxShadow={'2xl'}
+          boxShadow={'2xl'} backgroundColor='white'
           padding={4}>
+          
           <Stack
             flex={1}
             flexDirection="column"

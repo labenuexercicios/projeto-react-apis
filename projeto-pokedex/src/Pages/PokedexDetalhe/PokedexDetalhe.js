@@ -1,44 +1,61 @@
 import React, { useState } from "react";
-import { json } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { HeaderPagDetalhe } from "../../Componentes/Header/HeaderPagDetalhe/HeaderPagDetalhe";
 import { HeaderPagLista } from "../../Componentes/Header/HeaderPagLista/HeaderPagLista";
-import { HeaderPagListaCss2 } from "../../Componentes/Header/HeaderPagLista/Style";
+import { Centralizarcapturadetalhe, HeaderPagListaCss2 } from "../../Componentes/Header/HeaderPagLista/Style";
 import { PokemonCard } from "../../Componentes/PokemonCard/PokemonCard";
 import { PokemonCard2 } from "../../Componentes/PokemonCard/PokemonCard2";
 import { Posicaodocard } from "../../Componentes/PokemonCard/Style";
 import { PokedexListaCss } from "../PokedexLista/Style";
-
+import { Text } from '@chakra-ui/react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 
 export const Pokedexdetalhe = (props) =>{
-    // const [jatempokemonselecionado, setJatempokemonselecionado] = useState(true)
-    // console.log("pokemons escolhidos:", props.pokemonsEscolhidos)
-    
-    // const pegaospokemons = JSON.parse(localStorage.getItem("Pokemons escolhidos"))
-    // // console.log("Os pokemons que estao no local:", pegaospokemons)
-    // if(props.pokemonsEscolhidos.length === 0){
-    //     // console.log("to aqui")
-    //     props.setPokemonsEscolhidos(pegaospokemons)
-    //     setJatempokemonselecionado(true)
-    // }
-    let pokemons2 = "pegaospokemons"
+    const navigate = useNavigate()
+
+
+    function irParaPaginaInicial(){
+        navigate("/")
+    }
 
 
     return(
+        <div>
+
+        <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"/>
         <PokedexListaCss>
             <HeaderPagDetalhe navigate = {props.navigate}/>
             <HeaderPagListaCss2>
-            <h1>TODOS OS POKEMONS</h1>
+            <Text color='#61ADAA' fontSize='50px' as='abbr'>Todos os pokemons</Text>
             </HeaderPagListaCss2> 
             {props.pokemonsEscolhidos.length > 0 ? (
-            <Posicaodocard>
-            <PokemonCard2 setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemons2 = {pokemons2} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} pokemons = {props.pokemons} setPokemons = {props.setPokemons}/>
-            </Posicaodocard>
+            <div>
+            <PokemonCard2 setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe = {props.detalhe} setDetalhe ={props.setDetalhe} pokemonsEscolhidos= {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos} pokemons = {props.pokemons} setPokemons = {props.setPokemons}/>
+            </div>
                 
             ) : (
-                <h3>Eai patrão, vc n escolheu nenhum pokemon ainda :)</h3>
+                <Centralizarcapturadetalhe>
+
+                <Button onClick={irParaPaginaInicial} height={300} width={800} colorScheme='facebook' >
+                Capturar pokemons
+              </Button>
+                </Centralizarcapturadetalhe>
             )}
         </PokedexListaCss>
+        </div>
     )
 }
 

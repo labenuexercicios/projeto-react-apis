@@ -15,6 +15,8 @@ import {
   } from '@chakra-ui/react'
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { Spinner } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 
 
 export const PokedexLista2 = (props) =>{
@@ -64,9 +66,15 @@ export const PokedexLista2 = (props) =>{
                 <PokedexListaCss>
                 <HeaderPagLista/>
                 <HeaderPagListaCss2>
-                    <h1>TODOS OS POKEMONS</h1>
+                <Text color='green' fontSize='50px' as='abbr'>Carregando todos os pokemons</Text>
                 </HeaderPagListaCss2>
-                    <h2>Carregando a lista patrão, guenta ai!</h2>
+                <Spinner
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='blue.500'
+                    size='xl'
+                />
                 </PokedexListaCss>
 
             )
@@ -76,7 +84,7 @@ export const PokedexLista2 = (props) =>{
                 <PokedexListaCss>
                     <HeaderPagLista/>
                     <HeaderPagListaCss2>
-                        <h1>TODOS OS POKEMONS</h1>
+                    <Text color='#61ADAA' fontSize='50px' as='abbr'>Todos os pokemons</Text>
                     </HeaderPagListaCss2>
 
                     <DeixarRoll>

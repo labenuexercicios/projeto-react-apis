@@ -9,11 +9,6 @@ import { CardStyle, DeixarRoll, Posicaodocard } from "./Style"
 export const PokemonCard2 = (props) =>{
 
 
-    // console.log(props.pokemons)
-    // const {setPokemonsEscolhidos,pokemonsEscolhidos,pokemons2} =props 
-    // console.log(pokemonsEscolhidos)
-    // console.log(props.pokemonsEscolhidos)
-
     // console.log(pokemons2)
     return(
          <Posicaodocard>

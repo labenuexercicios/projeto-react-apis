@@ -15,6 +15,13 @@ import { Formatodaimagemdetalhe, Formatodosbasestats } from './Style';
 import { Progress } from '@chakra-ui/react'
   
   export default function Carddetalhe(props) {
+    // let contador = 0
+
+    // for(let x = 0; x<=6; x++){
+    //   contador = contador + props.detalhe.stats[x].base_stat
+
+    //   console.log(contador)
+    // }
 
     return (
         <Center py={6}>
@@ -31,11 +38,30 @@ import { Progress } from '@chakra-ui/react'
             <Formatodaimagemdetalhe src={props.detalhe.sprites.back_default}/>
             <Formatodosbasestats>
                 <h2>Base Stats</h2>
-                <ul>
+                {/* <ul>
                     <li><Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[0].base_stat} /></li>
-                </ul>
-                <section> {props.detalhe.stats[0].stat.name}{props.detalhe.stats[0].base_stat}  <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[0].base_stat} /></section>
-                <Progress value={20} size='xs' colorScheme='pink' borderRadius="lg"/>
+                </ul> */}
+                <section> {props.detalhe.stats[0].stat.name}{props.detalhe.stats[0].base_stat} 
+                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[0].base_stat}/>
+                </section>
+                <section> {props.detalhe.stats[1].stat.name}{props.detalhe.stats[1].base_stat} 
+                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[1].base_stat}/>
+                </section>
+                <section> {props.detalhe.stats[2].stat.name}{props.detalhe.stats[2].base_stat} 
+                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[2].base_stat}/>
+                </section>
+                <section> {props.detalhe.stats[3].stat.name}{props.detalhe.stats[3].base_stat} 
+                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[3].base_stat}/>
+                </section>
+                <section> {props.detalhe.stats[4].stat.name}{props.detalhe.stats[4].base_stat} 
+                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[4].base_stat}/>
+                </section>
+                <section> {props.detalhe.stats[5].stat.name}{props.detalhe.stats[5].base_stat} 
+                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[5].base_stat}/>
+                </section>
+
+
+                {/* <Progress value={20} size='xs' colorScheme='pink' borderRadius="lg"/> */}
                 {/* <Progress value={80} /> */}
             </Formatodosbasestats>
             {/* <CssdoCarddetalhe> */}
