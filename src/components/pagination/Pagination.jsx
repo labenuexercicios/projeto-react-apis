@@ -45,6 +45,7 @@ const Pagination = ({ currentPage, total, limit, onPageChange }) => {
   console.log(pagesCount, 5, currentPage);
 
   const pagesCut = getPagesCut({ pagesCount, pagesCutCount: 5, currentPage });
+
   const pages = range(pagesCut.start, pagesCut.end);
   const isFirstPage = Number(currentPage) === 1;
   const isLastPage = Number(currentPage) === Number(pagesCount);

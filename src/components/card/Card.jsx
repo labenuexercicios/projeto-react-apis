@@ -22,17 +22,57 @@ export default function Card({ url, setPokedex }) {
     getPokemon();
   }, []);
 
+  function getColor() {
+    return "bg-" + pokemonResponse?.types[0]?.type?.name;
+    // switch (pokemonResponse?.types[0]?.type?.name) {
+    //   case "bug":
+    //     return "bg-bug";
+    //   case "dark":
+    //     return "bg-dark";
+    //   case "dragon":
+    //     return "bg-dragon";
+    //   case "electric":
+    //     return "bg-electric";
+    //   case "fairy":
+    //     return "bg-fairy";
+    //   case "fighting":
+    //     return "bg-fighting";
+    //   case "fire":
+    //     return "bg-fire";
+    //   case "flying":
+    //     return "bg-flying";
+    //   case "ghost":
+    //     return "bg-ghost";
+    //   case "grass":
+    //     return "bg-grass";
+    //   case "ground":
+    //     return "bg-ground";
+    //   case "ice":
+    //     return "bg-ice";
+    //   case "normal":
+    //     return "bg-normal";
+    //   case "poison":
+    //     return "bg-poison";
+    //   case "psychic":
+    //     return "bg-psychic";
+    //   case "rock":
+    //     return "bg-rock";
+    //   case "steel":
+    //     return "bg-steel";
+    //   case "water":
+    //     return "bg-water";
+    //   default:
+    //     return "bg-default";
+    // }
+  }
+
   let pokedex = JSON.parse(localStorage.getItem("pokedex"));
   pokedex = pokedex == null ? [] : pokedex;
   return (
     <div className="w-[440px] h-[250px] flex items-end">
       <div
         className={`flex w-[440px] h-[210px] 
-        ${
-          pokemonResponse && pokemonResponse?.types
-            ? "bg-" + pokemonResponse?.types[0]?.type?.name
-            : "bg-default"
-        } 
+        ${pokemonResponse && pokemonResponse?.types ? getColor() : "bg-default"}
         rounded-xl bg-right-top bg-no-repeat`}
         style={{ backgroundImage: "url('/images/Background.png')" }}
       >
@@ -44,6 +84,7 @@ export default function Card({ url, setPokedex }) {
           <div className="flex gap-3">
             {pokemonResponse.types?.map((item) => (
               <img
+                key={item.type.name}
                 className="w-fit-content h-fit-content"
                 src={"/images/pokemon-types/" + item.type.name + ".png"}
                 alt=""

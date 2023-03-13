@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { goToHome } from "../../router/Coordinator";
 import Card from "../card/Card";
 import Pagination from "../pagination/Pagination";
-import "../../index.css";
 
 export default function CardsList() {
   const pathParams = useParams();

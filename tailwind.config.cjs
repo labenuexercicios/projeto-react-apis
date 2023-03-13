@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {},
-      backgroundColor: {
+      colors: {
         bug: "#76A866",
         dark: "#70657B",
         dragon: "#004170",
