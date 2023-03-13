@@ -1,50 +1,57 @@
 import styled from "styled-components";
-import Pagination from "react-paginate";
 
-export const PaginationContainer = styled(Pagination)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  border: 1px solid black;
-  color: black;
+export const PaginationContainer = styled.div`
+  display: inline-block;
+  padding-left: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
 
-  .item {
-    align-items: center;
+  .page-item {
+    display: inline;
+  }
+  .page-item:first-child .page-link {
+    margin-left: 0;
+    border-bottom-left-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+  }
+  .page-item:last-child .page-link {
+    border-bottom-right-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+  .page-item.active .page-link,
+  .page-item.active .page-link:focus,
+  .page-item.active .page-link:hover {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+  }
+  .page-item.disabled .page-link,
+  .page-item.disabled .page-link:focus,
+  .page-item.disabled .page-link:hover {
+    color: #818a91;
+    pointer-events: none;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+  }
+  .page-link {
+    position: relative;
+    float: left;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    color: #5cb85c;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
     cursor: pointer;
-    display: flex;
-    font-size: 20px;
-    height: 30px;
-    justify-content: center;
-    width: 40px;
   }
-
-  .disabled-page {
-    color: #808e9b;
-  }
-
-  .active {
-    border: solid 1px #808e9b;
-    color: #808e9b;
-  }
-
-  .next {
-    font-size: 20px;
-    height: 30px;
-    width: 100px;
-    border-left: 1px solid black;
-  }
-
-  .pagination {
-    background-color: #0fbcf9;
-    display: flex;
-  }
-
-  .previous {
-    font-size: 20px;
-    height: 30px;
-    width: 100px;
-    border-right: 1px solid black;
+  .page-link:focus,
+  .page-link:hover {
+    color: #3d8b3d;
+    background-color: #eceeef;
+    border-color: #ddd;
   }
 `;

@@ -4,15 +4,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import { goToHome } from "../../router/Coordinator";
 import Card from "../card/Card";
 import Pagination from "../pagination/Pagination";
-import { ContainerStyled, Pokemons, PaginationContainer } from "./Style";
+import "../../index.css";
 
-export default function CardsList({ calledFor }) {
+export default function CardsList() {
   const pathParams = useParams();
-
   const [count, setCount] = useState(0);
   const [globaLimit, setGlobalLimit] = useState(20);
   const [currentPokemons, setCurrentPokemons] = useState([]);
-  const [pokedex, setpokedex] = useState(
+  const [currentPage, setCurrentPage] = useState(pathParams.page);
+
+  useEffect(() => {
+    setCurrentPage(pathParams.page);
+  }, [pathParams.page]);
+
+  const [pokedex, setPokedex] = useState(
     JSON.parse(
       localStorage.getItem("pokedex") == null
         ? "[]"
@@ -21,9 +26,9 @@ export default function CardsList({ calledFor }) {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const globalOffSet = !pathParams.pageIndex
-    ? 0
-    : pathParams.pageIndex * globaLimit;
+  const globalOffSet = !pathParams.page
+    ? 1
+    : (pathParams.page - 1) * globaLimit;
 
   const getPokemons = async (url) => {
     try {
@@ -41,30 +46,33 @@ export default function CardsList({ calledFor }) {
       `https://pokeapi.co/api/v2/pokemon?limit=${globaLimit}&offset=${globalOffSet}`
     );
     setIsLoading(false);
-  }, [pathParams.pageIndex, pokedex]);
+  }, [pathParams.page, pokedex]);
 
   const navigate = useNavigate();
 
   return (
-    <ContainerStyled>
+    <div className="flex flex-col flex-wrap">
       {isLoading ? (
         <>loading...</>
       ) : (
-        <Pokemons>
+        <div className="flex flex-wrap items-center justify-center gap-5">
           {currentPokemons?.map((pokemon) => (
             <div key={pokemon.url}>
-              <Card url={pokemon.url} setpokedex={setpokedex} />
+              <Card url={pokemon.url} setPokedex={setPokedex} />
             </div>
           ))}
-        </Pokemons>
+        </div>
       )}
 
       <Pagination
-        count={count}
-        globaLimit={globaLimit}
-        goTo={goToHome}
-        pageIndex={pathParams.pageIndex}
+        currentPage={currentPage}
+        total={count}
+        limit={globaLimit}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+          goToHome(navigate, page);
+        }}
       />
-    </ContainerStyled>
+    </div>
   );
 }

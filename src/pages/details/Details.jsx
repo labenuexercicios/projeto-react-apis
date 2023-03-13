@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/header/Header";
-import { ContainerStyled } from "./Style";
 
 export default function Details() {
   const params = useParams();
@@ -10,10 +9,10 @@ export default function Details() {
     JSON.parse(decodeURIComponent(params.pokemon)),
   ]);
   return (
-    <ContainerStyled>
+    <div>
       <Header calledFor="details" />
       <img src={pokemon[0].sprites.front_default} />
       <img src={pokemon[0].sprites.back_default} />
-    </ContainerStyled>
+    </div>
   );
 }
