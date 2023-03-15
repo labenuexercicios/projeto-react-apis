@@ -54,10 +54,15 @@ Os conteúdos principais  a serem estudados são:
        <summary>Dúvidas sobre o Git & Github?</summary>
        <p>Adiciomos um vídeo explicando o <strong>processo de entrega</strong> [do fork ao pull request] no Material Assincrono da Aula de <a href="https://estudante.labenu.com.br/conteudos/tecnico/mod1/Git%20e%20Github">Git e Github</a>. Esse vídeo também exemplifica situações que podem acontecer durante o fluxo de utilização do Git.</p>
     </details>
-- Faça o deploy do projeto. Pode ser ultilizado o [surge](https://labenu.notion.site/Deploy-de-front-React-com-Surge-f902a03ec1d247dc9af9aee5a1469d96), Github pages ou outra ferramenta que faça a disponibilização do seu site para acesso público;
+- Faça o deploy do projeto. Pode ser ultilizado o surge, Github pages ou outra ferramenta que faça a disponibilização do seu site para acesso público;
+				
+	dica para usar o surge:
+	* Instalar surge (só 1a vez): `npm install -g surge`
+	* Buildar app React: `npm run build`
+	* Corrigir a nomeação do arquivo (por causa do router)
+		 `cp ./build/index.html ./build/200.html`
+	* Deployar com surge: `surge ./build`
 - Adicionar o link do deploy no readme do seu projeto/repositório:
-
-
 
 
 - Entregue o projeto no [Formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
