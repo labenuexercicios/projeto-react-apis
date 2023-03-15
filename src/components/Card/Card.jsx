@@ -17,7 +17,7 @@ import {getTypes} from '../../utils/returnType'
 
 export default function Card(props) {
   const context = useContext(GlobalContext)
-  const{addToPokedex, removeFromPokedex} = context;
+  const{addToPokedex, removeFromPokedex, location} = context;
   const navigate = useNavigate()
   const url = props.url
   const [pokemon, setPokemon] = useState([])
@@ -41,7 +41,7 @@ export default function Card(props) {
     }
   }
 
-  const location = window.location.href
+  // const location = window.location.href
 
   return(
     <CardContainer style={{backgroundColor: `${getColors(pokemon.types?.[0].type.name)}`}}>
@@ -74,9 +74,9 @@ export default function Card(props) {
           <button onClick={() => goToDetailsPage(navigate, pokemon.name)}>Detalhes</button>
         </Heading>
         {
-          location.includes('pokedex')
-          ? <Button colorScheme='teal' onClick={() => removeFromPokedex(pokemon)} >Remover!</Button>
-          : <Button colorScheme='teal' onClick={() => addToPokedex(pokemon)} >Capturar!</Button>
+          location === 0
+          ? <Button colorScheme='teal' onClick={() => addToPokedex(pokemon)} >Capturar!</Button>
+          : <Button colorScheme='teal' onClick={() => removeFromPokedex(pokemon)} >Remover!</Button>
         }
       </CardLink>
       

@@ -6,6 +6,7 @@ export default function GlobalState(props) {
 
   const [Pokemons, setPokemons] = useState([])
   const [Pokedex, setPokedex] = useState([])
+  const [location, setLocation] = useState(0)
 
   useEffect(() => {getPokemonApi()},[])
 
@@ -41,6 +42,8 @@ export default function GlobalState(props) {
   const context = {
     Pokemons: Pokemons,
     Pokedex,
+    location,
+    setLocation,
     setPokedex,
     addToPokedex,
     removeFromPokedex

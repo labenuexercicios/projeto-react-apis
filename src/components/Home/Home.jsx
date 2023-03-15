@@ -9,11 +9,12 @@ import {goToPokedexPage} from '../../Routes/cordinator'
 
 export default function Home () {
   const context = useContext(GlobalContext)
-  const {Pokemons} = context;
+  const {Pokemons, setLocation} = context;
   const navigate = useNavigate();
   
   return (
     <MainContainer>
+      {setLocation(0)}
       <Navbar>
         <Button colorScheme='blue' onClick={() => goToPokedexPage(navigate)}>Ir para Pokedex</Button>
       </Navbar>
