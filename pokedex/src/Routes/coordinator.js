@@ -1,4 +1,4 @@
 
-   export const goToDetailsPage = (navigate) => {
-        navigate("/detailsPage")
+   export const goToDetailsPage = (navigate, pokemon) => {
+        navigate(`/detailsPage/${pokemon.name}`)
     }

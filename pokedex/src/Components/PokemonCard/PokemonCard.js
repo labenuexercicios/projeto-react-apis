@@ -29,7 +29,7 @@ export const PokemonCard = (props) => {
         })}
       </StyledTypes>
 
-      <StyledDetails onClick={()=>goToDetailsPage(navigate)}>Detalhes</StyledDetails>
+      <StyledDetails onClick={()=>goToDetailsPage(navigate, props.pokemon)}>Detalhes</StyledDetails>
       <StyledImg src={props.sprite} />
       <StyledPokebola src={Pokebola} />
       <StyledButton>Capturar!</StyledButton>

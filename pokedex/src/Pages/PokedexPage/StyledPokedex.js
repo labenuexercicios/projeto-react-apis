@@ -6,7 +6,7 @@ import { Button, Heading } from "@chakra-ui/react";
 
 export const StyledMain = styled.div`
 background-color: #5f5f5e;
-height: 100vh;//mudar aqui, isso é só teste
+height: auto;//mudar aqui, isso é só teste
 `
 export const StyledContainer = styled.div`
 display: flex;
