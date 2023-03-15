@@ -1,18 +1,10 @@
-import { Flex } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { Recebeositens, Rebecedadosdecadapokemon } from "../../Componentes/Api/Api"
 import { HeaderPagLista } from "../../Componentes/Header/HeaderPagLista/HeaderPagLista"
 import { HeaderPagListaCss2 } from "../../Componentes/Header/HeaderPagLista/Style"
 import { PokemonCard } from "../../Componentes/PokemonCard/PokemonCard"
-import { Containerdoscard, DeixarRoll } from "../../Componentes/PokemonCard/Style"
+import {  DeixarRoll } from "../../Componentes/PokemonCard/Style"
 import { PokedexListaCss } from "./Style"
-import {
-    Alert,
-    AlertIcon,
-    AlertTitle,
-    AlertDescription,
-  } from '@chakra-ui/react'
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import { Spinner } from '@chakra-ui/react'

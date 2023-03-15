@@ -11,122 +11,93 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react';
 
-import { Formatodaimagemdetalhe, Formatodosbasestats } from './Style';
+import { Alinharositens, Formatodaimagemdetalhe, Formatodosbasestats, Formatodosbasestats2, Imagensdodetalhe, Quadradodostats, Tamanhodopokemon } from './Style';
 import { Progress } from '@chakra-ui/react'
+import { backobj, obj } from '../PegaImagens/Pegaimagens';
   
   export default function Carddetalhe(props) {
-    // let contador = 0
-
-    // for(let x = 0; x<=6; x++){
-    //   contador = contador + props.detalhe.stats[x].base_stat
-
-    //   console.log(contador)
-    // }
+    console.log(props.detalhe)
+    const background = props.detalhe.types.map((pokemonachado) =>{
+      return backobj[pokemonachado.type.name]
+      })
 
     return (
-        <Center py={6}>
+
+      <div>
+
+        <Center py={6} position = 'relative'>
         <Stack
+        backgroundColor= {background}
           borderWidth="1px"
           borderRadius="lg"
-          w='1400px'
+          w='1389.14px'
           height="663px"
           direction={{ base: 'column', md: 'row' }}
         //   bg={useColorModeValue('white', 'gray.900')}
           boxShadow={'2xl'}
           padding={4}>
-            <Formatodaimagemdetalhe src={props.detalhe.sprites.front_default}/>
-            <Formatodaimagemdetalhe src={props.detalhe.sprites.back_default}/>
+
+            <Imagensdodetalhe>
+            <Formatodaimagemdetalhe src={props.detalhe.sprites.versions["generation-v"]["black-white"].animated.front_default}/>
+            <Formatodaimagemdetalhe src={props.detalhe.sprites.versions["generation-v"]["black-white"].animated.back_default}/>
+            </Imagensdodetalhe>
+
+
             <Formatodosbasestats>
-                <h2>Base Stats</h2>
-                {/* <ul>
-                    <li><Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[0].base_stat} /></li>
-                </ul> */}
-                <section> {props.detalhe.stats[0].stat.name}{props.detalhe.stats[0].base_stat} 
-                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[0].base_stat}/>
+              <Text fontSize={40} as='abbr'>Base stast</Text>
+                <section> Hp {props.detalhe.stats[0].base_stat} 
+                <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[0].base_stat}/>
                 </section>
                 <section> {props.detalhe.stats[1].stat.name}{props.detalhe.stats[1].base_stat} 
-                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[1].base_stat}/>
+                <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[1].base_stat}/>
                 </section>
                 <section> {props.detalhe.stats[2].stat.name}{props.detalhe.stats[2].base_stat} 
-                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[2].base_stat}/>
+                <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[2].base_stat}/>
                 </section>
                 <section> {props.detalhe.stats[3].stat.name}{props.detalhe.stats[3].base_stat} 
-                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[3].base_stat}/>
+                <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[3].base_stat}/>
                 </section>
                 <section> {props.detalhe.stats[4].stat.name}{props.detalhe.stats[4].base_stat} 
-                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[4].base_stat}/>
+                <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[4].base_stat}/>
                 </section>
                 <section> {props.detalhe.stats[5].stat.name}{props.detalhe.stats[5].base_stat} 
-                <Progress colorScheme='green' borderRadius="lg" value={props.detalhe.stats[5].base_stat}/>
+                <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[5].base_stat}/>
                 </section>
-
-
-                {/* <Progress value={20} size='xs' colorScheme='pink' borderRadius="lg"/> */}
-                {/* <Progress value={80} /> */}
             </Formatodosbasestats>
-            {/* <CssdoCarddetalhe> */}
-          <Stack
-            flex={1}
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            p={1}
-            pt={2}>
-            <Heading fontSize={'2xl'} fontFamily={'body'}><p>salve</p>
-              {/* {props.pokemon.name}
-              <p>#{props.pokemon.id}</p> */}
-            </Heading>
-            <Flex>
-                {/* <Text fontWeight={600} color={'gray.500'} size="sm" mb={4}>
-                {props.pokemon.types.map((pokemon, index) =>{
-                            return(
-                                <div key={index}>{pokemon.type.name}</div>
-                            )
-                        })}
-                </Text> */}
-            </Flex>
-            {/* <Stack
-              width={'100%'}
-              mt={'2rem'}
-              direction={'row'}
-              padding={2}
-              justifyContent={'space-between'}
-              alignItems={'center'}> */}
-              {/* <Button
-                flex={1}
-                fontSize={'sm'}
-                rounded={'full'}
-                _focus={{
-                  bg: 'gray.200',
-                }}>
-                Detalhes
-              </Button> */}
-              {/* <Button 
-                flex={1}
-                fontSize={'sm'}
-                rounded={'full'}
-                bg={'blue.400'}
-                color={'white'}
-                boxShadow={
-                  '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-                }
-                _hover={{
-                  bg: 'blue.500',
-                }}
-                _focus={{
-                  bg: 'blue.500',
-                }}>
-                Capturar
-              </Button> */}
-            {/* </Stack> */}
-          </Stack>
-          <Flex >
-            {/* <img src={props.pokemon.sprites.other.dream_world.front_default}/> */}
-            {/* <Diminiumargemdaimagem/> */}
+            <Alinharositens>
 
-          </Flex>
-         {/* </CssdoCarddetalhe> */}
+            <Text color='white'>#{props.detalhe.id}</Text>
+            <Text color='white' fontSize={'4xl'}>{props.detalhe.name[0].toUpperCase()+props.detalhe.name.substr(1)}</Text>
+            <Tamanhodopokemon>
+
+            {props.detalhe.types.map((pokemonachado, index) =>{
+              return (<img key={index} src={obj[pokemonachado.type.name]}></img>)
+                })
+              }
+            </Tamanhodopokemon>
+            <Formatodosbasestats2>
+              <Text fontSize={40} as='abbr'>Moves</Text>
+              <Quadradodostats  >
+              {props.detalhe.moves.map((pokemonachado, index) =>{
+                return (<Quadradodostats key={index}>{pokemonachado.move.name}</Quadradodostats>)
+                      // for(let x = 0; x < 4; x++){
+                      // }
+                    })
+                  }
+              </Quadradodostats>
+            </Formatodosbasestats2>
+            </Alinharositens>
+          <Stack
+          position='relative'
+            flex={1}
+            top={-200}
+            mt={100}
+            padding={19}
+            >
+              <img src={props.detalhe.sprites.other['official-artwork'].front_default}></img>
+          </Stack>
         </Stack>
       </Center>
+      </div>
     );
   }

@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom"
 import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "../HeaderPagLista/Style"
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import logo from "../../../Imagens/image2.png"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const HeaderPagCap = (props) =>{
-
+    const navigate = useNavigate()
 
     const Excluirpokemon =() =>{
 
@@ -25,10 +27,21 @@ export const HeaderPagCap = (props) =>{
         const carrinhoSemItem = props.pokemonsEscolhidos.filter((item) => item.id !== props.detalhe.id);
         props.setPokemonsEscolhidos(carrinhoSemItem)
         props.setPokemonsEstanosEscolhidos(false)
+        toast.success("Pokemon excluido com sucesso!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+        
+        navigate("/")
     }
 
     
-    const navigate = useNavigate()
     function pagToLista() {
         navigate("/")
     }
@@ -47,7 +60,7 @@ export const HeaderPagCap = (props) =>{
                     </HeaderPagListaMeio>
 
                     <HeaderPagListaDireita>
-                    <Button onClick={Excluirpokemon} backgroundColor="red" colorScheme='teal' size='lg' onClick={pagToLista}>Excluir</Button>
+                    <Button onClick={Excluirpokemon} backgroundColor="red" colorScheme='teal' size='lg'>Excluir</Button>
                     </HeaderPagListaDireita>
 
                 </HeaderPagListaCss>
@@ -55,16 +68,14 @@ export const HeaderPagCap = (props) =>{
                     
                 ) :(
                 <HeaderPagListaCss>
+
                     <HeaderPagListaEsquerda>
-                        <div>
-                        <button onClick={pagToLista}>Todos os pokemons</button>
-                        </div>
+                    <Button colorScheme='teal' size='lg' onClick={pagToLista}>Todos os pokemons</Button>
                     </HeaderPagListaEsquerda>
 
                     <HeaderPagListaMeio>
-                        Logoadsasddas
+                      <img src={logo}></img>
                     </HeaderPagListaMeio>
-
 
                 </HeaderPagListaCss>
 
