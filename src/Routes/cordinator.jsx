@@ -9,3 +9,4 @@ export const goToPokedexPage = (navigate) => {
 export const goToDetailsPage = (navigate, pokemonName) => {
   navigate(`details/${pokemonName}`);
 };
+

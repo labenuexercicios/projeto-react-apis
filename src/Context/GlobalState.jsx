@@ -18,15 +18,32 @@ export default function GlobalState(props) {
   }
 
   const addToPokedex = (pokemon) => {
-    setPokedex([...Pokedex, pokemon])
-    console.log(Pokedex)
+    const newPokemon = Pokedex.find(el => el.id === pokemon.id)
+    if (newPokemon === undefined) {
+      setPokedex([...Pokedex, pokemon])
+      console.log(pokemon)
+    } else {
+      window.alert('Pokemon já capturado!')
+    }
+  }
+
+  const removeFromPokedex = pokemon => {
+    const newPokedex = []
+    Pokedex.map(el => {
+      if(el.id !== pokemon.id) {
+        newPokedex.push(el)
+      }
+    })
+    setPokedex(newPokedex)
+    window.alert(`${pokemon.name} removido da Pokedex!`)
   }
 
   const context = {
     Pokemons: Pokemons,
     Pokedex,
     setPokedex,
-    addToPokedex
+    addToPokedex,
+    removeFromPokedex
   }
 
   return(

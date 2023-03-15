@@ -9,9 +9,11 @@ import {
   CardLink,
   MainCardContainer,
   LeftContainer,
-  RightContainer
+  RightContainer,
+  Types
 } from './style'
-import pokebola from '../../img/types/pokebal.png'
+import {getColors} from '../../utils/returnCardColor'
+import {getTypes} from '../../utils/returnType'
 
 export default function Card(props) {
   const context = useContext(GlobalContext)
@@ -33,14 +35,22 @@ export default function Card(props) {
   }
 
   return(
-    <CardContainer>
+    <CardContainer style={{backgroundColor: `${getColors(pokemon.types?.[0].type.name)}`}}>
       <MainCardContainer>
         <LeftContainer>
           <Heading size='md'>#{pokemon.id}</Heading>
-          <Heading>
-          {(pokemon.name)}
-          </Heading>
-          {pokemon.types?.map(type => type.type.name)}
+          <Heading>{(pokemon.name)}</Heading>
+
+          {/* Getting types */}
+          <Types>
+            {pokemon.types?.map(types => {
+                  const type = getTypes(types.type.name)
+                  return (
+                    <img key={types.type.name} src={type} alt={types.type.name}/>
+                  )
+            })}
+          </Types>
+          
         </LeftContainer>
 
         <RightContainer>

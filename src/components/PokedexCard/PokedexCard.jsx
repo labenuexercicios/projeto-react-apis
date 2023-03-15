@@ -17,7 +17,7 @@ export default function PokedexCard(props) {
   const navigate = useNavigate()
 
   const context = useContext(GlobalContext)
-  const{addToPokedex} = context;
+  const{addToPokedex, removeFromPokedex} = context;
 
   return(
     <CardContainer>
@@ -41,7 +41,7 @@ export default function PokedexCard(props) {
         <Heading size='md'>
           <button onClick={() => goToDetailsPage(navigate, pokemon.name)}>Detalhes</button>
         </Heading>
-        <Button colorScheme='teal' onClick={() => addToPokedex(pokemon)} >Remover da Pokedex</Button>
+        <Button colorScheme='teal' onClick={() => removeFromPokedex(pokemon)} >Remover da Pokedex</Button>
       </CardLink>
       
       

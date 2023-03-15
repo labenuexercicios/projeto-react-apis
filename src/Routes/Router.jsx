@@ -14,6 +14,8 @@ function Router() {
         />
         <Route path="/details/:name" element={ <Details />}
         />
+        <Route path="pokedex/details/:name" element={ <Details />}
+        />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>

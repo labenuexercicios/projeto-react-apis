@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.main`
-  background-color: lightgray;
+  background-color: gray;
   min-height: 80vh;
   padding: 30px;
 `

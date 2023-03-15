@@ -11,19 +11,16 @@ export default function Home () {
   const context = useContext(GlobalContext)
   const {Pokemons, Pokedex} = context;
   const navigate = useNavigate();
+
+  console.log(Pokemons)
   
   return (
     <MainContainer>
       <Navbar>
         <Button colorScheme='blue' onClick={() => goToPokedexPage(navigate)}>Ir para Pokedex</Button>
-        <h2>Todos os Pokemóns</h2>
       </Navbar>
       <PokemonContainer>
-        {/* {console.log(Pokemons)} */}
-        {Pokemons
-          .filter(pokemon => pokemon.name !== Pokedex.map(pokedex => pokedex.name))
-          .map(pokemon => <Card key={pokemon.name} name={pokemon.name} url={pokemon.url}/>)
-        }
+        {Pokemons.map(pokemon => <Card key={pokemon.name} name={pokemon.name} url={pokemon.url}/>)}
       </PokemonContainer>
       
     </MainContainer>
