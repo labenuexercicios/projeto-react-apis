@@ -2,9 +2,9 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { useState } from "react"
 import { BrowserRouter, Route, Routes} from "react-router-dom"
 import { Paginadeerro } from "./Paginadeerro"
-import { PokedexCaptura } from "./PokedexCaptura/PokedexCaptura"
-import { Pokedexdetalhe } from "./PokedexDetalhe/PokedexDetalhe"
-import { PokedexLista2 } from "./PokedexLista/PokedexLista"
+import { PokedexCaptura } from "../../Pages/PokedexCaptura/PokedexCaptura"
+import { Pokedexdetalhe } from "../../Pages/PokedexDetalhe/PokedexDetalhe"
+import { PokedexLista2 } from "../../Pages/PokedexLista/PokedexLista"
 
 
 

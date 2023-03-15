@@ -1,4 +1,4 @@
-import { Paginas } from "./Pages/Paginas";
+import { Paginas } from "./Componentes/Router/Paginas";
 
 function App() {
   return (

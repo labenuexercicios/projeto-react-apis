@@ -12,7 +12,7 @@ export const HeaderPagListaCss2 = styled.header`
     display: grid;
     grid-row: 2/3;
     grid-template-columns: 1fr 1fr;
-    background-color: #523737;
+    background-color: #DDDDDD;
     color: white;
     align-items: center;
 
@@ -32,6 +32,7 @@ export const HeaderPagListaMeio = styled.header`
     grid-column: 2/3;
     align-items: center;
     justify-items: center;
+    margin-bottom: 20px;
 
 
 `

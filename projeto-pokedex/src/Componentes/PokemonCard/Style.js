@@ -90,9 +90,13 @@ export const Botao = styled.button`
 
 `
 export const Diminiumargemdaimagem = styled(Image)`
-    margin-top: -80px;
+    position: absolute;
+    right: 0;
+    top: -60px;
+    /* margin-top: -80px; */
     width: 193px;
     height: 193px;
+    
 
 `
 
@@ -111,29 +115,85 @@ export const Posicaodocard = styled.body`
     /* flex-direction: row; */
     flex-wrap: wrap;
     gap: 20px;
-    background-color: #523737;
+    background-color: #DDDDDD;
     /* display: grid;
     grid-row: 3/4; */
 
 `
 
 export const Formatodaimagemdetalhe = styled.img`
-    display: flex;
-    flex-direction: column;
-    border: 2px solid black;
+    padding: 60px;
+    /* border: 2px solid black; */
+    border-radius: 10px;
     height: 282px;
     width: 282px;
+    background-color: white;
 
 `
 
 export const Formatodosbasestats = styled.div`
-    border: 2px solid black;
+    padding: 30px;
+    /* border: 2px solid black; */
+    border-radius: 10px;
     height: 613px;
     width: 343px;
+    background-color: white;
 
+`
+export const Formatodosbasestats2 = styled.div`
+    padding: 30px;
+    border: 2px solid red;
+    border-radius: 10px;
+    height: 453px;
+    width: 292px;
+    background-color: white;
 `
 
 export const Center = styled.nav`
     display: grid;
+
+`
+
+export const Pokebola = styled.img`
+    position: absolute;
+    height: 200px;
+    width: 240px;
+    opacity: 0.3;
+    top: -30px;
+    right: 0;
+
+`
+
+export const Imagensdodetalhe = styled.nav`
+    /* padding: 20px; */
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    
+
+
+`
+
+export const Alinharositens = styled.div`
+    display: flex;
+    flex-direction: column;
+
+`
+
+export const Tamanhodopokemon = styled.div`
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 39px;
+
+`
+
+export const Quadradodostats = styled.div`
+    /* height: 10px;
+    width: 10px; */
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #ECECEC;
 
 `

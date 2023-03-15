@@ -14,11 +14,11 @@ export const Recebeositens =  async () =>{
 }
 export const Rebecedadosdecadapokemon =  async (url) =>{
     try{
-        const reposta = await axios.get(url)
-        return reposta.data
+        let resposta = await axios.get(url)
+        return resposta.data
     }
     catch(error){
-        console.log("erro do recebdados de cada pokemon:", error)
+        console.log("erro do recebe dados de cada pokemon:", error)
     }
 
 }
