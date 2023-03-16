@@ -13,3 +13,14 @@ export const CssdoCarddetalhe = styled.body`
 
 
 `
+export const Botaodapaginadetalhe = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 300px;
+    border: 1px solid black;
+    background-color: gray;
+    color: black;
+
+`

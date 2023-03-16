@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import { HeaderPagListaCss, HeaderPagListaCss2, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "./Style"
+import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaMeio } from "./Style"
 import logo from "../../../Imagens/image2.png"
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 
 
 

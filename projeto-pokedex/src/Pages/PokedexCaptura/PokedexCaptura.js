@@ -28,7 +28,7 @@ export const PokedexCaptura = (props) =>{
             <HeaderPagCap pokemons = {props.pokemons} setPokemons = {props.setPokemons} setPokemonsEstanosEscolhidos = {props.setPokemonsEstanosEscolhidos} pokemonEstanosescolhidos = {props.pokemonEstanosescolhidos} detalhe={props.detalhe} setDetalhe={props.setDetalhe} pokemonsEscolhidos = {props.pokemonsEscolhidos} setPokemonsEscolhidos = {props.setPokemonsEscolhidos}/>
 
             <Body>
-            <Text color='#61ADAA' fontSize='50px' as='abbr'>Detalhes</Text>
+            <Text ml='20px' color='#61ADAA' fontSize='50px' as='abbr'>Detalhes</Text>
                 <Carddetalhe  detalhe = {props.detalhe} setDetalhe ={props.setDetalhe}/>
             </Body>
         </PokedexCapCss>

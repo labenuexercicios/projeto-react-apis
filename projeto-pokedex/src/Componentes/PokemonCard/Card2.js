@@ -1,42 +1,21 @@
 import {
-    Badge,
     Button,
-    Center,
     Flex,
     Heading,
-    Image,
-    Link,
-    Stack,
-    Text,
-    useColorModeValue,
-    useDisclosure,
+    Stack
   } from '@chakra-ui/react';
-import { wrap } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Diminiumargemdaimagem, Pokebola } from './Style';
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from '@chakra-ui/react'
-import { ToastContainer, toast } from 'react-toastify';
+import { Cardresponsivo, Diminiumargemdaimagem, Headerdocardresponsivo, Pokebola, Separarostipes } from './Style';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import pokebola from "../../Imagens/pngwing 2.png"
 import {backobj, colorofbutton, obj} from '../PegaImagens/Pegaimagens';
-import arraydeobj from '../PegaImagens/Pegaimagens';
-// import json from "../Imagens/Frames.json"
-// import Frame3 from "../Imagens/Frame 3.png"
-// import pokebola from "../Imagens/pngwing 2.png"
 
   
   export default function Card2(props) {
 
     const navigate = useNavigate()
-    // console.log("nome:",json.poison)
-    // console.log(props.pokemons)
-    // props.setPokemons(...props.pokemons)
 
     const Adicionapokemon = (id) =>{
      
@@ -44,14 +23,12 @@ import arraydeobj from '../PegaImagens/Pegaimagens';
 
       //Se existe o pokemon
       if(pokemons){
-        // alert("Pokemon ja capturado")
       }
       else{
           const itemencontrado = props.pokemons.find((item) => item.id === id);
           const novoItem = { ...itemencontrado,  amount: 1 };
           const novaLista = [...props.pokemonsEscolhidos, novoItem];
           props.setPokemonsEscolhidos(novaLista)
-          // localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
           toast.success("Pokemon capturado com sucesso!", {
             position: "top-center",
             autoClose: 5000,
@@ -89,13 +66,12 @@ import arraydeobj from '../PegaImagens/Pegaimagens';
         return colorofbutton[pokemonachado.type.name]
         })
 
-        console.log(colorofbutton2)
     
 
 
     return (
 
-      <Center py={6} >
+      <Cardresponsivo py={6} >
         <Stack position='relative'
           borderRadius="lg"
           w={{ sm: '100%', md: '440px' }}
@@ -111,21 +87,21 @@ import arraydeobj from '../PegaImagens/Pegaimagens';
             flex={1}
             flexDirection="column"
             justifyContent="center"
-            // alignItems="center"
-            // p={1}
             pt={2}>
-            <Heading  fontSize={'2xl'} fontFamily={'body'}>
-              {props.pokemon.id <10 ? (
+            <Heading  fontSize={'2xl'} fontFamily={'body'} color= 'white' mb='10px'>
+            <Headerdocardresponsivo fontSize={15} >
+                {props.pokemon.id <10 ? (
                 <p>#0{props.pokemon.id}</p>
               ) :
               (
                 <p>#{props.pokemon.id}</p>
               )}
+                </Headerdocardresponsivo>
               {props.pokemon.name[0].toUpperCase()+props.pokemon.name.substr(1)}
             </Heading>
-            <Flex p={3}>
+            <Flex>
                 {props.pokemon.types.map((pokemonachado, index) =>{
-                          return (<img key={index} src={obj[pokemonachado.type.name]}></img>)
+                          return (<Separarostipes key={index} src={obj[pokemonachado.type.name]}></Separarostipes>)
                     })
                   }
             </Flex>
@@ -133,7 +109,8 @@ import arraydeobj from '../PegaImagens/Pegaimagens';
               width={'100%'}
               mt={'2rem'}
               direction={'row'}
-              padding={2}
+              // padding={2}
+              gap='40px'
               justifyContent={'space-between'}
               alignItems={'center'}>
               <Button onClick={Detalhespokemon}
@@ -171,6 +148,6 @@ import arraydeobj from '../PegaImagens/Pegaimagens';
 
           </Flex>
         </Stack>
-      </Center>
+      </Cardresponsivo>
     );
   }

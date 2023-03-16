@@ -1,15 +1,9 @@
-import { Flex } from "@chakra-ui/react"
-import { wrap } from "framer-motion"
-import { useState } from "react"
-import Card3, { Card } from "./Card3"
-import Card2 from "./Card2"
-import { CardStyle, DeixarRoll, Posicaodocard } from "./Style"
+import Card3 from "./Card3"
+import { Posicaodocard } from "./Style"
 
 
 export const PokemonCard2 = (props) =>{
 
-
-    // console.log(pokemons2)
     return(
          <Posicaodocard>
             {props.pokemonsEscolhidos.map((pokemon, index) =>{
