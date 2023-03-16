@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { HeaderPagListaCss, HeaderPagListaDireita, HeaderPagListaEsquerda, HeaderPagListaMeio } from "../HeaderPagLista/Style"
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button} from '@chakra-ui/react'
 import logo from "../../../Imagens/image2.png"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const HeaderPagCap = (props) =>{

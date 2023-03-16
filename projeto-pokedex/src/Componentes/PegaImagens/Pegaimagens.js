@@ -12,16 +12,6 @@ import bug from "../../Imagens/Frame 8.png"
 
 import normal from "../../Imagens/Frame 9.png"
 
-import backgrass from "../../Imagens/grass.jpeg"
-
-import backfire from "../../Imagens/fire.jpeg"
-
-import backwater from "../../Imagens/water.jpeg"
-
-import backbug from "../../Imagens/bug.jpeg"
-
-import backnormal from "../../Imagens/normal.jpeg"
-
 export const obj = {
     poison: poison,
     grass: grass,

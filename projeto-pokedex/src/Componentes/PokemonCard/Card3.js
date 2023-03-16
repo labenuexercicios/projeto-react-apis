@@ -1,15 +1,12 @@
 import {
     Button,
-    Center,
     Flex,
     Heading,
-    Stack,
-    Text,
-
+    Stack
   } from '@chakra-ui/react';
 
 import { useNavigate } from 'react-router-dom';
-import { Diminiumargemdaimagem, Pokebola } from './Style';
+import { Cardresponsivo, Diminiumargemdaimagem, Pokebola, Separarostipes } from './Style';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import pokebola from "../../Imagens/pngwing 2.png"
@@ -61,7 +58,6 @@ import {obj} from '../PegaImagens/Pegaimagens';
     const Detalhespokemon = () =>{
       props.setDetalhe(props.pokemon)
       props.setPokemonsEstanosEscolhidos(true)
-      // console.log("vo usar na pag cap:",props.pokemon)
       navigate("/cap")
 
 
@@ -69,7 +65,7 @@ import {obj} from '../PegaImagens/Pegaimagens';
 
 
     return (
-          <Center py={6} >
+          <Cardresponsivo py={6} >
             <Stack position='relative' 
               borderRadius="lg"
               w={{ sm: '100%', md: '440px' }}
@@ -83,24 +79,31 @@ import {obj} from '../PegaImagens/Pegaimagens';
                 flexDirection="column"
                 justifyContent="center"
                 pt={2}>
-                <Heading fontSize={'2xl'} fontFamily={'body'}>
+                <Heading  fontSize={'2xl'} fontFamily={'body'} color= 'white' mb='10px'>
+                <Heading fontSize={15} >
+                {props.pokemon.id <10 ? (
+                <p>#0{props.pokemon.id}</p>
+              ) :
+              (
                 <p>#{props.pokemon.id}</p>
-                  {props.pokemon.name}
+              )}
                 </Heading>
-                <Flex>
-                    <Text fontWeight={600} color={'gray.500'} size="sm" mb={4}>
-                      </Text>
-                    {/* {props.pokemonsEscolhidos.types.map((pokemonachado, index) =>{
-                          return (<img key={index} src={obj[pokemonachado.type.name]}></img>)
+
+                  {props.pokemon.name[0].toUpperCase()+props.pokemon.name.substr(1)}
+                </Heading>
+                <Flex >
+                {props.pokemon.types.map((pokemonachado, index) =>{
+                          return (<Separarostipes key={index} src={obj[pokemonachado.type.name]}></Separarostipes>)
                     })
-                  } */}
+                  }
                 </Flex>
       
-                <Stack
+                <Stack 
                   width={'100%'}
                   mt={'2rem'}
                   direction={'row'}
-                  padding={2}
+                  // padding={2}
+                  gap='40px'
                   justifyContent={'space-between'}
                   alignItems={'center'}>
                   <Button onClick={Detalhespokemon}
@@ -134,12 +137,11 @@ import {obj} from '../PegaImagens/Pegaimagens';
               </Stack>
               <Pokebola src={pokebola}></Pokebola>
             <Flex >
-            {/* <img src={props.pokemon.sprites.other.dream_world.front_default}/> */}
             <Diminiumargemdaimagem src={props.pokemon.sprites.other['official-artwork'].front_default}/>
 
           </Flex>
             </Stack>
-          </Center>
+          </Cardresponsivo>
         )
         
   }

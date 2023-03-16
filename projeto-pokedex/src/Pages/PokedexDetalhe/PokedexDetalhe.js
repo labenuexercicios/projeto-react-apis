@@ -46,7 +46,17 @@ export const Pokedexdetalhe = (props) =>{
             ) : (
                 <Centralizarcapturadetalhe>
 
-                <Button onClick={irParaPaginaInicial} height={300} width={800} colorScheme='facebook' >
+                <Button onClick={irParaPaginaInicial} height={100} width={300} flex={1}
+                fontSize={'sm'}
+                rounded={'full'}
+                bg={`blue.600`}
+                color={'white'}
+                boxShadow={
+                  '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
+                }
+                _hover={
+                    'blue'
+                }  >
                 Capturar pokemons
               </Button>
                 </Centralizarcapturadetalhe>

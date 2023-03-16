@@ -1,22 +1,13 @@
 import {
-    Badge,
-    Button,
-    Center,
-    Flex,
-    Heading,
-    Image,
-    Link,
     Stack,
-    Text,
-    useColorModeValue,
+    Text
   } from '@chakra-ui/react';
 
-import { Alinharositens, Espacoentreositens, Espacoentreostipos, Espaçoentreositens, Formatodaimagemdetalhe, Formatodosbasestats, Formatodosbasestats2, Imagensdodetalhe, Quadradodostats, Tamanhodopokemon } from './Style';
+import { Alinharositens, Carddodetalhe, Cardresponsivocap, Espacoentreositens, Espacoentreostipos, Formatodaimagemdetalhe, Formatodosbasestats, Formatodosbasestats2, Imagensdodetalhe, Nomeeidresponsivo, Quadradodostats, Styleresponsivo, Tamanhodopokemon } from './Style';
 import { Progress } from '@chakra-ui/react'
 import { backobj, obj } from '../PegaImagens/Pegaimagens';
   
   export default function Carddetalhe(props) {
-    console.log(props.detalhe)
     let nomes = []
     let x = 0
     const background = props.detalhe.types.map((pokemonachado) =>{
@@ -31,13 +22,13 @@ import { backobj, obj } from '../PegaImagens/Pegaimagens';
 
       <div>
 
-        <Center py={6} position = 'relative'>
+        <Cardresponsivocap py={6} position = 'relative'>
         <Stack
         backgroundColor= {background}
           borderWidth="1px"
           borderRadius="lg"
-          w='1389.14px'
-          height="663px"
+          w='100vw'
+          height="100vh"
           direction={{ base: 'column', md: 'row' }}
         //   bg={useColorModeValue('white', 'gray.900')}
           boxShadow={'2xl'}
@@ -72,20 +63,21 @@ import { backobj, obj } from '../PegaImagens/Pegaimagens';
             </Formatodosbasestats>
             <Alinharositens>
 
-            <Text as='b' color='white'>
+            <Nomeeidresponsivo as='b' color='white'>
               {props.detalhe.id < 10? (
                 <p>#0{props.detalhe.id}</p>
               ) :(
                 <p>#{props.detalhe.id}</p>
               )}
-              </Text>
-            <Text as='b' color='white' fontSize={'4xl'}>{props.detalhe.name[0].toUpperCase()+props.detalhe.name.substr(1)}</Text>
+              </Nomeeidresponsivo>
+            <Nomeeidresponsivo as='b' color='white' fontSize={'4xl'}>{props.detalhe.name[0].toUpperCase()+props.detalhe.name.substr(1)}</Nomeeidresponsivo>
             <Tamanhodopokemon>
-
+             <Styleresponsivo>
             {props.detalhe.types.map((pokemonachado, index) =>{
               return (<Espacoentreostipos key={index} src={obj[pokemonachado.type.name]}></Espacoentreostipos>)
                 })
               }
+              </Styleresponsivo>   
             </Tamanhodopokemon>
             <Formatodosbasestats2>
               <Text fontSize={40} as='b'>Moves</Text>
@@ -102,10 +94,10 @@ import { backobj, obj } from '../PegaImagens/Pegaimagens';
             mt={100}
             padding={19}
             >
-              <img src={props.detalhe.sprites.other['official-artwork'].front_default}></img>
+              <Carddodetalhe src={props.detalhe.sprites.other['official-artwork'].front_default}></Carddodetalhe>
           </Stack>
         </Stack>
-      </Center>
+      </Cardresponsivocap>
       </div>
     );
   }
