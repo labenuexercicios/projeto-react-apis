@@ -11,15 +11,21 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react';
 
-import { Alinharositens, Formatodaimagemdetalhe, Formatodosbasestats, Formatodosbasestats2, Imagensdodetalhe, Quadradodostats, Tamanhodopokemon } from './Style';
+import { Alinharositens, Espacoentreositens, Espacoentreostipos, Espaçoentreositens, Formatodaimagemdetalhe, Formatodosbasestats, Formatodosbasestats2, Imagensdodetalhe, Quadradodostats, Tamanhodopokemon } from './Style';
 import { Progress } from '@chakra-ui/react'
 import { backobj, obj } from '../PegaImagens/Pegaimagens';
   
   export default function Carddetalhe(props) {
     console.log(props.detalhe)
+    let nomes = []
+    let x = 0
     const background = props.detalhe.types.map((pokemonachado) =>{
       return backobj[pokemonachado.type.name]
       })
+
+      for(x; x<=3; x++){
+       nomes.unshift(props.detalhe.moves[x].move.name)
+      }
 
     return (
 
@@ -44,47 +50,49 @@ import { backobj, obj } from '../PegaImagens/Pegaimagens';
 
 
             <Formatodosbasestats>
-              <Text fontSize={40} as='abbr'>Base stast</Text>
-                <section> Hp {props.detalhe.stats[0].base_stat} 
+              <Text fontSize={40} as='b'>Base stast</Text>
+                <section as ='b'> Hp: <b>{props.detalhe.stats[0].base_stat}</b>
                 <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[0].base_stat}/>
                 </section>
-                <section> {props.detalhe.stats[1].stat.name}{props.detalhe.stats[1].base_stat} 
+                <section> Attak: <b>{props.detalhe.stats[1].base_stat}</b>
                 <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[1].base_stat}/>
                 </section>
-                <section> {props.detalhe.stats[2].stat.name}{props.detalhe.stats[2].base_stat} 
+                <section> Defense: <b>{props.detalhe.stats[2].base_stat}</b>
                 <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[2].base_stat}/>
                 </section>
-                <section> {props.detalhe.stats[3].stat.name}{props.detalhe.stats[3].base_stat} 
+                <section> Sp.atk: <b>{props.detalhe.stats[3].base_stat}</b>
                 <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[3].base_stat}/>
                 </section>
-                <section> {props.detalhe.stats[4].stat.name}{props.detalhe.stats[4].base_stat} 
+                <section> Sp.def: <b>{props.detalhe.stats[4].base_stat}</b>
                 <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[4].base_stat}/>
                 </section>
-                <section> {props.detalhe.stats[5].stat.name}{props.detalhe.stats[5].base_stat} 
+                <section> Speed: <b>{props.detalhe.stats[5].base_stat}</b> 
                 <Progress colorScheme='orange' borderRadius="lg" value={props.detalhe.stats[5].base_stat}/>
                 </section>
             </Formatodosbasestats>
             <Alinharositens>
 
-            <Text color='white'>#{props.detalhe.id}</Text>
-            <Text color='white' fontSize={'4xl'}>{props.detalhe.name[0].toUpperCase()+props.detalhe.name.substr(1)}</Text>
+            <Text as='b' color='white'>
+              {props.detalhe.id < 10? (
+                <p>#0{props.detalhe.id}</p>
+              ) :(
+                <p>#{props.detalhe.id}</p>
+              )}
+              </Text>
+            <Text as='b' color='white' fontSize={'4xl'}>{props.detalhe.name[0].toUpperCase()+props.detalhe.name.substr(1)}</Text>
             <Tamanhodopokemon>
 
             {props.detalhe.types.map((pokemonachado, index) =>{
-              return (<img key={index} src={obj[pokemonachado.type.name]}></img>)
+              return (<Espacoentreostipos key={index} src={obj[pokemonachado.type.name]}></Espacoentreostipos>)
                 })
               }
             </Tamanhodopokemon>
             <Formatodosbasestats2>
-              <Text fontSize={40} as='abbr'>Moves</Text>
-              <Quadradodostats  >
-              {props.detalhe.moves.map((pokemonachado, index) =>{
-                return (<Quadradodostats key={index}>{pokemonachado.move.name}</Quadradodostats>)
-                      // for(let x = 0; x < 4; x++){
-                      // }
-                    })
-                  }
-              </Quadradodostats>
+              <Text fontSize={40} as='b'>Moves</Text>
+              {nomes.map((pokemonachado) =>{
+              return (<Espacoentreositens><Quadradodostats>{pokemonachado[0].toUpperCase()+pokemonachado.substr(1)}</Quadradodostats></Espacoentreositens>)
+                })
+              }
             </Formatodosbasestats2>
             </Alinharositens>
           <Stack
