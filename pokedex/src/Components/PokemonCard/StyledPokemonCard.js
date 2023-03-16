@@ -64,7 +64,7 @@ export const StyledDetails = styled.p`
 
 export const StyledButton = styled(Button)`
     color: black;
-    background-color: white;
+    background-color: ${props => props.bgColor};
     width: 146px;
     height: 38px;
     align-self: end;

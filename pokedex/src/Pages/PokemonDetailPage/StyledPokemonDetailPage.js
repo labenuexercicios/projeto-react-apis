@@ -30,21 +30,24 @@ height: auto;
 `
 
 export const StyledH1 = styled.h1`
+font-family: ${fonts.body};
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 72px;
 margin-top: 60px;
 align-self: flex-start;
 margin-left: 2.7vw;
 width: 220px;
 height: 72px;
-font-size: large;
 color: white;
 `
 export const StyledPokebola = styled.img`
-align-self: center;
 position: absolute;
-width: 908.99px;
-height: 908.99px;
-/* left: 553.49px; */
-top: -40px;
+    right: 0rem;
+    bottom: 0px;
+    z-index: 1;
+    height: 100%;
 `
 
 export const StyledSprite = styled(Card)`
@@ -75,5 +78,61 @@ font-size: xx-large;
 color: black;
 margin-left: 18px;
 margin-top: 10px;
-margin-bottom: 10px
+margin-bottom: 10px;
+`
+
+export const StyledInfoAndMoves = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 4.7vw;
+    margin-top: 24px;
+    margin-bottom: 26px;
+`
+
+export const StyledMovesCard = styled(Card)`
+background-color: white;
+border-radius: 10px;
+margin-top: 2.2vw;
+width: 20vw;
+height: 33vw;
+`
+
+export const StyledName = styled.h1`
+    width: auto;
+    height: 39px;
+    left: 23px;
+    top: 40px;
+    font-family: ${fonts.body};
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+`
+
+export const StyledMoves = styled.div`
+/* font-family:fonts.fonts.moves}; */
+background-color: white;
+padding: 10px;
+border-radius: 10px;
+margin-left: 28px;
+font-size: 14px;
+
+`
+
+export const StyledPMoves = styled.p`
+font-weight: 700;
+font-size: 24px;
+color: black;
+margin-left: 18px;
+margin-top: 18px;
+margin-bottom: 10px;
+`
+
+export const StyledImg = styled.img`
+    width: 18vw;
+    height: 18vw;
+    position: absolute;
+    right: 25px;
+    top: -7.5rem;
+    z-index: 2;
 `

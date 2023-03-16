@@ -9,15 +9,8 @@ import {goToDetailsPage} from "../../Routes/coordinator"
 export const PokemonCard = (props) => {
 
   const navigate = useNavigate()
-  //   const [pokemonData, setPokemonData] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get(`${props.url}`)
-  //     .then((response) => {setPokemonData(response.data)
-  //     console.log(response.data)
-  //   })
-  //     .catch((error) => console.log(error));
-  // }, [props.name]);
+ 
+  
 
   return (
     <StyledCard color={colors[props.types[0].type.name]}>
@@ -32,7 +25,7 @@ export const PokemonCard = (props) => {
       <StyledDetails onClick={()=>goToDetailsPage(navigate, props.pokemon)}>Detalhes</StyledDetails>
       <StyledImg src={props.sprite} />
       <StyledPokebola src={Pokebola} />
-      <StyledButton>Capturar!</StyledButton>
+      <StyledButton bgColor={props.bgColor} onClick={()=>props.capturar(props.id, props.bgColor)}>{props.textoBotao}</StyledButton>
     </StyledCard>
 
   )
