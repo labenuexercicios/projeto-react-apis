@@ -23,6 +23,7 @@ export const HeaderPagListaEsquerda = styled.header`
     grid-column: 1/2;
     align-items: center;
     justify-items: center;
+    margin-bottom: 40px;
 
 
 `
@@ -42,6 +43,7 @@ export const HeaderPagListaDireita = styled.header`
     grid-column: 3/4;
     align-items: center;
     justify-items: center;
+    margin-bottom: 50px;
 
 
 `

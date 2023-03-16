@@ -147,6 +147,7 @@ export const Formatodosbasestats2 = styled.div`
     height: 453px;
     width: 292px;
     background-color: white;
+
 `
 
 export const Center = styled.nav`
@@ -192,8 +193,18 @@ export const Tamanhodopokemon = styled.div`
 export const Quadradodostats = styled.div`
     /* height: 10px;
     width: 10px; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 10px;
     background-color: #ECECEC;
+    padding: 10px;
 
+`
+export const Espacoentreositens = styled.div`
+   padding: 10px;
+
+
+`
+
+export const Espacoentreostipos = styled.img`
+    padding-left: 5px;
 `

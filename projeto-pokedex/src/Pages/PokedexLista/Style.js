@@ -10,6 +10,6 @@ export const PokedexListaCss = styled.body`
 export const PokedexCapCss = styled.body`
     display: grid;
     grid-template-columns: 100vw;
-    grid-template-rows: 20vh 80vh;
+    grid-template-rows: 20vh 1fr;
 
 `
