@@ -7,6 +7,7 @@ import { Router } from './Routes/Router';
 import { GlobalContext } from './Contexts/GlobalContext';
 import { useRequestData } from './Hooks/UseRequestData';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -14,15 +15,33 @@ import { useState } from 'react';
 
 function App() {
 
-  const pokemons = useRequestData([], "?limit=18")[0]
+  const pokemons = useRequestData([], "?limit=24")[0]
 
   const [capturados, setCapturados] = useState([])
 
   const [gotcha, setGotcha] = useState(false)
 
- const [colorToPass, setColorToPass] = useState("")
+  const [colorToPass, setColorToPass] = useState("")
+
+  const [idButton, setIdButton] = useState(0)
+
+  const [render, setRender] = useState(false)
+
+
+  // if(path==="/"){
+  //   setRender(false)
+  // }
+  // else{
+  //   if(path==="/myPokedex" || path.includes("/detailsPage"))
+  //   {setRender(true)}
+   
+  // }
+
+
+
 
   const capturar = (id, color) => {
+    setIdButton(id)
     const capturando = pokemons.find((pokemon) => { return (pokemon.id === id) })
     if(color==="white"){
     if (capturados.length !== 0) {
@@ -65,7 +84,7 @@ function App() {
   }
 
 
-  const context = { pokemons, capturados, capturar, gotcha, setGotcha, colorToPass}
+  const context = { pokemons, capturados, capturar, gotcha, setGotcha, colorToPass, idButton, setIdButton, render, setRender}
 
 
 

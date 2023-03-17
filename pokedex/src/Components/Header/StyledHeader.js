@@ -12,11 +12,10 @@ export const StyledHeader = styled(Heading)`
   align-items: center;
 `
 export const StyledP = styled.p`
-width: 106px;
-height: 36px;
+width: 95%;
 font-style: normal;
 font-weight: 700;
-font-size: 24px;
+font-size: ${props=>props.size};
 line-height: 36px;
 color: #FFFFFF;
 `
@@ -33,21 +32,28 @@ font-family: 'Poppins', sans-serif;
 
 `
 
+export const StyledDiv = styled.div`
+   width: 230px;
+  height: 36px;
+  background-color: white;
+`
+
 export const StyledBackDiv = styled.div`
   display: flex;
   align-items: center;
 `
 
 export const StyledButton = styled(Button)`
+display: flex;
   /* position: absolute; */
-  background-color: #33A4F5;
+  background-color: ${props => props.color};
   color: white;
   /* margin-left: 959px ; */
   /* align-self: center; */
   border-radius: 8px;
   width: 15.3vw;
   height: 51px;
-  padding: 4px 10px 4px 10px;
+  /* padding: 4px 10px 4px 10px; */
   &:hover {
     background-color: green;
   }
