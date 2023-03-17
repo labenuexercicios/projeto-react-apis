@@ -1,12 +1,44 @@
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../context";
 import { goToPokedex, goToHome } from "../../router/Coordinator";
 
-export default function Header({ calledFor }) {
+export default function Header({ id }) {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [pokedex, setPokedex] = useState(
+    JSON.parse(
+      localStorage.getItem("pokedex") == null
+        ? "[]"
+        : localStorage.getItem("pokedex")
+    )
+  );
+
+  function deleteFromPokedex() {
+    const auxPokedex = [...pokedex];
+    const index = auxPokedex.findIndex(
+      (item) => item.split("/")[item.split("/").length - 2] == id
+    );
+    auxPokedex.splice(index, 1);
+
+    setPokedex(auxPokedex);
+    localStorage.setItem("pokedex", JSON.stringify(auxPokedex));
+  }
+  const { baseUrl } = useContext(GlobalContext);
+
+  function addToPokedex() {
+    const auxPokedex = [...pokedex];
+    auxPokedex.push(baseUrl + "/" + id + "/");
+    localStorage.setItem("pokedex", JSON.stringify(auxPokedex));
+    setPokedex(auxPokedex);
+  }
+
   return (
-    <div className="flex h-44">
+    <div className="flex bg-[white]">
       <div className="flex grow-0 w-36 items-center justify-start ml-40">
-        {calledFor == "pokedex" || calledFor == "details" ? (
+        {location.pathname.indexOf("pokedex") > -1 ||
+        location.pathname.indexOf("details") > -1 ? (
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => goToHome(navigate, 1)}
@@ -27,14 +59,27 @@ export default function Header({ calledFor }) {
       </div>
 
       <div className="flex grow-0 w-36 items-center justify-end mr-40">
-        {calledFor == "details" ? (
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        {location.pathname.indexOf("details") > -1 &&
+        pokedex.some(
+          (item) => item.split("/")[item.split("/").length - 2] == id
+        ) ? (
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={deleteFromPokedex}
+          >
             Delete from pokédex
           </button>
+        ) : location.pathname.indexOf("details") > -1 ? (
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={addToPokedex}
+          >
+            Add to pokédex
+          </button>
         ) : (
-          <div></div>
+          <></>
         )}
-        {calledFor == "home" ? (
+        {!isNaN(location.pathname.split("/")[1]) ? (
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => goToPokedex(navigate, 1)}

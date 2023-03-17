@@ -10,14 +10,8 @@ export default function Pokedex() {
 
   const [globaLimit, setGlobalLimit] = useState(20);
   const [currentPage, setCurrentPage] = useState(pathParams.page);
-  useEffect(() => {
-    setCurrentPage(pathParams.page);
-  }, [pathParams.page]);
-  const globalOffSet = !pathParams.page
-    ? 1
-    : (pathParams.page - 1) * globaLimit;
 
-  let [pokedex, setpokedex] = useState(
+  const [pokedex, setPokedex] = useState(
     JSON.parse(
       localStorage.getItem("pokedex") == null
         ? "[]"
@@ -25,16 +19,24 @@ export default function Pokedex() {
     )
   );
 
+  const globalOffSet = !pathParams.page
+    ? 1
+    : (pathParams.page - 1) * globaLimit;
+
+  useEffect(() => {
+    setCurrentPage(pathParams.page);
+  }, [pathParams.page, pokedex]);
+
+  const auxPokedex = pokedex.slice(globalOffSet, globaLimit + globalOffSet);
+
   const [count, setCount] = useState(pokedex.length);
 
-  pokedex = pokedex.slice(globalOffSet, globaLimit + globalOffSet);
-
   return (
-    <div className="flex flex-col flex-wrap">
+    <div className="flex flex-col items-center justify-center flex-wrap">
       <div className="flex flex-wrap items-center justify-center gap-5">
-        {pokedex?.map((url) => (
+        {auxPokedex?.map((url) => (
           <div key={url}>
-            <Card url={url} />
+            <Card url={url} setPokedex={setPokedex} />
           </div>
         ))}
       </div>

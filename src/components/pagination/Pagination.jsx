@@ -42,47 +42,54 @@ const PaginationItem = ({ page, currentPage, onPageChange, isDisabled }) => {
 const Pagination = ({ currentPage, total, limit, onPageChange }) => {
   const pagesCount = Math.ceil(total / limit);
 
-  console.log(pagesCount, 5, currentPage);
-
   const pagesCut = getPagesCut({ pagesCount, pagesCutCount: 5, currentPage });
 
   const pages = range(pagesCut.start, pagesCut.end);
   const isFirstPage = Number(currentPage) === 1;
   const isLastPage = Number(currentPage) === Number(pagesCount);
+
   return (
     <PaginationContainer>
-      <PaginationItem
-        page="First"
-        currentPage={Number(currentPage)}
-        onPageChange={() => onPageChange(1)}
-        isDisabled={isFirstPage}
-      />
-      <PaginationItem
-        page="Prev"
-        currentPage={Number(currentPage)}
-        onPageChange={() => onPageChange(Number(currentPage) - 1)}
-        isDisabled={isFirstPage}
-      />
-      {pages.map((page) => (
-        <PaginationItem
-          page={page}
-          key={page}
-          currentPage={Number(currentPage)}
-          onPageChange={onPageChange}
-        />
-      ))}
-      <PaginationItem
-        page="Next"
-        currentPage={Number(currentPage)}
-        onPageChange={() => onPageChange(Number(currentPage) + 1)}
-        isDisabled={isLastPage}
-      />
-      <PaginationItem
-        page="Last"
-        currentPage={Number(currentPage)}
-        onPageChange={() => onPageChange(pagesCount)}
-        isDisabled={isLastPage}
-      />
+      {pagesCount > 1 ? (
+        <div>
+          <PaginationItem
+            page="First"
+            currentPage={Number(currentPage)}
+            onPageChange={() => onPageChange(1)}
+            isDisabled={isFirstPage}
+          />
+
+          <PaginationItem
+            page="Prev"
+            currentPage={Number(currentPage)}
+            onPageChange={() => onPageChange(Number(currentPage) - 1)}
+            isDisabled={isFirstPage}
+          />
+
+          {pages.map((page) => (
+            <PaginationItem
+              page={page}
+              key={page}
+              currentPage={Number(currentPage)}
+              onPageChange={onPageChange}
+            />
+          ))}
+          <PaginationItem
+            page="Next"
+            currentPage={Number(currentPage)}
+            onPageChange={() => onPageChange(Number(currentPage) + 1)}
+            isDisabled={isLastPage}
+          />
+          <PaginationItem
+            page="Last"
+            currentPage={Number(currentPage)}
+            onPageChange={() => onPageChange(pagesCount)}
+            isDisabled={isLastPage}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
     </PaginationContainer>
   );
 };
