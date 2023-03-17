@@ -38,6 +38,6 @@ Tecnologias Utilizadas:
     LocalStorage
 
 
-- Link do deploy do projeto: 
+- Link do deploy do projeto: https://projeto-react-apis-pho1.vercel.app/
 
 
