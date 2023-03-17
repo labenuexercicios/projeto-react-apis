@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Projeto Pokedex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Pokedex](./src/Imagens/Pokedex%20tela%20inicial.png)
 
-## Available Scripts
+Um projeto chamado Pokedex cuja intenção é treinar todo o conhecimento adquirido atraves do curso.
 
-In the project directory, you can run:
+## Indice
 
-### `npm start`
+- <a href="#-funcionalidades">Funcionalidades</a>
+- <a href="#-layout">Layout</a>
+- <a href="#-demonstracao">Demonstracao</a>
+- <a href="#-rodar">Rodar</a>
+- <a href="#-tecnologias">Tecnologias Utilizadas</a>
+- <a href="#-autoras">Autoras</a>
+- <a href="#-passos">Passos</a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Funcionalidades
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [x] Tela de captura do pokemon
+- [x] Tela de pokemons capturados
+- [x] Tela de detalhes do pokemon
 
-### `npm test`
+## Layout
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Tela de captura](./src/Imagens/Pokedex%20tela%20inicial.png)
+![Tela de capturados](./src/Imagens/pokedex%20tela%20de%20pokemon%20capturado.png)
+![Tela de detalhes](./src/Imagens/pokedex%20tela%20de%20detalhes.png)
 
-### `npm run build`
+## Como rodar esse projeto?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# Clone este repositorio
+$ git clone linkrepo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Acesse a pasta do projeto no seu terminal
+$ cd projeto-pokedex
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Instale as dependências
+$ npm install
 
-### `npm run eject`
+# Execute a aplicação
+$ npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tecnologias Utilizadas
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. [React](https://pt-br.reactjs.org/)
+2. [React Router](https://pokeapi.co/)
+3. [Chakra Ui](https://chakra-ui.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Pessoas Autoras
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<img style= "width:200px" src="./src/Imagens/Foto%20de%20perfil.png" alt="Imagem do desenvolvedor"></img>
 
-## Learn More
+[Linkedin](https://www.linkedin.com/in/gabriel-garuthi/) 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Github](https://github.com/Gabrielgarg)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Prossimos passos
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [ ] Capturar o pokemon desejado
+- [ ] Se divertir!
