@@ -26,6 +26,10 @@ Um projeto chamado Pokedex cuja intenção é treinar todo o conhecimento adquir
 ![Tela de capturados](./src/Imagens/pokedex%20tela%20de%20pokemon%20capturado.png)
 ![Tela de detalhes](./src/Imagens/pokedex%20tela%20de%20detalhes.png)
 
+## Demonstração
+
+![Surge](https://labenu-gabrielgg-pokedex.surge.sh/)
+
 ## Como rodar esse projeto?
 
 ```bash
