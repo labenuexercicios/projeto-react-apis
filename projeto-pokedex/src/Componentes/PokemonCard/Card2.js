@@ -53,18 +53,18 @@ import {backobj, colorofbutton, obj} from '../PegaImagens/Pegaimagens';
     },[props.pokemonsEscolhidos])
 
     const Detalhespokemon = () =>{
+      localStorage.setItem("Pokemons para detalhes", JSON.stringify(props.pokemon))
       navigate("/cap")
       props.setDetalhe(props.pokemon)
-
     }
 
     const background = props.pokemon.types.map((pokemonachado) =>{
       return backobj[pokemonachado.type.name]
       })
 
-      const colorofbutton2 = props.pokemon.types.map((pokemonachado) =>{
+    const colorofbutton2 = props.pokemon.types.map((pokemonachado) =>{
         return colorofbutton[pokemonachado.type.name]
-        })
+    })
 
     
 

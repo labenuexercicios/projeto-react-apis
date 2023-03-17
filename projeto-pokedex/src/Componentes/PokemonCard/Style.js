@@ -225,6 +225,8 @@ export const Separarostipes = styled.img`
 `
 
 export const Styleresponsivo = styled.section`
+    
+    margin-bottom: -10px;
      @media screen and (max-width:768px) and (min-width:380px){
         display: flex;
         width: 60px;
@@ -238,6 +240,8 @@ export const Styleresponsivo = styled.section`
 `
 
 export const Nomeeidresponsivo = styled(Text)`
+color: white;
+font-size: larger;
     @media screen and (max-width:768px) and (min-width:380px){
         position: relative;
         top: -380px;

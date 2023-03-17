@@ -12,8 +12,8 @@ import { Text } from '@chakra-ui/react'
 
 export const PokedexLista2 = (props) =>{
     
-
     const [carregando, setCarregando] = useState(false)
+
 
 
     const guardaosvalores = async () =>{
@@ -25,6 +25,8 @@ export const PokedexLista2 = (props) =>{
                 })
                 const resultado = await Promise.all(promises)
                 props.setPokemons(resultado)
+                localStorage.removeItem("Pokemons escolhidos");
+                localStorage.removeItem("Pokemons Lista nova");
                 setCarregando(false)
     
         } catch (error) {
@@ -32,12 +34,22 @@ export const PokedexLista2 = (props) =>{
         }
     }
 
-
     useEffect(()=>{
-        if(props.pokemons.length === 0){
+        const listaDeitensstorage2 = JSON.parse(localStorage.getItem("Pokemons Lista nova"))
+        if(listaDeitensstorage2){
+            props.setPokemons(listaDeitensstorage2)
+        }
+        if(!listaDeitensstorage2){
             guardaosvalores()
         }
+        const listaDeitensstorage3 = JSON.parse(localStorage.getItem("Pokemons escolhidos"))
+        if(listaDeitensstorage3){
+         props.setPokemonsEscolhidos(listaDeitensstorage3)
+        }
     },[])
+
+
+
     
 
     return(

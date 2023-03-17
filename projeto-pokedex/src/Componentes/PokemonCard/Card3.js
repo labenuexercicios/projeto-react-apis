@@ -11,16 +11,25 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import pokebola from "../../Imagens/pngwing 2.png"
 import {obj} from '../PegaImagens/Pegaimagens';
+import { useEffect } from 'react';
 
   
   export default function Card3(props) {
     const navigate = useNavigate()    
 
-    console.log(props.pokemonsEscolhidos)
+
+    useEffect(()=>{
+      const listaDeitensstorage2 = JSON.parse(localStorage.getItem("Pokemons escolhidos"))
+      if(listaDeitensstorage2){
+       props.setPokemonsEscolhidos(listaDeitensstorage2)
+      }
+    },[])
+
 
     const RemoverPokemon = (id, pokemonsEscolhidos) =>{
 
         const carrinhoComItem = pokemonsEscolhidos.find((item) => item.id === id);
+        console.log(carrinhoComItem)
 
         const novoarray = props.pokemons
 
@@ -34,8 +43,13 @@ import {obj} from '../PegaImagens/Pegaimagens';
           }
         })
         props.setPokemons(novoarray)
+        console.log(novoarray)
 
+        localStorage.setItem("Pokemons Lista nova", JSON.stringify(novoarray))
 
+        if(props.pokemonsEscolhidos.length === 1){
+          localStorage.removeItem("Pokemons escolhidos");
+        }
 
         const carrinhoSemItem = pokemonsEscolhidos.filter((item) => item.id !== id);
 
@@ -51,15 +65,18 @@ import {obj} from '../PegaImagens/Pegaimagens';
           theme: "light",
           });
 
-
+          
 
     }
+    console.log(props.pokemonsEscolhidos)
+    localStorage.setItem("Pokemons escolhidos", JSON.stringify(props.pokemonsEscolhidos))
+    
 
     const Detalhespokemon = () =>{
+      localStorage.setItem("Pokemons para detalhes", JSON.stringify(props.pokemon))
       props.setDetalhe(props.pokemon)
       props.setPokemonsEstanosEscolhidos(true)
       navigate("/cap")
-
 
     }
 

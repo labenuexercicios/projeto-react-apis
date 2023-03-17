@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { HeaderPagDetalhe } from "../../Componentes/Header/HeaderPagDetalhe/HeaderPagDetalhe";
 import { Centralizarcapturadetalhe, HeaderPagListaCss2 } from "../../Componentes/Header/HeaderPagLista/Style";
@@ -17,6 +17,13 @@ export const Pokedexdetalhe = (props) =>{
     function irParaPaginaInicial(){
         navigate("/")
     }
+
+    useEffect(()=>{
+        const listaDeitensstorage2 = JSON.parse(localStorage.getItem("Pokemons escolhidos"))
+        if(listaDeitensstorage2){
+         props.setPokemonsEscolhidos(listaDeitensstorage2)
+        }
+      },[])
 
 
     return(
