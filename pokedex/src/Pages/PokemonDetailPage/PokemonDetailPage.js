@@ -8,6 +8,7 @@ import Pokebola from "../../Assets/Pokebola2.png"
 import { StatBar } from "../../Components/StatBar/StatBar"
 import { StyledTypes } from "../../Components/PokemonCard/StyledPokemonCard"
 import { images } from "../../Assets/Types/images"
+import { PopUp } from "../../Components/PopUp/PopUp"
 
 
 export const PokemonDetailPage = () => {
@@ -15,8 +16,9 @@ export const PokemonDetailPage = () => {
     const { name } = useParams()
     const {pokemons} = useContext(GlobalContext)
 
-    const pokemon = pokemons.find((pokemon) => pokemon.name === name)
-    console.log(pokemon)
+    const listaPokemons = JSON.parse(localStorage.getItem("listaPokemons"))
+
+    const pokemon = listaPokemons.find((pokemon) => pokemon.name === name)
 
     return (
         <StyledMain>

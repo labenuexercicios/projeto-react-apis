@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Projeto Pokedéx(React Api's)
+![Pokemon](./src/Assets/bulbasaur.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto tem como fonte de dados para a sua criação a Poke Api, uma Api pública, muito usada para aplicações focadas em aprendizado de programação e também usada em cases de processos seletivos.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Estrutura do projeto:
 
-### `npm start`
++Página Home: 
+![HomePage](./src/Assets/HomePage.png)
+- Mostra a lista de Pokemons;
+- Cada Pokemon é representado por um Card;
+- Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
+- O cabeçalho dessa página tem um botão para acessar a página da Pokedex
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
++Página Pokédex
+![PokedexPage](./src/Assets/PokedexPage.png)
+- Renderiza a lista de pokémons adicionados na pokedex;
+- Em cada card de Pokemon deve tem um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
+- O cabeçalho tem um botão para voltar para a Home
+- Não é possível adicionar o mesmo pokemon na Pokedéx mais de um vez(é exibido um alert)
+- Os dados de sua Pokedéx são guardados através do uso do LocalStorage.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
++Página de Detalhes
+![DetailsPage](./src/Assets/DetailsPage.png)
+- Mostra os detalhes do Pokemon selecionado, com informações descritas
+- O cabeçlho tem um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Tecnologias Utilizadas:
 
-### `npm run build`
+    React
+    React Router
+    Styled-components
+    Chakra UI
+    React Context
+    Axios
+    LocalStorage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Link do deploy do projeto: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

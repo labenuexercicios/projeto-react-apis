@@ -91,8 +91,6 @@ export const useRequestData = (initialState, path, header) => {
       });
   }, [path]);
 
-  console.log(dados)
-
   return [dados];
 }
 

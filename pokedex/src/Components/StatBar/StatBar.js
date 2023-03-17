@@ -16,27 +16,21 @@ export const StatBar = ({ statValue, statName }) => {
 
     const StatsNames = (statName) => {
         if(statName == "hp"){
-            console.log(statName)
             return("HP")
         }
         if(statName == "attack"){
-            console.log(statName)
             return("Attack")
         }
         if(statName == "defense"){
-            console.log(statName)
             return("Defense")
         }
         if(statName == "special-attack"){
-            console.log(statName)
             return("Sp. Atk")
         }
         if(statName == "special-defense"){
-            console.log(statName)
             return("Sp. Def")
         }
         if(statName == "speed"){
-            console.log(statName)
             return("Speed")
         }
     }

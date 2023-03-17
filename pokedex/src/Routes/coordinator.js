@@ -10,8 +10,6 @@ import { GlobalContext } from "../Contexts/GlobalContext"
 
     export const goToMyPokedexPage = (navigate, idButton) => {
         navigate("myPokedex")
-        console.log(idButton)
-        console.log(navigate)
     }
 
     export const goToPokedexPage = (navigate) => {

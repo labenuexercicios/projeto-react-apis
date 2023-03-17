@@ -2,7 +2,7 @@ import { PokemonCard } from "../../Components/PokemonCard/PokemonCard"
 import { StyledCard } from "../../Components/PokemonCard/StyledPokemonCard"
 import { StyledMain, StyledP, StyledContainer } from "./StyledPokedex"
 import { useCompletePokemons, useRequestData } from "../../Hooks/UseRequestData"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { GlobalContext } from "../../Contexts/GlobalContext"
 import { PopUp } from "../../Components/PopUp/PopUp"
 import { StyledGotcha } from "../../Components/PopUp/StyledPopUp"
@@ -12,7 +12,11 @@ import { StyledGotcha } from "../../Components/PopUp/StyledPopUp"
 
 export const PokedexPage = () => {
 
-    const {pokemons, capturados, capturar, gotcha, setGotcha, colorToPass} = useContext(GlobalContext)
+    const {pokemons, capturados, setCapturados,myPokedex, capturar, gotcha, setGotcha, colorToPass} = useContext(GlobalContext)
+
+    useEffect(()=>{ if(myPokedex.lenght !== 0) {
+        setCapturados(myPokedex)
+    }}, [])
 
     // const popUpHandler = () => {
     //     if(gotcha === 2 || gotcha === 3){
