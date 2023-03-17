@@ -18,8 +18,16 @@ export default function CardsList() {
   const pathParams = useParams();
 
   useEffect(() => {
-    setCurrentPage(pathParams.page);
-  }, [pathParams.page]);
+    setCurrentPage(pathParams.page ? pathParams.page : 1);
+  }, [pathParams.page ? pathParams.page : 1]);
+
+  const [pokedex, setPokedex] = useState(
+    JSON.parse(
+      localStorage.getItem("pokedex") == null
+        ? "[]"
+        : localStorage.getItem("pokedex")
+    )
+  );
 
   const navigate = useNavigate();
 
@@ -31,7 +39,7 @@ export default function CardsList() {
         <div className="flex flex-wrap items-center justify-center gap-5">
           {pokemons?.map((pokemon) => (
             <div key={pokemon.url}>
-              <Card url={pokemon.url} />
+              <Card url={pokemon.url} setPokedex={setPokedex} />
             </div>
           ))}
         </div>

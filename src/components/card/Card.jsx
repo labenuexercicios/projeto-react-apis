@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../context";
 import { goToDetails } from "../../router/Coordinator";
 
-export default function Card({ url }) {
+export default function Card({ url, setPokedex }) {
   // const { setPokedex, pokedex, pokemon, getPokemon } = useContext(GlobalContext);
 
   const navigate = useNavigate();
@@ -21,17 +21,15 @@ export default function Card({ url }) {
     }
   };
 
-  const [pokedex, setPokedex] = useState(
-    JSON.parse(
-      localStorage.getItem("pokedex") == null
-        ? "[]"
-        : localStorage.getItem("pokedex")
-    )
-  );
-
   useEffect(() => {
     getPokemon(url);
   }, []);
+
+  const pokedex = JSON.parse(
+    localStorage.getItem("pokedex") == null
+      ? "[]"
+      : localStorage.getItem("pokedex")
+  );
 
   function getColor() {
     switch (pokemon?.types[0]?.type?.name) {
@@ -133,10 +131,13 @@ export default function Card({ url }) {
               <button
                 className="flex justify-center items-center p-[10px] mb-[10px] w-[146px] h-[38px] rounded-[8px] bg-[white]"
                 onClick={() => {
-                  let auxPokedex = [...pokedex];
-                  auxPokedex.push(url);
-                  localStorage.setItem("pokedex", JSON.stringify(auxPokedex));
-                  setPokedex(auxPokedex);
+                  const pokedexExist = localStorage.getItem("pokedex");
+                  const pokedexArray = JSON.parse(pokedexExist);
+
+                  const newPokedex = [...pokedexArray, url];
+
+                  localStorage.setItem("pokedex", JSON.stringify(newPokedex));
+                  setPokedex(newPokedex);
                 }}
               >
                 Capture!
@@ -153,7 +154,6 @@ export default function Card({ url }) {
                 let auxPokedex = [...pokedex];
                 auxPokedex.splice(auxPokedex.indexOf(url), 1);
                 localStorage.setItem("pokedex", JSON.stringify(auxPokedex));
-                console.log(auxPokedex);
                 setPokedex(auxPokedex);
               }}
             >

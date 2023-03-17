@@ -7,7 +7,7 @@ export const GlobalContext = createContext();
 const GlobalContextProvider = ({ children }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
-  const [globaLimit, setGlobalLimit] = useState(2);
+  const [globaLimit, setGlobalLimit] = useState(20);
   const globalOffSet = !currentPage ? 1 : (currentPage - 1) * globaLimit;
   const [pokemons, setPokemons] = useState([]);
   const [count, setCount] = useState(0);

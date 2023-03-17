@@ -25,11 +25,12 @@ export default function Header({ id }) {
     setPokedex(auxPokedex);
     localStorage.setItem("pokedex", JSON.stringify(auxPokedex));
   }
+
   const { baseUrl } = useContext(GlobalContext);
 
   function addToPokedex() {
     const auxPokedex = [...pokedex];
-    auxPokedex.push(baseUrl + "/" + id + "/");
+    auxPokedex.push(baseUrl + id + "/");
     localStorage.setItem("pokedex", JSON.stringify(auxPokedex));
     setPokedex(auxPokedex);
   }
