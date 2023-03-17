@@ -7,7 +7,7 @@ Essa Pokédex é uma aplicação web que possui 3 páginas (Home, Pokédex e Det
 
 ## 🔗 Link da aplicação
 
-- Deploy Vercel: [aqui.]()
+- Deploy Vercel: [aqui.](https://projeto-pokedex-two.vercel.app/)
 
 ## 👨‍💻 Desenvolvido Por:
 | [<img src="https://avatars.githubusercontent.com/u/118391505?s=96&v=4"><br><sub>Henrique Batista</sub>](https://github.com/HenriqBatista)|
