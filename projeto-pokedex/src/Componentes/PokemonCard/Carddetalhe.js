@@ -6,8 +6,32 @@ import {
 import { Alinharositens, Carddodetalhe, Cardresponsivocap, Espacoentreositens, Espacoentreostipos, Formatodaimagemdetalhe, Formatodosbasestats, Formatodosbasestats2, Imagensdodetalhe, Nomeeidresponsivo, Quadradodostats, Styleresponsivo, Tamanhodopokemon } from './Style';
 import { Progress } from '@chakra-ui/react'
 import { backobj, obj } from '../PegaImagens/Pegaimagens';
+import { useEffect, useState } from 'react';
   
   export default function Carddetalhe(props) {
+
+    // const [pokemonescolhidetalhe, setPokemonescolhidodetalhe] = useState([])
+
+    // if(props.detalhe.length === 0){
+    //   const listaDeitensstorage2 = JSON.parse(localStorage.getItem("Pokemons para detalhes"))
+    //   console.log(listaDeitensstorage2)
+    //   props.setDetalhe(listaDeitensstorage2)
+    //   setPokemonescolhidodetalhe(listaDeitensstorage2)
+    //   console.log("Adicionado", props.detalhe)
+    // }
+    // console.log(pokemonescolhidetalhe)
+    // console.log(props.detalhe)
+
+    // useEffect(()=>{
+    //   const listaDeitensstorage2 = JSON.parse(localStorage.getItem("Pokemons para detalhes"))
+    //   console.log(listaDeitensstorage2)
+    //   if(listaDeitensstorage2){
+    //     props.setDetalhe(listaDeitensstorage2)
+    //     console.log("adicionado ao setdetalhe.")
+    //   }
+    // },[])
+
+
     let nomes = []
     let x = 0
     const background = props.detalhe.types.map((pokemonachado) =>{
@@ -90,7 +114,7 @@ import { backobj, obj } from '../PegaImagens/Pegaimagens';
           <Stack
           position='relative'
             flex={1}
-            top={-200}
+            top={-300}
             mt={100}
             padding={19}
             >
