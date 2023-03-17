@@ -15,6 +15,7 @@ Essa Pokédex é uma aplicação web que possui 3 páginas (Home, Pokédex e Det
 
 <br>
 <br>
+<br>
 
 ## 📝 Passos para rodar o Projeto em sua máquina:
 
