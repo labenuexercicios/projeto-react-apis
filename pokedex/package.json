@@ -1,7 +1,6 @@
 {
   "name": "pokedex",
   "version": "0.1.0",
-  "homepage": "https://Rottschaefer.github.io/projeto-react-apis",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.5.1",

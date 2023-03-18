@@ -130,9 +130,9 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    console.log(capturados);
-  }, [capturados]);
+  // useEffect(() => {
+  //   console.log(capturados);
+  // }, [capturados]);
   
 
 
