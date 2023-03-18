@@ -11,12 +11,7 @@ const CardMemory = ({
   flipped,
   disabled  
 }) => {
-  const { colorMode } = useColorMode()
-  const transform = useBreakpointValue({ base: 'scale(0.8)', sm: 'scale(1)' })
-  const hoverTransform = useBreakpointValue({
-    base: 'scale(0.85)',
-    sm: 'scale(1.03)'
-  })
+  const { colorMode } = useColorMode()  
   const handleClick = () => {
     if (!disabled) {
       handleChoice(card)
@@ -63,13 +58,8 @@ const CardMemory = ({
           width='100%'
           display='block'
           borderRadius='xl'
-          bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}
-          transform={transform}
-          _hover={{
-            transform: hoverTransform,
-            bg: colorMode === 'light' ? 'dark.detalhesBG' : 'light.white'
-          }}
-          boxShadow='md'
+          bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}          
+          boxShadow='lg'
           cursor={`url(${mousePointerOK}), auto`}
           _active={{ cursor: `url(${mouseGrab}), auto` }}
         />
