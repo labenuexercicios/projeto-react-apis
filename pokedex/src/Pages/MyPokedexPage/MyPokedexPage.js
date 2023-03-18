@@ -12,9 +12,9 @@ export const MyPokedexPage = () => {
 
     const { capturados, setCapturados, capturar, gotcha, colorToPass, myPokedex } = useContext(GlobalContext)
 
-    if(myPokedex.lenght !== 0 && myPokedex !==null) {
-        setCapturados(myPokedex)
-    }
+    // if(myPokedex.lenght !== 0 && myPokedex !==null) {
+    //     setCapturados(myPokedex)
+    // }
 
 
 

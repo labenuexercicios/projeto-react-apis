@@ -22,7 +22,7 @@ export const Header = () => {
 
     const idToBeUsed = JSON.parse(localStorage.getItem("idButton"))
 
-    console.log(idToBeUsed)
+    // console.log(idToBeUsed)
 
 
     useEffect(()=>{

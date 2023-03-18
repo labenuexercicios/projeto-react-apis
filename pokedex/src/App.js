@@ -40,12 +40,16 @@ function App() {
     if (capturados.length !== 0) {
       localStorage.setItem('myPokedex', JSON.stringify(capturados))
       setMyPokedex(JSON.parse(localStorage.getItem('myPokedex')));
-      console.log(myPokedex)
+      console.log("eu")
     }
   }
     , [capturados]);
 
   useEffect(() => {
+    if (capturados.length !== 0) {
+    localStorage.setItem('myPokedex', JSON.stringify(capturados))
+    }
+
     if (JSON.parse(localStorage.getItem('myPokedex')) !== null && JSON.parse(localStorage.getItem('myPokedex')).length !== 0) {
       setMyPokedex(JSON.parse(localStorage.getItem('myPokedex')));
       console.log(myPokedex)
