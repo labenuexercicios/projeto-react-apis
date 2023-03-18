@@ -82,13 +82,13 @@ const AlertExcluirAll = ({ isOpen, onClose }) => {
                 alt='Pikachu triste'
                 borderRadius='1em'
               />
-              <Text
+              <Text              
                 fontSize='24px'
                 fontWeight='bold'
                 align='center'
                 mt='0.5em'
                 lineHeight='24px'
-                color={colorMode === 'light' ? 'light.white' : 'dark.pTitle'}
+                color={colorMode === 'light' ? 'black': 'light.white'}
               >
                 Você realmente quer mandar seus pokémons embora?
               </Text>
@@ -97,6 +97,7 @@ const AlertExcluirAll = ({ isOpen, onClose }) => {
             <ModalFooter mt='-0.5em'>
               <Button
                 fontWeight='400'
+                color='white'
                 bg='#1DA1F2'
                 _hover={{
                   boxShadow: 'md',

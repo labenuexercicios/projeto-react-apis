@@ -53,7 +53,6 @@ const customTheme = {
       '*': {
         cursor: `url(${mouseDefault}), default`
       },
-
       "button, [role='button']": {
         cursor: `url(${mousePointerOK}), auto`
       },
@@ -68,7 +67,7 @@ const customTheme = {
       },
       option: {
         cursor: `url(${mousePointerOK}), pointer`
-      }
+      },  
     },
 
     radii: {

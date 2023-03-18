@@ -43,13 +43,13 @@ const AlertEasterEggComlplete = ({
           >
             <Text
               fontSize='48px'
-              color={colorMode === 'light' ? 'light.white' : 'dark.pTitle'}
+              color='black'
             >
               Parabéns!!
             </Text>
             <Text
               fontSize='20px'
-              color={colorMode === 'light' ? 'light.white' : 'dark.pTitle'}
+              color='black'
             >
               Você venceu!
             </Text>
@@ -67,10 +67,11 @@ const AlertEasterEggComlplete = ({
               fontStyle='bold'
               mt='1em'
               direction='column'
+
             >
               <Text
                 textAlign='center'
-                color={colorMode === 'light' ? 'light.white' : 'dark.pTitle'}
+                color='black'
               >
                 Jogar de novo?
               </Text>
@@ -79,6 +80,7 @@ const AlertEasterEggComlplete = ({
             <ModalFooter mt='0.5em'>
               <Button
                 fontWeight='400'
+                color= 'white'
                 bg='#1DA1F2'
                 _hover={{
                   boxShadow: 'md',
