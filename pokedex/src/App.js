@@ -37,7 +37,8 @@ function App() {
       setMyPokedex(JSON.parse(localStorage.getItem('myPokedex')));
       console.log("eu")
     }
-    if (capturados.length === 1) {
+    if (capturados.length === 1 && color === "#FF6262") {
+      localStorage.setItem('myPokedex', JSON.stringify(capturados))
       setMyPokedex(JSON.parse(localStorage.getItem('myPokedex')));
       console.log("eu")
     }
@@ -58,11 +59,21 @@ function App() {
       setCapturados(JSON.parse(localStorage.getItem('myPokedex')));
       console.log(capturados)
     }
+    // if (pokemons.length !== 0) {
+    //   localStorage.setItem('listaPokemons', JSON.stringify(pokemons))
+    //   console.log(localStorage.getItem("listaPokemons"))
+    // }
+  }, []);
+
+  useEffect(()=>{
     if (pokemons.length !== 0) {
       localStorage.setItem('listaPokemons', JSON.stringify(pokemons))
       console.log(localStorage.getItem("listaPokemons"))
     }
-  }, []);
+
+  }, [pokemons])
+
+  
 
   useEffect(() => {
     if (idButton != 0) {
