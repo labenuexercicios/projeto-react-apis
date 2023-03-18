@@ -42,7 +42,7 @@ const AlertEasterEgg = ({ isOpen, onClose }) => {
             fontFamily='poppins'
             fontStyle='bold'
             fontWeight='700'
-            color={colorMode === 'light' ? 'light.white' : 'dark.pTitle'}
+            color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
           >
             <Text fontSize='48px'>Parabéns!!</Text>
             <Text fontSize='20px'>Você capturou 10 Pokémons!</Text>

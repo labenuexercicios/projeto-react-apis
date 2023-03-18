@@ -31,6 +31,7 @@ import mouseWarning2 from '../../src/assets/mouseWarning2.gif'
 import mousePointerOK from '../../src/assets/mousePointerOK.png'
 import mouseDetalhes from '../../src/assets/mouseDetalhes.gif'
 import mouseDetalhesActive from '../../src/assets/mouseDetalhesActive.gif'
+import mouseGrab from '../../src/assets/mouseGrab.png'
 import rotomDex from '../../src/assets/rotomDex.gif'
 import RotomDexIco from '../../src/assets/rotomDexIco.ico'
 
@@ -306,7 +307,10 @@ const Pokedex = () => {
             opacity={0.3}
           >
             <ChevronLeftIcon boxSize={8} mt='0.5' />
-            <Text fontSize='24px' fontWeight='bold' fontFamily='poppins'>
+            <Text fontSize='24px' fontWeight='bold' fontFamily='poppins'
+            cursor={`url(${mousePointerOK}), auto`}
+            _active={{ cursor: `url(${mouseGrab}), auto` }}
+            >
               Voltar e capturar pokemóns!
             </Text>
           </Flex>
