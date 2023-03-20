@@ -1,12 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import { GlobalStyle } from './GlobalStyle'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Home } from './pages/home'
+import { Pokedex } from './pages/pokedex'
+import { DetailsPokemon } from './pages/detailsPokemon'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+  {
+    element: <App />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: 'pokedex',
+        element: <Pokedex />,
+      },
+      {
+        path: '/detail/:name',
+        element: <DetailsPokemon />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <App />
+    <GlobalStyle />
+    <RouterProvider router={router} />
   </React.StrictMode>
-);
+)

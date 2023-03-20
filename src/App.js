@@ -1,41 +1,12 @@
-import { GlobalStyled } from './GlobalStyle';
-import Router  from "./router/Router";
-
+import { Container } from './container'
+import { ContextProvider } from './context/contextProvider'
 
 function App() {
-
   return (
-    <div> 
-      <Router/>
-      <GlobalStyled/>
-    </div>
-    );
-  }  
-export default App;     
-      
+    <ContextProvider>
+        <Container />
+    </ContextProvider>
+  )
+}
 
-
-      
-      
-
-    
-     
-      
-      
-
-      
-      
-    
-
-
-
-  
-
-
-
-  
-     
-
-
-
-  
+export default App

@@ -1,20 +1,20 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { PokedexPage } from "../Pages/PokedexPage/PokedexPage";
-import { PokemonDetailPage } from "../Pages/PokemonDetailPage/PokemonDetailPage";
-import { PokemonsListPage } from "../Pages/PokemonsListPage/PokemonsListPage";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { ListPage } from "../Pages/PokemonListPage/PokemonListPage";
+// import { DetailPage } from "../Pages/PokemonDetailPage/PokemonDetailPage";
+// import { PokedexPage } from "../Pages/PokedexPage/PokedexPage";
 
-const  Router = () => {
+// function Router() {
     
-    return(
-        <BrowserRouter>
-            <Routes>
-                <Route index path="/" element={<PokemonsListPage/>}/>
-                <Route path={"/detalhes"} element={<PokemonDetailPage/>}/>
-                <Route path={"/lista"} element={<PokedexPage/>}/>
+//     return(
+//         <BrowserRouter>
+//             <Routes>
+//                 <Route path="/" element={<ListPage />}/>
+//                 <Route path={"/detalhes"} element={<PokedexPage />}/>
+//                 <Route path={"/lista"} element={<DetailPage />}/>
 
-            </Routes>
-        </BrowserRouter>
-    )
-};
+//             </Routes>
+//         </BrowserRouter>
+//     )
+// };
 
-export default Router ;
+// export default Router ;

@@ -1,0 +1,17 @@
+.Container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .Header {
+    height: 160px;
+  }
+  
+  .Main {
+    flex: 1;
+    display: flex;
+  }
+  
+  
