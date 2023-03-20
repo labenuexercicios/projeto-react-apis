@@ -1,14 +1,14 @@
 
 
-// export const goToListPage = (navigate) => {
-//     navigate("/");
-//   };
+export const goToListPage = (navigate) => {
+    navigate("/");
+  };
   
-//   export const goToPokedexPage = (navigate) => {
-//     navigate("/pokedex");
-//   };
+  export const goToPokedexPage = (navigate) => {
+    navigate("/pokedex");
+  };
   
-//   export const goToDetailsPage = (navigate) => {
-//     navigate(`/detail`);
-//   };
+  export const goToDetailsPage = (navigate) => {
+    navigate(`/detail`);
+  };
   
