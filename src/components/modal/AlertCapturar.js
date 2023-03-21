@@ -32,7 +32,7 @@ const AlertCapturar = ({
         isOpen={isOpen}
         isCentered
         closeOnOverlayClick={false}
-        closeOnEsc={false}        
+        closeOnEsc={false}
       >
         <ModalOverlay />
         <ModalContent
@@ -40,7 +40,7 @@ const AlertCapturar = ({
           objectFit='contain'
           borderRadius='xl'
           p='0.5em'
-          fontFamily='poppins'          
+          fontFamily='poppins'
           bg='white'
         >
           <Flex align='center' justify='center' direction='column'>
@@ -95,7 +95,12 @@ const AlertCapturar = ({
         closeOnEsc={false}
       >
         <ModalOverlay />
-        <ModalContent minWidth='fit-content' objectFit='contain' p='1em' bg='white'>
+        <ModalContent
+          minWidth='fit-content'
+          objectFit='contain'
+          p='1em'
+          bg='white'
+        >
           <Flex
             align='center'
             justify='center'
@@ -103,7 +108,6 @@ const AlertCapturar = ({
             borderRadius='12px'
             h='222px'
             p='0.5em'
-            
           >
             <Text
               fontWeight='700'
@@ -124,7 +128,7 @@ const AlertCapturar = ({
               <Text color={cardColor} mr='0.5em' textTransform='capitalize'>
                 {name}
               </Text>
-              <Text color='black' >foi adicionado a sua Pokédex!</Text>
+              <Text color='black'>foi adicionado a sua Pokédex!</Text>
             </Flex>
           </Flex>
         </ModalContent>
