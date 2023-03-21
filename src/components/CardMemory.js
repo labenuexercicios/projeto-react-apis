@@ -5,9 +5,14 @@ import mousePointerOK from '../../src/assets/mousePointerOK.png'
 import mouseGrab from '../../src/assets/mouseGrab.png'
 import CardBackImage from '../../src/assets/pokebolaError.png'
 
-const CardMemory = ({ card, handleChoice, flipped, disabled }) => {
-  const { colorMode } = useColorMode()
-
+const CardMemory = ({
+  card,
+  handleChoice,
+  flipped,
+  disabled  
+}) => {
+  const { colorMode } = useColorMode() 
+  
   const handleClick = () => {
     if (!disabled) {
       handleChoice(card)
