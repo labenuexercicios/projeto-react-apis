@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './CardMemory.css'
-import { Box, Image, useColorMode, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Image, useColorMode } from '@chakra-ui/react'
 import mousePointerOK from '../../src/assets/mousePointerOK.png'
 import mouseGrab from '../../src/assets/mouseGrab.png'
 import CardBackImage from '../../src/assets/pokebolaError.png'
@@ -11,7 +11,8 @@ const CardMemory = ({
   flipped,
   disabled  
 }) => {
-  const { colorMode } = useColorMode()  
+  const { colorMode } = useColorMode() 
+  
   const handleClick = () => {
     if (!disabled) {
       handleChoice(card)
@@ -58,7 +59,7 @@ const CardMemory = ({
           width='100%'
           display='block'
           borderRadius='xl'
-          bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}          
+          bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}
           boxShadow='lg'
           cursor={`url(${mousePointerOK}), auto`}
           _active={{ cursor: `url(${mouseGrab}), auto` }}

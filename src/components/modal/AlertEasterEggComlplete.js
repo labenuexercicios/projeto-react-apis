@@ -40,19 +40,10 @@ const AlertEasterEggComlplete = ({
             fontFamily='poppins'
             fontStyle='bold'
             fontWeight='700'
+            color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
           >
-            <Text
-              fontSize='48px'
-              color='black'
-            >
-              Parabéns!!
-            </Text>
-            <Text
-              fontSize='20px'
-              color='black'
-            >
-              Você venceu!
-            </Text>
+            <Text fontSize='48px'>Parabéns!!</Text>
+            <Text fontSize='20px'>Você venceu!</Text>
             <Image
               src={PikachuHappy}
               alt={'Pikachu feliz'}
@@ -67,20 +58,14 @@ const AlertEasterEggComlplete = ({
               fontStyle='bold'
               mt='1em'
               direction='column'
-
             >
-              <Text
-                textAlign='center'
-                color='black'
-              >
-                Jogar de novo?
-              </Text>
+              <Text textAlign='center'>Jogar de novo?</Text>
             </Flex>
 
             <ModalFooter mt='0.5em'>
               <Button
                 fontWeight='400'
-                color= 'white'
+                color='white'
                 bg='#1DA1F2'
                 _hover={{
                   boxShadow: 'md',
