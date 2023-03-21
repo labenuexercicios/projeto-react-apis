@@ -40,7 +40,7 @@ const Cards = ({ pokemon, cardColor, select, setSelectAnimate }) => {
 
   const pokemonHome = pokemons.find(p => p.name === name)
 
-  const catchChance = calculateCatchChance(capture_rate)
+  const catchChance = calculateCatchChance(capture_rate)  
   const isCaptured = Math.random() * 100 <= catchChance
 
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -49,7 +49,7 @@ const Cards = ({ pokemon, cardColor, select, setSelectAnimate }) => {
   const [showSecondModalCapturarFail, setShowSecondModalCapturarFail] =
     useState(false)
 
-  const addToPokedexRemoveFromPokemon = () => {    
+  const addToPokedexRemoveFromPokemon = () => {
     onOpen()
     setTimeout(() => {
       onClose()
@@ -57,7 +57,7 @@ const Cards = ({ pokemon, cardColor, select, setSelectAnimate }) => {
         setShowSecondModalCapturar(true)
         setTimeout(() => {
           setShowSecondModalCapturar(false)
-          addToPokedex(pokemon, id)    
+          addToPokedex(pokemon, id)
           removeFromPokemon(id)
         }, 1000)
       } else {

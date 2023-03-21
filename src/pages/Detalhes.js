@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom'
-import { PokemonContext } from '../contexts/PokemonContext'
+import React, { useContext, useEffect, useState } from 'react'
+import axios from 'axios'
+import { useParams, useNavigate } from 'react-router-dom'
+import { goToError } from '../routes/coordinator'
 import { AnimateContext } from '../contexts/AnimateCoxtext'
 import { TypeReturnContext } from '../contexts/TypeReturnContext'
 import { ColorContext } from '../contexts/ColorContext'
@@ -39,145 +40,205 @@ import tapuLele from '../assets/tapuLele.gif'
 const Detalhes = () => {
   const { name } = useParams()
   const { colorMode } = useColorMode()
-  const { pokemonsCopytoDetahes } = useContext(PokemonContext)
   const { getTypes } = useContext(TypeReturnContext)
   const { getColors, getColorsType } = useContext(ColorContext)
-
-  const pokemons = pokemonsCopytoDetahes
-
-  const pokesMap = [...new Set(pokemons.map(poke => poke))]
-
-  const pokeId = pokesMap.find(pokeName => {
-    return pokeName.name === name
-  })
-
-  const types = pokeId.types
-  const typeNames = types.map(type => type.type.name)
-
-  const imageSrc = pokeId.sprites.other['official-artwork'].front_default
-
   const { updateFavicon } = useContext(FaviconContext)
-  const iconUrl = pokeId.sprites.versions['generation-vii'].icons.front_default
-  updateFavicon(iconUrl)
+  const navigate = useNavigate()
+  const [pokeId, setPokeId] = useState('')
+  const [reloadPage, setReloadPage] = useState(true)
 
-  const capitalize = string => {
-    return string.charAt(0).toUpperCase() + string.slice(1)
-  }
-  const nameC = capitalize(name)
+  const [nomeLateral, setNomeLateral] = useState('')
+  const [ability, setAbility] = useState('')
+  const [move, setMove] = useState('')
+  const [statusName, setStatusName] = useState('')
+  const [typeName, setTypeName] = useState('')
+  const [cardColor, setCardColor] = useState('')
+  const [src2, setSrc2] = useState('')
+  const [gifFront, setGifFront] = useState('')
+  const [gifBack, setGifBack] = useState('')
 
-  let imageSrc2
-  switch (true) {
-    case !!pokeId.sprites.other.dream_world.front_default:
-      imageSrc2 = pokeId.sprites.other.dream_world.front_default
-      break
-    case pokeId.id === 773:
-      imageSrc2 = `https://static.pokemonpets.com/images/monsters-images-300-300/2${pokeId.id}-Shiny-${nameC}.webp`
-      break
-    case pokeId.id === 774:
-      imageSrc2 = `https://static.pokemonpets.com/images/monsters-images-300-300/2${pokeId.id}-Shiny-Minior.webp`
-      break
-    case name.includes('-') && pokeId.id !== 772 && pokeId.id < 781:
-      const nameWithoutForm = name.substring(0, name.indexOf('-'))
-      imageSrc2 = `https://pokestop.io/img/pokemon/${nameWithoutForm}-256x256.png`
-      break
-    default:
-      imageSrc2 = `https://pokestop.io/img/pokemon/${name}-256x256.png`
-      break
-  }
+  useEffect(() => {
+    searchPoke()
+  }, [name, reloadPage])
 
-  const abilities = pokeId.abilities
-  const abilityNames = abilities.map(ability => ability.ability.name)
+  const searchPoke = async () => {
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${name}/`
+      )
+      setPokeId(response.data)
+      updateFavicon(
+        response.data.sprites.versions['generation-vii'].icons.front_default
+      )
+      setNomeLateral(response.data.name)
 
-  const moves = pokeId.moves
-  const moveNames1 = moves
-    .map(move => move.move.name)
-    .slice(0, useBreakpointValue({ base: 10, md: 20 }))
+      const abilities = response.data.abilities
+      const abilityNames = abilities.map(ability => ability.ability.name)
+      setAbility(abilityNames)
 
-  const stats = pokeId.stats
-  const statNamesAndValues = stats.map(stat => {
-    return {
-      name: stat.stat.name,
-      value: stat.base_stat
+      const moves = response.data.moves
+      const moveNames = moves.map(move => move.move.name)
+      setMove(moveNames)
+
+      const stats = response.data.stats
+      const statNamesAndValues = stats.map(stat => {
+        return {
+          name: stat.stat.name,
+          value: stat.base_stat
+        }
+      })
+      setStatusName(statNamesAndValues)
+
+      const types = response.data.types
+      const typeNames = types.map(type => type.type)
+      setTypeName(typeNames)
+      const typeN = typeNames.map(type => type.name)
+      setCardColor(typeN[0])
+
+      const capitalize = string => {
+        return string.charAt(0).toUpperCase() + string.slice(1)
+      }
+      const nameC = capitalize(response.data.name)
+
+      switch (true) {
+        case !!response.data.sprites.other.dream_world.front_default:
+          setSrc2(response.data.sprites.other.dream_world.front_default)
+          break
+        case response.data.id === 773:
+          setSrc2(
+            `https://static.pokemonpets.com/images/monsters-images-300-300/2${response.data.id}-Shiny-${nameC}.webp`
+          )
+          break
+        case response.data.id === 774:
+          setSrc2(
+            `https://static.pokemonpets.com/images/monsters-images-300-300/2${response.data.id}-Shiny-Minior.webp`
+          )
+          break
+        case response.data.name.includes('-') &&
+          response.data.id !== 772 &&
+          response.data.id < 781:
+          const nameWithoutForm = response.data.name.substring(
+            0,
+            response.data.name.indexOf('-')
+          )
+          setSrc2(
+            `https://pokestop.io/img/pokemon/${nameWithoutForm}-256x256.png`
+          )
+          break
+        default:
+          setSrc2(
+            `https://pokestop.io/img/pokemon/${response.data.name}-256x256.png`
+          )
+          break
+      }
+
+      switch (true) {
+        case response.data.name === 'type-null':
+          setGifFront(typeNull)
+          break
+        case response.data.name === 'tapu-koko':
+          setGifFront(tapuKoko)
+          break
+        case response.data.name === 'tapu-lele':
+          setGifFront(tapuLele)
+          break
+        case response.data.name === 'tapu-bulu':
+          setGifFront(tapuBulu)
+          break
+        case response.data.name === 'tapu-fini':
+          setGifFront(tapuFini)
+          break
+        case !!response.data.sprites.versions['generation-v']['black-white']
+          .animated.front_default:
+          setGifFront(
+            response.data.sprites.versions['generation-v']['black-white']
+              .animated.front_default
+          )
+          break
+        case response.data.id < 740 && response.data.name.includes('-'):
+          const nameWithoutForm = response.data.name.substring(
+            0,
+            response.data.name.indexOf('-')
+          )
+          setGifFront(
+            `https://www.pkparaiso.com/imagenes/xy/sprites/animados/${nameWithoutForm}.gif`
+          )
+          break
+        case response.data.id > 740 &&
+          response.data.id < 781 &&
+          response.data.name.includes('-'):
+          const nameWithoutForm2 = response.data.name.substring(
+            0,
+            response.data.name.indexOf('-')
+          )
+          setGifFront(
+            `https://www.pkparaiso.com/imagenes/sol-luna/sprites/animados/${nameWithoutForm2}.gif`
+          )
+          break
+        case response.data.id > 721:
+          setGifFront(
+            `https://www.pkparaiso.com/imagenes/sol-luna/sprites/animados/${response.data.name}.gif`
+          )
+          break
+        default:
+          setGifFront(
+            `https://www.pkparaiso.com/imagenes/xy/sprites/animados/${response.data.name}.gif`
+          )
+          break
+      }
+
+      switch (true) {
+        case response.data.name === 'type-null' ||
+          response.data.name === 'tapu-koko' ||
+          response.data.name === 'tapu-lele' ||
+          response.data.name === 'tapu-bulu' ||
+          response.data.name === 'tapu-fini':
+          setGifBack(
+            response.data.sprites.versions['generation-v']['black-white']
+              .back_default
+          )
+          break
+        case !!response.data.sprites.versions['generation-v']['black-white']
+          .animated.back_default:
+          setGifBack(
+            response.data.sprites.versions['generation-v']['black-white']
+              .animated.back_default
+          )
+          break
+        case response.data.id < 740 && response.data.includes('-'):
+          const nameWithoutForm = response.data.name.substring(
+            0,
+            response.data.name.indexOf('-')
+          )
+          setGifBack(
+            `https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/${nameWithoutForm}.gif`
+          )
+          break
+        case response.data.id > 740 &&
+          response.data.id < 781 &&
+          response.data.name.includes('-'):
+          const nameWithoutForm2 = response.data.name.substring(
+            0,
+            response.data.name.indexOf('-')
+          )
+          setGifBack(
+            `https://www.pkparaiso.com/imagenes/sol-luna/sprites/animados-espalda/${nameWithoutForm2}.gif`
+          )
+          break
+        case response.data.id > 721:
+          setGifBack(
+            `https://www.pkparaiso.com/imagenes/sol-luna/sprites/animados-espalda/${response.data.name}.gif`
+          )
+          break
+        default:
+          setGifBack(
+            `https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/${response.data.name}.gif`
+          )
+      }
+    } catch (error) {
+      goToError(navigate)
     }
-  })
-
-  let gifFront
-  switch (true) {
-    case name === 'type-null':
-      gifFront = typeNull
-      break
-    case name === 'tapu-koko':
-      gifFront = tapuKoko
-      break
-    case name === 'tapu-lele':
-      gifFront = tapuLele
-      break
-    case name === 'tapu-bulu':
-      gifFront = tapuBulu
-      break
-    case name === 'tapu-fini':
-      gifFront = tapuFini
-      break
-    case !!pokeId.sprites.versions['generation-v']['black-white'].animated
-      .front_default:
-      gifFront =
-        pokeId.sprites.versions['generation-v']['black-white'].animated
-          .front_default
-      break
-    case pokeId.id < 740 && name.includes('-'):
-      const nameWithoutForm = name.substring(0, name.indexOf('-'))
-      gifFront = `https://www.pkparaiso.com/imagenes/xy/sprites/animados/${nameWithoutForm}.gif`
-      break
-    case pokeId.id > 740 && pokeId.id < 781 && name.includes('-'):
-      const nameWithoutForm2 = name.substring(0, name.indexOf('-'))
-      gifFront = `https://www.pkparaiso.com/imagenes/sol-luna/sprites/animados/${nameWithoutForm2}.gif`
-      break
-    case pokeId.id > 721:
-      gifFront = `https://www.pkparaiso.com/imagenes/sol-luna/sprites/animados/${name}.gif`
-      break
-    default:
-      gifFront = `https://www.pkparaiso.com/imagenes/xy/sprites/animados/${name}.gif`
-      break
   }
-
-  let gifBack
-  switch (true) {
-    case name === 'type-null' ||
-      name === 'tapu-koko' ||
-      name === 'tapu-lele' ||
-      name === 'tapu-bulu' ||
-      name === 'tapu-fini':
-      gifBack =
-        pokeId.sprites.versions['generation-v']['black-white'].back_default
-      break
-    case !!pokeId.sprites.versions['generation-v']['black-white'].animated
-      .back_default:
-      gifBack =
-        pokeId.sprites.versions['generation-v']['black-white'].animated
-          .back_default
-      break
-    case pokeId.id < 740 && name.includes('-'):
-      const nameWithoutForm = name.substring(0, name.indexOf('-'))
-      gifBack = `https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/${nameWithoutForm}.gif`
-      break
-    case pokeId.id > 740 && pokeId.id < 781 && name.includes('-'):
-      const nameWithoutForm2 = name.substring(0, name.indexOf('-'))
-      gifBack = `https://www.pkparaiso.com/imagenes/sol-luna/sprites/animados-espalda/${nameWithoutForm2}.gif`
-      break
-    case pokeId.id > 721:
-      gifBack = `https://www.pkparaiso.com/imagenes/sol-luna/sprites/animados-espalda/${name}.gif`
-      break
-    default:
-      gifBack = `https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/${name}.gif`
-  }
-
-  let total = 0
-  for (let i = 0; i < statNamesAndValues.length; i++) {
-    const stat = statNamesAndValues[i]
-    total += stat.value
-  }
-
-  const currentIndex = pokemons.findIndex(poke => poke.name === pokeId.name)
 
   const {
     textDisplay,
@@ -540,6 +601,36 @@ const Detalhes = () => {
     }
   })
 
+  const nameSize = useNameSize(
+    nomeLateral.length,
+    nomeLateral.charAt(0),
+    '48px',
+    '36px',
+    '34px',
+    '34px',
+    '34px',
+    '34px'
+  )
+
+  const nomeLateralL = useNameSize(
+    nomeLateral.length,
+    nomeLateral.charAt(0),
+    '95px',
+    '70px',
+    '58px',
+    '54px',
+    '55px',
+    '64px'
+  )
+
+  const movesName = move.slice(0, useBreakpointValue({ base: 10, md: 20 }))
+
+  let total = 0
+  for (let i = 0; i < statusName.length; i++) {
+    const stat = statusName[i]
+    total += stat.value
+  }
+
   return (
     <Box
       minH={{
@@ -688,639 +779,653 @@ const Detalhes = () => {
           }}
         ></Box>
       </Flex>
+      <AnimateBox
+        initial={wing2Initial}
+        animate={wing2Animate}
+        transition={{
+          duration: 0.5,
+          ease: 'easeOut'
+        }}
+        position='fixed'
+        display={isAnimeted ? 'none' : 'block'}
+        zIndex='docked'
+      >
+        <Image src={wing2}></Image>
+      </AnimateBox>
 
-      <Center pl='2em' pr='2em'>
-        <AnimateBox
-          initial={wing2Initial}
-          animate={wing2Animate}
-          transition={{
-            duration: 0.5,
-            ease: 'easeOut'
-          }}
-          position='fixed'
-          display={isAnimeted ? 'none' : 'block'}
-          zIndex='docked'
-        >
-          <Image src={wing2}></Image>
-        </AnimateBox>
+      <Flex>
+        {pokeId !== '' ? (
+          <Center pl='2em' pr='2em'>
+            <AnimateBox
+              initial={cardBGInitial}
+              animate={cardBGAnimate}
+              transition={{
+                duration: 0.5,
+                ease: 'easeOut'
+              }}
+              onAnimationComplete={() => setIsAnimeted(true)}
+              bg={getColors(cardColor)}
+              display={isAnimeted ? 'none' : 'block'}
+              h={{
+                base: '101.4em',
+                md: '72.8em',
+                xl: '35.7em'
+              }}
+              maxW={{
+                base: '25em',
+                sm: '35em',
+                smm: '43em',
+                md: '57em',
+                lg: '75em',
+                xl: '91em',
+                '2xl': '115em',
+                '3xl': '137em',
+                '4xl': '140em',
+                '5xl': '140em'
+              }}
+              w='100%'
+              borderRadius='37.8857px'
+              mb={{ base: '1.5em', sm: '2em' }}
+              position='fixed'
+              pl={{ base: '0', smm: '1em' }}
+              pr={{ base: '0', smm: '1em' }}
+            />
 
-        <AnimateBox
-          initial={cardBGInitial}
-          animate={cardBGAnimate}
-          transition={{
-            duration: 0.5,
-            ease: 'easeOut'
-          }}
-          onAnimationComplete={() => setIsAnimeted(true)}
-          bg={getColors(typeNames[0])}
-          display={isAnimeted ? 'none' : 'block'}
-          h={{
-            base: '101.4em',
-            md: '72.8em',
-            xl: '35.7em'
-          }}
-          maxW={{
-            base: '25em',
-            sm: '35em',
-            smm: '43em',
-            md: '57em',
-            lg: '75em',
-            xl: '91em',
-            '2xl': '115em',
-            '3xl': '137em',
-            '4xl': '140em',
-            '5xl': '140em'
-          }}
-          w='100%'
-          borderRadius='37.8857px'
-          mb={{ base: '1.5em', sm: '2em' }}
-          position='fixed'
-          pl={{ base: '0', smm: '1em' }}
-          pr={{ base: '0', smm: '1em' }}
-        />
-
-        <Grid
-          postion='relative'
-          justifyItems='center'
-          align='center'
-          alignItems='center'
-          bg={isAnimeted ? getColors(typeNames[0]) : 'transparent'}
-          h={{
-            base: '103em',
-            md: '75em',
-            xl: '38em'
-          }}
-          maxW='140em'
-          w='100%'
-          borderRadius='37.8857px'
-          mb={{ base: '1.5em', sm: '2em' }}
-          mt={{
-            base: '-60px',
-            sm: '10px',
-            smm: '35px',
-            md: '0px'
-          }}
-          bgSize='cover'
-          bgImage={isAnimeted ? wing2 : 'none'}
-          bgRepeat='no-repeat'
-          backgroundSize={{
-            base: '23em',
-            sm: '30em',
-            smm: '40em',
-            md: '50em',
-            lg: '60em',
-            xl: '50em'
-          }}
-          bgPosition={{ base: 'top left', xl: 'center right' }}
-          pl={{ base: '0', smm: '1em' }}
-          pr={{ base: '0', smm: '1em' }}
-          templateColumns={{
-            md: '1fr 1.12fr ',
-            xl: '1.05fr 1.15fr 2.4fr',
-            '2xl': '1.05fr 1.15fr 2.4fr 1.6fr',
-            '3xl': '1.05fr 1.15fr 2.4fr 3fr'
-          }}
-          templateRows={{
-            base: '0.8fr 0.8fr 2.5fr 3fr',
-            md: '1fr 1.3fr 1.3fr 1.8fr',
-            xl: '1fr 1fr 3fr'
-          }}
-          gridTemplateAreas={{
-            xl: `   'gif1 bStatus card extra'
+            <Grid
+              postion='relative'
+              justifyItems='center'
+              align='center'
+              alignItems='center'
+              bg={isAnimeted ? getColors(cardColor) : 'transparent'}
+              h={{
+                base: '103em',
+                md: '75em',
+                xl: '38em'
+              }}
+              maxW='140em'
+              w='100%'
+              borderRadius='37.8857px'
+              mb={{ base: '1.5em', sm: '2em' }}
+              mt={{
+                base: '-60px',
+                sm: '10px',
+                smm: '35px',
+                md: '0px'
+              }}
+              bgSize='cover'
+              bgImage={isAnimeted ? wing2 : 'none'}
+              bgRepeat='no-repeat'
+              backgroundSize={{
+                base: '23em',
+                sm: '30em',
+                smm: '40em',
+                md: '50em',
+                lg: '60em',
+                xl: '50em'
+              }}
+              bgPosition={{ base: 'top left', xl: 'center right' }}
+              pl={{ base: '0', smm: '1em' }}
+              pr={{ base: '0', smm: '1em' }}
+              templateColumns={{
+                md: '1fr 1.12fr ',
+                xl: '1.05fr 1.15fr 2.4fr',
+                '2xl': '1.05fr 1.15fr 2.4fr 1.6fr',
+                '3xl': '1.05fr 1.15fr 2.4fr 3fr'
+              }}
+              templateRows={{
+                base: '0.8fr 0.8fr 2.5fr 3fr',
+                md: '1fr 1.3fr 1.3fr 1.8fr',
+                xl: '1fr 1fr 3fr'
+              }}
+              gridTemplateAreas={{
+                xl: `   'gif1 bStatus card extra'
             'gif1 bStatus move extra'
             'gif2 bStatus move extra'`,
 
-            md: `'card card'            
+                md: `'card card'            
             'gif1 bStatus'
             'gif2 bStatus'
             'move move'`,
 
-            base: `'card card'            
+                base: `'card card'            
             'gif1 gif2'
             ' bStatus bStatus'
             'move move'`
-          }}
-        >
-          <AnimateBox
-            position='absolute'
-            justifySelf='right'
-            h={{ '2xl': '30em', '3xl': '35em' }}
-            w={{ '2xl': '30em', '3xl': '35em' }}
-            pt='5em'
-            pb='5em'
-            pl={{ '2xl': '10em', '3xl': '0em' }}
-            pr={{ '2xl': '0em', '3xl': '6em' }}
-            display={{ base: 'none', '2xl': 'block' }}
-            initial={{
-              opacity: isAnimeted ? 1 : 0,
-              transform: isAnimeted ? 'scale(1)' : 'scale(0)',
-              zIndex: isAnimeted ? 'auto' : 'sticky',
-              top: isAnimeted ? '' : '0',
-              left: isAnimeted ? '' : '1000px'
-            }}
-            animate={{
-              top: '',
-              left: '',
-              opacity: 1,
-              transform: 'scale(1)',
-              zIndex: 'auto'
-            }}
-            transition={{
-              duration: 0.5,
-              ease: 'easeOut'
-            }}
-          >
-            <Image
-              width='100%'
-              height='100%'
-              maxWidth='fit-content'
-              maxHeight='fit-content'
-              objectFit='contain'
-              src={imageSrc2}
-              alt={name}
-              display={{ base: 'none', '2xl': 'block' }}
-            />
-          </AnimateBox>
-
-          <GridItem
-            area='gif1'
-            mt={{ base: '0', xl: '1em' }}
-            justifySelf={{ base: 'right', xl: 'center' }}
-            alignSelf={{ base: 'start', xl: 'center' }}
-            mr={{ base: '0.5em', smm: '1em', xl: '0' }}
-          >
-            <AnimateBox
-              initial={statusGifsInitial}
-              animate={{
-                transform: 'scaleX(1) scaleY(1)'
-              }}
-              transition={{
-                duration: 0.5,
-                ease: 'easeInOut'
               }}
             >
-              <Flex
-                w={{ base: '10em', md: '64' }}
-                h={{ base: '10em', md: '64' }}
-                bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}
-                borderRadius='.5em'
-                align='center'
-                justify='center'
+              <AnimateBox
+                position='absolute'
+                justifySelf='right'
+                h={{ '2xl': '30em', '3xl': '35em' }}
+                w={{ '2xl': '30em', '3xl': '35em' }}
+                pt='5em'
+                pb='5em'
+                pl={{ '2xl': '10em', '3xl': '0em' }}
+                pr={{ '2xl': '0em', '3xl': '6em' }}
+                display={{ base: 'none', '2xl': 'block' }}
+                initial={{
+                  opacity: isAnimeted ? 1 : 0,
+                  transform: isAnimeted ? 'scale(1)' : 'scale(0)',
+                  zIndex: isAnimeted ? 'auto' : 'sticky',
+                  top: isAnimeted ? '' : '0',
+                  left: isAnimeted ? '' : '1000px'
+                }}
+                animate={{
+                  top: '',
+                  left: '',
+                  opacity: 1,
+                  transform: 'scale(1)',
+                  zIndex: 'auto'
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: 'easeOut'
+                }}
               >
-                <Image h={24} src={gifFront} alt={name} />
-              </Flex>
-            </AnimateBox>
-          </GridItem>
+                <Image
+                  width='100%'
+                  height='100%'
+                  maxWidth='fit-content'
+                  maxHeight='fit-content'
+                  objectFit='contain'
+                  src={src2}
+                  alt={nomeLateral}
+                  display={{ base: 'none', '2xl': 'block' }}
+                />
+              </AnimateBox>
 
-          <GridItem
-            area={'gif2'}
-            mt={{ base: '0', xl: '-1em' }}
-            justifySelf={{ base: 'left', md: 'right', xl: 'center' }}
-            alignSelf={{ base: 'start', xl: 'center' }}
-            mr={{ base: '0em', sm: '1em', xl: '0' }}
-            ml={{ base: '0.5em', sm: '1em', md: '0' }}
-          >
-            <AnimateBox
-              initial={statusGifsInitial}
-              animate={{
-                transform: 'scaleX(1) scaleY(1)'
-              }}
-              transition={{
-                duration: 0.5,
-                ease: 'easeInOut'
-              }}
-            >
-              <Flex
-                w={{ base: '10em', md: '64' }}
-                h={{ base: '10em', md: '64' }}
-                bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}
-                borderRadius='.5em'
-                align='center'
-                justify='center'
+              <GridItem
+                area='gif1'
+                mt={{ base: '0', xl: '1em' }}
+                justifySelf={{ base: 'right', xl: 'center' }}
+                alignSelf={{ base: 'start', xl: 'center' }}
+                mr={{ base: '0.5em', smm: '1em', xl: '0' }}
               >
-                <Image w={24} src={gifBack} alt={name} />
-              </Flex>
-            </AnimateBox>
-          </GridItem>
-
-          <GridItem
-            area={'bStatus'}
-            justifySelf={{ base: 'center', md: 'left', xl: 'center' }}
-            alignSelf={{ base: 'start', xl: 'center' }}
-            ml={{ base: '0em', sm: '-1em', md: '1em' }}
-          >
-            <AnimateBox
-              initial={statusGifsInitial}
-              animate={{
-                transform: 'scaleX(1) scaleY(1)'
-              }}
-              transition={{
-                duration: 0.5,
-                ease: 'easeInOut'
-              }}
-            >
-              <Flex
-                direction='column'
-                w={80}
-                bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}
-                borderRadius='.5em'
-                p={5}
-                h='34em'
-              >
-                <Text
-                  fontFamily='inter'
-                  fontWeight='800'
-                  fontSize='24px'
-                  mb={1}
-                  textAlign={{ base: 'center', md: 'left' }}
-                  color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
+                <AnimateBox
+                  initial={statusGifsInitial}
+                  animate={{
+                    transform: 'scaleX(1) scaleY(1)'
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: 'easeInOut'
+                  }}
                 >
-                  Base stats:
-                </Text>
-                <Flex>
-                  <Box borderTop='1px solid #cbcbcb'>
-                    {statNamesAndValues.map(stat => {
-                      if (stat.name === 'hp') {
-                        stat.name = 'HP'
-                      }
-                      if (stat.name === 'special-attack') {
-                        stat.name = 'Sp-Atk'
-                      } else if (stat.name === 'special-defense') {
-                        stat.name = 'Sp-Def'
-                      }
-                      return (
-                        <Table size='sm' key={stat.name}>
-                          <Tbody>
-                            <Tr>
-                              <Td textAlign='right' w='6em'>
-                                <Text
-                                  textTransform='capitalize'
-                                  color='grey'
-                                  fontWeight='450'
-                                  fontFamily='inter'
-                                >
-                                  {stat.name}
-                                </Text>
-                              </Td>
-                              <Td fontWeight='700' ml={3} textAlign='right'>
-                                {stat.value}
-                              </Td>
-                              <Td w='10em'>
-                                <Progress
-                                  max='200'
-                                  borderRadius={4}
-                                  colorScheme={
-                                    stat.name === 'Sp-Atk' ||
-                                    stat.name === 'Sp-Def'
-                                      ? 'progressYellow'
-                                      : 'progressOrange'
-                                  }
-                                  value={stat.value}
-                                />
-                              </Td>
-                            </Tr>
-                          </Tbody>
-                        </Table>
-                      )
-                    })}
-                    <Box borderBottom='1px solid #cbcbcb'>
-                      <Flex gap={9}>
-                        <Text
-                          pl='1.7em'
-                          color='grey'
-                          textAlign='right'
-                          fontWeight='600'
-                          fontFamily='inter'
-                          mb={3}
-                        >
-                          Total
-                        </Text>
-                        <Text fontWeight='800'>{total}</Text>
-                      </Flex>
-                    </Box>
-                  </Box>
-                </Flex>
-                <Text
-                  fontFamily='inter'
-                  fontWeight='800'
-                  fontSize='24px'
-                  mb={3}
-                  mt={5}
-                  textAlign={{ base: 'center', md: 'left' }}
-                  color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
-                >
-                  Abilities:
-                </Text>
-                {abilityNames.map(abilityName => (
-                  <Text
-                    key={abilityName}
+                  <Flex
+                    w={{ base: '10em', md: '64' }}
+                    h={{ base: '10em', md: '64' }}
                     bg={
-                      colorMode === 'light' ? 'light.moves' : 'dark.background'
+                      colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'
                     }
-                    borderRadius='12px'
-                    border='1px dashed'
-                    borderColor={
-                      colorMode === 'light'
-                        ? 'light.movesBorder'
-                        : 'dark.pTitle'
-                    }
-                    p='10px'
-                    fontFamily='serrat'
-                    fontSize='14'
-                    fontWeight='400'
-                    textTransform='capitalize'
-                    mb={4}
-                    maxWidth='fit-content'
-                    alignSelf={{ base: 'center', md: 'start' }}
-                    color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
+                    borderRadius='.5em'
+                    align='center'
+                    justify='center'
                   >
-                    {abilityName}
-                  </Text>
-                ))}
-              </Flex>
-            </AnimateBox>
-          </GridItem>
+                    <Image h={24} src={gifFront} alt={nomeLateral} />
+                  </Flex>
+                </AnimateBox>
+              </GridItem>
 
-          <GridItem area={'card'}>
-            <Flex
-              direction='column'
-              w={{ base: '15em', sm: '32em', smm: '36.5em' }}
-              pt='2em'
-              transform={{ base: 'scale(0.8)', md: 'scale(1)' }}
-              ml={{ base: '0em', sm: '-1em', md: '2em', lg: '2em', xl: '2em' }}
-              mb={{ base: '-1.5em', sm: '-1em', md: '0' }}
-            >
-              <Flex h='11em' width='100%' justify='space-between'>
+              <GridItem
+                area={'gif2'}
+                mt={{ base: '0', xl: '-1em' }}
+                justifySelf={{ base: 'left', md: 'right', xl: 'center' }}
+                alignSelf={{ base: 'start', xl: 'center' }}
+                mr={{ base: '0em', sm: '1em', xl: '0' }}
+                ml={{ base: '0.5em', sm: '1em', md: '0' }}
+              >
+                <AnimateBox
+                  initial={statusGifsInitial}
+                  animate={{
+                    transform: 'scaleX(1) scaleY(1)'
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: 'easeInOut'
+                  }}
+                >
+                  <Flex
+                    w={{ base: '10em', md: '64' }}
+                    h={{ base: '10em', md: '64' }}
+                    bg={
+                      colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'
+                    }
+                    borderRadius='.5em'
+                    align='center'
+                    justify='center'
+                  >
+                    <Image w={24} src={gifBack} alt={nomeLateral} />
+                  </Flex>
+                </AnimateBox>
+              </GridItem>
+
+              <GridItem
+                area={'bStatus'}
+                justifySelf={{ base: 'center', md: 'left', xl: 'center' }}
+                alignSelf={{ base: 'start', xl: 'center' }}
+                ml={{ base: '0em', sm: '-1em', md: '1em' }}
+              >
+                <AnimateBox
+                  initial={statusGifsInitial}
+                  animate={{
+                    transform: 'scaleX(1) scaleY(1)'
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: 'easeInOut'
+                  }}
+                >
+                  <Flex
+                    direction='column'
+                    w={80}
+                    bg={
+                      colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'
+                    }
+                    borderRadius='.5em'
+                    p={5}
+                    h='34em'
+                  >
+                    <Text
+                      fontFamily='inter'
+                      fontWeight='800'
+                      fontSize='24px'
+                      mb={1}
+                      textAlign={{ base: 'center', md: 'left' }}
+                      color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
+                    >
+                      Base stats:
+                    </Text>
+                    <Flex>
+                      <Box borderTop='1px solid #cbcbcb'>
+                        {statusName.map(stat => {
+                          if (stat.name === 'hp') {
+                            stat.name = 'HP'
+                          }
+                          if (stat.name === 'special-attack') {
+                            stat.name = 'Sp-Atk'
+                          } else if (stat.name === 'special-defense') {
+                            stat.name = 'Sp-Def'
+                          }
+                          return (
+                            <Table size='sm' key={stat.name}>
+                              <Tbody>
+                                <Tr>
+                                  <Td textAlign='right' w='6em'>
+                                    <Text
+                                      textTransform='capitalize'
+                                      color='grey'
+                                      fontWeight='450'
+                                      fontFamily='inter'
+                                    >
+                                      {stat.name}
+                                    </Text>
+                                  </Td>
+                                  <Td fontWeight='700' ml={3} textAlign='right'>
+                                    {stat.value}
+                                  </Td>
+                                  <Td w='10em'>
+                                    <Progress
+                                      max='200'
+                                      borderRadius={4}
+                                      colorScheme={
+                                        stat.name === 'Sp-Atk' ||
+                                        stat.name === 'Sp-Def'
+                                          ? 'progressYellow'
+                                          : 'progressOrange'
+                                      }
+                                      value={stat.value}
+                                    />
+                                  </Td>
+                                </Tr>
+                              </Tbody>
+                            </Table>
+                          )
+                        })}
+                        <Box borderBottom='1px solid #cbcbcb'>
+                          <Flex gap={9}>
+                            <Text
+                              pl='1.7em'
+                              color='grey'
+                              textAlign='right'
+                              fontWeight='600'
+                              fontFamily='inter'
+                              mb={3}
+                            >
+                              Total
+                            </Text>
+                            <Text fontWeight='800'>{total}</Text>
+                          </Flex>
+                        </Box>
+                      </Box>
+                    </Flex>
+                    <Text
+                      fontFamily='inter'
+                      fontWeight='800'
+                      fontSize='24px'
+                      mb={3}
+                      mt={5}
+                      textAlign={{ base: 'center', md: 'left' }}
+                      color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
+                    >
+                      Abilities:
+                    </Text>
+                    {ability.map(abilityName => (
+                      <Text
+                        key={abilityName}
+                        bg={
+                          colorMode === 'light'
+                            ? 'light.moves'
+                            : 'dark.background'
+                        }
+                        borderRadius='12px'
+                        border='1px dashed'
+                        borderColor={
+                          colorMode === 'light'
+                            ? 'light.movesBorder'
+                            : 'dark.pTitle'
+                        }
+                        p='10px'
+                        fontFamily='serrat'
+                        fontSize='14'
+                        fontWeight='400'
+                        textTransform='capitalize'
+                        mb={4}
+                        maxWidth='fit-content'
+                        alignSelf={{ base: 'center', md: 'start' }}
+                        color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
+                      >
+                        {abilityName}
+                      </Text>
+                    ))}
+                  </Flex>
+                </AnimateBox>
+              </GridItem>
+
+              <GridItem area={'card'}>
                 <Flex
                   direction='column'
-                  color={colorMode === 'light' ? 'light.white' : 'dark.button'}
-                  pb={12}
-                  textAlign='left'
+                  w={{ base: '15em', sm: '32em', smm: '36.5em' }}
+                  pt='2em'
+                  transform={{ base: 'scale(0.8)', md: 'scale(1)' }}
+                  ml={{
+                    base: '0em',
+                    sm: '-1em',
+                    md: '2em',
+                    lg: '2em',
+                    xl: '2em'
+                  }}
+                  mb={{ base: '-1.5em', sm: '-1em', md: '0' }}
                 >
-                  <AnimateBox
-                    initial={idInitial}
-                    animate={{
-                      top: '30px',
-                      left: '0px',
-                      transform: 'scale(1.1)'
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      ease: 'easeInOut'
-                    }}
-                    position='fixed'
-                  >
-                    <Text
-                      fontFamily='inter'
-                      fontWeight='700'
-                      fontSize='16px'
-                      mb='1.2em'
+                  <Flex h='11em' width='100%' justify='space-between'>
+                    <Flex
+                      direction='column'
+                      color={
+                        colorMode === 'light' ? 'light.white' : 'dark.button'
+                      }
+                      pb={12}
+                      textAlign='left'
                     >
-                      #{pokeId.id < 10 ? `0${pokeId.id}` : pokeId.id}
-                    </Text>
-                  </AnimateBox>
-                  <AnimateBox
-                    initial={nameInitial}
-                    animate={{
-                      top: '70px',
-                      left: '0px',
-                      transform: 'scale(1)'
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      ease: 'easeInOut'
-                    }}
-                    position='fixed'
-                  >
-                    <Text
-                      fontFamily='inter'
-                      fontWeight='700'
-                      fontSize={useNameSize(
-                        name.length,
-                        name.charAt(0),
-                        '48px',
-                        '36px',
-                        '34px',
-                        '34px',
-                        '34px',
-                        '34px'
-                      )}
-                      textTransform='capitalize'
-                      mt='-.2em'
-                      lineHeight='34px'
-                    >
-                      {name}
-                    </Text>
-                  </AnimateBox>
-                  <AnimateBox
-                    display='flex'
-                    gap={8}
-                    mt={6}
-                    initial={typeInitial}
-                    animate={{
-                      top: '95px',
-                      left: '0px',
-                      transform: 'scale(1)'
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      ease: 'easeInOut'
-                    }}
-                    position='fixed'
-                  >
-                    <Flex gap='1.5em'>
-                      {types.map(type => {
-                        return (
-                          <Flex
-                            borderRadius='8px'
-                            border='1px dashed'
-                            borderColor={
-                              colorMode === 'light'
-                                ? 'light.white'
-                                : 'dark.button'
-                            }
-                            p='10px'
-                            align='center'
-                            justify='center'
-                            maxWidth='fit-content'
-                            w='107px'
-                            gap='0.7em'
-                            h='31px'
-                            bg={getColorsType(type.type.name)}
-                            transform='scale(1.1)'
-                            key={type.type.name}
-                          >
-                            <Image
-                              zIndex='docked'
-                              src={getTypes(type.type.name)}
-                              alt={type.type.name}
-                            />
+                      <AnimateBox
+                        initial={idInitial}
+                        animate={{
+                          top: '30px',
+                          left: '0px',
+                          transform: 'scale(1.1)'
+                        }}
+                        transition={{
+                          duration: 0.5,
+                          ease: 'easeInOut'
+                        }}
+                        position='fixed'
+                      >
+                        <Text
+                          fontFamily='inter'
+                          fontWeight='700'
+                          fontSize='16px'
+                          mb='1.2em'
+                        >
+                          #{pokeId.id < 10 ? `0${pokeId.id}` : pokeId.id}
+                        </Text>
+                      </AnimateBox>
+                      <AnimateBox
+                        initial={nameInitial}
+                        animate={{
+                          top: '70px',
+                          left: '0px',
+                          transform: 'scale(1)'
+                        }}
+                        transition={{
+                          duration: 0.5,
+                          ease: 'easeInOut'
+                        }}
+                        position='fixed'
+                      >
+                        <Text
+                          fontFamily='inter'
+                          fontWeight='700'
+                          fontSize={nameSize}
+                          textTransform='capitalize'
+                          mt='-.2em'
+                          lineHeight='34px'
+                        >
+                          {name}
+                        </Text>
+                      </AnimateBox>
+                      <AnimateBox
+                        display='flex'
+                        gap={8}
+                        mt={6}
+                        initial={typeInitial}
+                        animate={{
+                          top: '95px',
+                          left: '0px',
+                          transform: 'scale(1)'
+                        }}
+                        transition={{
+                          duration: 0.5,
+                          ease: 'easeInOut'
+                        }}
+                        position='fixed'
+                      >
+                        <Flex gap='1.5em'>
+                          {typeName.map(type => {
+                            return (
+                              <Flex
+                                borderRadius='8px'
+                                border='1px dashed'
+                                borderColor={
+                                  colorMode === 'light'
+                                    ? 'light.white'
+                                    : 'dark.button'
+                                }
+                                p='10px'
+                                align='center'
+                                justify='center'
+                                maxWidth='fit-content'
+                                w='107px'
+                                gap='0.7em'
+                                h='31px'
+                                bg={getColorsType(type.name)}
+                                transform='scale(1.1)'
+                                key={type.name}
+                              >
+                                <Image
+                                  zIndex='docked'
+                                  src={getTypes(type.name[0])}
+                                  alt={type.name}
+                                />
 
-                            <Text
-                              fontFamily='poppins'
-                              fontSize='14'
-                              fontWeight='400'
-                              textTransform='capitalize'
-                              color={
-                                colorMode === 'light'
-                                  ? 'light.white'
-                                  : 'dark.button'
-                              }
-                            >
-                              {type.type.name}
-                            </Text>
-                          </Flex>
-                        )
-                      })}
+                                <Text
+                                  fontFamily='poppins'
+                                  fontSize='14'
+                                  fontWeight='400'
+                                  textTransform='capitalize'
+                                  color={
+                                    colorMode === 'light'
+                                      ? 'light.white'
+                                      : 'dark.button'
+                                  }
+                                >
+                                  {type.name}
+                                </Text>
+                              </Flex>
+                            )
+                          })}
+                        </Flex>
+                      </AnimateBox>
                     </Flex>
-                  </AnimateBox>
-                </Flex>
 
+                    <AnimateBox
+                      initial={imagemCardInitial}
+                      animate={{
+                        top: '-115px',
+                        right: '-20px',
+                        transform: 'scale(1)'
+                      }}
+                      transition={{
+                        duration: 0.5,
+                        ease: 'easeOut'
+                      }}
+                      zIndex={isAnimeted ? 'auto' : 'banner'}
+                      position='fixed'
+                      direction='column'
+                      maxW={72}
+                      mb='2em'
+                      alignSelf='flex-end'
+                      display={{ base: 'none', sm: 'flex' }}
+                    >                      
+                      <Image alt={nomeLateral}
+                        src={
+                          pokeId.sprites.other['official-artwork'].front_default
+                        }
+                      />
+                    </AnimateBox>
+                  </Flex>
+                </Flex>
+              </GridItem>
+
+              <GridItem area={'move'} alignSelf='start'>
                 <AnimateBox
-                  initial={imagemCardInitial}
+                  initial={{
+                    transform: isAnimeted ? 'scaleY(1)' : 'scaleY(0)',
+                    transformOrigin: 'top'
+                  }}
                   animate={{
-                    top: '-115px',
-                    right: '-20px',
-                    transform: 'scale(1)'
+                    transform: 'scaleY(1)'
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: 'easeInOut'
+                  }}
+                >
+                  <Flex
+                    direction='column'
+                    bg={
+                      colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'
+                    }
+                    borderRadius='.5em'
+                    p={5}
+                    h={{ base: '41em', md: '23em' }}
+                    w={{ base: '20em', md: '36.5em' }}
+                    ml={{
+                      base: '0em',
+                      sm: '-1em',
+                      md: '1em',
+                      lg: '0em',
+                      xl: '1em'
+                    }}
+                  >
+                    <Text
+                      fontFamily='inter'
+                      fontWeight='800'
+                      fontSize='24px'
+                      mb={3}
+                      w='100%'
+                      textAlign={{ base: 'center', md: 'left' }}
+                      color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
+                    >
+                      Moves:
+                    </Text>
+                    <Flex direction='column' wrap='wrap' h='100%' columnGap={4}>
+                      {movesName.map(abilityName => (
+                        <Text
+                          key={abilityName}
+                          bg={
+                            colorMode === 'light'
+                              ? 'light.moves'
+                              : 'dark.background'
+                          }
+                          borderRadius='12px'
+                          border='1px dashed'
+                          borderColor={
+                            colorMode === 'light'
+                              ? 'light.movesBorder'
+                              : 'dark.pTitle'
+                          }
+                          p='10px'
+                          fontFamily='serrat'
+                          fontSize='14'
+                          fontWeight='400'
+                          textTransform='capitalize'
+                          mb={4}
+                          maxWidth='fit-content'
+                          alignSelf={{ base: 'center', md: 'start' }}
+                          color={
+                            colorMode === 'light' ? 'black' : 'dark.pTitle'
+                          }
+                        >
+                          {abilityName}
+                        </Text>
+                      ))}
+                    </Flex>
+                  </Flex>
+                </AnimateBox>
+              </GridItem>
+
+              <GridItem
+                area={'extra'}
+                display={{ base: 'none', '3xl': 'block' }}
+              >
+                <AnimateBox
+                  initial={{
+                    transform: isAnimeted ? 'scaleY(1)' : 'scaleY(0)',
+                    transformOrigin: 'top'
+                  }}
+                  animate={{
+                    transform: 'scaleY(1)'
                   }}
                   transition={{
                     duration: 0.5,
                     ease: 'easeOut'
                   }}
-                  zIndex={isAnimeted ? 'auto' : 'banner'}
-                  position='fixed'
-                  direction='column'
-                  maxW={72}
-                  mb='2em'
-                  alignSelf='flex-end'
-                  display={{ base: 'none', sm: 'flex' }}
                 >
-                  <Image src={imageSrc} alt={name} />
-                </AnimateBox>
-              </Flex>
-            </Flex>
-          </GridItem>
-
-          <GridItem area={'move'} alignSelf='start'>
-            <AnimateBox
-              initial={{
-                transform: isAnimeted ? 'scaleY(1)' : 'scaleY(0)',
-                transformOrigin: 'top'
-              }}
-              animate={{
-                transform: 'scaleY(1)'
-              }}
-              transition={{
-                duration: 0.5,
-                ease: 'easeInOut'
-              }}
-            >
-              <Flex
-                direction='column'
-                bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}
-                borderRadius='.5em'
-                p={5}
-                h={{ base: '41em', md: '23em' }}
-                w={{ base: '20em', md: '36.5em' }}
-                ml={{
-                  base: '0em',
-                  sm: '-1em',
-                  md: '1em',
-                  lg: '0em',
-                  xl: '1em'
-                }}
-              >
-                <Text
-                  fontFamily='inter'
-                  fontWeight='800'
-                  fontSize='24px'
-                  mb={3}
-                  w='100%'
-                  textAlign={{ base: 'center', md: 'left' }}
-                  color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
-                >
-                  Moves:
-                </Text>
-                <Flex direction='column' wrap='wrap' h='100%' columnGap={4}>
-                  {moveNames1.map(abilityName => (
+                  <Flex
+                    align='center'
+                    h='50em'
+                    direction='column'
+                    transform='rotate(-90deg)'
+                    gap='12em'
+                  >
                     <Text
-                      key={abilityName}
-                      bg={
-                        colorMode === 'light'
-                          ? 'light.moves'
-                          : 'dark.background'
-                      }
-                      borderRadius='12px'
-                      border='1px dashed'
-                      borderColor={
-                        colorMode === 'light'
-                          ? 'light.movesBorder'
-                          : 'dark.pTitle'
-                      }
-                      p='10px'
-                      fontFamily='serrat'
-                      fontSize='14'
-                      fontWeight='400'
+                      fontFamily='inter'
+                      fontWeight='700'
+                      fontSize={nomeLateralL}
                       textTransform='capitalize'
-                      mb={4}
-                      maxWidth='fit-content'
-                      alignSelf={{ base: 'center', md: 'start' }}
-                      color={colorMode === 'light' ? 'black' : 'dark.pTitle'}
+                      color='#ffffff10'
                     >
-                      {abilityName}
+                      {name}
                     </Text>
-                  ))}
-                </Flex>
-              </Flex>
-            </AnimateBox>
-          </GridItem>
+                  </Flex>
+                </AnimateBox>
+              </GridItem>
+            </Grid>
+          </Center>
+        ) : (
+          !setReloadPage
+        )}
+      </Flex>
 
-          <GridItem area={'extra'} display={{ base: 'none', '3xl': 'block' }}>
-            <AnimateBox
-              initial={{
-                transform: isAnimeted ? 'scaleY(1)' : 'scaleY(0)',
-                transformOrigin: 'top'
-              }}
-              animate={{
-                transform: 'scaleY(1)'
-              }}
-              transition={{
-                duration: 0.5,
-                ease: 'easeOut'
-              }}
-            >
-              <Flex
-                align='center'
-                h='50em'
-                direction='column'
-                transform='rotate(-90deg)'
-                gap='12em'
-              >
-                <Text
-                  fontFamily='inter'
-                  fontWeight='700'
-                  fontSize={useNameSize(
-                    name.length,
-                    name.charAt(0),
-                    '95px',
-                    '70px',
-                    '58px',
-                    '54px',
-                    '55px',
-                    '64px'
-                  )}
-                  textTransform='capitalize'
-                  color='#ffffff10'
-                >
-                  {name}
-                </Text>
-              </Flex>
-            </AnimateBox>
-          </GridItem>
-        </Grid>
-      </Center>
-
-      <PreviousNextButton currentIndex={currentIndex} />
+      <PreviousNextButton />
     </Box>
   )
 }

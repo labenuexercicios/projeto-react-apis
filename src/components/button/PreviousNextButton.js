@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { PokemonContext } from '../../contexts/PokemonContext'
 import { ColorContext } from '../../contexts/ColorContext'
 import { Text, Flex, Button, Box, Image, Center, Icon } from '@chakra-ui/react'
@@ -7,12 +7,13 @@ import { ImArrowLeft, ImArrowRight } from 'react-icons/im'
 import mouseNext from '../../../src/assets/mouseNext.png'
 import mousePrevious from '../../../src/assets/mousePrevious.png'
 
-const PreviousNextButton = ({ currentIndex }) => {
+const PreviousNextButton = () => {
+  const { name } = useParams()
   const navigate = useNavigate()
   const { pokemonsCopytoDetahes } = useContext(PokemonContext)
   const { getColors } = useContext(ColorContext)
-
   const pokemons = pokemonsCopytoDetahes
+  const currentIndex = pokemons.findIndex(poke => poke.name === name)
 
   const goToPrevious = () => {
     const previousIndex = currentIndex - 1
