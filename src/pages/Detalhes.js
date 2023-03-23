@@ -844,7 +844,7 @@ const Detalhes = () => {
 
           <GridItem
             area='gif1'
-            mt={{ base: '0', xl: '1em' }}
+            mt={{ base: '0', xl: '1em' }}            
             justifySelf={{ base: 'right', xl: 'center' }}
             alignSelf={{ base: 'start', xl: 'center' }}
             mr={{ base: '0.5em', smm: '1em', xl: '0' }}
@@ -860,12 +860,12 @@ const Detalhes = () => {
               }}
             >
               <Flex
-                w={{ base: '10em', md: '64' }}
-                h={{ base: '10em', md: '64' }}
+                w={{ base: '9em', md: '64' }}
+                h={{ base: '9em', md: '64' }}
                 bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}
                 borderRadius='.5em'
                 align='center'
-                justify='center'
+                justify='center'                
               >
                 <Image h={24} src={gifFront} alt={name} />
               </Flex>
@@ -891,8 +891,8 @@ const Detalhes = () => {
               }}
             >
               <Flex
-                w={{ base: '10em', md: '64' }}
-                h={{ base: '10em', md: '64' }}
+                w={{ base: '9em', md: '64' }}
+                h={{ base: '9em', md: '64' }}
                 bg={colorMode === 'light' ? 'light.white' : 'dark.detalhesBG'}
                 borderRadius='.5em'
                 align='center'

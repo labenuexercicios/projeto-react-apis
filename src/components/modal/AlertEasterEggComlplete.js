@@ -6,8 +6,7 @@ import {
   Modal,
   ModalContent,
   ModalFooter,
-  Button,
-  useColorMode
+  Button,  
 } from '@chakra-ui/react'
 import PikachuHappy from '../../assets/pikachuHappy.gif'
 
@@ -16,8 +15,7 @@ const AlertEasterEggComlplete = ({
   onClose,
   shuffleCards,
   backHome
-}) => {
-  const { colorMode } = useColorMode()
+}) => {  
   return (
     <>
       <Modal

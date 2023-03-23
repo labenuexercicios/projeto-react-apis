@@ -1,6 +1,6 @@
 #  - Lidia Yamamura - 
 ### Veja o site: 
-<img src='./src/assets/favicon.ico' alt='pokebola' style='width: 20px'> [**Pokédex** - pelo vercel](https://pokeapi.co/ "Poke Api")
+<img src='./src/assets/favicon.ico' alt='pokebola' style='width: 20px'> [**Pokédex** - pelo surge](https://pokedex-lidia-yamamura.surge.sh/)
 <br>
 <br>
 
@@ -16,6 +16,7 @@ Este projeto teve como fonte de dados para a sua criação a [Poke Api](https://
 - React
 - React Router
 - React Context
+- Framer Motion
 - Criação de hooks
 - Integração de APIs - Axios
 - Design Systems -  [Chakra](https://chakra-ui.com/ "Chakra UI")
@@ -27,14 +28,15 @@ Este projeto teve como fonte de dados para a sua criação a [Poke Api](https://
 # <img src='./src/assets/favicon.ico' alt='pokebola' style='width: 30px'> **Pokedéx**
 O projeto consiste em:
 - **Gerais:**
-	- O site tem 3 páginas principais: Home, Pokédex e Detalhes;
-	- Contém uma página de <a href='#detalhes'>erro</a> que é redirecionado caso ocorra um erro.	
+	- O site tem 3 páginas principais: Home, Pokédex, Detalhes;
+	- Mais 2 páginas extras: Erro e 'Easter Egg';
+	- Contém uma página de erro que é redirecionado caso ocorra um erro.	
+	- Contém uma página 'Easter Egg' que é aberta quando no mínimo 10 Pokémons são capturados.	
 	- O projeto segue o [design](https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?t=AEi3zEmWmarf1FbP-0 "design") proposto;
 	- O fluxo de trocas de páginas é semelhante ao [fluxograma](https://www.figma.com/proto/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?page-id=0%3A1&node-id=2%3A2&viewport=358%2C197%2C0.27&scaling=scale-down&starting-point-node-id=2%3A2 "fluxograma");	
-	- **Atenção!!** Como as páginas foram criadas pensando na responsividade, dependendo do tamanho da tela, o design muda um pouco.
-<br>
-<br>
-- <a name="home"><b>Página Home: </a>
+	- **Atenção!!** Como as páginas foram criadas pensando na responsividade, dependendo do tamanho da tela, o design muda um pouco. O botão do header na página de detalhes foi posicionado mais abaixo, pro botão Pokedéx permanecer no header, melhorando a experiência do usuário ao poder retornar a Pokédex,  assim como ver a quantidade de pokémons capturados. 
+
+- **Página Home:**
 	- Cada Pokémon é representado por um Card;
 	- Contém uma lista de Pokémons, que dependendo do tamanho na tela, muda a quantidade de cards mostrados em cada página;
 	- Em cada card contém  um botão para tentar capturar o Pokémon que o adiciona a sua Pokédex e outro para acessar os detalhes do Pokémon;
@@ -43,9 +45,8 @@ O projeto consiste em:
 	- No Header tem um botão para mudar o tema de claro para escuro;
 	- Quando um Pokémon é capturado, o card é retirado da Home e passa para a página da Pokédex;
 	- **Atenção!!** Foi adicionado uma chance de captura para cada Pokémon, a chance foi baseada no 'capture rate' de cada Pokémon contido na API.
-<br>
-<br>
-- <a name="pokedex"><b>Página Pokédex: </a>
+
+- **Página Pokédex:**
 	- Contém um Botão, onde é possível excluir todos os seus Pokémons da Pokédex;
 	- Contém cards de Pokémons, com a lista de Pokémons capturados;
 	- Em cada card tem um botão para removê-lo da Pokedex e um outro para acessar os detalhes do Pokémon;
@@ -53,46 +54,28 @@ O projeto consiste em:
 	- No Header tem um botão para voltar para a Home e um input de busca pelo nome, para telas menores, como no celular, o input de busca se encontra mais abaixo da página, junto dos outros filtros e o Título "Pokémon" se torna o botão para retornar a Home;
 	- No Header tem um botão para mudar o tema de claro para escuro;
 	- Quando um Pokémon é excluído, o card é retirado da Pokédex e passa para a página da Home.
-<br>
-<br>
-- <a name="detalhes"><b>Página de Detalhes: </a>
+
+- **Página de Detalhes:**
 	- Mostra os detalhes do Pokémon selecionado, com informações descritas;	
 	- No Header tem 2 botões, um para voltar para Home e outro pra ir pra página da Pokedéx, para telas menores, como no celular, o Título "Pokémon" se torna o botão para retornar a Home e o botão para ir para a Pokédex se encontra mais abaixo, logo após o Header;
 	- No Header tem um botão para mudar o tema de claro para escuro.
 	- Contém um botão para capturar ou removê-lo da Pokedéx;
+	- Os favicons são atualizados de acordo com o Pokémon que você está vendo os detalhes;
+	- Abaixo dos detalhes,  contém dois botões, um para voltar o pokémon anterior e outro pra ir pro próximo;
 	- **Atenção!!** Foi adicionado uma chance de captura para cada Pokémon, a chance foi baseada no 'capture rate' de cada Pokémon contido na API.
-<br>
-<br>
-- <a name="erro"><b>Página de Erro: </a>
+
+- **Página de Erro:**
 	- Contém um botão para retornar a Home;
 
+- **Página Easter Egg:**
+	- Contém um botão para retornar a Home e um para retornar a Pokédex;
+	- É acessível através de um botão escondido no Pokedéx, que aparece após a captura de 10 pokémons ou quando um alert é aberto após capturar 10 pokémons.
+	- A página contém um jogo de memória, onde o objetivo é juntar os pares de pokémons.
+	- A quantidade de pokémons para cada rodada é gerada aleatóriamente, somente os Pokémons capturados podem participar do jogo.
+	- **Atenção!!** A página só estará disponível após serem capturados no mínimo 10 pokémons.
 <br>
 <br>
 
 ## O layout da página:
 
-![](https://github.com/RinoaYK/projeto-frontendreact/blob/main/LabEcommerceP.gif)
-https://github.com/RinoaYK/projeto-frontendreact/blob/main/LabEcommerce.mp4
-
-
-### Instruções de entrega
-
-- Faça o fork desse repositório e realize o clone da sua cópia `seu-nome-de-usuario/projeto-intro-web`.
-   <details>
-   <summary>Quer uma dica?</summary>
-   <img src="https://firebasestorage.googleapis.com/v0/b/assets-conteudo.appspot.com/o/gerais%2Ffork.png?alt=media&token=7030e997-246a-41fe-a75f-2a2ced61e54d" alt="Como adicionar o projeto no repositório"/>
-   </details>
-- Crie os arquivos do projeto dentro deste repo;
-- Execute o fluxo de entrega do git. **Lembre-se de abrir os PRs para seu próprio repositório.**
-- Para isso, você precisará fazer o projeto utilizando **branches**. Evite fazer as alterações direto na branch ```main```
-    <details>
-       <summary>Dúvidas sobre o Git & Github?</summary>
-       <p>Adiciomos um vídeo explicando o <strong>processo de entrega</strong> [do fork ao pull request] no Material Assincrono da Aula de <a href="https://estudante.labenu.com.br/conteudos/tecnico/mod1/Git%20e%20Github">Git e Github</a>. Esse vídeo também exemplifica situações que podem acontecer durante o fluxo de utilização do Git.</p>
-    </details>
-- Faça o deploy do projeto. Pode ser ultilizado o [surge](https://labenu.notion.site/Deploy-de-front-React-com-Surge-f902a03ec1d247dc9af9aee5a1469d96), Github pages ou outra ferramenta que faça a disponibilização do seu site para acesso público;
-- Adicionar o link do deploy no readme do seu projeto/repositório:
-
-
-
-
-- Entregue o projeto no [Formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
+![](https://github.com/RinoaYK/projeto-react-apis/blob/main/Pokedex.gif)

@@ -12,8 +12,6 @@ import {
 } from 'react-icons/ai'
 import { VscGithubInverted, VscGithubAlt } from 'react-icons/vsc'
 import { IoLogoDeviantart } from 'react-icons/io5'
-import mousePointerOK from '../assets/mousePointerOK.png'
-import mouseGrab from '../assets/mouseGrab.png'
 
 const Footer = () => {
   const location = useLocation()

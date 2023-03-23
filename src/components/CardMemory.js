@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './CardMemory.css'
-import { Box, Image, useColorMode, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Image, useColorMode } from '@chakra-ui/react'
 import mousePointerOK from '../../src/assets/mousePointerOK.png'
 import mouseGrab from '../../src/assets/mouseGrab.png'
 import CardBackImage from '../../src/assets/pokebolaError.png'

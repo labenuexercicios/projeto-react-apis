@@ -35,8 +35,7 @@ const AlertCapturar = ({
         closeOnEsc={false}        
       >
         <ModalOverlay />
-        <ModalContent
-          minWidth='fit-content'
+        <ModalContent          
           objectFit='contain'
           borderRadius='xl'
           p='0.5em'
@@ -95,7 +94,7 @@ const AlertCapturar = ({
         closeOnEsc={false}
       >
         <ModalOverlay />
-        <ModalContent minWidth='fit-content' objectFit='contain' p='1em' bg='white'>
+        <ModalContent objectFit='contain' p='1em' bg='white'>
           <Flex
             align='center'
             justify='center'
@@ -137,8 +136,8 @@ const AlertCapturar = ({
         closeOnOverlayClick={false}
         closeOnEsc={false}
       >
-        <ModalOverlay minWidth='fit-content' objectFit='contain' />
-        <ModalContent bg='white'>
+        <ModalOverlay  objectFit='contain' />
+        <ModalContent bg='white' >
           <Flex
             align='center'
             justify='center'
