@@ -38,6 +38,8 @@ const pokedexFunction = (state, action) => {
 
 
 export const ContextProvider = ({ children }) => {
+  const[showPokedex, setShowPokedex] = useState(true)
+
   // ============================== change button detail ========================================
   const[buttonPokedex, setButtonPokedex] = useState(true)
   const[buttonAllPokemons, setButtonAllPokemons] = useState(false)
@@ -78,7 +80,7 @@ export const ContextProvider = ({ children }) => {
     setButtonPokedex: setButtonPokedex,
     buttonPokedex: buttonPokedex,
     setButtonAllPokemons: setButtonAllPokemons,
-    buttonAllPokemons: buttonAllPokemons
+    buttonAllPokemons: buttonAllPokemons,
   }
 
   return <Context.Provider value={context}>{children}</Context.Provider>

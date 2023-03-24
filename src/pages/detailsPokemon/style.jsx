@@ -7,10 +7,10 @@ export const DetailContainer = styled(({className, children}) => {
 })(() => `
 position: relative;
 flex: 1;
-height: 100vh;
+
 display: flex;
 flex-direction: column;
-background-color: #5E5E5E ;
+background: linear-gradient(to bottom, #2C3E50, #3498DB);
 
 .PokedexDetail {
   position: absolute;

@@ -6,6 +6,9 @@ import { Type } from '../../helpers/Type'
 import pokedex from '../../assets/pokedex.png'
 import { Context } from '../../context/createContext'
 import { Link } from 'react-router-dom'
+import { darken } from 'polished'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export const CardPokedex = ({ pokemon }) => {
   const [pokedexCard, setPokedexCard] = useState([])
@@ -31,26 +34,28 @@ export const CardPokedex = ({ pokemon }) => {
   useEffect(() => {
     buttonsHeader()
     getRequestPokedexCard()
+    AOS.init();
   }, [])
+  
 
   const Id = pokedexCard.id !== undefined && pokedexCard.id >= 10 ? pokedexCard.id : `0${pokedexCard.id}`
 
 
 
   return (
-    <ContainerCardPokemon>
-      <div  style={{ backgroundColor: `${Colors(pokedexCard.types !== undefined && pokedexCard.types[0].type.name)}` }}>
+    <ContainerCardPokemon >
+      <div data-aos="zoom-in-up" style={{ backgroundColor: `${Colors(pokedexCard.types !== undefined && pokedexCard.types[0].type.name)}`, border: `2px solid ${darken(0.25, Colors(pokedexCard.types !== undefined && pokedexCard.types[0].type.name))}`}}>
         <div className="IdNameDetail">
           <div className="infoIdNameDetail">
-            <span className="Id">#{Id}</span>
-            <span className="Name">{pokedexCard.name}</span>
+            <span className="Id" style={{color: `${darken(0.3, Colors(pokedexCard.types !== undefined && pokedexCard.types[0].type.name))}`}}>#{Id}</span>
+            <span className="Name" style={{color: `${darken(0.3, Colors(pokedexCard.types !== undefined && pokedexCard.types[0].type.name))}`}}>{pokedexCard.name}</span>
             <div className='Type'>
               <span >{Type(pokedexCard.types !== undefined && pokedexCard.types[0].type.name)}</span>
               <span >{Type(pokedexCard.types !== undefined && pokedexCard.types[1]?.type.name)}</span>
             </div>
           </div>
           <div className='DetailContainer' onClick={() => pokemons.includes(pokedexCard) && setDeletePokemonButton(true)}>
-            <Link to={`/detail/${pokedexCard.name}`} >
+            <Link to={`/detail/${pokedexCard.name}`}  >
               <span className='Detail' onClick={() => putDetails(pokedexCard)}>Detalhes</span>
             </Link>
             
@@ -62,8 +67,8 @@ export const CardPokedex = ({ pokemon }) => {
               src={pokedexCard.sprites?.other?.["official-artwork"]?.["front_default"]}
               alt=""
             />
-            <div className='ContainerCapture' onClick={() => setShowModalCapture(true)}>
-              <button className='Capture' onClick={() => addPokemon(pokedexCard)}>Capturar!</button>
+            <div  className='ContainerCapture' onClick={() => setShowModalCapture(true)}>
+              <button style={{color: `${darken(0.1, Colors(pokedexCard.types !== undefined && pokedexCard.types[0].type.name))}`}} className='Capture' onClick={() => addPokemon(pokedexCard)}>Capturar!</button>
             </div>
           </div>
       </div>

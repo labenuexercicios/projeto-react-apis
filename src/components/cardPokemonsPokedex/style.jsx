@@ -7,8 +7,8 @@ export const ContainerPokedex = styled(({children, className}) => {
 })(() => `
 width: 440px;
 height: 210px;
-margin-top: 55px;
 display: flex;
+
 
 
 

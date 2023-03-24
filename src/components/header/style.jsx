@@ -1,10 +1,20 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
+
+const ImageAnimation = keyframes`
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+`;
+
 
 export const HeaderContainer = styled(({ children, className }) => {
   return <header className={className}>{children}</header>
 })(
   () => `
-  background-color: #fff;
+  background-color: #2C3E50;
   height: 160px;
   display: flex;
   align-items: center;
@@ -15,30 +25,26 @@ export const HeaderContainer = styled(({ children, className }) => {
     left: 42%;
     width: 307px;
   }
+
+  .pokedexBall {
+    position: absolute;
+  left: 85%;
+  top: 18%;
+  width: 110px;
+height: 110px;
+cursor: pointer;
+  }
+
 `
 )
 
-export const ButtonPokedex = styled(({children, className }) => {
-  return <button className={className}>{children}</button>
-})(
-  () => `
-  position: absolute;
-  left: 82%;
-  top: 27%;
-  width: 287px;
-height: 74px;
-background: #33A4F5;
-border-radius: 8px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
-line-height: 36px;
-color: #FFFFFF;
-cursor: pointer;
-border: none;
-`
-)
+export const Image = styled.img`
+  &:hover {
+    animation: ${ImageAnimation} .5s ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+`;
 
 export const ButtonAllPokemons = styled(({children, className }) => {
   return <button className={className}>{children}</button>

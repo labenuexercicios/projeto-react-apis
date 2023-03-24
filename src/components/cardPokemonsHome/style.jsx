@@ -9,7 +9,11 @@ export const ContainerCardPokemon = styled(({ children, className }) => {
   margin-top: 55px;
   display: flex;
   
-
+    &:hover {
+      transform: translateY(-10px);
+    transition: .5s;
+    }
+  
   
   
 
@@ -45,11 +49,11 @@ height: 38px;
       width: 146px;
 height: 38px;
 
-background: #FFFFFF;
+background-color:#e3dede;
 border-radius: 8px;
 font-family: 'Poppins';
 font-style: normal;
-font-weight: 400;
+font-weight: 700;
 font-size: 16px;
 line-height: 24px;
 color: #0F0F0F;
@@ -62,8 +66,7 @@ cursor: pointer;
       width: 250.73px;
 height: 210.73px;
       left: -105px;
-    }
- 
+    } 
   
 
   .IdNameDetail {

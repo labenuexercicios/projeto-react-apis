@@ -16,14 +16,18 @@ export const Pokedex = () => {
     buttonsHeader()
   }, [])
 
- 
+  if (pokemons.length === 0) {
+    return (
+      <PokedexContainer>
+        <Title />
+      </PokedexContainer>
+    )
+  }
 
   return (
     <PokedexContainer>
-        <Title />
       <div className='ContainerPokedex'>
         {pokemons.map(pokemon => {
-
           return (
             <PokemonsPokedex pokemon={pokemon} />
           )

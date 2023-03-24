@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { DetailCard } from '../../components/detailCard'
 import { Context } from '../../context/createContext'
-import { DetailContainer, Title } from './style'
-import pokedex from '../../assets/pokedex.png'
+import { DetailContainer } from './style'
 
 export const DetailsPokemon = () => {
   const {details, setButtonAllPokemons, setButtonPokedex, setButtonHeaderDetail, pokemons} = useContext(Context)
@@ -27,8 +26,6 @@ export const DetailsPokemon = () => {
 
   return (
     <DetailContainer>
-      <Title>Detalhes</Title>
-      <img className='PokedexDetail' src={pokedex} alt="" />
       <DetailCard details={details} />
     </DetailContainer>
   )
