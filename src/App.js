@@ -4,6 +4,7 @@ import { BASE_URL } from "./constants/url";
 import { GlobalContext } from "./contexts/GlobalContext";
 import Router from "./routes/Router";
 
+
 export default function App() {
   const [pokelist, setPokelist] = useState([]);
   const [pokedex, setPokedex] = useState([]);
@@ -51,10 +52,10 @@ export default function App() {
   };
 
   return (
-    <>
+    
       <GlobalContext.Provider value={context}>
         <Router />
       </GlobalContext.Provider>
-    </>
+    
   );
 }

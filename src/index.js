@@ -2,14 +2,14 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import App from "./App";
-import { GlobalStyle } from "./GlobalStyles.styled";
+import { GlobalStyled } from "./GlobalStyles";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <GlobalStyle />
+    <GlobalStyled />
     <App />
   </StrictMode>
 );

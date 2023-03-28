@@ -1,12 +1,15 @@
 import Card from "../../components/Card/Card";
 import { H, P } from "./styled";
-import Header from "../../components/Header/Header";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { Container } from "./styled";
-import { getColors } from "../../utils/ReturnCardColor";
-
+const CardsContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, minmax(440px, 1fr));
+    justify-items: center;
+    background: grey;
+  `;
 function HomePage() {
   const context = useContext(GlobalContext);
 
@@ -22,18 +25,9 @@ function HomePage() {
     );
    
   
-  const CardsContainer = styled.div`
-  position: absolute;
-  color: white;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(440px, 1fr));
-    justify-items: center;
-    background: grey;
-  `;
+  
   return (
     <Container>
-  
-      <Header />
        <H>  
         <P>
           <p>
@@ -41,17 +35,15 @@ function HomePage() {
         </p>
         </P>
         </H>
-      <section>
+      <CardsContainer>
         {filteredPokelist().map((pokemon) => (
           <Card
-         
             key={pokemon.url}
             pokemonUrl={pokemon.url}
             addToPokedex={addToPokedex}
-            
         />
         ))}
-      </section>
+      </CardsContainer>
     </Container>
   );
 }

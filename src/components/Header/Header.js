@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { goToHomePage, goToPokedexPage } from "../../routes/coordinator";
 import { Container } from "./styled";
 import { PokemonLogo,Button,P } from "./styled";
+import logo from "../../assets/image 1PokemonLogo.svg"
 function Header() {
   
   // hook para saber nosso path atual
@@ -10,7 +11,6 @@ function Header() {
   // hook para redirecionar
   const navigate = useNavigate();
 
-  const url ="https://th.bing.com/th/id/R.a4ff2ee093a2294ae0eff4e9ba027d34?rik=P5sQGDB9f8iT6Q&pid=ImgRaw&r=0"
   const renderHeader = () => {
     switch (location.pathname) {
       case "/":
@@ -19,8 +19,7 @@ function Header() {
             <Button onClick={() => goToPokedexPage(navigate)}>
               Pokédex
             </Button>
-            <PokemonLogo src={`${url}`} alt="" />
-           
+            <PokemonLogo src={logo} alt="" />
             </>
             
         );
@@ -32,10 +31,7 @@ function Header() {
            Todos Pokémons
         </p>
         </P>
-       
-          
-            <PokemonLogo src={`${url}`} alt="" />
-          
+            <PokemonLogo src={logo} alt="" />
           </>
         );
       default:

@@ -4,49 +4,64 @@ export const P = styled.div`
 display: grid;
 flex-direction: row;
 justify-content: center;
-right: 30vw;
-bottom: 0;
+right: 40vw;
+top: 50px;
 position: relative;
+
+p{
+
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+
+text-decoration-line: underline;
+
+color: #1A1A1A;
+
+}
 `;
 
 export const Container = styled.header`
-position: relative;
-height: 100px;
-width: 1200px;
-font-size: 24px;
-font-weight: 700;
+position: absolute;
+width: 1440px;
+height: 160px;
+left: 0px;
+top: 0px;
 
-display: flex;
-align-items: center;
-justify-content: center;
+background: #FFFFFF;
 `;
 export const PokemonLogo = styled.img`
-display: grid;
-flex-direction: row;
-justify-content: center;
-min-height: 15vh;
-max-height: 25vh;
-min-width: 15vw;
-max-width: 25vw;
 position: absolute;
-left: 45%;
+width: 307px;
+height: 113px;
+left: 566px;
+top: 21px;
 `;
 
 export const Button = styled.button`
-font-size: 17px;
-display: grid;
+display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
 padding: 4px 10px;
-min-width: 50px;
-min-height: 50px;
-background: #007FFF;
+
+position: absolute;
+width: 287px;
+height: 74px;
+left: 1112px;
+top: 41px;
+
+background-color: #33A4F5;
 border-radius: 8px;
-border: none;
-cursor: pointer;
-position: relative;
-bottom: 0;
-left: 55%;
-color: white;
+border-color: #33A4F5;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 36px;
+color: #FFFFFF;
 `;

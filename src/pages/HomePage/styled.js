@@ -4,19 +4,27 @@ export const P = styled.div`
 display: grid;
 flex-direction: row;
 justify-content: center;
-min-height: 50px;
-max-height: 30px;
-min-width: 15vw;
-max-width: 20vw;
 left: 2%;
 bottom: 0px;
 position: relative;
+p{
+   
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+
+margin-top: 40px;
+color: #FFFFFF;
+}
+
 `;
 
 export const H = styled.div`
 position: relative;
-min-height: 100px;
-min-width: 100px;
 font-size: 30px;
 font-weight: 700;
 background: grey;
@@ -24,12 +32,11 @@ display: flex;
 align-items: center;
 justify-content: left;
 color: white;
+top: 140px;
 `;
 export const Container = styled.div`
-  section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1px;
-    background: grey;
-  }
+width: 1440px;
+height: 2500px;
+background: grey;
+  
 `;

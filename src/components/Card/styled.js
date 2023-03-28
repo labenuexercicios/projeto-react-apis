@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 16px;
+  padding: 12px;
   min-height: 200px;
-  min-width: 350px;
-  background-color: black;
+  max-height: 210px;
+  min-width: 400px;
+  max-width: 440px;
+  background-color: ${(props) => props.color};
   border-radius: 12px;
   display: flex;
   position: relative;
-  margin: 50px;
+  margin: 40px;
   color: #ffffff;
-  z-index: 0;
+  top: 50%;
 `;
 
 export const CatchButton = styled.button`
@@ -26,77 +28,106 @@ export const CatchButton = styled.button`
   border: none;
   cursor: pointer;
   position: relative;
-  top: 85px;
+  top: 40px;
   right: 0vh;
-  left: 27vh;
+  left: 35vh;
   z-index: 2;
   color: #000;
+
+
+  
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
   `;
 
   export const ExtButton = styled.button`
-  display: flex;
+
+display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 4px 10px;
   width: 146px;
   height: 38px;
-  background: #ffffff;
+  background: #FF6262;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   position: relative;
-  top: 85px;
+  top: 40px;
   right: 0vh;
-  left: 27vh;
-  color: white;
-  background: red;
+  left: 35vh;
   z-index: 2;
+  color: #FFFFFF;;
+
+
+  
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
   `;
   
 export const PokemonNumber = styled.p`
-font-family: "Inter", sans-serif;
-font-size: 20px;
-font-weight: 600;
-text-align: left;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
 
 `;
 export const PokemonName = styled.h1`
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0em;
-  text-align: left;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
  
 `;
 
 export const Pokeball = styled.img`
-  position: absolute;
-  margin-left: 20vh;
-  width: 15vw;
-  height: 25vh;
-  top: 5vh;
- 
+ position: absolute;
+  top: 0;
+  right: 0;
 `;
 
 export const Pokemon = styled.img`
 width: 193px;
 height: 193px;
 position: absolute;
-bottom: 35px;
-left: 25vh;
+bottom: 60px;
+left: 30vh;
 z-index: 1;
-`
+`;
 
 
 export const PokemonType = styled.img`
-  max-width: 100px;
-  height: 100px;
+  
   border-radius: 8px;
   overflow: hidden;
   border: 1px dashed #ffffff;
   margin-right: 8px;
 `;
 
+export const PokemonDetails = styled.p`
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+text-align: left;
+margin-top: 1vh;
+/* identical to box height */
+
+text-decoration-line: underline;
+`;
 export const TypesContainer = styled.div`
   
 `;
