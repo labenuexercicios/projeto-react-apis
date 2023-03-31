@@ -1,11 +1,13 @@
-import { HeaderStyle } from "./headerStyle"
+import { ButtonPokedex, ButtonVoltar, HeaderStyle } from "./headerStyle"
+import logo from '/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/assets/logo.png'
 
 export default function header (){
    return (
    <div>
         <HeaderStyle>
-           
-            Header
+           <img src={logo} alt="Logo Pokemon"></img>
+            <ButtonPokedex>Pokédex</ButtonPokedex>
+            <ButtonVoltar>Todos Pokémons</ButtonVoltar>
         </HeaderStyle>
    </div>
    )

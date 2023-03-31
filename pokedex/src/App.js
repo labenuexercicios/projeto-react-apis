@@ -7,6 +7,7 @@ import pokemonsListPage from "./Pages/PokemonsListPage/PokemonsListPage";
 import styled, { createGlobalStyle } from "styled-components";
 import pokemons from "./pokemon/pokemon.json";
 import { getColors } from "./utils/ReturnCardColor";
+import './index.css'
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -14,21 +15,34 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-  
+    font-family: "Poppins", sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 `;
 const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
   justify-items: center;
+  background-color: #5E5E5E;
 `;
+const Title = styled.h1`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: #FFFFFF;
+  padding: 1em;
+  background-color: #5E5E5E;
+
+`
 
 function App() {
   return (
     <div className="App">
       <GlobalStyle/>
       {header()}
+      <Title>Todos Pokémons</Title>
       <CardsContainer>
+
         {pokemons.map((pokemon) => {
           return <PokemonCard
           cardColor={getColors(pokemon.type[0])}
