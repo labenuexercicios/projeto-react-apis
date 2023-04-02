@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Header } from './assets/Header/Header';
 import { Home } from './assets/Home/Home';
 import { createGlobalStyle } from 'styled-components';
 import axios from 'axios';
-import { PokemonList } from './assets/PokemonList';
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -14,11 +13,11 @@ const GlobalStyles = createGlobalStyle`
 
 body{
   width: 100%;
+  overflow-x: hidden;
 }
 
 .App{
   min-height: 100vh;
-  height: 100vh;
 }
 
 `
@@ -26,32 +25,30 @@ body{
 function App() {
 
   const [page, setPage] = useState(0)
-  const [pokemons, setPokemons] = useState([])
+  const [pokedex, setPokedex] = useState([])
+  const [pokemons, setPokemons] = useState([]);
 
-  const getPokemons = (pokemon) => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-    .then((response) => {
-      setPokemons(response.data)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
+  const pokeIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
-  
- useEffect(() => {
-  getPokemons("bulbasaur")
-  }, [])
-
+  useEffect(() => {
+    const pokemonData = async () => {
+      const urls = pokeIds.map(id => `https://pokeapi.co/api/v2/pokemon/${id}/`);
+      const responses = await Promise.all(urls.map(url => fetch(url)));
+      const data = await Promise.all(responses.map(response => response.json()));
+      setPokemons(data);
+    };
+    pokemonData();
+  }, []);
 
   return (
     <div className="App">
-          <GlobalStyles/>
-     <Header 
-      page={page}
-      setPage={setPage}/>
-     <Home
-     pokemons={pokemons}/>
+      <GlobalStyles />
+      <Header
+        page={page}
+        setPage={setPage} />
+      <Home
+        pokemons={pokemons} />
     </div>
   );
 }

@@ -6,9 +6,10 @@ export const Home = (props) => {
     
     return (
         <HomeStyle>
-            A
+            <div className="cards-container">
             <PokeCard
             pokemons={props.pokemons}/>
+            </div>
         </HomeStyle>
     )
 }
