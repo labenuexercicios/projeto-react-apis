@@ -1,5 +1,6 @@
 import React from "react";
 import { CardStyle, PokemonCard } from "./styledCard";
+import { CardColors } from "./Colors";
 
 
 export const PokeCard = (props) => {
@@ -9,75 +10,51 @@ export const PokeCard = (props) => {
     return (
         <CardStyle>
             {props.pokemons.map((pokemon) => {
-                let color1 = "";
-                switch (pokemon.types[0].type.name) {
-                    case "grass":
-                        color1 = "#729F92";
-                        break;
-                    case "fire":
-                        color1 = "#F08030";
-                        break;
-                    case "water":
-                        color1 = "#71C3FF";
-                        break;
-                    case "bug":
-                        color1 = "#A8B820";
-                        break;
-                    case "normal":
-                        color1 = "#C6C6A7";
-                        break;
-                    case "electric":
-                        color1 = "#F8D030";
-                        break;
-                    case "fighting":
-                        color1 = "#F87070";
-                        break;
-                    case "ghost":
-                        color1 = "#EAAB7D";
-                        break;
-                    case "ice":
-                        color1 = "#98D8D8";
-                        break;
-                    case "psychic":
-                        color1 = "#F85888";
-                        break;
-                    case "rock":
-                        color1 = "#B8A038";
-                        break;
-                    case "fairy":
-                        color1 = "#FF9BCD";
-                        break;
-                    case "ground":
-                        color1 = "#BF9762";
-                        break;
-                    case "dragon":
-                        color1 = "#7038F8";
-                        break;
-                    case "poison":
-                        color1 = "#AD61AE";
-                        break;
-                    default:
-                        color1 = null;
-                        break;
+                let colorCard = "";
+                let colorType1 = "";
+                let colorType2 = "";
+                let typeIcon;
+
+                for (let i = 0; i < CardColors.length; i++) {
+                    if (pokemon.types[0].type.name === CardColors[i].type) {
+                        colorCard = CardColors[i].color1
+                        colorType1 = CardColors[i].color2
+                        typeIcon = CardColors[i].icon
+                    } if (pokemon.types.length > 1 && pokemon.types[1].type.name === CardColors[i].type) {
+                        colorType2 = CardColors[i].color2
+                        typeIcon = CardColors[i].icon
+                    }
                 }
 
                 return (
-                    <PokemonCard color1={color1}>
+                    <PokemonCard colorCard={colorCard}
+                        colorType1={colorType1}
+                        colorType2={colorType2}>
                         <div className="pokemoncard" key={pokemon.id}>
                             <div className="main-container">
-                                <p id="pokeID">
-                                    #{pokemon.id < 99 ? "0" : ""}{pokemon.id}</p>
+
+                                <p id="pokeID">#{pokemon.id < 99 ? "0" : ""}{pokemon.id}</p>
                                 <p id="name">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
-                                <img src={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`} alt={pokemon.name} />
+
+                                <img src={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+                                    id="poke-img" alt={pokemon.name} />
+
                                 <div className="types">
                                     {pokemon.types.length === 1 ? (
                                         <>
-                                            <button id="type">{pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)}</button>
+                                            <button id="type1"><img src={typeIcon} id="type1icon" alt={pokemon.types[0].type.name} />
+                                                {pokemon.types[0].type.name.charAt(0).toUpperCase() +
+                                                    pokemon.types[0].type.name.slice(1)}</button>
                                         </>
                                     ) : (
                                         <>
-                                            <button id="type">{pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)}</button>
-                                            <button id="type">{pokemon.types[1].type.name.charAt(0).toUpperCase() + pokemon.types[1].type.name.slice(1)}</button>
+                                            <button id="type1"><img src={typeIcon} id="type1icon" alt={pokemon.types[0].type.name} />
+                                                {pokemon.types[0].type.name.charAt(0).toUpperCase() +
+                                                    pokemon.types[0].type.name.slice(1)}
+                                            </button>
+                                            <button id="type2"><img src={typeIcon} id="type2icon" alt={pokemon.types[1].type.name} />
+                                                {pokemon.types[1].type.name.charAt(0).toUpperCase() +
+                                                    pokemon.types[1].type.name.slice(1)}</button>
                                         </>
                                     )}
                                 </div>
