@@ -5,18 +5,21 @@ export const CardStyle = styled.div`
        
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5vw;
-    padding: 15vh 0 15vh 0;
+    gap: 4vw;
+    padding: 13vh 0 10vh 0;
 
+`
 
-    .pokemoncard{
+export const PokemonCard = styled.div`
+
+.pokemoncard{
         width: 440px;
         height: 210px;
         display: flex;
         flex-direction: column;
         border: solid 1px black;
         border-radius: 8px;
-        background: url("${pokebg}") green;
+        background: url("${pokebg}") ${props => props.color1};
         background-repeat: no-repeat;
         background-position: 9.5vw;
     }
@@ -49,20 +52,38 @@ export const CardStyle = styled.div`
         height: 165px;
         top: -11vh;
         left: 13vw;
+        :hover{
+            transform: scale(-1.1, 1.1);
+        }
     }
 
+    .types {
+        display: flex;
+        gap: .5vw;
+        position: relative;
+        top: -15.5vh;
+        padding-left: 1vw;
+    }
+
+    #type{
+        border-radius: 8px;
+        padding: 0.4rem 1.8rem;
+        border: 1px dashed rgba(255, 255, 255, 0.47);
+    }
 
     .sub-container{
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 7vw;
+        gap: 7.5vw;
+        position: relative;
+        top: -10vh;
     }
     
     #details{
         font-family: "Poppins", Arial, Helvetica, sans-serif;
         color: white;
-        padding-left: 1.5vw;
+        padding: 0 0 2vh 1vw;
         font-weight: 700;
         cursor: pointer;
         :hover{
@@ -87,6 +108,4 @@ export const CardStyle = styled.div`
             background-color: #EAEAEA;
         }
     }
-
-
 `

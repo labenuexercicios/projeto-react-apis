@@ -5,7 +5,7 @@ export const HeaderStyle = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 16%;
+    height: 16vh;
     width: 100vw;
     
     
@@ -13,8 +13,8 @@ export const HeaderStyle = styled.header`
     img{
         width: 18%;
         padding-bottom: .8vh;
-        position: relative;
-        left: 7vw;
+        position: absolute;
+        left: 40vw;
     }
 
     button{
@@ -23,7 +23,7 @@ export const HeaderStyle = styled.header`
         border: none;
         border-radius: 8px;
         cursor: pointer;
-        left: 29vw;
+        left: 37vw;
         font-family: "Poppins", Arial, Helvetica, sans-serif;
     }
 
@@ -38,7 +38,7 @@ export const HeaderStyle = styled.header`
     }
 
     #remove-button{
-        left: 29vw;
+        left: 38vw;
         background-color: #FF6262;
         padding: 1.2rem 3.5rem;
         font-size: 1rem;
