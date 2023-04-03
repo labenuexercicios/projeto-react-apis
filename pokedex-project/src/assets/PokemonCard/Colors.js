@@ -1,48 +1,32 @@
-import normal from '../images/icons/normal.png'
-import water from '../images/icons/water.png'
-import grass from '../images/icons/grass.png'
-import fire from '../images/icons/fire.png'
-import electric from '../images/icons/electric.png'
-import fighting from '../images/icons/fighting.png'
-import ghost from '../images/icons/ghost.png'
-import psychic from '../images/icons/psychic.png'
-import bug from '../images/icons/bug.png'
-import steel from '../images/icons/steel.png'
-import rock from '../images/icons/rock.png'
-import ground from '../images/icons/ground.png'
-import poison from '../images/icons/poison.png'
-import dragon from '../images/icons/dragon.png'
-import ice from '../images/icons/ice.png'
-import flying from '../images/icons/flying.png'
-import fairy from '../images/icons/fairy.png'
+
 
 export const CardColors = [
     {
         type: "grass",
         color1: "#729F92",
         color2: "#70B873",
-        icon: { grass }
+        icon: "https://i.ibb.co/qBJTmb4/grass.png"
     },
 
     {
         type: "fire",
         color1: "#F08030",
         color2: "#F44900",
-        icon: { fire }
+        icon: "https://i.ibb.co/dcCFVqg/fire.png"
     },
 
     {
         type: "water",
         color1: "#40AEFF",
         color2: "#0080DD",
-        icon: { water }
+        icon: "https://i.ibb.co/ySYNzmz/water.png"
     },
 
     {
         type: "rock",
         color1: "#515128",
         color2: "#64561E",
-        icon: { rock }
+        icon: "https://i.ibb.co/zVR5KYx/rock.png"
 
     },
 
@@ -50,42 +34,42 @@ export const CardColors = [
         type: "bug",
         color1: "#A8B820",
         color2: "#316520",
-        icon: { bug }
+        icon: "https://i.ibb.co/PDkRH3f/bug.png"
     },
 
     {
         type: "normal",
         color1: "#AEAE84",
         color2: "#8A8A8A",
-        icon: { normal }
+        icon: "https://i.ibb.co/mq4Brvm/normal.png"
     },
 
     {
         type: "flying",
         color1: "#A890F0",
         color2: "#6892B0",
-        icon: { flying }
+        icon: "https://i.ibb.co/twGvZXK/flying.png"
     },
 
     {
         type: "fighting",
         color1: "#F87070",
         color2: "#C03028",
-        icon: { fighting }
+        icon: "https://i.ibb.co/Kw5MM8D/fighting.png"
     },
 
     {
         type: "electric",
         color1: "#DAAF07",
         color2: "#F8D030",
-        icon: { electric }
+        icon: "https://i.ibb.co/kGPpwDV/electric.png"
     },
 
     {
         type: "steel",
         color1: "#6A6A9D",
         color2: "#B7B7B7",
-        icon: { steel }
+        icon: "https://i.ibb.co/phg5tzR/steel.png"
 
     },
 
@@ -93,49 +77,49 @@ export const CardColors = [
         type: "ice",
         color1: "#98D8D8",
         color2: "#53BDBD",
-        icon: { ice }
+        icon: "https://i.ibb.co/xHbksX3/ice.png"
     },
 
     {
         type: "ghost",
         color1: "#534170",
         color2: "#705898",
-        icon: { ghost }
+        icon: "https://i.ibb.co/TBWsDK9/ghost.png"
     },
 
     {
         type: "psychic",
         color1: "#F85888",
         color2: "#D50946",
-        icon: { psychic }
+        icon: "https://i.ibb.co/rbwqsXn/psychic.png"
     },
 
     {
         type: "poison",
         color1: "purple",
         color2: "#AD61AE",
-        icon: { poison }
+        icon: "https://i.ibb.co/PY5TN1x/poison.png"
     },
 
     {
         type: "fairy",
         color1: "#FF80C0",
         color2: "#FF9BCD",
-        icon: { fairy }
+        icon: "https://i.ibb.co/pRtWB2k/fairy.png"
     },
 
     {
         type: "dragon",
         color1: "#7038F8",
         color2: "#8D5FFA",
-        icon: { dragon }
+        icon: "https://i.ibb.co/2y879jJ/dragon.png"
     },
 
     {
         type: "ground",
         color1: "#B46767",
         color2: "#BF9762",
-        icon: { ground }
+        icon: "https://i.ibb.co/0FYRy2d/ground.png"
     }
 
 ]

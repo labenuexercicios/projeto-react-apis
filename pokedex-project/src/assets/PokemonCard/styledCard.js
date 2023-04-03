@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import pokebg from "../pokebg.png"
+import pokebg from "../images/pokebg.png"
 
 export const CardStyle = styled.div`
        
@@ -66,11 +66,23 @@ export const PokemonCard = styled.div`
     }
 
     #type1, #type2{
+        font-family: "Poppins", Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5vw;
+        font-size: 14px;
         border-radius: 8px;
-        padding: 0.4rem 1.8rem;
+        padding: 0.4rem .8rem;
         color: white;
         border: none;
         border: 1px dashed rgba(255, 255, 255, 0.47);
+    }
+
+    #typeicon{
+        width: 25%;
+        position: relative;
+        top: -.2vh;
     }
 
     #type1{

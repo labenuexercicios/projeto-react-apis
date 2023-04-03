@@ -13,16 +13,17 @@ export const PokeCard = (props) => {
                 let colorCard = "";
                 let colorType1 = "";
                 let colorType2 = "";
-                let typeIcon;
+                let typeIcon1 = "";
+                let typeIcon2 = ""
 
                 for (let i = 0; i < CardColors.length; i++) {
                     if (pokemon.types[0].type.name === CardColors[i].type) {
                         colorCard = CardColors[i].color1
                         colorType1 = CardColors[i].color2
-                        typeIcon = CardColors[i].icon
+                        typeIcon1 = CardColors[i].icon
                     } if (pokemon.types.length > 1 && pokemon.types[1].type.name === CardColors[i].type) {
                         colorType2 = CardColors[i].color2
-                        typeIcon = CardColors[i].icon
+                        typeIcon2= CardColors[i].icon
                     }
                 }
 
@@ -42,17 +43,17 @@ export const PokeCard = (props) => {
                                 <div className="types">
                                     {pokemon.types.length === 1 ? (
                                         <>
-                                            <button id="type1"><img src={typeIcon} id="type1icon" alt={pokemon.types[0].type.name} />
+                                            <button id="type1"><img src={typeIcon1} id="typeicon" alt={pokemon.types[0].type.name} />
                                                 {pokemon.types[0].type.name.charAt(0).toUpperCase() +
                                                     pokemon.types[0].type.name.slice(1)}</button>
                                         </>
                                     ) : (
                                         <>
-                                            <button id="type1"><img src={typeIcon} id="type1icon" alt={pokemon.types[0].type.name} />
+                                            <button id="type1"><img src={typeIcon1} id="typeicon" alt={pokemon.types[0].type.name} />
                                                 {pokemon.types[0].type.name.charAt(0).toUpperCase() +
                                                     pokemon.types[0].type.name.slice(1)}
                                             </button>
-                                            <button id="type2"><img src={typeIcon} id="type2icon" alt={pokemon.types[1].type.name} />
+                                            <button id="type2"><img src={typeIcon2} id="typeicon" alt={pokemon.types[1].type.name} />
                                                 {pokemon.types[1].type.name.charAt(0).toUpperCase() +
                                                     pokemon.types[1].type.name.slice(1)}</button>
                                         </>
