@@ -1,12 +1,25 @@
-import { PokedexStyle } from "./pokedexStyle"
+import { CardsContainer, Title } from "./pokedexStyle"
+import Header from "../../Components/Header/Header"
+import PokemonCard from "C:/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/Components/PokemonCard/PokemonCard.js";
+import pokemons from "C:/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/pokemon/pokemon.json";
+import { getColors } from "C:/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/utils/ReturnCardColor.js";
 
-export default function pokedexPage (){
+export default function PokedexPage (){
    return (
    <div>
-        <PokedexStyle>
-           
-            Pokedex
-        </PokedexStyle>
+        
+           <Header></Header>
+           <Title>Todos Pokémons</Title>
+            <CardsContainer>
+             {pokemons.map((pokemon) => {
+             return <PokemonCard
+             cardColor={getColors(pokemon.type[0])}
+             key={pokemon.id}
+             pokemon={pokemon}
+             />
+             })}
+            </CardsContainer>
+        
    </div>
    )
 }
