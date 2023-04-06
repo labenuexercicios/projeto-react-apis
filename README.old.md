@@ -40,22 +40,29 @@ Os conteúdos principais  a serem estudados são:
 - [ ] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
 
 
-### Instruções para preparar o seu repositório
+### Instruções de entrega
 
-- Faça o fork desse repositório e realize o clone da sua cópia `seu-nome-de-usuario/projeto-lista-intro-javascript`.
+- Faça o fork desse repositório e realize o clone da sua cópia `seu-nome-de-usuario/projeto-intro-web`.
    <details>
    <summary>Quer uma dica?</summary>
    <img src="https://firebasestorage.googleapis.com/v0/b/assets-conteudo.appspot.com/o/gerais%2Ffork.png?alt=media&token=7030e997-246a-41fe-a75f-2a2ced61e54d" alt="Como adicionar o projeto no repositório"/>
    </details>
 - Crie os arquivos do projeto dentro deste repo;
-- **Lembre-se de abrir os PRs para seu próprio repositório.**
-- Para isso, você precisará fazer o projeto utilizando **branches**. Não faça as alterações direto na branch ```main```!
+- Execute o fluxo de entrega do git. **Lembre-se de abrir os PRs para seu próprio repositório.**
+- Para isso, você precisará fazer o projeto utilizando **branches**. Evite fazer as alterações direto na branch ```main```
+    <details>
+       <summary>Dúvidas sobre o Git & Github?</summary>
+       <p>Adiciomos um vídeo explicando o <strong>processo de entrega</strong> [do fork ao pull request] no Material Assincrono da <a href="https://classroom.google.com/w/NTM0NjA2NDg3MjIx/tc/NTM2NDg5NTQyODg4">A005 - Git e Github</a>. Esse vídeo também exemplifica situações que podem acontecer durante o fluxo de utilização do Git.</p>
+    </details>
+- Faça o deploy do projeto. Pode ser ultilizado o surge, Github pages ou outra ferramenta que faça a disponibilização do seu site para acesso público;
+				
+	dica para usar o surge:
+	* Instalar surge (só 1a vez): `npm install -g surge`
+	* Buildar app React: `npm run build`
+	* Corrigir a nomeação do arquivo (por causa do router)
+		 `cp ./build/index.html ./build/200.html`
+	* Deployar com surge: `surge ./build`
+- Adicionar o link do deploy no readme do seu projeto/repositório:
 
-### Instruções de entrega
 
-![image](https://user-images.githubusercontent.com/71137294/227538428-52271ed2-df78-4500-b286-25f03aa7bf2e.png)
-1.  [Crie o surge](https://labenu.notion.site/Deploy-de-front-React-com-Surge-f902a03ec1d247dc9af9aee5a1469d96) do seu projeto e pegue o link da publicação(deploy);
-2.  Adicione o link do surge no readme do seu projeto;
-3.  Tire print das páginas do seu projeto e cole no readme;
-4.  Abra um novo Pull Request (PR) com a frase **PR para correção**. Caso não saiba como fazê-lo, assista a esse [vídeo](https://www.canva.com/design/DAFY4nS5W2c/t92uFMR61YtmA7bCwj2S1Q/watch).
-5.  Envie o link do seu PR e do surge no [formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
+- Entregue o projeto no [Formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
