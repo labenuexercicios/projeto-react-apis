@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import pokedexPage from "../Pages/PokedexPage/PokedexPage";
 import pokemonDetailPage from "../Pages/PokemonDetailPage/PokemonDetailPage";

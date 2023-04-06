@@ -1,10 +1,6 @@
 import React from "react";
-
-
 import PokedexPage from "./Pages/PokedexPage/PokedexPage";
-
 import { createGlobalStyle } from "styled-components";
-
 import './index.css'
 import { Router } from "./Routes/Route";
 
@@ -26,10 +22,7 @@ function App() {
     <div className="App">
       <Router></Router>
       <GlobalStyle/>
-      
       <PokedexPage/>
-           
-      
     </div>
   );
 }
