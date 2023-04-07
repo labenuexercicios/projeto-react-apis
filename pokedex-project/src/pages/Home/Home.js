@@ -1,15 +1,19 @@
 import React from "react";
+import { HomeHeader } from '../../components/Header/Headers';
 import { HomeStyle } from "./styledHome";
-import { PokeCard } from "../PokemonCard/Card";
+import { PokeCards } from "../../components/PokemonCard/Card"
 
-export const Home = (props) => {
+export const HomePage = (props) => {
     
     return (
+        <>
+        <HomeHeader/>
         <HomeStyle>
             <div className="cards-container">
-            <PokeCard
+            <PokeCards
             pokemons={props.pokemons}/>
             </div>
         </HomeStyle>
+        </>
     )
 }

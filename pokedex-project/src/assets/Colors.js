@@ -84,7 +84,14 @@ export const CardColors = [
         type: "ghost",
         color1: "#534170",
         color2: "#705898",
-        icon: "https://i.ibb.co/TBWsDK9/ghost.png"
+        icon: "https://i.ibb.co/VwSbhXC/ghost.png"
+    },
+
+    {
+        type: "dark",
+        color1: "#0F0D0D",
+        color2: "#262222",
+        icon: "https://i.ibb.co/z2hsmFT/dark.png"
     },
 
     {
