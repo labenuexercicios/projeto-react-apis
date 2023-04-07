@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
 import './index.css'
 import { Router } from "./Routes/Router";
 
+
 const GlobalStyle = createGlobalStyle`
   *{
     padding: 0;
@@ -23,7 +24,7 @@ function App() {
       <GlobalStyle/>
       <Router>
         <PokedexPage/>
-
+        
       </Router>
     </div>
   );

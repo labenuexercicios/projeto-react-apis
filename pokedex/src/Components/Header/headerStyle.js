@@ -5,6 +5,7 @@ export const HeaderStyle = styled.section`
     justify-content: space-around;
     margin: 2em 0em;
     width: 100vw;
+    
 `
 export const ButtonPokedex = styled.button`
     display: flex;

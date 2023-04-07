@@ -7,6 +7,8 @@ export const CardsContainer = styled.div`
   justify-items: center;
   background-color: #5E5E5E;
   width: 100vw;
+  position: absolute;
+  top:20em;
 `;
 export const Title = styled.h1`
   font-family: 'Poppins', sans-serif;
@@ -15,5 +17,7 @@ export const Title = styled.h1`
   color: #FFFFFF;
   padding: 1em;
   background-color: #5E5E5E;
-
+  position: absolute;
+  top: 4em;
+  width:100%;
 `

@@ -10,7 +10,7 @@ export default function PokemonsListPage (){
    <div>
         
         <Header></Header>
-           <Title>Seus Pokémons</Title>
+           <Title>Meus Pokémons</Title>
             <CardsContainer>
              {pokemons.map((pokemon) => {
              return <PokemonCard
