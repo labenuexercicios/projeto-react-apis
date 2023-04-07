@@ -1,14 +1,21 @@
+import { useNavigate } from "react-router-dom"
 import { ButtonPokedex, ButtonVoltar, HeaderStyle } from "./headerStyle"
 import logo from '/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/assets/logo.png'
+import {goToHome, goToList} from '../../Routes/Coordinator'
 
-export default function Header (){
+function Header (){
+  const navigate = useNavigate()
+
    return (
    <div>
+      
         <HeaderStyle>
+            <ButtonVoltar onClick={()=>goToHome(navigate)}>Todos Pokémons</ButtonVoltar>
            <img src={logo} alt="Logo Pokemon"></img>
-            <ButtonPokedex>Pokédex</ButtonPokedex>
-            <ButtonVoltar>Todos Pokémons</ButtonVoltar>
+            <ButtonPokedex onClick={()=> goToList(navigate)}>Pokédex</ButtonPokedex>
         </HeaderStyle>
    </div>
    )
 }
+
+export default Header

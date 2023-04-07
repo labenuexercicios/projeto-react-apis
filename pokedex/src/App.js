@@ -2,7 +2,7 @@ import React from "react";
 import PokedexPage from "./Pages/PokedexPage/PokedexPage";
 import { createGlobalStyle } from "styled-components";
 import './index.css'
-import { Router } from "./Routes/Route";
+import { Router } from "./Routes/Router";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -20,9 +20,11 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <div className="App">
-      <Router></Router>
       <GlobalStyle/>
-      <PokedexPage/>
+      <Router>
+        <PokedexPage/>
+
+      </Router>
     </div>
   );
 }

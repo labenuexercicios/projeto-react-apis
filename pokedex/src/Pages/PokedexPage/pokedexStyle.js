@@ -6,6 +6,7 @@ export const CardsContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
   justify-items: center;
   background-color: #5E5E5E;
+  width: 100vw;
 `;
 export const Title = styled.h1`
   font-family: 'Poppins', sans-serif;

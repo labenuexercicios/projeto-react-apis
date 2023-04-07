@@ -1,6 +1,6 @@
 import { PokemonDetailStyle } from "./pokemonDetailStyle"
 
-export default function pokemonDetailPage (){
+export default function PokemonDetailPage (){
    return (
    <div>
         <PokemonDetailStyle>

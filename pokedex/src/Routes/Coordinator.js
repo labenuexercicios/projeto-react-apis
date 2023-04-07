@@ -1,13 +1,13 @@
 
 
-const goToHome = () =>{
-
+export const goToHome = (navigate) =>{
+    navigate('/')
 }
 
-const goToList = () =>{
-
+export const goToList = (navigate) =>{
+    navigate('/list')
 }
 
-const goToDetail = () =>{
-    
+export const goToDetail = (navigate) =>{
+    navigate('/details')
 }
