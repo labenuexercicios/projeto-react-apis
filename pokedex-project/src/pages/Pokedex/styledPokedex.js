@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
-export const PokedexStyle = styled.div`
+export const DexStyle = styled.div`
 
-    #invisible{
-        display: none;
-    }
 
 `

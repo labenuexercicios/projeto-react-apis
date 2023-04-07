@@ -24,18 +24,13 @@ function App() {
 
   const [pokedex, setPokedex] = useState([])
   const [pokemons, setPokemons] = useState([]);
+  const [details, setDetails] = useState([])
 
   const pokeIds = 
-    [7, 8, 9, 54, 55, 60, 61, 62, 72, 73, 79, 80, 86, 87, 90, 91,
-    98, 99, 116, 117, 118, 119, 120, 121, 129, 130, 131, 134,
-    138, 139, 140, 141, 158, 159, 160, 170, 171, 183, 184, 186, 
-    194, 195, 199, 211, 222, 223, 224, 226, 230, 245, 258, 259,
-    260, 270, 271, 272, 278, 279, 283, 318, 319, 320, 321, 339,
-    340, 341, 342, 349, 350, 363, 364, 365, 366, 367, 368, 369, 370,
-    382]
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
 
-    console.log(pokemons)
+
   useEffect(() => {
     const pokemonData = async () => {
       const urls = pokeIds.map(id => `https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -46,14 +41,26 @@ function App() {
     pokemonData();
   }, []);
 
+  
+  const getDex = () => {
+    const dexList = localStorage.getItem("pokedex");
+    if (dexList) {
+        const storedDex = JSON.parse(dexList);
+        setPokedex(storedDex)
+    }
+};
+
+useEffect(() => {
+    getDex()
+}, [])
+
+  const states = [pokemons, setPokemons, pokedex, setPokedex, details, setDetails]
+
   return (
     <div className="App">
-      <GlobalStyles />
+      <GlobalStyles/>
      <Router
-      pokedex={pokedex}
-      setPokedex={setPokedex}
-      pokemons={pokemons}
-      />
+      states={states}/>
     </div>
   );
 }

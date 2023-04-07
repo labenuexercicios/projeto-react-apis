@@ -1,16 +1,16 @@
 import React from "react";
-import { DexHeader } from '../../components/Header/Headers';
-import { DetailsStyle } from "./styledDetails";
+import { DetailsHeader } from '../../components/Header/Headers';
+import { PageStyle } from "../MainStyle";
 
 export const DetailsPage = (props) => {
     return (
         <>
-        <DexHeader/>
-        <DetailsStyle>
-        <div className ="details-page" id = {props.page === 2 ? "visible" : "invisible"}>
+        <DetailsHeader/>
+        <PageStyle>
+        <div className ="details-page">
            A 
            </div>
-        </DetailsStyle>
+        </PageStyle>
         </>
     )
 }

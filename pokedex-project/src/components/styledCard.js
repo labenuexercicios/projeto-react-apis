@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import pokebg from "../../assets/images/pokebg.png"
+import pokebg from "../assets/images/pokebg.png"
 
 export const CardsContainerStyle = styled.div`
        
@@ -21,7 +21,7 @@ export const PokemonCardStyle = styled.div`
         border-radius: 8px;
         background: url("${pokebg}") ${props => props.colorCard};
         background-repeat: no-repeat;
-        background-position: 9.5vw;
+        background-position: 9.9vw;
     }
 
     .main-container{
@@ -61,7 +61,7 @@ export const PokemonCardStyle = styled.div`
         display: flex;
         gap: .5vw;
         position: relative;
-        top: -15vh;
+        top: -13.5vh;
         padding-left: 1vw;
     }
 
@@ -73,7 +73,7 @@ export const PokemonCardStyle = styled.div`
         gap: .5vw;
         font-size: 14px;
         border-radius: 8px;
-        padding: 0.4rem .8rem;
+        padding: 0.4rem .7rem;
         color: white;
         border: none;
         border: 1px dashed rgba(255, 255, 255, 0.47);
@@ -112,21 +112,35 @@ export const PokemonCardStyle = styled.div`
         }
     }
 
-    #capture{
-        background-color: white;
+    button{
         border: none;
         display: flex;
         align-items: center;
         font-family: "Poppins", Arial, Helvetica, sans-serif;
         font-size: 1rem;
-        padding: .6rem 2.5rem;
-        margin-left: 1.3vw;
         position: relative;
         top: -2vh;
         border-radius: 8px;
         cursor: pointer;
+       
+    }
+
+    #capture{
+        padding: .6rem 2.5rem;
+        margin-left: 1.6vw;
+        background-color: white;
         :hover{
             background-color: #EAEAEA;
+        }
+    }
+
+    #remove{
+        padding: .6rem 3rem;
+        margin-left: 1.8vw;
+        color: white;
+        background-color: #FF6262;
+        :hover{
+            background-color: #FF3535;
         }
     }
 `

@@ -17,12 +17,25 @@ export const HomeHeader = () => {
 }
 
 export const DexHeader = () => {
+
+    const navigate = useNavigate()
+
+    return (
+        <HeaderStyle>
+        <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
+        <BackButton onClick={() => goToHome(navigate)}> <IoIosArrowBack/>Todos os pokémons</BackButton>
+        </HeaderStyle>
+    )
+
+}
+
+export const DetailsHeader = () => {
  
     const navigate = useNavigate()
 
     return (
         <HeaderStyle>
-        <DexButton>Pokedex</DexButton>
+        <DexButton>Excluir da Pokedex</DexButton>
         <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
         <BackButton onClick={() => goToHome(navigate)}> <IoIosArrowBack/>Todos os pokémons</BackButton>
         </HeaderStyle>
