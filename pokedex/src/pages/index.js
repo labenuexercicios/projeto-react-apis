@@ -1,10 +1,8 @@
-import Header from '@/components/Header';
 import PokemonCard from '@/components/PokemonCard';
 
 export default function Home() {
     return (
         <>
-            <Header />
             <div className="grid grid-cols-3 grid-flow-row gap-4">
                 <PokemonCard />
                 <PokemonCard />
