@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from './constants/url'
 import { ChakraProvider } from '@chakra-ui/react'
+import { GlobalStyle } from '.'
 // import {ChakraProvider} from '@chakra-ui/react'
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
 
     }
   }
-  
+
   const addToPokedex = (pokemonToAdd) => {
     const isAlreadyOnPokedex = pokedex.find((pokemonInPokedex) => pokemonInPokedex.data?.name === pokemonToAdd.data?.name);
 
@@ -67,10 +68,7 @@ const App = () => {
   return (
 
     <GlobalContext.Provider value={context}>
-      
-        <Router />
-     
-
+      <Router />
     </GlobalContext.Provider>
   )
 }

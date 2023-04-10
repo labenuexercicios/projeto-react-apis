@@ -1,13 +1,7 @@
 import axios from 'axios';
 import {
   CardsContainer,
-  Button,
-  Pokebola,
   Container,
-  PokemonNumber,
-  PokemonName,
-  TypesContainer,
-  Pokemon,
   CatchButton
 } from "./PokemonCardStyle"
 import { useEffect, useState } from 'react';
@@ -61,22 +55,21 @@ export default function PokemonCard(props) {
 
       <Container color={getColors(pokemon.data?.types[0]?.type?.name)}>
 
-        <div>
-          <PokemonNumber>{pokemon.data?.id <= 9 ? <PokemonNumber>#0{pokemon.data?.id}</PokemonNumber> :
-            <PokemonNumber>#{pokemon.data?.id}</PokemonNumber>}</PokemonNumber>
+        <div className='left'>
+          <p>{pokemon.data?.id <= 9 ? <p>#0{pokemon.data?.id}</p> :
+            <p>#{pokemon.data?.id}</p>}</p>
 
-          <PokemonName>{pokemon.data?.name.charAt(0).toUpperCase() + pokemon.data?.name.slice(1)}</PokemonName>
+          <h1 className='pokemonName'>{pokemon.data?.name.charAt(0).toUpperCase() + pokemon.data?.name.slice(1)}</h1>
 
-          <TypesContainer>
-            {/* {pokemon.data?.types?.map((type) => <PokemonType key={type} src={getTypes(type[0])} alt="" />)} */}
+          <div className='types'>
             {type()}
-          </TypesContainer>
+          </div>
 
-          <Button onClick={() => goToDetails(navigate, pokemon.data?.name)}>Detalhes</Button>
+          <button onClick={() => goToDetails(navigate, pokemon.data?.name)}>Detalhes</button>
         </div>
 
-        <div>
-          <Pokemon src={pokemon.data?.sprites.other['official-artwork'].front_default} alt="image" />
+        <div className='right'>
+          <img className='pokemon' src={pokemon.data?.sprites.other['official-artwork'].front_default} alt="image" />
 
           {location.pathname === "/" ? (
             <CatchButton onClick={() => addToPokedex(pokemon)}>Capturar!</CatchButton>
@@ -85,9 +78,9 @@ export default function PokemonCard(props) {
             <CatchButton onClick={() => removeFromPokedex(pokemon)}>Excluir</CatchButton>
           )}
 
+          <img src={pokebola} alt="pokeball"></img>
         </div>
 
-        <Pokebola src={pokebola} alt="pokeball" />
       </Container>
     </CardsContainer>
   );

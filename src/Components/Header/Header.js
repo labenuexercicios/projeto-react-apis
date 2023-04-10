@@ -15,6 +15,7 @@ const Header = () => {
   const location = useLocation()
   const params = useParams()
   const context = useContext(GlobalContext)
+  
   const [pokemonDetails, setPokemonDetails] = useState({})
   const {addToPokedex, pokedex, removeFromPokedex} = context
 

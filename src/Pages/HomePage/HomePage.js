@@ -22,7 +22,7 @@ const HomePage = () => {
         <Selection>
           <div>Todos Pokémons</div>
         </Selection>
-        <Flex gap={"16px"} justifyContent={"center"} wrap={"wrap"} bg={'#5e5e5e'}>
+        <Flex gap={"16px"} justifyContent={"center"} wrap={"wrap"} bg={'#5e5e5e'} width={'100%'}>
 
           {filteredPokelist().map((pokemon) => (
             <PokemonCard
