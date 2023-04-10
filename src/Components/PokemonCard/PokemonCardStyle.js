@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const CardsContainer = styled.div`
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
@@ -78,7 +77,7 @@ export const Container = styled.div`
       @media (max-width: 1625px) {
         top: -10px;
 }
-    
+
     }
 
     button {
@@ -91,14 +90,14 @@ export const Container = styled.div`
       font-style: normal;
       cursor: pointer;
       font-weight: 700;
-      margin-top: 11.5rem;
+      margin-top: 12.5rem;
       position: absolute;
       margin-right: 4rem;
 
       @media (max-width: 1625px) {
         margin-top: 9rem;
 }
-      @media (max-width: 375px) {
+      @media (max-width: 430px) {
         margin-top: 7rem;
 }
     }
