@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-// export const Container = styled.div`
-//  background: #5e5e5e;
-//  min-height: 100vh;
-// `;
+export const Container = styled.div`
+ background: #5e5e5e;
+ min-height: 100vh;
+`;
 
 export const Selection = styled.div`
 font-family: 'Poppins';
