@@ -2,10 +2,10 @@ import React from 'react'
 import { Header } from '../../Components/Header/Header'
 import { Main } from './styled'
 
-export function PokemonsListPage() {
+export function PokedexPage() {
     return(
         <>
-            <Header currentPage="list"/>
+            <Header currentPage="pokedex"/>
             <Main>
             </Main>
         </>
