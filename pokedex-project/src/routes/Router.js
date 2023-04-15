@@ -17,7 +17,6 @@ export default function Router (props) {
             setPokemons={setPokemons}
             pokedex={pokedex}
             setPokedex={setPokedex}
-            details={details}
             setDetails={setDetails}/>
             }/>
         
@@ -32,7 +31,8 @@ export default function Router (props) {
             <Route path="/details" element={
             <DetailsPage
             details={details}
-            setDetails={setDetails}/>
+            setDetails={setDetails}
+            pokedex={pokedex}/>
             }/>
 
         </Routes>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import pokebg from "../assets/images/pokebg.png"
+import pokebg from "../../assets/pokebg.png"
 
 export const CardsContainerStyle = styled.div`
        
@@ -9,7 +9,6 @@ export const CardsContainerStyle = styled.div`
     padding: 13vh 0 10vh 0;
 
 `
-
 export const PokemonCardStyle = styled.div`
 
 .pokemoncard{
@@ -24,9 +23,7 @@ export const PokemonCardStyle = styled.div`
         background-position: 9.9vw;
     }
 
-    .main-container{
-       line-height: 3vh;
-    }
+    .main-container{line-height: 3vh;}
     
     p{
         font-family: 'Poppins', sans-serif;
@@ -41,9 +38,7 @@ export const PokemonCardStyle = styled.div`
         font-size: 2rem;
     }
     
-    #id{
-        font-size: 1rem;
-    }
+    #id{font-size: 1rem;}
 
     #poke-img{
         transform: scale(-1, 1);
@@ -52,9 +47,7 @@ export const PokemonCardStyle = styled.div`
         height: 165px;
         top: -11vh;
         left: 13vw;
-        :hover{
-            transform: scale(-1.1, 1.1);
-        }
+        :hover{transform: scale(-1.1, 1.1);}
     }
 
     .types {
@@ -75,7 +68,6 @@ export const PokemonCardStyle = styled.div`
         border-radius: 8px;
         padding: 0.4rem .7rem;
         color: white;
-        border: none;
         border: 1px dashed rgba(255, 255, 255, 0.47);
     }
 
@@ -85,13 +77,9 @@ export const PokemonCardStyle = styled.div`
         top: -.2vh;
     }
 
-    #type1{
-        background: ${props => props.colorType1};
-    }
+    #type1{background: ${props => props.colorType1};}
 
-    #type2{
-        background: ${props => props.colorType2};
-    }
+    #type2{background: ${props => props.colorType2};}
     .sub-container{
         display: flex;
         flex-direction: row;
@@ -107,9 +95,7 @@ export const PokemonCardStyle = styled.div`
         padding: 0 0 2vh 1vw;
         font-weight: 700;
         cursor: pointer;
-        :hover{
-            text-decoration: underline;
-        }
+        :hover{text-decoration: underline;}
     }
 
     button{
@@ -129,9 +115,7 @@ export const PokemonCardStyle = styled.div`
         padding: .6rem 2.5rem;
         margin-left: 1.6vw;
         background-color: white;
-        :hover{
-            background-color: #EAEAEA;
-        }
+        :hover{background-color: #EAEAEA;}
     }
 
     #remove{
@@ -139,8 +123,6 @@ export const PokemonCardStyle = styled.div`
         margin-left: 1.8vw;
         color: white;
         background-color: #FF6262;
-        :hover{
-            background-color: #FF3535;
-        }
+        :hover{background-color: #FF3535;}
     }
 `

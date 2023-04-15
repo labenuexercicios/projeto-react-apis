@@ -2,7 +2,7 @@ import React from "react";
 import { CardsContainer } from "../MainStyle";
 import { PageStyle } from "../MainStyle";
 import { DexHeader } from '../../components/Header/Headers';
-import { generateCard } from "../../components/PokeCard";
+import { GenerateCard } from "./PokeCard";
 import { useNavigate } from "react-router-dom";
 
 export const Pokedex = (props) => {
@@ -16,7 +16,7 @@ export const Pokedex = (props) => {
         <DexHeader/>
         <PageStyle>
         <CardsContainer>
-        {generateCard(props.pokedex, props.pokedex, props.setPokedex, navigate)}
+        {GenerateCard(props.pokedex, props.pokedex, props.setPokedex, navigate)}
             </CardsContainer>
         </PageStyle>
         </>

@@ -29,14 +29,31 @@ export const DexHeader = () => {
 
 }
 
-export const DetailsHeader = () => {
+export const DetailsHeader = (props) => {
  
     const navigate = useNavigate()
+    
+    const PageButton = () => {
+        for(let i = 0; i < props.pokedex.length; i++){
+            if(props.details.name === props.pokedex[i].name) {
+                return(
+                    <>
+                    <DexButton>Excluir da Pokedex</DexButton>
+                    <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
+                    </>
+                )
+            } return (
+                <>
+                <HomeButton onClick={() => goToPokedex(navigate)}>Pokedex</HomeButton>
+                <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
+                </>
+            )
+        }
+    }
 
     return (
         <HeaderStyle>
-        <DexButton>Excluir da Pokedex</DexButton>
-        <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
+        <PageButton/>
         <BackButton onClick={() => goToHome(navigate)}> <IoIosArrowBack/>Todos os pokémons</BackButton>
         </HeaderStyle>
     )
