@@ -4,7 +4,7 @@ function Container({ children }) {
     return (
         <div className="bg-primary">
             <Header />
-            <main className="">{children}</main>
+            <main>{children}</main>
         </div>
     );
 }

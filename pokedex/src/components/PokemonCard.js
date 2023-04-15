@@ -1,11 +1,6 @@
 import Image from 'next/image';
-import grassIcon from '../../public/images/type-icons/grass.svg';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import TypeContainer from './TypeContainer';
-import getTypeColors from '@/constants/getTypeColors';
-import axios from 'axios';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -17,47 +12,49 @@ const poppins = Poppins({
     weight: ['400', '700'],
 });
 
-function PokemonCard({ name, url, id }) {
-    const [pokemonData, setPokemonData] = useState([]);
-    const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${String(
-        id
-    )}.png`;
-
-    const getPokemon = async () => {
-        try {
-            const res = await axios.get(url);
-            const data = await res.data;
-            setPokemonData(data);
-        } catch (error) {
-            console.log(error);
-        }
+function PokemonCard({ name, id, types, imageSrc }) {
+    const ColorVariants = {
+        normal: 'bg-types-normal',
+        fire: 'bg-types-fire',
+        water: 'bg-types-water',
+        electric: 'bg-types-electric',
+        grass: 'bg-types-grass',
+        ice: 'bg-types-ice',
+        fighting: 'bg-types-fighting',
+        poison: 'bg-types-poison',
+        ground: 'bg-types-ground',
+        flying: 'bg-types-flying',
+        psychic: 'bg-types-psychic',
+        bug: 'bg-types-bug',
+        rock: 'bg-types-rock',
+        ghost: 'bg-types-ghost',
+        dragon: 'bg-types-dragon',
+        dark: 'bg-types-dark',
+        steel: 'bg-types-steel',
+        fairy: 'bg-types-fairy',
     };
-
-    useEffect(() => {
-        getPokemon();
-    }, []);
 
     return (
         <div
-            className={`w-full bg-[#729F92] bg-pokeball bg-no-repeat bg-right-top p-4 rounded-xl text-white ${inter.className} font-sans relative`}
+            className={`w-full ${
+                ColorVariants[types[0].type.name]
+            } bg-pokeball bg-no-repeat bg-right-top p-4 rounded-xl text-white ${
+                inter.className
+            } font-sans relative`}
         >
             <div className="flex justify-between mb-12">
                 <div>
                     <p>#{id}</p>
-                    <h3 className="capitalize">{name}</h3>
+                    <h3 className="capitalize mb-4">{name}</h3>
                     <div className="flex gap-3">
-                        {pokemonData.types &&
-                            pokemonData.types.map((item) => {
-                                const typeColor = getTypeColors(item.type.name);
-                                console.log(typeColor);
-                                return (
-                                    <TypeContainer
-                                        key={item.type.name}
-                                        type={item.type.name}
-                                        customClass={`bg-[${typeColor}]`}
-                                    />
-                                );
-                            })}
+                        {types?.map(({ type }) => {
+                            return (
+                                <img
+                                    src={`/images/type-icons/${type.name}.svg`}
+                                    alt={`${type.name} type`}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
                 <div className="absolute right-4 -top-16">
