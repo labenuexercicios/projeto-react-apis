@@ -37,7 +37,7 @@ function PokemonCard({ name, id, types, imageSrc }) {
     return (
         <div
             className={`w-full ${
-                ColorVariants[types[0].type.name]
+                ColorVariants[types[0]]
             } bg-pokeball bg-no-repeat bg-right-top p-4 rounded-xl text-white ${
                 inter.className
             } font-sans relative`}
@@ -47,11 +47,12 @@ function PokemonCard({ name, id, types, imageSrc }) {
                     <p>#{id}</p>
                     <h3 className="capitalize mb-4">{name}</h3>
                     <div className="flex gap-3">
-                        {types?.map(({ type }) => {
+                        {types?.map((type) => {
                             return (
                                 <img
-                                    src={`/images/type-icons/${type.name}.svg`}
-                                    alt={`${type.name} type`}
+                                    key={type}
+                                    src={`/images/type-icons/${type}.svg`}
+                                    alt={`${type} type`}
                                 />
                             );
                         })}
