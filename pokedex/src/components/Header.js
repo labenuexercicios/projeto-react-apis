@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Poppins } from 'next/font/google';
 import logo from '../../public/images/logo.svg';
+import { useState } from 'react';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -10,34 +11,44 @@ const poppins = Poppins({
 });
 
 function Header() {
+    const [pageFlow, setPageFlow] = useState(1);
     return (
         <header
             className={`grid grid-cols-3 items-center px-20 py-5 bg-white ${poppins.variable} font-sans text-black`}
         >
             <div className="justify-self-start">
-                {false && (
+                {(pageFlow === 2 || pageFlow === 3) && (
                     <Link href={'/'}>
-                        <span className="text-2xl">{'< '}</span>
-                        <span className="text-2xl underline">
-                            {'Todos Pokémon'}
+                        <span
+                            className="flex items-center justify-center gap-2"
+                            onClick={() => setPageFlow(1)}
+                        >
+                            <span className="border-t-2 border-l-2 border-black w-3 h-3 -rotate-45"></span>
+                            <span className="text-2xl underline">
+                                Todos Pokémon
+                            </span>
                         </span>
                     </Link>
                 )}
             </div>
             <div className="justify-self-center">
-                <Image src={logo} alt="logo" />
+                <Link href={'/'} onClick={() => setPageFlow(1)}>
+                    <Image src={logo} alt="logo" />
+                </Link>
             </div>
             <div className="justify-self-end">
-                {true ? (
-                    <Link href={'/pokedex'}>
+                {pageFlow === 1 ? (
+                    <Link href={'/pokedex'} onClick={() => setPageFlow(2)}>
                         <div className="bg-button-blue px-28 py-5 rounded-md text-white text-2xl">
                             Pokédex
                         </div>
                     </Link>
                 ) : (
-                    <button className="bg-button-red px-20 py-5 rounded-md text-white text-2xl">
-                        Excluir da Pokédex
-                    </button>
+                    pageFlow === 3 && (
+                        <button className="bg-button-red px-20 py-5 rounded-md text-white text-2xl">
+                            Excluir da Pokédex
+                        </button>
+                    )
                 )}
             </div>
         </header>

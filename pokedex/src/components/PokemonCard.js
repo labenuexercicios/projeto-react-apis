@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
+import { getColorVariant } from '@/constants/TypeColorVariants';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -13,32 +14,11 @@ const poppins = Poppins({
 });
 
 function PokemonCard({ name, id, types, imageSrc }) {
-    const ColorVariants = {
-        normal: 'bg-types-normal',
-        fire: 'bg-types-fire',
-        water: 'bg-types-water',
-        electric: 'bg-types-electric',
-        grass: 'bg-types-grass',
-        ice: 'bg-types-ice',
-        fighting: 'bg-types-fighting',
-        poison: 'bg-types-poison',
-        ground: 'bg-types-ground',
-        flying: 'bg-types-flying',
-        psychic: 'bg-types-psychic',
-        bug: 'bg-types-bug',
-        rock: 'bg-types-rock',
-        ghost: 'bg-types-ghost',
-        dragon: 'bg-types-dragon',
-        dark: 'bg-types-dark',
-        steel: 'bg-types-steel',
-        fairy: 'bg-types-fairy',
-    };
-
     return (
         <div
-            className={`w-full ${
-                ColorVariants[types[0]]
-            } bg-pokeball bg-no-repeat bg-right-top p-4 rounded-xl text-white ${
+            className={`w-full ${getColorVariant(
+                types[0]
+            )} bg-pokeball bg-no-repeat bg-right-top p-4 rounded-xl text-white ${
                 inter.className
             } font-sans relative`}
         >
@@ -70,7 +50,7 @@ function PokemonCard({ name, id, types, imageSrc }) {
                 </div>
             </div>
             <div className="w-full flex justify-between items-center">
-                <Link href={'/pokemon/bulbasaur'}>
+                <Link href={`/pokemon/${id}`}>
                     <span
                         className={`${poppins.className} font-bold underline`}
                     >

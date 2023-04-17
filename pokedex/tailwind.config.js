@@ -37,6 +37,7 @@ module.exports = {
             },
             backgroundImage: {
                 pokeball: "url('/images/pokeball.svg')",
+                pokeball_full: "url('/images/pokeball_full.svg')",
             },
         },
     },
