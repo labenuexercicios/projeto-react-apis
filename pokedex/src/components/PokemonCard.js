@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
-import { getColorVariant } from '@/constants/TypeColorVariants';
+import { getColorVariant } from '@/constants/typeColorVariants';
 
 const inter = Inter({
     subsets: ['latin'],

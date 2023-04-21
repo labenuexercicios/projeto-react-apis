@@ -1,5 +1,5 @@
 import Title from '@/components/Title';
-import { getColorVariant } from '@/constants/TypeColorVariants';
+import { getColorVariant } from '@/constants/typeColorVariants';
 import { BASE_URL, limit } from '@/constants/api';
 import axios from 'axios';
 
