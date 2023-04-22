@@ -3,7 +3,10 @@ import pokebg from "../../assets/pokebg.png"
 
 export const DetailStyle = styled.div`
 
+    margin-top: 5vh;
+
     .detailcard{
+
         font-family: "Poppins", Arial, Helvetica, sans-serif;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -14,8 +17,9 @@ export const DetailStyle = styled.div`
         border-radius: 8px;
         padding: 2vh 1.5vw 2vh 1.5vw;
         background: url("${pokebg}") ${props => props.colorCard};
+        background-size: 50vw;
         background-repeat: no-repeat;
-        background-position: 9.9vw;
+        background-position: 33.9vw;
     }
 
     #sprite-card, .moves, .base-stats{
@@ -28,69 +32,147 @@ export const DetailStyle = styled.div`
         flex-direction: column;
         gap: 5vh;
     #sprite-card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 15vw;
         height: 15vw;
+            img{
+                width: 75%;
+            }
+        }
     }
+
+    #load{
+        width: 2vw;
+    }
+
+    .stats-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 100%;
+        padding-left: 1vw;
+
+        ul{
+            font-family: Helvetica, sans-serif;
+            list-style: none;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 4vh;
+            position: relative;
+            right: 6vw;
+            text-align: right;
+        }
     }
 
     .base-stats{
-        width: 19vw;
+        width: 21vw;
         height: 65vh;
-        padding: 1vh 0 0 1vw;
+        padding: 2vh 0 0 2.1vw;
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
     }
     
-    .main-info{
-    p{
-        color: white;
-        margin-left: 1vw;
+    .stats-list{
         position: relative;
-        top: 2vh;
+        left: 2vw;
+        color: #909090;  
     }
 
-    #name{ 
-        font-weight: 700;
-        font-size: 2rem;
+    .stats-numbers{
+        position: relative;
+        right: 1.5vw;
+        color: #525252;  
     }
+
+    .stats-bars{
+        position: relative;
+        font-family: Helvetica, sans-serif;
+        display: flex;
+        font-weight: 700;
+        flex-direction: column;
+        font-size: 15px;
+        ul{
+            font-family: Helvetica, sans-serif;
+            list-style: none;
+            font-weight: 600;
+            color: #444445;
+            font-size: 15px;
+            position: relative;
+            right: 6.5vw;
+            text-align: justify;
+        }
+        button{
+            height: 1.5vh;
+            position: relative;
+            left: .6vw;
+            top: .3vh;
+            border-radius: .3rem;
+            border: none;
+            background-color: ${props => props.statColor};
+        }
+        #total{
+            font-weight: 700;
+            color: black;
+        }
+        #btn1{width:${props => props.stat1};}
+        #btn2{width:${props => props.stat2};}
+        #btn3{width:${props => props.stat3};}
+        #btn4{width:${props => props.stat4};}
+        #btn5{width:${props => props.stat5};}
+        #btn6{width:${props => props.stat6};}
+    }
+
+    .main-info{
+
+        .top-info{
+            color: white;
+            margin-left: 1.5vw;
+        }
+
+        #name{ 
+            font-weight: 700;
+            position: relative;
+            top: -1vh;
+            font-size: 42px;
+        }
     
-    #id{font-size: 1rem;}
+    #id{font-size: 1.5rem;}
+
+        .types {
+            display: flex;
+            gap: .5vw;
+        
+        #type1, #type2{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: .5vw;
+            font-size: 14px;
+            border-radius: .5rem;
+            padding: 0.4rem .7rem;
+            color: white;
+            border: 1px dashed rgba(255, 255, 255, 0.47);
+        }
+
+        #typeicon{
+            width: 25%;
+            position: relative;
+            top: -.2vh;
+        }
+
+        #type1 {background: ${props => props.colorType1};}
+        #type2 {background: ${props => props.colorType2};}
+        }
+    }
 
     #poke-img{
-        transform: scale(-1, 1);
         position: absolute;
-        width: 278px;
-        height: 278px;
-        top: 2vh;
-        left: 78vw;
-    }
-
-    .types {
-        display: flex;
-        gap: .5vw;
-        position: relative;
-        top: -13.5vh;
-        padding-left: 1vw;
-        
-    #type1, #type2{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: .5vw;
-        font-size: 14px;
-        border-radius: .5rem;
-        padding: 0.4rem .7rem;
-        color: white;
-        border: 1px dashed rgba(255, 255, 255, 0.47);
-    }
-
-    #typeicon{
-        width: 25%;
-        position: relative;
-        top: -.2vh;
-    }
-
-    #type1 {background: ${props => props.colorType1};}
-
-    #type2 {background: ${props => props.colorType2};}
+        max-width: 278px;
+        max-height: 278px;
+        top: -1vh;
+        left: 65vw;
     }
 
     .moves{
@@ -99,7 +181,8 @@ export const DetailStyle = styled.div`
         margin-right: 50vw;
         position: relative;
         left: 1.5vw;
-        width: 15vw;
+        top: 2.4vh;
+        width: 17vw;
         height: 50vh; 
         ul{
             margin-top: 2vh;
@@ -118,10 +201,7 @@ export const DetailStyle = styled.div`
                 border-radius: .5rem;
                 padding: 0.4rem .7rem;
                 border: 2px dashed rgba(255, 255, 255, 0.47);
-    
             }
         }
-
     }
-}
 `

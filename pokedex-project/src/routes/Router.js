@@ -3,40 +3,22 @@ import { DetailsPage } from '../pages/Details/Details';
 import { Pokedex } from '../pages/Pokedex/Pokedex';
 import { HomePage } from '../pages/Home/Home';
 
-
 export default function Router (props) {
 
-    const [pokemons, setPokemons, pokedex, setPokedex, details, setDetails] = props.states
+    const [pokemons, pokedex, setPokedex, details, setDetails, path, setPath] = props.states
 
     return(
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={
-            <HomePage
-            pokemons={pokemons}
-            setPokemons={setPokemons}
-            pokedex={pokedex}
-            setPokedex={setPokedex}
-            setDetails={setDetails}/>
-            }/>
-        
-            <Route path="/pokedex" element={
-            <Pokedex
-            pokedex={pokedex}
-            setPokedex={setPokedex}
-            details={details}
-            setDetails={setDetails}/>
-            }/>
-
-            <Route path="/details" element={
-            <DetailsPage
+            <Route path="/" element={<HomePage states={props.states}/>}/>
+            <Route path="/pokedex" element={<Pokedex states={props.states}/>}/>
+            <Route path="/details" 
+            element={<DetailsPage 
             details={details}
             setDetails={setDetails}
-            pokedex={pokedex}/>
-            }/>
-
+            pokedex={pokedex}
+            />}/>
         </Routes>
         </BrowserRouter>
     )
-
 }

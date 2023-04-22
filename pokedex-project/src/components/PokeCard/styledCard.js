@@ -5,6 +5,7 @@ export const CardsContainerStyle = styled.div`
        
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    max-width: 80vw;
     gap: 4vw;
     padding: 13vh 0 10vh 0;
 
@@ -12,8 +13,8 @@ export const CardsContainerStyle = styled.div`
 export const PokemonCardStyle = styled.div`
 
 .pokemoncard{
-        width: 440px;
-        height: 210px;
+        min-width: 440px;
+        max-height: 210px;
         display: flex;
         flex-direction: column;
         border: solid 1px black;
@@ -23,14 +24,17 @@ export const PokemonCardStyle = styled.div`
         background-position: 9.9vw;
     }
 
-    .main-container{line-height: 3vh;}
+    .main-container{
+        display: flex;
+        line-height: 3vh;
+        margin-top: 2vh;
+        gap: 2vw;
+    }
     
     p{
         font-family: 'Poppins', sans-serif;
         color: white;
         margin-left: 1vw;
-        position: relative;
-        top: 2vh;
     }
 
     #name{ 
@@ -41,21 +45,26 @@ export const PokemonCardStyle = styled.div`
     #id{font-size: 1rem;}
 
     #poke-img{
-        transform: scale(-1, 1);
+        max-width: 9vw;
         position: relative;
-        width: 165px;
-        height: 165px;
-        top: -11vh;
-        left: 13vw;
-        :hover{transform: scale(-1.1, 1.1);}
+        top: -9vh;
     }
 
     .types {
         display: flex;
         gap: .5vw;
-        position: relative;
-        top: -13.5vh;
         padding-left: 1vw;
+        margin-top: 3vh;
+        #type1{background: ${props => props.colorType1};}
+        #type2{background: ${props => props.colorType2};}
+        
+        #typeicon{
+            width: 25%;
+            position: relative;
+            top: -.2vh;
+        }
+
+    
     }
 
     #type1, #type2{
@@ -64,6 +73,8 @@ export const PokemonCardStyle = styled.div`
         flex-direction: row;
         align-items: center;
         gap: .5vw;
+        position: relative;
+        top: -2vh;
         font-size: 14px;
         border-radius: 8px;
         padding: 0.4rem .7rem;
@@ -71,15 +82,6 @@ export const PokemonCardStyle = styled.div`
         border: 1px dashed rgba(255, 255, 255, 0.47);
     }
 
-    #typeicon{
-        width: 25%;
-        position: relative;
-        top: -.2vh;
-    }
-
-    #type1{background: ${props => props.colorType1};}
-
-    #type2{background: ${props => props.colorType2};}
     .sub-container{
         display: flex;
         flex-direction: row;
@@ -94,6 +96,7 @@ export const PokemonCardStyle = styled.div`
         color: white;
         padding: 0 0 2vh 1vw;
         font-weight: 700;
+        margin-top: 8vh;
         cursor: pointer;
         :hover{text-decoration: underline;}
     }
@@ -105,7 +108,7 @@ export const PokemonCardStyle = styled.div`
         font-family: "Poppins", Arial, Helvetica, sans-serif;
         font-size: 1rem;
         position: relative;
-        top: -2vh;
+        top: 1.5vh;
         border-radius: 8px;
         cursor: pointer;
        

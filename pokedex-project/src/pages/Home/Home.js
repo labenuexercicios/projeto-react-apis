@@ -1,24 +1,23 @@
 import React, { useEffect } from "react";
 import { HomeHeader } from '../../components/Header/Headers';
 import { CardsContainer } from '../MainStyle'
-import { GenerateCard } from "../Pokedex/PokeCard";
+import { PokeCard } from "../../components/PokeCard/PokeCard";
 import { PageStyle } from "../MainStyle";
-import { goToDetails } from "../../routes/coordinator";
-import { useNavigate } from 'react-router-dom';
 
 export const HomePage = (props) => {
 
-    const navigate = useNavigate()
-    const DetailsPath = () => {
-        goToDetails(navigate)
-    }
-    
+    const [pokemons, pokedex, setDex, details, setDetails, path, setPath] = props.states  
+
+
     return (
         <>
             <HomeHeader />
             <PageStyle>
+                <p id="top">Todos os pokemons</p>
                 <CardsContainer>
-                    {GenerateCard(props.pokemons, props.pokedex, props.setPokedex, props.setDetails)}
+                    <PokeCard
+                    states={props.states}
+                    array={pokemons}/>
                 </CardsContainer>
             </PageStyle>
         </>

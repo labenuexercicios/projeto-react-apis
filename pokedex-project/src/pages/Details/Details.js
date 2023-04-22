@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { DetailCard } from './DetailCard'
 import { DetailsHeader } from '../../components/Header/Headers';
 import { PageStyle } from "../MainStyle";
@@ -14,10 +14,11 @@ export const DetailsPage = (props) => {
         <>
         <DetailsHeader
         details={props.details}
-        pokedex={props.pokedex}/>
+        pokedex={props.pokedex}
+        setPokedex={props.setPokedex}/>
         <PageStyle>
         <div className ="details-page">
-           <span>Detalhes</span>
+           <span id="title">Detalhes</span>
            {DetailCard(newDetails)}
             </div>
         </PageStyle>

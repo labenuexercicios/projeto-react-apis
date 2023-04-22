@@ -1,4 +1,5 @@
 import React from "react";
+import { goToDetails } from "../routes/coordinator";
 
 export const catchMon = (pokedex, pokemon, setState) => {
 
@@ -13,8 +14,8 @@ export const catchMon = (pokedex, pokemon, setState) => {
     }
 }
 
-   
-const removeMon = (pokedex, param, setState) => {
+
+export const removeMon = (pokedex, param, setState) => {
     const oldDex = pokedex.filter((pokemon) => pokemon !== param);
     setState(oldDex);
     const oldDexString = JSON.stringify(oldDex);
@@ -22,29 +23,16 @@ const removeMon = (pokedex, param, setState) => {
 }
 
 
-
-export const CardButton = (pokedex, pokemon, setState) => {
-        for (let i = 0; i < pokedex.length; i++) {
-        if(pokedex[i].name === pokemon.name) {
-            return (
-            <>
-                <button id="remove" onClick={
-                    () => removeMon(pokedex, pokemon, setState)
-                }>Excluir</button>
-            </>
-            )
-        } 
-    } return (
-        <>
-        <button id="capture" onClick={
-            () => catchMon(pokedex, pokemon, setState)
-        }>Capturar</button>
-    </>
-    )
-}
-
 export const firstLetterUppercase = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
+}
+
+
+export const sendDetails = (pokemon, setDetails, navigate) => {
+    setDetails(pokemon)
+    const pokeString = JSON.stringify(pokemon)
+    localStorage.setItem("Detail", pokeString)
+    goToDetails(navigate)
 }
 
 

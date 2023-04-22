@@ -39,6 +39,7 @@ export const HomeButton = styled.button`
 export const DexButton = styled.button`
         left: 38vw;
         background-color: #FF6262;
+        :hover{background-color: #FF3535;}
         padding: 1.2rem 3.5rem;
         font-size: 1rem;
         font-weight: 400;

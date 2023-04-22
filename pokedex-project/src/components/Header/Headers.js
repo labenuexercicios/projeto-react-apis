@@ -3,6 +3,7 @@ import { HeaderStyle, DexButton, BackButton, HomeButton } from "./styledHeader";
 import {IoIosArrowBack} from 'react-icons/io'
 import { goToPokedex, goToHome } from "../../routes/coordinator";
 import { useNavigate } from 'react-router-dom';
+import { removeMon } from "../../assets/Functions";
 
 export const HomeHeader = () => {
  
@@ -38,16 +39,18 @@ export const DetailsHeader = (props) => {
             if(props.details.name === props.pokedex[i].name) {
                 return(
                     <>
-                    <DexButton>Excluir da Pokedex</DexButton>
+                    <DexButton onClick={() => removeMon()}>Excluir da Pokedex</DexButton>
                     <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
                     </>
                 )
-            } return (
+            } else {
+                return (
                 <>
                 <HomeButton onClick={() => goToPokedex(navigate)}>Pokedex</HomeButton>
                 <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
                 </>
             )
+        }
         }
     }
 
