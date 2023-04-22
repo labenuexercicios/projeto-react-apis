@@ -1,6 +1,7 @@
 import PokemonCard from '@/components/PokemonCard';
 import Title from '@/components/Title';
 import { BASE_URL, limit } from '@/constants/api';
+import useGlobalConext from '@/hooks/useGlobalContext';
 import axios from 'axios';
 
 export const getStaticProps = async () => {
@@ -38,6 +39,9 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ pokemonDataList }) {
+    const { setPageFlow } = useGlobalConext();
+    setPageFlow(1);
+
     return (
         <div className="py-16 px-10 max-w-screen-2xl mx-auto">
             <Title text="Todos Pokémon" />

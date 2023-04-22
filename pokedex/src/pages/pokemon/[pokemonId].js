@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { Montserrat, Inter } from 'next/font/google';
 import Image from 'next/image';
+import useGlobalConext from '@/hooks/useGlobalContext';
 
 const montserrant = Montserrat({
     subsets: ['latin'],
@@ -61,6 +62,8 @@ export const getStaticProps = async (context) => {
 };
 
 function PokemonDetails({ pokemon }) {
+    const { setPageFlow } = useGlobalConext();
+    setPageFlow(3);
     const pokemonData = JSON.parse(pokemon);
     console.log(pokemonData);
     return (
