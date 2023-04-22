@@ -1,7 +1,7 @@
 import PokemonCard from '@/components/PokemonCard';
 import Title from '@/components/Title';
 import { BASE_URL, limit } from '@/constants/api';
-import useGlobalConext from '@/hooks/useGlobalContext';
+import useGlobalConext from '@/hook/useGlobalContext';
 import axios from 'axios';
 
 export const getStaticProps = async () => {
@@ -10,25 +10,16 @@ export const getStaticProps = async () => {
     const pokemonDataList = await Promise.all(
         pokemonList.map(async (pokemon) => {
             const pokemonResponse = await axios.get(pokemon.url);
-            const { name, id, types, stats, sprites, moves } =
-                pokemonResponse.data;
+            const { name, id, types, sprites, moves } = pokemonResponse.data;
             return {
                 name,
                 id,
-                types: types.map((type) => type.type.name),
-                stats: stats.map((stat) => {
-                    return {
-                        name: stat.stat.name,
-                        base_stat: stat.base_stat,
-                    };
-                }),
+                types: types.map((item) => item.type.name),
                 sprites: {
-                    back_default: sprites.back_default,
-                    front_default: sprites.front_default,
                     official_artwork:
                         sprites.other['official-artwork'].front_default,
                 },
-                moves: moves.slice(0, 4).map((move) => move.move.name),
+                moves: moves.slice(0, 4).map((item) => item.move.name),
             };
         })
     );
