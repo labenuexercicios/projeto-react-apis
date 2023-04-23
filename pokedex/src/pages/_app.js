@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 import Container from '@/components/Container';
-import { GlobalContext } from '@/contexts/globalContext';
+import { GlobalContext } from '@/context/GlobalContext';
 import { useState } from 'react';
 
 export default function App({ Component, pageProps }) {

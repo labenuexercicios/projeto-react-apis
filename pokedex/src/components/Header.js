@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Poppins } from 'next/font/google';
 import logo from '../../public/images/logo.svg';
-import useGlobalConext from '@/hooks/useGlobalContext';
+import useGlobalConext from '@/hook/useGlobalContext';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -17,7 +17,7 @@ function Header() {
             className={`grid grid-cols-3 items-center px-20 py-5 bg-white ${poppins.variable} font-sans text-black`}
         >
             <div className="justify-self-start">
-                {(pageFlow === 2 || pageFlow === 3) && (
+                {pageFlow !== 1 && (
                     <Link href={'/'}>
                         <span className="flex items-center justify-center gap-2">
                             <span className="border-t-2 border-l-2 border-black w-3 h-3 -rotate-45"></span>

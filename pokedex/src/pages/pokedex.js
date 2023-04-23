@@ -1,8 +1,8 @@
-import useGlobalConext from "@/hooks/useGlobalContext";
+import useGlobalConext from '@/hook/useGlobalContext';
 
 function pokedex() {
     const { setPageFlow } = useGlobalConext();
-    setPageFlow(2)
+    setPageFlow(2);
     return (
         <>
             <h1>Pokedex</h1>

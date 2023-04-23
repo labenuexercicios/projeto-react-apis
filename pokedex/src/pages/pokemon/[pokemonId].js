@@ -5,7 +5,9 @@ import axios from 'axios';
 
 import { Montserrat, Inter } from 'next/font/google';
 import Image from 'next/image';
-import useGlobalConext from '@/hooks/useGlobalContext';
+import useGlobalConext from '@/hook/useGlobalContext';
+import StatContantainer from '@/components/StatContantainer';
+import { useState } from 'react';
 
 const montserrant = Montserrat({
     subsets: ['latin'],
@@ -14,7 +16,7 @@ const montserrant = Montserrat({
 
 const inter = Inter({
     subsets: ['latin'],
-    weight: ['700', '800'],
+    weight: ['700', '800', '900'],
 });
 
 export const getStaticPaths = async () => {
@@ -65,10 +67,12 @@ function PokemonDetails({ pokemon }) {
     const { setPageFlow } = useGlobalConext();
     setPageFlow(3);
     const pokemonData = JSON.parse(pokemon);
-    console.log(pokemonData);
+    let totalStat = 0;
+    pokemonData.stats.forEach((stat) => (totalStat += stat.base_stat));
+    console.log(totalStat);
     return (
         <div
-            className={`py-16 px-10 max-w-screen-2xl mx-auto bg-pokeball_full bg-no-repeat bg-contain bg-center ${inter.className}`}
+            className={`py-16 px-10 min-h-screen max-w-screen-2xl mx-auto bg-pokeball_full bg-no-repeat bg-cover bg-center ${inter.className} overflow-hidden`}
         >
             <Title text="Detalhes" />
             <div
@@ -76,8 +80,8 @@ function PokemonDetails({ pokemon }) {
                     pokemonData.types[0]
                 )} flex gap-16 px-12 py-8 rounded-3xl bg-pokeball_full bg-no-repeat bg-contain bg-right-top relative`}
             >
-                <div className={`flex gap-12 w-1/2`}>
-                    <div className="flex flex-col gap-12 w-1/2">
+                <div className={`flex gap-12 flex-1`}>
+                    <div className="flex flex-col flex-1 gap-12">
                         <Image
                             className="bg-white rounded-xl"
                             src={pokemonData.sprites.front_default}
@@ -94,75 +98,31 @@ function PokemonDetails({ pokemon }) {
                         />
                     </div>
                     <div
-                        className={`bg-white rounded-xl ${inter.className} w-1/2 p-5`}
+                        className={`bg-white rounded-xl ${inter.className} flex-1 p-5`}
                     >
                         <h3 className={`text-black font-extrabold text-2xl`}>
                             Base stats
                         </h3>
                         <ul className="mt-6">
-                            {pokemonData.stats.map((stat) => {
-                                if (stat.name === 'hp') {
-                                    return (
-                                        <li
-                                            key={stat.name}
-                                            className="border-t border-gray-500 py-3"
-                                        >
-                                            <span className="uppercase text-gray-500 text-right">
-                                                {stat.name}:
-                                            </span>
-                                            <span>{stat.base_stat}</span>
-                                            <span>barrinha</span>
-                                        </li>
-                                    );
-                                } else if (stat.name === 'special-attack') {
-                                    return (
-                                        <li
-                                            key={stat.name}
-                                            className="border-t border-gray-500 py-3"
-                                        >
-                                            <span className="text-gray-500 text-right">
-                                                Sp. Atk:
-                                            </span>
-                                            <span>{stat.base_stat}</span>
-                                            <span className="min-w-[50%]">
-                                                barrinha
-                                            </span>
-                                        </li>
-                                    );
-                                } else if (stat.name === 'special-defense') {
-                                    return (
-                                        <li
-                                            key={stat.name}
-                                            className="border-t border-gray-500 py-3"
-                                        >
-                                            <span className="text-gray-500 text-right">
-                                                Sp. Def:
-                                            </span>
-                                            <span>{stat.base_stat}</span>
-                                            <span className="min-w-[50%]">
-                                                barrinha
-                                            </span>
-                                        </li>
-                                    );
-                                } else {
-                                    return (
-                                        <li
-                                            key={stat.name}
-                                            className="border-t border-gray-500 py-3"
-                                        >
-                                            <span className="capitalize text-gray-500 text-right">
-                                                {stat.name}:
-                                            </span>
-                                            <span>{stat.base_stat}</span>
-                                            <span>barrinha</span>
-                                        </li>
-                                    );
-                                }
-                            })}
+                            {pokemonData.stats.map((stat) => (
+                                <StatContantainer
+                                    key={stat.name}
+                                    name={stat.name}
+                                    value={stat.base_stat}
+                                />
+                            ))}
+                            <li className="flex gap-3 py-3 border-y border-gray-500/20">
+                                <div className="text-gray-500 text-right flex-[0_0_25%] whitespace-nowrap">
+                                    Total
+                                </div>
+                                <div className="flex-[0_0_10%] text-right font-black">
+                                    {totalStat}
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col justify-between flex-1">
                     <div>
                         <p className="text-base text-white font-bold">
                             #{pokemonData.id}
@@ -182,7 +142,7 @@ function PokemonDetails({ pokemon }) {
                             })}
                         </div>
                     </div>
-                    <div className="bg-white rounded-xl p-8 flex-1 mt-12">
+                    <div className="bg-white rounded-xl p-8 flex-1 mt-12 w-1/2">
                         <h3 className={`text-black font-extrabold text-2xl`}>
                             Moves
                         </h3>
@@ -190,7 +150,7 @@ function PokemonDetails({ pokemon }) {
                             {pokemonData.moves.map((move) => (
                                 <li
                                     key={move}
-                                    className={`${montserrant.className} bg-[#ececec] mt-4 rounded-xl border-dashed border-black/20 border p-3 capitalize font-normal text-sm text-black`}
+                                    className={`${montserrant.className} bg-[#ececec] mt-4 rounded-xl border-dashed border-black/20 border p-3 capitalize font-normal text-sm text-black w-fit`}
                                 >
                                     {move.replace(/[^a-zA-Z ]/g, ' ')}
                                 </li>
