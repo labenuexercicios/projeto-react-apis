@@ -3,6 +3,7 @@ import Title from '@/components/Title';
 import { BASE_URL, limit } from '@/constants/api';
 import useGlobalConext from '@/hook/useGlobalContext';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export const getStaticProps = async () => {
     const res = await axios.get(`${BASE_URL}/pokemon?limit=${limit}`);
@@ -30,22 +31,20 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ pokemonDataList }) {
-    const { setPageFlow } = useGlobalConext();
-    setPageFlow(1);
+    const { setPageFlow, pokedex } = useGlobalConext();
+    useEffect(() => {
+        setPageFlow(1);
+    }, []);
 
     return (
         <div className="py-16 px-10 max-w-screen-2xl mx-auto">
             <Title text="Todos Pokémon" />
             <div className="grid grid-cols-2 grid-flow-row gap-x-4 gap-y-16 xl:grid-cols-3">
-                {pokemonDataList.map((pokemon) => (
-                    <PokemonCard
-                        key={pokemon.name}
-                        name={pokemon.name}
-                        id={pokemon.id}
-                        types={pokemon.types}
-                        imageSrc={pokemon.sprites.official_artwork}
-                    />
-                ))}
+                {pokemonDataList
+                    .filter((pokemon) => !pokedex.includes(pokemon))
+                    .map((pokemon) => (
+                        <PokemonCard key={pokemon.name} pokemon={pokemon} />
+                    ))}
             </div>
         </div>
     );

@@ -11,7 +11,8 @@ const poppins = Poppins({
 });
 
 function Header() {
-    const { pageFlow } = useGlobalConext();
+    const { pageFlow, isOnPokedex } = useGlobalConext();
+
     return (
         <header
             className={`grid grid-cols-3 items-center px-20 py-5 bg-white ${poppins.variable} font-sans text-black`}
@@ -28,11 +29,9 @@ function Header() {
                     </Link>
                 )}
             </div>
-            <div className="justify-self-center">
-                <Link href={'/'}>
-                    <Image src={logo} alt="logo" />
-                </Link>
-            </div>
+            <Link className="justify-self-center" href={'/'}>
+                <Image src={logo} alt="logo" />
+            </Link>
             <div className="justify-self-end">
                 {pageFlow === 1 ? (
                     <Link href={'/pokedex'}>
@@ -41,11 +40,16 @@ function Header() {
                         </div>
                     </Link>
                 ) : (
-                    pageFlow === 3 && (
+                    pageFlow === 3 &&
+                    (!isOnPokedex ? (
+                        <button className="bg-button-blue px-20 py-5 rounded-md text-white text-2xl">
+                            Capturar
+                        </button>
+                    ) : (
                         <button className="bg-button-red px-20 py-5 rounded-md text-white text-2xl">
                             Excluir da Pokédex
                         </button>
-                    )
+                    ))
                 )}
             </div>
         </header>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
 import { getColorVariant } from '@/constants/typeColorVariants';
+import useGlobalConext from '@/hook/useGlobalContext';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -13,7 +14,16 @@ const poppins = Poppins({
     weight: ['400', '700'],
 });
 
-function PokemonCard({ name, id, types, imageSrc }) {
+function PokemonCard({ pokemon }) {
+    const { pageFlow, pokedex, setPokedex } = useGlobalConext();
+
+    const {
+        name,
+        id,
+        types,
+        sprites: { official_artwork },
+    } = pokemon;
+
     return (
         <div
             className={`w-full ${getColorVariant(
@@ -40,9 +50,9 @@ function PokemonCard({ name, id, types, imageSrc }) {
                 </div>
                 <div className="absolute right-4 -top-16">
                     <Image
-                        loader={() => imageSrc}
+                        loader={() => official_artwork}
                         unoptimized
-                        src={imageSrc}
+                        src={official_artwork}
                         width={180}
                         height={180}
                         alt={name}
@@ -57,11 +67,27 @@ function PokemonCard({ name, id, types, imageSrc }) {
                         Detalhes
                     </span>
                 </Link>
-                <button
-                    className={`bg-white px-10 py-2 text-black ${poppins.className} font-sans font-normal rounded-xl`}
-                >
-                    Capturar!
-                </button>
+                {pageFlow === 1 ? (
+                    <button
+                        className={`bg-white px-10 py-2 text-black ${poppins.className} font-sans font-normal rounded-xl`}
+                        onClick={() => setPokedex([...pokedex, pokemon])}
+                    >
+                        Capturar!
+                    </button>
+                ) : (
+                    pageFlow === 2 && (
+                        <button
+                            className={`bg-button-red px-10 py-2 text-white ${poppins.className} font-sans font-normal rounded-xl`}
+                            onClick={() =>
+                                setPokedex((prev) =>
+                                    prev.filter((item) => item !== pokemon)
+                                )
+                            }
+                        >
+                            Excluir
+                        </button>
+                    )
+                )}
             </div>
         </div>
     );

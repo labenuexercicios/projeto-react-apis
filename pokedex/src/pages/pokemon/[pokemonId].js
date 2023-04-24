@@ -2,12 +2,11 @@ import Title from '@/components/Title';
 import { getColorVariant } from '@/constants/typeColorVariants';
 import { BASE_URL, limit } from '@/constants/api';
 import axios from 'axios';
-
 import { Montserrat, Inter } from 'next/font/google';
 import Image from 'next/image';
 import useGlobalConext from '@/hook/useGlobalContext';
 import StatContantainer from '@/components/StatContantainer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const montserrant = Montserrat({
     subsets: ['latin'],
@@ -64,15 +63,23 @@ export const getStaticProps = async (context) => {
 };
 
 function PokemonDetails({ pokemon }) {
-    const { setPageFlow } = useGlobalConext();
-    setPageFlow(3);
+    const { setPageFlow, pokedex, setIsOnPokedex } = useGlobalConext();
+    useEffect(() => {
+        setPageFlow(3);
+    }, []);
     const pokemonData = JSON.parse(pokemon);
+
     let totalStat = 0;
     pokemonData.stats.forEach((stat) => (totalStat += stat.base_stat));
-    console.log(totalStat);
+    useState(() => {
+        pokedex?.some((pokemon) => pokemon.id === pokemonData.id)
+            ? setIsOnPokedex(true)
+            : setIsOnPokedex(false);
+    }, []);
+
     return (
         <div
-            className={`py-16 px-10 min-h-screen max-w-screen-2xl mx-auto bg-pokeball_full bg-no-repeat bg-cover bg-center ${inter.className} overflow-hidden`}
+            className={`py-16 px-10 max-w-screen-2xl mx-auto bg-pokeball_full bg-no-repeat bg-cover bg-center ${inter.className} overflow-hidden`}
         >
             <Title text="Detalhes" />
             <div
