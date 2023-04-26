@@ -5,7 +5,7 @@
 <p align="center">
     Um site com pokemons para você capturar na sua pokedex.
     <br />
-    <a href="https://projeto-react-apis-chi.vercel.app/"><strong>Explore o documento »</strong></a>
+    <a href="pokedex-do-lucas.surge.sh"><strong>Explore o documento »</strong></a>
     <br />
   </p>
 </div>
@@ -100,8 +100,8 @@ O objetivo deste projeto é criar um site com três páginas usando a [PokeApi -
 <!-- DEPLOYMENT -->
 ### **Deployment**
 
-Versel:
-https://projeto-react-apis-chi.vercel.app/
+Surge:
+pokedex-do-lucas.surge.sh
 
 <!-- GETTING STARTED -->
 ## Getting Started 
@@ -120,7 +120,7 @@ Para ter uma copia local, siga os passos abaixo:
 
 1. Clone do repositório
    ```sh
-   git clone https://github.com/marinajaudy/projeto-frontendreact.git
+   git clone https://github.com/lucasbreiafullstack/projeto-react-apis
    ```
 2. Install NPM packages
    ```sh
@@ -151,12 +151,12 @@ Site onde você pode capturar seus pokemons para sua própria Pokedex. Além dis
 <!-- CONTACT -->
 ## Contato
 
-Marina Jaudy  - marinarrjaudy@hotmail.com
+Lucas Breia  - lucas.devfullstack021@gmail.com
 
-Project Link: [https://github.com/marinajaudy/projeto-react-apis.git](https://github.com/marinajaudy/projeto-react-apis.git)
+Project Link: [https://github.com/lucasbreiafullstack/projeto-react-apis](https://github.com/lucasbreiafullstack/projeto-react-apis)
 <br/>
 
-[![Linkedin](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/andrejaques/)](https://www.linkedin.com/in/marina-jaudy)
+[![Linkedin](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/andrejaques/)](https://www.linkedin.com/in/lucas-breia/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
