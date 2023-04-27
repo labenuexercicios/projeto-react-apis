@@ -3,7 +3,7 @@ import pokebg from "../../assets/pokebg.png"
 
 export const DetailStyle = styled.div`
 
-    margin-top: 5vh;
+    padding-top: 12vh;
 
     .detailcard{
 
@@ -202,7 +202,8 @@ export const DetailStyle = styled.div`
     }
 
     @media only screen and (min-width : 320px) and (max-width : 480px) {
-        margin-top: 7vh;
+        
+        padding-top: 15vh;
 
         .detailcard{
             padding-top: 22vh;
@@ -292,7 +293,7 @@ export const DetailStyle = styled.div`
     position: absolute;
     width: 35vw;
     height: 18vh;
-    top: 6vh;
+    top: 10vh;
     left: 55vw;
 }
 
