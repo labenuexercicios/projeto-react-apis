@@ -16,6 +16,7 @@ export default function Router (props) {
             element={<DetailsPage 
             details={details}
             setDetails={setDetails}
+            setPokedex={setPokedex}
             pokedex={pokedex}
             />}/>
         </Routes>

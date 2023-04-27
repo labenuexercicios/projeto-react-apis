@@ -11,7 +11,6 @@ export const DetailCard = (poke) => {
     let colorType2 = "";
     let typeIcon1 = "";
     let typeIcon2 = "";
-    let statColor = "";
     let stat1 = "";
     let stat2 = "";
     let stat3 = "";
@@ -28,23 +27,6 @@ export const DetailCard = (poke) => {
         stat5 = `${pokemon.stats[4].base_stat}%`
         stat6 = `${pokemon.stats[5].base_stat}%`
 
-        for (let i = 0; i < pokemon.stats.length; i++) {
-            if (pokemon.stats[i].base_stat < 50) {
-                statColor = "#FF1800"
-            } else if (pokemon.stats[i].base_stat > 50 && pokemon.stats[i].base_stat < 90) {
-                statColor = "#FF9800"
-            } else if (pokemon.stats[i].base_stat > 90 && pokemon.stats[i].base_stat < 100) {
-                statColor = "#FFCC00"
-            } else if (pokemon.stats[i].base_stat > 100 && pokemon.stats[i].base_stat < 110) {
-                statColor = "#DCFF00"
-            } else if (pokemon.stats[i].base_stat > 110 && pokemon.stats[i].base_stat < 120) {
-                statColor = "#B4FF00"
-            } else if (pokemon.stats[i].base_stat > 120 && pokemon.stats[i].base_stat < 140) {
-                statColor = "#80FF00"
-            } else if (pokemon.stats[i].base_stat > 120) {
-                statColor = "#02FF6A"
-            }}
-
         for (let i = 0; i < CardColors.length; i++) {
             if (pokemon.types[0].type.name === CardColors[i].type) {
                 colorCard = CardColors[i].color1
@@ -58,10 +40,10 @@ export const DetailCard = (poke) => {
 
         return (
             <DetailStyle
+                key={pokemon.id}
                 colorCard={colorCard}
                 colorType1={colorType1}
                 colorType2={colorType2}
-                statColor={statColor}
                 stat1={stat1}
                 stat2={stat2}
                 stat3={stat3}
@@ -143,7 +125,6 @@ export const DetailCard = (poke) => {
                                 <li>{firstLetterUppercase(pokemon.moves[1].move.name)}</li>
                                 <li>{firstLetterUppercase(pokemon.moves[2].move.name)}</li>
                                 <li>{firstLetterUppercase(pokemon.moves[3].move.name)}</li>
-                                <li>{firstLetterUppercase(pokemon.moves[4].move.name)}</li>
                             </ul>
                         </div>
                     </div>

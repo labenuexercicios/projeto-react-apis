@@ -6,8 +6,14 @@ import { PageStyle } from "../MainStyle";
 
 export const HomePage = (props) => {
 
-    const [pokemons, pokedex, setDex, details, setDetails, path, setPath] = props.states  
+    const [pokemons, pokedex, setDex, details, setDetails, path, setPath] = props.states
 
+
+    console.log(pokedex)
+    useEffect(() => {
+            const pokedexString = JSON.stringify(pokedex)
+            localStorage.setItem("pokedex", pokedexString);
+    }, [pokedex])
 
     return (
         <>
@@ -16,8 +22,8 @@ export const HomePage = (props) => {
                 <p id="top">Todos os pokemons</p>
                 <CardsContainer>
                     <PokeCard
-                    states={props.states}
-                    array={pokemons}/>
+                        states={props.states}
+                        array={pokemons} />
                 </CardsContainer>
             </PageStyle>
         </>

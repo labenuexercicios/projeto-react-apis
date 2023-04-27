@@ -23,7 +23,7 @@ export const DexHeader = () => {
 
     return (
         <HeaderStyle>
-        <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
+        <img id="dex-logo" src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
         <BackButton onClick={() => goToHome(navigate)}> <IoIosArrowBack/>Todos os pokémons</BackButton>
         </HeaderStyle>
     )
@@ -33,24 +33,21 @@ export const DexHeader = () => {
 export const DetailsHeader = (props) => {
  
     const navigate = useNavigate()
-    
+    const foundElement = props.pokedex.find((item) => item.name === props.details.name);
+
     const PageButton = () => {
-        for(let i = 0; i < props.pokedex.length; i++){
-            if(props.details.name === props.pokedex[i].name) {
+            if(foundElement) {
                 return(
                     <>
-                    <DexButton onClick={() => removeMon()}>Excluir da Pokedex</DexButton>
-                    <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
+                    <DexButton onClick={() => removeMon(props.pokedex, props.details, props.setPokedex)}>Excluir da Pokedex</DexButton>
                     </>
                 )
             } else {
                 return (
                 <>
                 <HomeButton onClick={() => goToPokedex(navigate)}>Pokedex</HomeButton>
-                <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
                 </>
             )
-        }
         }
     }
 
@@ -58,6 +55,7 @@ export const DetailsHeader = (props) => {
         <HeaderStyle>
         <PageButton/>
         <BackButton onClick={() => goToHome(navigate)}> <IoIosArrowBack/>Todos os pokémons</BackButton>
+        <img id="dex-logo" src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png" alt="pokeLogo"/>
         </HeaderStyle>
     )
 }

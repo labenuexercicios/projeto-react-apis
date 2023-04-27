@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { PokemonCardStyle } from "./styledCard";
 import { CardColors } from "../../assets/Colors"
 import { firstLetterUppercase, catchMon, removeMon, PokeTypes, sendDetails } from "../../assets/Functions";
@@ -15,6 +15,7 @@ export const PokeCard = (props) => {
     let colorType2 = "";
     let typeIcon1 = "";
     let typeIcon2 = ""
+
 
     const PokeButton = (props) => {
 
@@ -50,26 +51,30 @@ export const PokeCard = (props) => {
 
             return (
                 <PokemonCardStyle
+                    key={pokemon.id}
                     colorCard={colorCard}
                     colorType1={colorType1}
                     colorType2={colorType2}>
 
                     <div className="pokemoncard">
                     <div className="main-container">
-                         <div>
+                    <div>
                             <p id="pokeID">#{pokemon.id < 99 ? "0" : ""}{pokemon.id}</p>
                             <p id="name">{firstLetterUppercase(pokemon.name)}</p>
                             {PokeTypes(pokemon, typeIcon1, typeIcon2)}
+                            
                             </div>
-                            <img key={pokemon.id} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} id="poke-img" alt={pokemon.name} />
-                          
-                        </div>
-
-                        <div className="sub-container">
                             <span id="details" onClick={() => sendDetails(pokemon, setDetails, navigate)}>Detalhes</span>
+                           
+                        </div>
+                        
+                        <div className="sub-container">
+                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
                             <PokeButton
                             pokemon={pokemon}/>
                         </div>
+                       
+                          
                     </div>
                 </PokemonCardStyle>
             )})}

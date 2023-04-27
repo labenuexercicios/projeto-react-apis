@@ -7,9 +7,7 @@ export const DetailsPage = (props) => {
  
     const pokeDetails = localStorage.getItem("Detail");
     const newDetails = [JSON.parse(pokeDetails)];
-    console.log(newDetails)   
 
-     
     return (
         <>
         <DetailsHeader

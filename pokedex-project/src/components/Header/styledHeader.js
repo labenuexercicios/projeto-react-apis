@@ -24,6 +24,18 @@ export const HeaderStyle = styled.header`
         position: absolute;
         left: 40vw;
     }
+
+    @media only screen and (min-width : 320px) and (max-width : 480px) {
+        height: 10vh;
+        img{
+            width: 40%;
+            left: 23vw;
+        }
+        #dex-logo{
+            left: 26vw;
+        }
+        button{left: 33vw;}
+    }
 `
 
 export const HomeButton = styled.button`
@@ -34,6 +46,10 @@ export const HomeButton = styled.button`
         :hover{
             background-color: #1093F3;
         }
+        @media only screen and (min-width : 320px) and (max-width : 480px) {
+            padding: .5rem 1rem;
+            font-size: 1rem;
+        }
 `
 
 export const DexButton = styled.button`
@@ -43,6 +59,11 @@ export const DexButton = styled.button`
         padding: 1.2rem 3.5rem;
         font-size: 1rem;
         font-weight: 400;
+        @media only screen and (min-width : 320px) and (max-width : 480px) {
+            font-size: 14px;
+            width: 28vw;
+            padding: .5rem .5rem;
+    }
 `
 
 export const BackButton = styled.span`
@@ -57,5 +78,10 @@ export const BackButton = styled.span`
         cursor: pointer;
         :hover{
             text-decoration: underline;
+        }
+        @media only screen and (min-width : 320px) and (max-width : 480px) {
+            font-size: .8rem;
+            left: 3vw;
+            width: 20vw;
         }
 `

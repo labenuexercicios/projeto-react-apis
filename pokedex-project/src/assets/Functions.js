@@ -4,9 +4,6 @@ import { goToDetails } from "../routes/coordinator";
 export const catchMon = (pokedex, pokemon, setState) => {
 
     setState([...pokedex, pokemon])
-    const pokedexString = JSON.stringify(pokedex)
-    localStorage.setItem("pokedex", pokedexString);
-
     for (let i = 0; i < pokedex.length; i++) {
         if (pokedex[i].name === pokemon.name) {
             setState([...pokedex])
