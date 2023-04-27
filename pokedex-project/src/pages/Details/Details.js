@@ -4,16 +4,13 @@ import { DetailsHeader } from '../../components/Header/Headers';
 import { PageStyle } from "../MainStyle";
 
 export const DetailsPage = (props) => {
- 
+
     const pokeDetails = localStorage.getItem("Detail");
     const newDetails = [JSON.parse(pokeDetails)];
 
     return (
         <>
-        <DetailsHeader
-        details={props.details}
-        pokedex={props.pokedex}
-        setPokedex={props.setPokedex}/>
+        <DetailsHeader states={props.states}/>
         <PageStyle>
         <div className ="details-page">
            <span id="title">Detalhes</span>

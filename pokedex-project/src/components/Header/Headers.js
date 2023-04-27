@@ -31,15 +31,17 @@ export const DexHeader = () => {
 }
 
 export const DetailsHeader = (props) => {
- 
+    
+    const [pokemons, pokedex, details, setPokedex, setDetails] = props.states
+
     const navigate = useNavigate()
-    const foundElement = props.pokedex.find((item) => item.name === props.details.name);
+    const foundElement = pokedex.find((item) => item.name === details.name);
 
     const PageButton = () => {
             if(foundElement) {
                 return(
                     <>
-                    <DexButton onClick={() => removeMon(props.pokedex, props.details, props.setPokedex)}>Excluir da Pokedex</DexButton>
+                    <DexButton onClick={() => removeMon(pokedex, details, setPokedex)}>Excluir da Pokedex</DexButton>
                     </>
                 )
             } else {

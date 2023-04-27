@@ -15,11 +15,11 @@ export const PageStyle = styled.section`
         font-size: 2.5rem;
         color: white;
         font-weight: 700;
-        position: relative;
-        top : 3vh;
+        position: absolute;
+        top: 17vh;
     }
 
-    #top{right: 31vw;}
+    #top{left: 7vw;}
 
     .details-page{
         position: relative;
@@ -33,10 +33,10 @@ export const PageStyle = styled.section`
     @media only screen and (min-width : 320px) and (max-width : 480px) {
         #title, #top{
         font-size: 1.5rem;
-        top : 5vh;
+        top : 12vh;
     }
 
-    #top{right: 12vw;}
+    #top{left: 5vw;}
     }
 `
 
@@ -45,11 +45,11 @@ export const CardsContainer = styled.div`
         min-width: 85vw;
         grid-template-columns: repeat(3, 1fr);
         gap: 4vw;
-        padding: 10vh 0 10vh 0;
+        padding: 13vh 0 10vh 0;
 
         @media only screen and (min-width : 320px) and (max-width : 480px) {
             display: flex;
             flex-direction: column;
-            padding: 5vh 0 5vh 0;
+            padding: 9vh 0 5vh 0;
     }
 `

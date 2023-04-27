@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { PokemonCardStyle } from "./styledCard";
 import { CardColors } from "../../assets/Colors"
 import { firstLetterUppercase, catchMon, removeMon, PokeTypes, sendDetails } from "../../assets/Functions";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const PokeCard = (props) => {
 
-    const [pokemons, pokedex, setDex, details, setDetails, path, setPath] = props.states  
+    const [pokemons, pokedex, details, setDex, setDetails] = props.states  
 
     const navigate = useNavigate()
 

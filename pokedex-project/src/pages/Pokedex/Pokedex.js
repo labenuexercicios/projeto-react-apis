@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 export const Pokedex = (props) => {
 
     const navigate= useNavigate()
-    const [pokemons, pokedex, setPokedex, details, setDetails] = props.states
+    const [pokemons, pokedex] = props.states
 
+    
     return (
         <>
         <DexHeader/>
