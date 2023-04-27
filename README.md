@@ -1,61 +1,37 @@
-# **Projeto React e API's**
-O Projeto React e APIs é um site de pokémons que possui três páginas: Home, Pokedex e Detalhes. O projeto está subdivido em temas de acordo com os conteúdos que estudado durante o Módulo 2 - Frontend.
+<img src="https://user-images.githubusercontent.com/29473781/180619084-a56960ab-7efa-4e34-9d33-4e3e581d62ff.png"/>
 
-Este projeto terá como fonte de dados para a sua criação a [Poke Api](https://pokeapi.co/ "Poke Api"), uma Api pública, muito usada para aplicações focadas em aprendizado de programação e também usada em cases de processos seletivos.
+# **Introdução**
 
-Os conteúdos principais  a serem estudados são:
+O seguinte projeto apresenta um modelo de pokedéx como uma "vitrine" digital contendo informações sobre uma determinada quantidade de pokémons, criaturas parte da série de jogos e animes japneses do mesmo nome.
 
-- Integração de APIs
-- React Router
-- Design Systems
-- Estado Global
+A [Poke Api](https://pokeapi.co/ "Poke Api") fora utilizada como fonte de dados para a criação deste projeto. 
 
-## **Enunciado**
-É objetivo deste projeto criar um site com três páginas usando a Poke Api com as seguintes ferramentas:
+Para visualizar o projeto, acesse o link de deploy na plataforma "Surge": misty-blue.surge.sh
 
-- React
-- React Router
-- Styled-components
-- React Context
-- Axios
+# **Composição**
 
-### **Requisitos**
-- **Gerais:**
-	- [ ] O site deve ter 3 páginas: Home, Pokedex e Detalhes;
-	- [ ] Projeto deve seguir o [design](https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?t=AEi3zEmWmarf1FbP-0 "design") proposto;
-	- [ ] O fluxo de trocas de páginas devem ser semelhante ao [fluxograma](https://www.figma.com/proto/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?page-id=0%3A1&node-id=2%3A2&viewport=358%2C197%2C0.27&scaling=scale-down&starting-point-node-id=2%3A2 "fluxograma");
-- **Página Home:**
-	- [ ]  Mostrar uma lista de Pokemons, contendo ao menos 20 Pokemons;
-	- [ ] Cada Pokemon será representado por um Card;
-	- [ ] Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
-	- [ ] Header dessa página terá um botão para acessar a página da Pokedex
-- **Página Pokédex**
-	- [ ] Renderizar a lista de pokémons adicionados na pokedex;
-	- [ ] Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
-	- [ ] Header deve ter um botão para voltar para a Home
-	- [ ] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
-- **Página de Detalhes**
-	- [ ] Mostrar os detalhes do Pokemon selecionado, com informações descritas
-	- [ ] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
-- [ ] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
+Elaborada inteiramente em React JS, esta pokedex contém os vinte e quatro primeiros pokémons e conta com três páginas:
 
+**Home**: Página principal do projeto, faz a renderização inicial de um card para cada pokémon requisitado, sendo um total de vinte e quatro cards. Estes cards contém a imagem do pokémon e informações sobre o nome, id e tipo(s) que ele possui. Além disso, existem dois botões na parte inferior do card: um link que redireciona o usuário para a página de detalhes respectiva do pokémon e um que permite que o pokémon seja "capturado" ou excluído da pokedéx no localStorage.
+<br>
+<img src="https://i.ibb.co/3YGys1X/image.png"/>
+<br>
+**Pokedéx**: Semelhante a página home, porém apenas pokémons "capturados" serão renderizados, pois ela usará as informações do item "pokedex" salvo no localStorage para aplicaro método de renderização dos cards. O card conta apenas com o botão de excluir da pokedex, pois uma vez removido, ele se torna incapaz de reaparecer na página até que seja capturado novamente.
+<br>
+<br>
+**Detalhes**: Na página final, é exibida uma seção contendo mais informações relevantes sobre o pokémon selecionado. Aqui, é possível ver os sprites (imagens de como o pokémon é exibido dentro do jogo "Pokémon Black"), seus status de batalha e quatro movimentos que ele é capaz de utilizar. Sempre que o link "detalhes" for clicado em um card, uma nova página será criada com o mesmo caminho, mas contendo o pokémon respectivo ao card. Caso o pokémon já esteja inserido na pokedéx, haverá um botão no header dando a opção de removê-lo. Caso contrário, um botão redirecionando o usuário a sua pokedex será exibido no lugar.
+<br>
+<br>
+O projeto conta com uma versão para desktops e uma mobile.
 
-### Instruções para preparar o seu repositório
+### Página home
 
-- Faça o fork desse repositório e realize o clone da sua cópia `seu-nome-de-usuario/projeto-lista-intro-javascript`.
-   <details>
-   <summary>Quer uma dica?</summary>
-   <img src="https://firebasestorage.googleapis.com/v0/b/assets-conteudo.appspot.com/o/gerais%2Ffork.png?alt=media&token=7030e997-246a-41fe-a75f-2a2ced61e54d" alt="Como adicionar o projeto no repositório"/>
-   </details>
-- Crie os arquivos do projeto dentro deste repo;
-- **Lembre-se de abrir os PRs para seu próprio repositório.**
-- Para isso, você precisará fazer o projeto utilizando **branches**. Não faça as alterações direto na branch ```main```!
+<img src="https://i.ibb.co/MpPx95T/image.png"/>
 
-### Instruções de entrega
+### Página Pokedex
 
-![image](https://user-images.githubusercontent.com/71137294/227538428-52271ed2-df78-4500-b286-25f03aa7bf2e.png)
-1.  [Crie o surge](https://labenu.notion.site/Deploy-de-front-React-com-Surge-f902a03ec1d247dc9af9aee5a1469d96) do seu projeto e pegue o link da publicação(deploy);
-2.  Adicione o link do surge no readme do seu projeto;
-3.  Tire print das páginas do seu projeto e cole no readme;
-4.  Abra um novo Pull Request (PR) com a frase **PR para correção**. Caso não saiba como fazê-lo, assista a esse [vídeo](https://www.canva.com/design/DAFY4nS5W2c/t92uFMR61YtmA7bCwj2S1Q/watch).
-5.  Envie o link do seu PR e do surge no [formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
+<img src="https://i.ibb.co/6BFwN5J/image.png"/>
+
+##Página Detalhes
+
+<img src="https://i.ibb.co/KsBrrx7/image.png"/>
