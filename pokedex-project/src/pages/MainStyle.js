@@ -16,9 +16,10 @@ export const PageStyle = styled.section`
         color: white;
         font-weight: 700;
         position: absolute;
-        top: 17vh;
     }
 
+    #title{top: 4.5vh;}
+    #top{top: 17vh;}
     #top{left: 7vw;}
 
     .details-page{
@@ -31,12 +32,12 @@ export const PageStyle = styled.section`
     }
 
     @media only screen and (min-width : 320px) and (max-width : 480px) {
-        #title, #top{
-        font-size: 1.5rem;
-        top : 12vh;
-    }
+        #title, #top{font-size: 1.5rem;}
 
-    #top{left: 5vw;}
+        #title{top: 8vh;}
+        #top{
+            top : 12vh;
+            left: 5vw;}
     }
 `
 
