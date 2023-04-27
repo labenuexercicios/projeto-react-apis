@@ -32,6 +32,6 @@ O projeto conta com uma versão para desktops e uma mobile.
 
 <img src="https://i.ibb.co/6BFwN5J/image.png"/>
 
-##Página Detalhes
+### Página Detalhes
 
 <img src="https://i.ibb.co/KsBrrx7/image.png"/>
