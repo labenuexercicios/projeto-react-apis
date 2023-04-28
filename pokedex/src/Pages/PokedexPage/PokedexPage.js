@@ -4,7 +4,9 @@ import PokemonCard from "C:/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-
 import pokemons from "C:/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/pokemon/pokemon.json";
 import { getColors } from "C:/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/utils/ReturnCardColor.js";
 
-export default function PokedexPage (){
+export default function PokedexPage (props){
+   console.log(props)
+   const {pokelist} = props
    return (
    <div>
         
