@@ -71,16 +71,14 @@ function PokemonDetails({ pokemon }) {
         if (storedPokedex) {
             setPokedex(storedPokedex);
         }
+        storedPokedex?.some((pokemon) => pokemon.id === pokemonData.id)
+            ? setIsOnPokedex(true)
+            : setIsOnPokedex(false);
     }, []);
     const pokemonData = JSON.parse(pokemon);
 
     let totalStat = 0;
     pokemonData.stats.forEach((stat) => (totalStat += stat.base_stat));
-    useState(() => {
-        pokedex?.some((pokemon) => pokemon.id === pokemonData.id)
-            ? setIsOnPokedex(true)
-            : setIsOnPokedex(false);
-    }, []);
 
     return (
         <div
