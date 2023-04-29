@@ -5,7 +5,7 @@ const GlobalProvider = ({ children }) => {
     const [pageFlow, setPageFlow] = useState(1);
     const [pokedex, setPokedex] = useState([]);
     const [isOnPokedex, setIsOnPokedex] = useState(false);
-
+    const [currentPokemon, setCurrentPokemon] = useState({});
 
     return (
         <GlobalContext.Provider
@@ -16,6 +16,8 @@ const GlobalProvider = ({ children }) => {
                 setPokedex,
                 isOnPokedex,
                 setIsOnPokedex,
+                currentPokemon,
+                setCurrentPokemon,
             }}
         >
             {children}

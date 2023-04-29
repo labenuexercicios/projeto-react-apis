@@ -11,7 +11,14 @@ const poppins = Poppins({
 });
 
 function Header() {
-    const { pageFlow, isOnPokedex } = useGlobalContext();
+    const {
+        pageFlow,
+        isOnPokedex,
+        setIsOnPokedex,
+        pokedex,
+        setPokedex,
+        currentPokemon,
+    } = useGlobalContext();
 
     return (
         <header
@@ -42,11 +49,30 @@ function Header() {
                 ) : (
                     pageFlow === 3 &&
                     (!isOnPokedex ? (
-                        <button className="bg-button-blue px-20 py-5 rounded-md text-white text-2xl">
+                        <button
+                            className="bg-button-blue px-20 py-5 rounded-md text-white text-2xl"
+                            onClick={() => {
+                                setIsOnPokedex(true);
+                                setPokedex([...pokedex, currentPokemon]);
+                            }}
+                        >
                             Capturar
                         </button>
                     ) : (
-                        <button className="bg-button-red px-20 py-5 rounded-md text-white text-2xl">
+                        <button
+                            className="bg-button-red px-20 py-5 rounded-md text-white text-2xl"
+                            onClick={() => {
+                                setIsOnPokedex(false);
+                                setPokedex((prev) =>
+                                    prev.filter(
+                                        (item) =>
+                                            !pokedex.some(
+                                                (p) => p.name == item.name
+                                            )
+                                    )
+                                );
+                            }}
+                        >
                             Excluir da Pokédex
                         </button>
                     ))

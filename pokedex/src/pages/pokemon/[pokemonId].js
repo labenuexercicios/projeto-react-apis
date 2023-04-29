@@ -63,10 +63,18 @@ export const getStaticProps = async (context) => {
 };
 
 function PokemonDetails({ pokemon }) {
-    const { setPageFlow, pokedex, setPokedex, setIsOnPokedex } =
-        useGlobalContext();
+    const {
+        setPageFlow,
+        pokedex,
+        setPokedex,
+        setIsOnPokedex,
+        setCurrentPokemon,
+    } = useGlobalContext();
+    const pokemonData = JSON.parse(pokemon);
+
     useEffect(() => {
         setPageFlow(3);
+        setCurrentPokemon(pokemonData);
         const storedPokedex = JSON.parse(localStorage.getItem('pokedex'));
         if (storedPokedex) {
             setPokedex(storedPokedex);
@@ -75,7 +83,12 @@ function PokemonDetails({ pokemon }) {
             ? setIsOnPokedex(true)
             : setIsOnPokedex(false);
     }, []);
-    const pokemonData = JSON.parse(pokemon);
+
+    useEffect(() => {
+        pokedex.length > 0
+            ? localStorage.setItem('pokedex', JSON.stringify(pokedex))
+            : localStorage.removeItem('pokedex');
+    }, [pokedex]);
 
     let totalStat = 0;
     pokemonData.stats.forEach((stat) => (totalStat += stat.base_stat));
