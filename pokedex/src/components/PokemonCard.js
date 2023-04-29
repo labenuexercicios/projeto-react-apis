@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
 import { getColorVariant } from '@/constants/typeColorVariants';
-import useGlobalConext from '@/hook/useGlobalContext';
+import useGlobalContext from '@/hook/useGlobalContext';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -15,7 +15,7 @@ const poppins = Poppins({
 });
 
 function PokemonCard({ pokemon }) {
-    const { pageFlow, pokedex, setPokedex } = useGlobalConext();
+    const { pageFlow, pokedex, setPokedex } = useGlobalContext();
 
     const {
         name,

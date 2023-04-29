@@ -4,7 +4,7 @@ import { BASE_URL, limit } from '@/constants/api';
 import axios from 'axios';
 import { Montserrat, Inter } from 'next/font/google';
 import Image from 'next/image';
-import useGlobalConext from '@/hook/useGlobalContext';
+import useGlobalContext from '@/hook/useGlobalContext';
 import StatContantainer from '@/components/StatContantainer';
 import { useEffect, useState } from 'react';
 
@@ -63,9 +63,14 @@ export const getStaticProps = async (context) => {
 };
 
 function PokemonDetails({ pokemon }) {
-    const { setPageFlow, pokedex, setIsOnPokedex } = useGlobalConext();
+    const { setPageFlow, pokedex, setPokedex, setIsOnPokedex } =
+        useGlobalContext();
     useEffect(() => {
         setPageFlow(3);
+        const storedPokedex = JSON.parse(localStorage.getItem('pokedex'));
+        if (storedPokedex) {
+            setPokedex(storedPokedex);
+        }
     }, []);
     const pokemonData = JSON.parse(pokemon);
 

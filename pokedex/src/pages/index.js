@@ -1,7 +1,7 @@
 import PokemonCard from '@/components/PokemonCard';
 import Title from '@/components/Title';
 import { BASE_URL, limit } from '@/constants/api';
-import useGlobalConext from '@/hook/useGlobalContext';
+import useGlobalContext from '@/hook/useGlobalContext';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -31,17 +31,30 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ pokemonDataList }) {
-    const { setPageFlow, pokedex } = useGlobalConext();
+    const { setPageFlow, pokedex, setPokedex } = useGlobalContext();
     useEffect(() => {
         setPageFlow(1);
+        const storedPokedex = JSON.parse(localStorage.getItem('pokedex'));
+        if (storedPokedex) {
+            setPokedex(storedPokedex);
+        }
     }, []);
+
+    useEffect(() => {
+        pokedex.length > 0
+            ? localStorage.setItem('pokedex', JSON.stringify(pokedex))
+            : localStorage.removeItem('pokedex');
+    }, [pokedex]);
 
     return (
         <div className="py-16 px-10 max-w-screen-2xl mx-auto">
             <Title text="Todos Pokémon" />
             <div className="grid grid-cols-2 grid-flow-row gap-x-4 gap-y-16 xl:grid-cols-3">
                 {pokemonDataList
-                    .filter((pokemon) => !pokedex.includes(pokemon))
+                    .filter(
+                        (pokemon) =>
+                            !pokedex.some((p) => p.name === pokemon.name)
+                    )
                     .map((pokemon) => (
                         <PokemonCard key={pokemon.name} pokemon={pokemon} />
                     ))}

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Poppins } from 'next/font/google';
 import logo from '../../public/images/logo.svg';
-import useGlobalConext from '@/hook/useGlobalContext';
+import useGlobalContext from '@/hook/useGlobalContext';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 function Header() {
-    const { pageFlow, isOnPokedex } = useGlobalConext();
+    const { pageFlow, isOnPokedex } = useGlobalContext();
 
     return (
         <header

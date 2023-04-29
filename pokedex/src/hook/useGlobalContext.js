@@ -1,7 +1,7 @@
 import { GlobalContext } from '@/context/GlobalContext';
 import { useContext } from 'react';
 
-const useGlobalConext = () => {
+const useGlobalContext = () => {
     const context = useContext(GlobalContext);
 
     if (context === undefined) {
@@ -11,4 +11,4 @@ const useGlobalConext = () => {
     return context;
 };
 
-export default useGlobalConext;
+export default useGlobalContext;
