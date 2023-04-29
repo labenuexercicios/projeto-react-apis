@@ -36,7 +36,7 @@ Os conteúdos principais  a serem estudados são:
 	- [X] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
 - **Página de Detalhes**
 	- [X] Mostrar os detalhes do Pokemon selecionado, com informações descritas
-	- [ ] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
+	- [X] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
 - [ ] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
 
 
