@@ -16,8 +16,9 @@ export const Router = () =>{
             const response = await axios.get(BASE_URL)
             setPokelist(response.data.results)
             
+            
         } catch (error) {
-            alert('Algo errado aconteceu!')
+            console.log('Algo errado aconteceu na lista de pokemons!')
             console.log(error.response)
         }
     }
@@ -41,13 +42,21 @@ export const Router = () =>{
         pokeInPokedex.name !== pokeOff.name)
         setPokedex(newPokedex)
     }
-    
+
     return(
     <BrowserRouter>
         <Routes>
-            <Route index element={<PokedexPage pokelist = {pokelist}/>}></Route>
+            <Route index element={<PokedexPage 
+                                    pokelist = {pokelist} 
+                                    pokedex={pokedex} 
+                                    addPokedex={addPokedex}/>}>
+            </Route>
             <Route path="/details" element={<PokemonDetailPage/>}></Route>
-            <Route path="/list" element={<PokemonsListPage/>}></Route>
+            <Route path="/list" element={<PokemonsListPage 
+                                    pokedex={pokedex}
+                                    offPokedex={offPokedex}/>}>
+
+            </Route>
         </Routes>
     </BrowserRouter>
     )
