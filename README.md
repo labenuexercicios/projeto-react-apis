@@ -5,12 +5,12 @@ Este projeto é uma pokedex online que permite aos usuários ver informações s
 ## Índice
 
 - <a href="#funcionalidades">Funcionalidades</a>
-- <a href="#tecnologias">Tecnologias utilizadas</a>
-- <a href="#layout">Layout web</a>
-- <a href="#rodar">Como rodar o projeto</a>
-- <a href="#creditos">Créditos</a>
+- <a href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
+- <a href="#layout-web">Layout web</a>
+- <a href="#como-rodar-o-projeto">Como rodar o projeto</a>
+- <a href="#créditos">Créditos</a>
 
-## Funcionalidades
+## <a name="#funcionalidades"></a>Funcionalidades
 
 - Mostra uma lista de pokemons, contendo imagem, tipos, nome e id
 - Mostra informações mais detalhadas de cada pokemon em uma página a parte
