@@ -44,7 +44,6 @@ export const Link = styled.a`
     
 ;
 `
-
 export const Span = styled.span`
     text-decoration: none;
 `

@@ -7,6 +7,7 @@ export function PokemonDetailPage() {
         <>
             <Header currentPage="details"/>
             <Main>
+                
             </Main>
         </>
     )
