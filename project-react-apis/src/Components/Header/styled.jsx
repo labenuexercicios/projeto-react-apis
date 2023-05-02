@@ -39,7 +39,7 @@ export const Link = styled.a`
     color: #1A1A1A;
     font-weight: 700;   
     text-decoration: underline;
-    margin-left: 7vw;
+    margin-left: 5.45vw;
     font-size: x-large;
     
 ;

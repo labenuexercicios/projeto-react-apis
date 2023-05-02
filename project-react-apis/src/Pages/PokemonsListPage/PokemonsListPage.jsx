@@ -1,8 +1,6 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { Header } from '../../Components/Header/Header'
-import { Main } from './styled'
+import { Main, Local, Text } from './styled'
 import { PokemonCard } from '../../Components/PokemonCard/PokemonCard'
 import { GlobalContext } from '../../contexts/GlobalContext'
 import { useContext } from 'react'
@@ -24,7 +22,11 @@ export function PokemonsListPage() {
     return(
         <>
             <Header currentPage="list"/>
+            <Local>
+                  <Text>Todos Pokémons</Text>
+            </Local>
             <Main>
+                
                 {filteredPokelist().map((pokemon)=>{
                   return <PokemonCard 
                           key={pokemon.url} pokemonUrl={pokemon.url} 

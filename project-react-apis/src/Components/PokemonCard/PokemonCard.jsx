@@ -42,6 +42,7 @@ export function PokemonCard({ pokemonUrl }) {
         }
     };
 
+   
     return (
         <Container style={{ backgroundColor: getColors(type) }}>
             <div>
@@ -52,7 +53,7 @@ export function PokemonCard({ pokemonUrl }) {
                         <PokemonType key={key} src={getTypes(type.type.name)} alt={type.type.name} />
                     ))}
                 </TypesContainer>
-                <Detalhes onClick={() => { goToDetailsPage(navigate) }}>Detalhes</Detalhes>
+                <Detalhes onClick={() => {goToDetailsPage(navigate, pokemon.name)}}>Detalhes</Detalhes>
             </div>
             <div>
                 <Pokemon src={pokemon.sprites?.other["official-artwork"].front_default} />
@@ -65,7 +66,6 @@ export function PokemonCard({ pokemonUrl }) {
                         Excluir
                     </DeleteButton>
                 )}
-
             </div>
             <Pokeball src={pokeball} />
         </Container>

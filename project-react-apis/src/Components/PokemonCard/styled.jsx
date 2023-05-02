@@ -1,14 +1,21 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-padding: 16px;
-  min-width: 400px;
-  max-width: 440px;
+  padding: 1em;
+  width: 27em;  
+  height: 14em;
   border-radius: 12px;
   display: flex;
   position: relative;
-  margin: 50px;
+  margin: 2em;
   color: #ffffff;
+  
+  @media screen and (max-width: 1500px) {
+    padding-left: 2em;
+    width: 24em;  
+    height: 13em;
+  }
+
 `
 
 export const PokemonNumber = styled.p`
@@ -108,3 +115,6 @@ export const Detalhes = styled.a`
     color: white;
   }
 `
+
+
+
