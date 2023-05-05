@@ -1,11 +1,12 @@
-import react from 'react'
+import react, { useState } from 'react'
 import { Header } from '../../Components/Header/Header'
+import { PokeCard } from '../../Components/PokemonCard/PokemonCard';
 
-export const Pokedex =()=>{
+
+export const Pokedex =({capturedPokemon})=>{
     return(
         <div>
-            <Header/>
-            <h1>Pokedex</h1>
-        </div>
-    )
-} 
+      <Header/>
+    </div>
+  );
+}
