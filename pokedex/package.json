@@ -12,7 +12,8 @@
     "axios": "^1.3.5",
     "next": "13.2.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sharp": "^0.32.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
