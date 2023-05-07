@@ -10,7 +10,7 @@ const poppins = Poppins({
 function Title({ text }) {
     return (
         <h1
-            className={`text-5xl text-white ${poppins.variable} font-sans mb-16`}
+            className={`text-5xl text-white ${poppins.variable} font-sans mb-32`}
         >
             {text}
         </h1>
