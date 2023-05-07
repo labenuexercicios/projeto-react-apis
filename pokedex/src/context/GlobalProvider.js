@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { GlobalContext } from './GlobalContext';
 
 const GlobalProvider = ({ children }) => {
-    const [pageFlow, setPageFlow] = useState(1);
+    const [pageFlow, setPageFlow] = useState(0);
     const [pokedex, setPokedex] = useState([]);
     const [isOnPokedex, setIsOnPokedex] = useState(false);
     const [currentPokemon, setCurrentPokemon] = useState({});
