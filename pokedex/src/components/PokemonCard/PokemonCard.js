@@ -1,6 +1,6 @@
 import { Card, ContainerPokemonCard } from "./pokemonCardStyle"
 import water from '../../assets/water.png'
-import wing from '../../assets/wing.png'
+
 export const PokemonCard = () => {
     return (
         <div>
@@ -23,10 +23,6 @@ export const PokemonCard = () => {
                         <button>Capturar!</button>
                     </div>
                     
-                    
-                    
-                    
-
                 </Card>
                 
                 
