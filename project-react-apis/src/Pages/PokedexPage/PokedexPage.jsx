@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from '../../Components/Header/Header'
-import { Main } from './styled'
+import { Main, Local, Text } from './styled'
 import { PokemonCard } from '../../Components/PokemonCard/PokemonCard'
 import { BASE_URL } from "../../constants/url";
 import { useContext } from "react";
@@ -13,6 +13,9 @@ export function PokedexPage() {
     return (
         <>
             <Header currentPage="pokedex" />
+            <Local>
+                  <Text>Meus Pokémons</Text>
+            </Local>
             <Main>
                 {pokedex.map((pokemon) => (
                     <PokemonCard

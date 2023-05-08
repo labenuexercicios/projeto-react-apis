@@ -17,8 +17,7 @@ export function PokemonsListPage() {
           (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
         )
     );
-
-      
+  
     return(
         <>
             <Header currentPage="list"/>
@@ -26,7 +25,6 @@ export function PokemonsListPage() {
                   <Text>Todos Pokémons</Text>
             </Local>
             <Main>
-                
                 {filteredPokelist().map((pokemon)=>{
                   return <PokemonCard 
                           key={pokemon.url} pokemonUrl={pokemon.url} 

@@ -41,12 +41,11 @@ export function PokemonCard({ pokemonUrl }) {
             console.log(error);
         }
     };
-
-   
+ 
     return (
         <Container style={{ backgroundColor: getColors(type) }}>
             <div>
-                <PokemonNumber>{pokemon.id}</PokemonNumber>
+                <PokemonNumber>#{pokemon.id}</PokemonNumber>
                 <PokemonName>{pokemon.name}</PokemonName>
                 <TypesContainer>
                     {types.map((type, key) => (

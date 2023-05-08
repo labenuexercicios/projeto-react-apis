@@ -8,6 +8,14 @@ export const Container = styled.header`
     height: 21.13vh;
     width: 100vw;
     background-color: white;
+
+    @media screen and (max-device-width : 480px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+      height: 18vh;
+
+    }
 ;
 `
 
@@ -22,6 +30,18 @@ export const ImgLogo = styled.img`
     &.list {
      margin-left: 39.1vw;
     }
+
+    @media screen and (max-device-width : 480px) {
+      height: 9vh;
+
+      &.pokedex {
+        margin: 0 0 1vh 0;
+      }
+
+      &.list {
+        margin: 0 0 1vh 0;
+      }
+    }
 `
 
 export const BtnPokedex = styled.button`
@@ -32,6 +52,13 @@ export const BtnPokedex = styled.button`
     border-radius: 8px;
     font-size: x-large;
     margin-right: 4vw;
+
+    @media screen and (max-device-width : 480px) {
+      height: 4.25vh;
+      width: 10.5vh;
+      font-size: small;
+      margin: 0 auto;
+    }
 ;
 `
 
@@ -41,6 +68,14 @@ export const Link = styled.a`
     text-decoration: underline;
     margin-left: 5.45vw;
     font-size: x-large;
+
+    @media screen and (max-device-width : 480px) {
+      font-size: 0.9rem;
+      position: absolute;
+      top: 1vh;
+      left: 0vh;
+      margin-left: 1vh;
+    }
     
 ;
 `
@@ -56,5 +91,40 @@ export const BtnDel = styled.button`
     font-size: x-large;
     font-weight: 100;
     margin-right: 4vw;
+    
+  @media screen and (max-width: 1500px) {
+    font-size: larger;
+  }
+
+  @media screen and (max-device-width : 480px) {
+      height: 4vh;
+      width: 25vh;
+      font-size: small;
+      margin: 0 auto;
+    }
+;
+`
+
+export const BtnAdd = styled.button`
+    background-color:#FF6262;
+    height: 9.77vh;
+    width: 37.91vh;
+    color: white;
+    border-radius: 8px;
+    font-size: x-large;
+    font-weight: 100;
+    margin-right: 4vw;
+
+    
+  @media screen and (max-width: 1500px) {
+    font-size: larger;
+  }
+
+  @media screen and (max-device-width : 480px) {
+      height: 4vh;
+      width: 25vh;
+      font-size: small;
+      margin: 0 auto;
+    }
 ;
 `
