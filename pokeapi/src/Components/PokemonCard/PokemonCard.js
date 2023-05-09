@@ -7,7 +7,10 @@ export const PokeCard = (props) => {
 
   const types = props.pokemons.data.types.map((type) => getTypes(type.type.name));
   const color = props.pokemons.data.types.map((typecolor) => getColors(typecolor.type.name));
-  console.log(color)
+  const handleCapture = () => {
+    props.onCapture(props.pokemons.data);
+  };
+
   
   return (
     <Container color={color}>
@@ -23,7 +26,7 @@ export const PokeCard = (props) => {
       </div>
       <Containerimg>
         {<Pokemon src={`${props.pokemons.data.sprites.front_default}`} alt="" />}
-        <CatchButton>Capturar!</CatchButton>
+        <CatchButton onClick={handleCapture}>Capturar!</CatchButton>
       </Containerimg>
       <Pokeball src={pokeball} alt="pokeball" />
     </Container>
