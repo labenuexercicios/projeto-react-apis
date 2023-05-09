@@ -9,3 +9,7 @@ export const Containerlist =styled.div`
     padding: 50px 10px;
 
 `
+
+export const Displaynone = styled.div`
+    display: none;
+`

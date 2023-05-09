@@ -19,7 +19,7 @@ export const PokeCard = (props) => {
             <img src={typeUrl} alt="" />
           ))}
         </TypesContainer>
-        <a href="/list/detail">Ver detalhes</a>
+        <a href={`/list/detail/${props.pokemons.data.id}`}>Ver detalhes</a>
       </div>
       <Containerimg>
         {<Pokemon src={`${props.pokemons.data.sprites.front_default}`} alt="" />}

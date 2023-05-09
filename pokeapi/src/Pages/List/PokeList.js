@@ -4,7 +4,8 @@ import { PokeCard } from '../../Components/PokemonCard/PokemonCard'
 import axios, { all } from 'axios'
 import { getColors } from '../../utils/TypeColor'
 import { getTypes } from '../../utils/PokeType'
-import { Containerlist } from './styledList'
+import { Containerlist, Displaynone } from './styledList'
+import { PokeDetails } from '../Details/PokeDetails'
 
 export const PokeList =(props)=>{
     const cardColor = getColors
@@ -27,6 +28,9 @@ export const PokeList =(props)=>{
             <Containerlist>
                 {pokemons.map((pokemons)=>{return(<PokeCard pokemons={pokemons} cardColor={cardColor} getTypes={pokeType}/>)})}
             </Containerlist>
+            <Displaynone>
+            <PokeDetails pokemons={pokemons} cardColor={cardColor} getTypes={pokeType}/>
+            </Displaynone>
         </div>
     )
 } 
