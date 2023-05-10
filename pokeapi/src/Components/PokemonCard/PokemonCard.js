@@ -49,7 +49,7 @@ export const PokeCard = (props) => {
       </div>
       <Containerimg>
         {<Pokemon src={`${props.pokemons.data.sprites.front_default}`} alt="" />}
-        {props.page === 'pokedex' ?
+        {captured ?
           <CatchButton onClick={() => removePokemon(props.pokemons.data)}>Remover</CatchButton> :
           <CatchButton onClick={() => capturePokemon(props.pokemons.data)}>Capturar!</CatchButton>
         }

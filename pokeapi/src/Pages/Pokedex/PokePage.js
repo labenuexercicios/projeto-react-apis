@@ -17,20 +17,20 @@ export const Pokedex = ({ capturedPokemon = [] }) => {
     setPokemonList(filteredList);
     localStorage.setItem('capturedPokemon', JSON.stringify(filteredList));
   };
-  console.log(pokemonList)
+
   return (
     <div>
-        <Header />
-    <ul>
-      {pokemonList.map((pokemon) => (
-        <PokeCard
-          pokemons={{ data: pokemon }}
-          key={pokemon.id}
-          captured={true}
-          onRemove={() => removePokemon(pokemon.id)}
-        />
-      ))}
-    </ul>
-  </div>
+      <Header />
+      <ul>
+        {pokemonList.map((pokemon) => (
+          <PokeCard
+            pokemons={{ data: pokemon }}
+            key={pokemon.id}
+            captured={true}
+            onRemove={() => removePokemon(pokemon.id)}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
