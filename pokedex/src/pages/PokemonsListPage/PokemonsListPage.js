@@ -1,12 +1,12 @@
 import { HeaderHomePage } from "../../components/Header/HeaderHomePage"
 import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
 
-export const PokemonsListPage = () => {
+export const PokemonsListPage = ({Pokemons}) => {
     return(
         <div>
             <HeaderHomePage />
-            <h1>PokemonsListPage</h1>
-            {/* <PokemonCard /> */}
+            {/* <Pokemons /> */}
+                       
             
         </div>
     )

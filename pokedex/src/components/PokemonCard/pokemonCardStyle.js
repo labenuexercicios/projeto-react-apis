@@ -8,15 +8,11 @@ export const ContainerPokemonCard = styled.div`
         height: 39px;
         left: 23px;
         top: 40px;
-
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 32px;
         line-height: 39px;
-        /* identical to box height */
-
-
         color: #FFFFFF;
     }
 
@@ -25,13 +21,11 @@ export const ContainerPokemonCard = styled.div`
         height: 19px;
         left: 23px;
         top: 25px;
-
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
         line-height: 19px;
-
         color: #FFFFFF;
     }
 
@@ -51,9 +45,12 @@ export const ContainerPokemonCard = styled.div`
     }
     
     img{
-        width: 10vw;
-        height: 10vw;
-        margin-bottom: 0.6vw;
+        width: 230px;
+        height: 230px;
+        left: 1170px;
+        top: 277px;
+        margin-top: -6vh;
+        
         
     }
 
@@ -92,7 +89,7 @@ export const ContainerPokemonCard = styled.div`
 `
 
 export const Card = styled.div`
-    background-color: red;
+    background-color: gray;
     width: 23vw;
     height: 23vh;
     display: flex;
@@ -103,6 +100,7 @@ export const Card = styled.div`
     .img {
         display: flex;
         flex-direction: column;
+        
 
     
     }
@@ -128,7 +126,7 @@ export const Card = styled.div`
         line-height: 24px;
         color: #0F0F0F;
         flex: none;
-        order: 0;
+        //order: 0;
         flex-grow: 0;
         border: none;
 
