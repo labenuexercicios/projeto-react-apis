@@ -30,7 +30,7 @@ function pokedex() {
 
     const filteredPokedex = pokedex
         .filter((pokemon) =>
-            pokemon.name
+            pokemon?.name
                 .toLowerCase()
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, '')
@@ -47,7 +47,7 @@ function pokedex() {
 
     return (
         <div className="py-16 px-10 max-w-screen-2xl mx-auto">
-            <div className="flex justify-between">
+            <div className="flex justify-between  mb-32">
                 <Title text="Meus Pokémon" />
                 <input
                     type="search"

@@ -55,7 +55,7 @@ export default function Home({ pokemonDataList }) {
     }, [pokedex]);
 
     const filteredPokemonList = pokemonDataList
-        .filter((pokemon) => !pokedex.some((p) => p.name === pokemon.name))
+        .filter((pokemon) => !pokedex.some((p) => p?.name === pokemon?.name))
         .filter((pokemon) =>
             pokemon.name
                 .toLowerCase()
@@ -71,7 +71,7 @@ export default function Home({ pokemonDataList }) {
 
     return (
         <div className="py-16 px-10 max-w-screen-2xl mx-auto">
-            <div className="flex justify-between">
+            <div className="flex justify-between  mb-32">
                 <Title text="Todos Pokémon" />
                 <input
                     type="search"

@@ -67,7 +67,7 @@ function Header() {
                                     prev.filter(
                                         (item) =>
                                             !pokedex.some(
-                                                (p) => p.name == item.name
+                                                (p) => p?.name == item?.name
                                             )
                                     )
                                 );
