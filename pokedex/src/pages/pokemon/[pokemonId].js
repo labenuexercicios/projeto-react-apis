@@ -6,7 +6,9 @@ import { Montserrat, Inter } from 'next/font/google';
 import Image from 'next/image';
 import useGlobalContext from '@/hook/useGlobalContext';
 import StatContantainer from '@/components/StatContantainer';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import LoadingScreen from '@/components/LoadingScreen';
 
 const montserrant = Montserrat({
     subsets: ['latin'],
@@ -29,14 +31,14 @@ export const getStaticPaths = async () => {
         };
     });
 
-    return { paths, fallback: false };
+    return { paths, fallback: true };
 };
 
 export const getStaticProps = async (context) => {
     const pokemonId = context.params.pokemonId;
 
     const res = await axios.get(`${BASE_URL}/pokemon/${pokemonId}`);
-    const { name, id, types, stats, sprites, moves } = res.data;
+    const { name, id, types, stats, sprites, moves } = await res.data;
     const data = {
         name,
         id,
@@ -57,12 +59,13 @@ export const getStaticProps = async (context) => {
 
     return {
         props: {
-            pokemon: JSON.stringify(data),
+            pokemon: data,
         },
     };
 };
 
 function PokemonDetails({ pokemon }) {
+    console.log(pokemon);
     const {
         setPageFlow,
         pokedex,
@@ -70,16 +73,16 @@ function PokemonDetails({ pokemon }) {
         setIsOnPokedex,
         setCurrentPokemon,
     } = useGlobalContext();
-    const pokemonData = JSON.parse(pokemon);
+    const router = useRouter();
 
     useEffect(() => {
         setPageFlow(3);
-        setCurrentPokemon(pokemonData);
+        setCurrentPokemon(pokemon);
         const storedPokedex = JSON.parse(localStorage.getItem('pokedex'));
         if (storedPokedex) {
             setPokedex(storedPokedex);
         }
-        storedPokedex?.some((pokemon) => pokemon.id === pokemonData.id)
+        storedPokedex?.some((p) => p?.id === pokemon?.id)
             ? setIsOnPokedex(true)
             : setIsOnPokedex(false);
     }, []);
@@ -91,33 +94,37 @@ function PokemonDetails({ pokemon }) {
     }, [pokedex]);
 
     let totalStat = 0;
-    pokemonData.stats.forEach((stat) => (totalStat += stat.base_stat));
+    pokemon?.stats.forEach((stat) => (totalStat += stat.base_stat));
+
+    if (router.isFallback) {
+        return <LoadingScreen />;
+    }
 
     return (
         <div
-            className={`py-16 px-10 max-w-screen-2xl mx-auto bg-pokeball_full bg-no-repeat bg-cover bg-center ${inter.className} overflow-hidden`}
+            className={`py-16 px-10 max-w-screen-2xl mx-auto ${inter.className} overflow-hidden max-h-min`}
         >
             <Title text="Detalhes" />
             <div
                 className={`${getColorVariant(
-                    pokemonData.types[0]
-                )} flex gap-16 px-12 py-8 rounded-3xl bg-pokeball_full bg-no-repeat bg-contain bg-right-top relative`}
+                    pokemon.types[0]
+                )} flex gap-16 px-12 py-8 rounded-3xl bg-pokeball_full bg-no-repeat bg-contain bg-right-top relative max-h-min mt-10`}
             >
                 <div className={`flex gap-12 flex-1`}>
                     <div className="flex flex-col flex-1 gap-12">
                         <Image
                             className="bg-white rounded-xl"
-                            src={pokemonData.sprites.front_default}
-                            width={300}
-                            height={300}
-                            alt={`${pokemonData.name} front sprite`}
+                            src={pokemon.sprites.front_default}
+                            width={250}
+                            height={250}
+                            alt={`${pokemon.name} front sprite`}
                         />
                         <Image
                             className="bg-white rounded-xl"
-                            src={pokemonData.sprites.back_default}
-                            width={300}
-                            height={300}
-                            alt={`${pokemonData.name} back sprite`}
+                            src={pokemon.sprites.back_default}
+                            width={250}
+                            height={250}
+                            alt={`${pokemon.name} back sprite`}
                         />
                     </div>
                     <div
@@ -127,7 +134,7 @@ function PokemonDetails({ pokemon }) {
                             Base stats
                         </h3>
                         <ul className="mt-6">
-                            {pokemonData.stats.map((stat) => (
+                            {pokemon.stats.map((stat) => (
                                 <StatContantainer
                                     key={stat.name}
                                     name={stat.name}
@@ -148,13 +155,13 @@ function PokemonDetails({ pokemon }) {
                 <div className="flex flex-col justify-between flex-1">
                     <div>
                         <p className="text-base text-white font-bold">
-                            #{pokemonData.id}
+                            #{pokemon.id}
                         </p>
                         <h2 className="text-5xl text-white font-bold capitalize">
-                            {pokemonData.name}
+                            {pokemon.name}
                         </h2>
                         <div className="flex gap-4 mt-6">
-                            {pokemonData.types?.map((type) => {
+                            {pokemon.types?.map((type) => {
                                 return (
                                     <img
                                         key={type}
@@ -170,7 +177,7 @@ function PokemonDetails({ pokemon }) {
                             Moves
                         </h3>
                         <ul>
-                            {pokemonData.moves.map((move) => (
+                            {pokemon.moves.map((move) => (
                                 <li
                                     key={move}
                                     className={`${montserrant.className} bg-[#ececec] mt-4 rounded-xl border-dashed border-black/20 border p-3 capitalize font-normal text-sm text-black w-fit`}
@@ -182,10 +189,10 @@ function PokemonDetails({ pokemon }) {
                     </div>
                     <div className="absolute right-4 -top-36">
                         <Image
-                            src={pokemonData.sprites.official_artwork}
+                            src={pokemon.sprites.official_artwork}
                             width={300}
                             height={300}
-                            alt={`${pokemonData.name} official artwork sprite`}
+                            alt={`${pokemon.name} official artwork sprite`}
                         />
                     </div>
                 </div>
