@@ -2,13 +2,21 @@ import { Header } from '../../Components/Header/Header'
 import { useEffect, useState } from 'react';
 import { PokeCard } from '../../Components/PokemonCard/PokemonCard';
 
-export const Pokedex = ({ capturedPokemon = [] }) => {
-  const [pokemonList, setPokemonList] = useState(capturedPokemon);
+export const Pokedex = ({ capturedPokemon }) => {
+  const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
     const pokemon = localStorage.getItem('capturedPokemon');
     if (pokemon) {
-      setPokemonList(JSON.parse(pokemon));
+      try {
+        const parsedPokemon = JSON.parse(pokemon);
+        setPokemonList(parsedPokemon);
+        console.log(parsedPokemon)
+      } catch (error) {
+        console.error('Error parsing captured Pokemon:', error);
+      }
+    } else {
+      localStorage.setItem('capturedPokemon', JSON.stringify([]));
     }
   }, []);
 
@@ -17,7 +25,7 @@ export const Pokedex = ({ capturedPokemon = [] }) => {
     setPokemonList(filteredList);
     localStorage.setItem('capturedPokemon', JSON.stringify(filteredList));
   };
-
+  
   return (
     <div>
       <Header />

@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react'
 
 export const PokeCard = (props) => {
 
-  const types = props.pokemons.data.types.map((type) => getTypes(type.type.name));
-  const color = props.pokemons.data.types.map((typecolor) => getColors(typecolor.type.name));
+  const types = props.pokemons.data?.types?.map((type) => getTypes(type.type.name));
+  const color = props.pokemons.data?.types?.map((typecolor) => getColors(typecolor.type.name));
   
   const [captured, setCaptured] = useState(false);
 

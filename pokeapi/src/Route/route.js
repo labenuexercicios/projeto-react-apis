@@ -2,13 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { PokeDetails } from "../Pages/Details/PokeDetails";
 import { PokeList } from "../Pages/List/PokeList";
-import { PokedexList } from "../Pages/Pokedex/PokePage";
+import { Pokedex } from "../Pages/Pokedex/PokePage";
 
 export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/list/pokedex" element={<PokedexList/>} />
+        <Route path="/list/pokedex" element={<Pokedex/>} />
 
         <Route path="/list/detail/:id" element={<PokeDetails />} />
 
