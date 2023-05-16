@@ -41,14 +41,14 @@ export const PokeCard = (props) => {
         <PokemonNumber>{props.pokemons.data.id}</PokemonNumber>
         <PokemonName>{props.pokemons.data.name}</PokemonName>
         <TypesContainer>
-          {types.map((typeUrl) => (
+          {types && types.map((typeUrl) => (
             <img src={typeUrl} alt="" />
           ))}
         </TypesContainer>
         <a href={`/list/detail/${props.pokemons.data.id}`}>Ver detalhes</a>
       </div>
       <Containerimg>
-        {<Pokemon src={`${props.pokemons.data.sprites.front_default}`} alt="" />}
+        {props.pokemons.data.sprites && <Pokemon src={`${props.pokemons.data.sprites.front_default}`} alt="" />}
         {captured ?
           <CatchButton onClick={() => removePokemon(props.pokemons.data)}>Remover</CatchButton> :
           <CatchButton onClick={() => capturePokemon(props.pokemons.data)}>Capturar!</CatchButton>

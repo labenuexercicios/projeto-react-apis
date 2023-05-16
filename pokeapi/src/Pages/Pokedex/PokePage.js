@@ -1,4 +1,4 @@
-import { Header } from '../../Components/Header/Header'
+import { Header } from '../../Components/Header/Header';
 import { useEffect, useState } from 'react';
 import { PokeCard } from '../../Components/PokemonCard/PokemonCard';
 
@@ -11,7 +11,6 @@ export const Pokedex = ({ capturedPokemon }) => {
       try {
         const parsedPokemon = JSON.parse(pokemon);
         setPokemonList(parsedPokemon);
-        console.log(parsedPokemon)
       } catch (error) {
         console.error('Error parsing captured Pokemon:', error);
       }
@@ -25,19 +24,20 @@ export const Pokedex = ({ capturedPokemon }) => {
     setPokemonList(filteredList);
     localStorage.setItem('capturedPokemon', JSON.stringify(filteredList));
   };
-  
+
   return (
     <div>
       <Header />
       <ul>
-        {pokemonList.map((pokemon) => (
-          <PokeCard
-            pokemons={{ data: pokemon }}
-            key={pokemon.id}
-            captured={true}
-            onRemove={() => removePokemon(pokemon.id)}
-          />
-        ))}
+        {pokemonList &&
+          pokemonList.map((pokemon) => (
+            <PokeCard
+              pokemons={{ data: pokemon }}
+              key={pokemon.id}
+              captured={true}
+              onRemove={() => removePokemon(pokemon.id)}
+            />
+          ))}
       </ul>
     </div>
   );
