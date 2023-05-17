@@ -1,44 +1,26 @@
-import { Header } from '../../Components/Header/Header'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Header } from '../../Components/Header/Header';
 import { PokeCard } from '../../Components/PokemonCard/PokemonCard';
 
-export const Pokedex = ({ capturedPokemon }) => {
-  const [pokemonList, setPokemonList] = useState([]);
+
+export const Pokedex = () => {
+  const [capturedPokemon, setCapturedPokemon] = useState([]);
 
   useEffect(() => {
-    const pokemon = localStorage.getItem('capturedPokemon');
-    if (pokemon) {
-      try {
-        const parsedPokemon = JSON.parse(pokemon);
-        setPokemonList(parsedPokemon);
-        console.log(parsedPokemon)
-      } catch (error) {
-        console.error('Error parsing captured Pokemon:', error);
-      }
-    } else {
-      localStorage.setItem('capturedPokemon', JSON.stringify([]));
+    // Retrieve the captured Pokémon array from localStorage
+    const storedCapturedPokemon = localStorage.getItem('capturedPokemon');
+    if (storedCapturedPokemon) {
+      const parsedCapturedPokemon = JSON.parse(storedCapturedPokemon);
+      setCapturedPokemon(parsedCapturedPokemon);
     }
   }, []);
 
-  const removePokemon = (id) => {
-    const filteredList = pokemonList.filter((pokemon) => pokemon.id !== id);
-    setPokemonList(filteredList);
-    localStorage.setItem('capturedPokemon', JSON.stringify(filteredList));
-  };
-  
   return (
     <div>
       <Header />
-      <ul>
-        {pokemonList.map((pokemon) => (
-          <PokeCard
-            pokemons={{ data: pokemon }}
-            key={pokemon.id}
-            captured={true}
-            onRemove={() => removePokemon(pokemon.id)}
-          />
-        ))}
-      </ul>
+      {capturedPokemon.map((pokemon) => (
+        <PokeCard key={pokemon.id} pokemons={{ data: { ...pokemon } }} />
+      ))}
     </div>
   );
 };

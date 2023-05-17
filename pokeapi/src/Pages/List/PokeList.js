@@ -18,7 +18,7 @@ export const PokeList = (props) => {
     
     const getPokemons = () => {
         const endpoints = []
-        for (let i = 1; i < 31; i++) {
+        for (let i = 1; i < 40; i++) {
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
         const response = axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((res) => setPokemons(res))
@@ -36,6 +36,7 @@ export const PokeList = (props) => {
                                 pokemons={pokemons}
                                 cardColor={cardColor}
                                 getTypes={pokeType}
+                              
                             />
                         )
                     })
