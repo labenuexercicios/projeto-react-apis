@@ -1,21 +1,54 @@
-import { useNavigate } from "react-router-dom"
-import { ButtonPokedex, ButtonVoltar, HeaderStyle } from "./headerStyle"
-import logo from '/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/assets/logo.png'
+import { useLocation, useNavigate } from "react-router-dom"
+import { ButtonExcluir, ButtonPokedex, ButtonVoltar, HeaderStyle, Logo } from "./headerStyle"
+
 import {goToHome, goToList} from '../../Routes/Coordinator'
 
 function Header (){
+  const location = useLocation()
   const navigate = useNavigate()
 
+  switch (location.pathname){
+    case '/':
    return (
    <div>
       
         <HeaderStyle>
-            <ButtonVoltar onClick={()=>goToHome(navigate)}>Todos Pokémons</ButtonVoltar>
-           <img src={logo} alt="Logo Pokemon"></img>
+           <Logo/>
             <ButtonPokedex onClick={()=> goToList(navigate)}>Pokédex</ButtonPokedex>
+            
         </HeaderStyle>
    </div>
    )
-}
+   case '/list':
+     return (
+       <div>
+        <HeaderStyle>
+        <ButtonVoltar onClick={()=>goToHome(navigate)}>{String.fromCharCode(60)} Todos Pokémons</ButtonVoltar>
+         <Logo/>
+
+        </HeaderStyle>
+      </div>
+    )
+    case '/details':
+      return (
+        <div>
+          <HeaderStyle>
+          <ButtonVoltar onClick={()=>goToHome(navigate)}>{String.fromCharCode(60)} Todos Pokémons</ButtonVoltar>
+         <Logo/>
+         <ButtonExcluir>Excluir da Pokédex</ButtonExcluir>
+          </HeaderStyle>
+        </div>
+      )
+      default:
+        return (
+          <div>
+        <HeaderStyle>
+        <ButtonVoltar onClick={()=>goToHome(navigate)}>{String.fromCharCode(60)} Todos Pokémons</ButtonVoltar>
+         <Logo/>
+
+        </HeaderStyle>
+      </div>
+        )
+}}
 
 export default Header

@@ -12,6 +12,15 @@ export const Container = styled.div`
   color: #ffffff;
 `;
 
+export const Details = styled.button`
+font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  color: #FFFFFF;
+`
 export const PokemonNumber = styled.p`
   font-family: "Inter", sans-serif;
   font-size: 16px;

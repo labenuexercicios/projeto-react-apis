@@ -1,14 +1,13 @@
 
-import React, { useEffect, useState } from "react";
-import {Container,PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokeball, CatchButton, Pokemon} from './pokemonCardStyle'
+import React, { useEffect, useState} from "react";
+import {Container,PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokeball, CatchButton, Pokemon, Details} from './pokemonCardStyle'
 import pokeball from '../../assets/pngwing 2.png'
 import axios from "axios";
 import {getTypes} from '../../utils/ReturnPokemonType'
 import { getColors } from "C:/Users/Dev.Garr/Desktop/Labenu/projeto-react/projeto-react-apis/pokedex/src/utils/ReturnCardColor.js";
+import { goToDetail } from "../../Routes/Coordinator";
+import { useLocation, useNavigate } from "react-router-dom";
 
-/* const cardColor = (type) =>{
- return getColors(type)
-} */
 const cardColor = (types) => {
   return types && types.length > 0 ? getColors(types[0].type.name) : undefined;
 }
@@ -18,7 +17,7 @@ const {addPokedex, offPokedex, pokemonUrl} = props
 
 const [get, setGet] = useState({})
 
-
+const location = useLocation();
 const catchPokemon = async () =>{
   try {
     const response = await axios.get(pokemonUrl)
@@ -30,15 +29,18 @@ const catchPokemon = async () =>{
   }
 }
 
-
+const navigate = useNavigate()
 useEffect(()=>{
   catchPokemon()
 },[])
 
 
+
     return (
+      
       <Container color={cardColor(get.types)}>
         <div>
+          
           <PokemonNumber>{get.id}</PokemonNumber>
           <PokemonName>{get.name}</PokemonName>
           <TypesContainer>
@@ -51,12 +53,14 @@ useEffect(()=>{
               <div>Carregando...</div>
             )}
           </TypesContainer>
-          <p>Detalhes</p>
+          <Details onClick={() => goToDetail(navigate, get.id)}>Detalhes</Details>
         </div>
         <div>
-          <Pokemon src={get.sprites ? get.sprites.front_default : ''} alt="" />
+          <Pokemon src={get.sprites ? get.sprites.other['official-artwork'].front_default : ''} alt="" />
+          {location.pathname ==='/' ?(
           <CatchButton onClick={()=>addPokedex(get)}>Capturar!</CatchButton>
-          
+          ):(
+          <CatchButton onClick={()=>offPokedex(get)}>Excluir</CatchButton>)}
         </div>
         <Pokeball src={pokeball} alt="pokeball" />
       </Container>
