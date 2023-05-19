@@ -1,14 +1,20 @@
 import axios from 'axios';
 import { Poppins } from 'next/font/google';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import PokemonCard from '@/components/PokemonCard';
 import Title from '@/components/Title';
-import { BASE_URL, limit } from '@/constants/api';
+import { BASE_URL, DEFAULT_LIMIT } from '@/constants/api';
 import useGlobalContext from '@/hook/useGlobalContext';
+import Pagination from '@/components/Pagination';
 
-export const getStaticProps = async () => {
-  const res = await axios.get(`${BASE_URL}/pokemon?limit=${limit}`);
+export const getServerSideProps = async (context) => {
+  const { offset, limit } = context.query;
+  const res = await axios.get(
+    `${BASE_URL}/?limit=${limit ?? DEFAULT_LIMIT}&offset=${offset ?? 0}`
+  );
   const pokemonList = res.data.results;
+  const { next, previous } = res.data;
   const pokemonDataList = await Promise.all(
     pokemonList.map(async (pokemon) => {
       const pokemonResponse = await axios.get(pokemon.url);
@@ -26,7 +32,7 @@ export const getStaticProps = async () => {
   );
 
   return {
-    props: { pokemonDataList },
+    props: { pokemonDataList, next, previous },
   };
 };
 
@@ -36,9 +42,18 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-export default function Home({ pokemonDataList }) {
+export default function Home({ pokemonDataList, next, previous }) {
   const { setPageFlow, pokedex, setPokedex } = useGlobalContext();
   const [search, setSearch] = useState('');
+
+  const { replace, query } = useRouter();
+  const { offset, limit } = query;
+  const offsetValue = offset ? Number(offset) : 0;
+  const limitValue = limit ? Number(limit) : DEFAULT_LIMIT;
+  const currentPage = Math.ceil(offsetValue / limitValue) + 1;
+  const prevRoute = previous?.replace(BASE_URL, '');
+  const nextRoute = next?.replace(BASE_URL, '');
+
   useEffect(() => {
     setPageFlow(1);
     const storedPokedex = JSON.parse(localStorage.getItem('pokedex'));
@@ -93,6 +108,12 @@ export default function Home({ pokemonDataList }) {
           </p>
         </div>
       )}
+      <Pagination
+        replace={replace}
+        currentPage={currentPage}
+        prevRoute={prevRoute}
+        nextRoute={nextRoute}
+      />
     </div>
   );
 }
