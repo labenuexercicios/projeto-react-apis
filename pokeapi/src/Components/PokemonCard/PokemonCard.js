@@ -53,15 +53,17 @@ export const PokemonCard = ({ pokemons, onRemove, onCapturemsg }) => {
             <img src={typeUrl} alt="" key={typeUrl} />
           ))}
         </TypesContainer>
-        <a href={`/list/detail/${pokemons.id}`}>See details</a>
+        <a href={`/list/detail/${pokemons.id}`}>Detalhes</a>
       </div>
       <Containerimg>
         <Pokemon src={pokemons.sprites.front_default} alt="" />
         {onRemove && (
-          <CatchButton onClick={releasePokemon}>Release!</CatchButton>
+          <CatchButton onClick={releasePokemon}>Remover</CatchButton>
         )}
         {!onRemove && (
-          <CatchButton onClick={capturePokemon}>Capture!</CatchButton>
+          <CatchButton onClick={capturePokemon} disabled={captured}>
+            {captured ? "Capturado" : "Capturar"}
+          </CatchButton>
         )}
       </Containerimg>
       <Pokeball src={pokeball} alt="pokeball" />
