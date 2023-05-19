@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { PokeCard, MainCard,CardButton, PokeName, PokeNumber, PokeType, PokeDetails, TypeDiv, PokeImage, PokeContainer, PokeContainer2, ContainerDetail, PokeBallImage, PokemonColor, PokeTypeImage, PokeType2, CardButtonRemove } from "./PokemonCardStyle"
 import axios from "axios"
 import Pokeball from "../../assets/Pokeball.png"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { goToPokeDetail } from "../../routes/coordinator"
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { getTypes } from "../../types/Types"
@@ -17,6 +17,7 @@ export function PokemonCard ({pokemon}){
     const { addToPokedex, removeFromPokedex, pokedex, setPokeInfo, setCatchPokemon, catchPokemon} = context
      const [pokeData, setPokeData] =useState([]) 
     const [isLoading, setIsLoading] = useState(true) 
+   
 
   
     

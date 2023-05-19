@@ -15,7 +15,7 @@ function Header() {
     const location = useLocation();
     const navigate = useNavigate();
     const context = useContext(GlobalContext)
-    const {pokedex, pokeInfo, pokemons, removeFromPokedex,addToPokedex, catchPokemon}= context
+    const {pokedex, pokeInfo, removeFromPokedex,addToPokedex, catchPokemon}= context
 
  
     const filterPokedex =pokedex.find((pokemon)=>{

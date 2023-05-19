@@ -11,11 +11,16 @@ import { PokeTypeImage } from "../../Components/PokemonCard/PokemonCardStyle"
 import Pokeball2 from "../../assets/Pokeball.png"
 
 
+
+
 export function PokemonDetail (){
 
     const context = useContext(GlobalContext)   
-    const {pokeInfo, setPokeInfo, catchPokemon}= context
-    const [isLoading, setIsLoading] = useState(true) 
+    const {pokeInfo, setPokeInfo}= context
+    const [isLoading, setIsLoading] = useState(true)      
+    
+    
+
     async function getPokeInfo(){
         
         try{
