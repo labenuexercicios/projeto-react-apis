@@ -1,0 +1,36 @@
+.pokemonGrid{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;    
+    background-color: #5d5d5d;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+
+.titulo{
+    color: white;
+    background-color: #5d5d5d;
+    margin: 0px;
+    padding-top: 0.5 rem;
+}
+
+.header{
+    display: flex;
+    min-width: 100%;
+    justify-content: space-around;
+}
+
+.botao{
+    border: none;
+    background-color: white;
+    color: blue;
+    font-weight: 900;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.botao:hover{
+    text-decoration: underline;
+}
