@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Title from '@/components/Title';
 import getColorVariant from '@/constants/typeColorVariants';
-import { BASE_URL, limit } from '@/constants/api';
+import { BASE_URL, DEFAULT_LIMIT } from '@/constants/api';
 import useGlobalContext from '@/hook/useGlobalContext';
 import StatContantainer from '@/components/StatContantainer';
 import LoadingScreen from '@/components/LoadingScreen';
@@ -22,7 +22,7 @@ const inter = Inter({
 });
 
 export const getStaticPaths = async () => {
-  const res = await axios.get(`${BASE_URL}/pokemon?limit=${limit}`);
+  const res = await axios.get(`${BASE_URL}/?limit=${DEFAULT_LIMIT}`);
   const pokemonList = res.data.results;
   const paths = pokemonList.map((pokemon, index) => ({
     params: {
@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { pokemonId } = context.params;
 
-  const res = await axios.get(`${BASE_URL}/pokemon/${pokemonId}`);
+  const res = await axios.get(`${BASE_URL}/${pokemonId}`);
   const { name, id, types, stats, sprites, moves } = await res.data;
   const data = {
     name,
