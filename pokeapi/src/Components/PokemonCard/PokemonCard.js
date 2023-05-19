@@ -14,7 +14,7 @@ import {
   TypesContainer,
 } from "./styledPokeCard";
 
-export const PokemonCard = ({ pokemons, onRemove,  onCapturemsg }) => {
+export const PokemonCard = ({ pokemons, onRemove, onCapturemsg }) => {
   const [captured, setCaptured] = useState(false);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const PokemonCard = ({ pokemons, onRemove,  onCapturemsg }) => {
     const capturedPokemons = JSON.parse(localStorage.getItem("capturedPokemons")) || {};
     capturedPokemons[pokemons.id] = pokemons;
     localStorage.setItem("capturedPokemons", JSON.stringify(capturedPokemons));
-    onCapturemsg()
+    onCapturemsg();
   };
 
   const releasePokemon = () => {
@@ -42,8 +42,7 @@ export const PokemonCard = ({ pokemons, onRemove,  onCapturemsg }) => {
     localStorage.setItem("capturedPokemons", JSON.stringify(capturedPokemons));
     onRemove(pokemons.id);
   };
-  
-  /* console.log(pokemons) */
+
   return (
     <Container color={color}>
       <div>
@@ -58,9 +57,10 @@ export const PokemonCard = ({ pokemons, onRemove,  onCapturemsg }) => {
       </div>
       <Containerimg>
         <Pokemon src={pokemons.sprites.front_default} alt="" />
-        {captured ? (
+        {onRemove && (
           <CatchButton onClick={releasePokemon}>Release!</CatchButton>
-        ) : (
+        )}
+        {!onRemove && (
           <CatchButton onClick={capturePokemon}>Capture!</CatchButton>
         )}
       </Containerimg>

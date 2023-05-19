@@ -1,11 +1,15 @@
 import { Header } from "../../Components/Header/Header";
-import React from "react";
+import { useEffect, useState } from "react";
 import { PokemonCard } from "../../Components/PokemonCard/PokemonCard";
+import { ContainerMsg } from "../List/styledList";
+import { ContainerDetails } from "../Details/styledDetails";
+import { Containerpokedex } from "./styledPokedex";
 
 export const Pokedex = () => {
-  const [capturedPokemons, setCapturedPokemons] = React.useState({});
+  const [capturedPokemons, setCapturedPokemons] = useState({});
+  const [RemoveMessage, setRemoveMessage] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const storedCapturedPokemons = JSON.parse(localStorage.getItem("capturedPokemons")) || {};
     setCapturedPokemons(storedCapturedPokemons);
   }, []);
@@ -15,12 +19,21 @@ export const Pokedex = () => {
     delete updatedCapturedPokemons[pokemonId];
     setCapturedPokemons(updatedCapturedPokemons);
     localStorage.setItem("capturedPokemons", JSON.stringify(updatedCapturedPokemons));
+    setRemoveMessage(true);
   };
+
   
   return (
     <div>
       <Header />
-      <h1>My Pokédex</h1>
+      <Containerpokedex>
+      {RemoveMessage && (
+        <ContainerMsg>
+          <h1>Gotcha!</h1>
+          <h3>O Pokémon foi removido da sua Pokédex</h3>
+          <button onClick={() => setRemoveMessage(false)}>Fechar</button>
+        </ContainerMsg>
+      )}
       {Object.values(capturedPokemons).map((pokemon) => (
         <PokemonCard
           key={pokemon.id}
@@ -28,6 +41,7 @@ export const Pokedex = () => {
           onRemove={handleRemovePokemon}
         />
       ))}
+      </Containerpokedex>
     </div>
   );
 };
