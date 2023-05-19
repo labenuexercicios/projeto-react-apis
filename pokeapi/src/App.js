@@ -1,4 +1,4 @@
-import { Header } from "./Components/Header/Header";
+
 import { GlobalStyle } from "./GlobalStyle";
 import {Router} from "./Route/route";
 

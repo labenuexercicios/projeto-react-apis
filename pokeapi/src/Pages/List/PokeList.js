@@ -1,7 +1,7 @@
-import react, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Header } from '../../Components/Header/Header'
-import { PokeCard } from '../../Components/PokemonCard/PokemonCard'
-import axios, { all } from 'axios'
+import { PokemonCard } from '../../Components/PokemonCard/PokemonCard'
+import axios from 'axios'
 import { getColors } from '../../utils/TypeColor'
 import { getTypes } from '../../utils/PokeType'
 import { Containerlist, Displaynone } from './styledList'
@@ -17,13 +17,15 @@ export const PokeList = (props) => {
     }, [])
     
     const getPokemons = () => {
-        const endpoints = []
-        for (let i = 1; i < 40; i++) {
-            endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+        const endpoints = [];
+        for (let i = 1; i < 5; i++) {
+          endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
         }
-        const response = axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((res) => setPokemons(res))
-        return response
-    }
+        axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((responses) => {
+          const pokemonsData = responses.map((response) => response.data);
+          setPokemons(pokemonsData);
+        });
+      };
     
     return (
         <div>
@@ -32,7 +34,7 @@ export const PokeList = (props) => {
                 {pokemons.length ? (
                     pokemons.map((pokemons) => {
                         return (
-                            <PokeCard
+                            <PokemonCard
                                 pokemons={pokemons}
                                 cardColor={cardColor}
                                 getTypes={pokeType}

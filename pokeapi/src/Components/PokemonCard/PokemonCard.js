@@ -1,67 +1,68 @@
-import { CatchButton, Container, Containerimg, Pokeball, Pokemon, PokemonName, PokemonNumber, PokemonType, TypesContainer } from './styledPokeCard';
-import pokeball from '../../assets/pokebola.png';
-import { getTypes } from '../../utils/PokeType';
-import { getColors } from '../../utils/TypeColor';
-import { useState } from 'react';
+import { useEffect, useState } from "react";
+import pokeball from "../../assets/pokebola.png";
+import { getTypes } from "../../utils/PokeType";
+import { getColors } from "../../utils/TypeColor";
 
-export const PokeCard = (props) => {
-  const types = props.pokemons.data?.types?.map((type) => getTypes(type.type.name));
-  const color = props.pokemons.data?.types?.map((typecolor) => getColors(typecolor.type.name));
+import {
+  CatchButton,
+  Container,
+  Containerimg,
+  Pokeball,
+  Pokemon,
+  PokemonName,
+  PokemonNumber,
+  TypesContainer,
+} from "./styledPokeCard";
 
-  const handleCapture = () => {
-    const capturedPokemon = {
-      id: props.pokemons.data.id,
-      name: props.pokemons.data.name,
-      types: types,
-    };
+export const PokemonCard = ({ pokemons, onRemove }) => {
+  const [captured, setCaptured] = useState(false);
 
-    // Retrieve the existing captured Pokemon array from localStorage or initialize an empty array
-    const storedCapturedPokemon = localStorage.getItem('capturedPokemon');
-    const capturedPokemonArray = storedCapturedPokemon ? JSON.parse(storedCapturedPokemon) : [];
+  useEffect(() => {
+    const capturedPokemons = JSON.parse(localStorage.getItem("capturedPokemons")) || {};
+    if (capturedPokemons[pokemons.id]) {
+      setCaptured(true);
+    }
+  }, [pokemons.id]);
 
-    // Add the captured Pokemon to the array
-    capturedPokemonArray.push(capturedPokemon);
+  const types = pokemons.types.map((type) => getTypes(type.type.name));
+  const color = pokemons.types.map((typecolor) => getColors(typecolor.type.name));
 
-    // Update the captured Pokemon array in localStorage
-    localStorage.setItem('capturedPokemon', JSON.stringify(capturedPokemonArray));
+  const capturePokemon = () => {
+    setCaptured(true);
+    const capturedPokemons = JSON.parse(localStorage.getItem("capturedPokemons")) || {};
+    capturedPokemons[pokemons.id] = pokemons;
+    localStorage.setItem("capturedPokemons", JSON.stringify(capturedPokemons));
   };
 
+  const releasePokemon = () => {
+    setCaptured(false);
+    const capturedPokemons = JSON.parse(localStorage.getItem("capturedPokemons")) || {};
+    delete capturedPokemons[pokemons.id];
+    localStorage.setItem("capturedPokemons", JSON.stringify(capturedPokemons));
+    onRemove(pokemons.id);
+  };
+  /* console.log(pokemons) */
   return (
     <Container color={color}>
       <div>
-        <PokemonNumber>{props.pokemons.data.id}</PokemonNumber>
-        <PokemonName>{props.pokemons.data.name}</PokemonName>
+        <PokemonNumber>{pokemons.id}</PokemonNumber>
+        <PokemonName>{pokemons.name}</PokemonName>
         <TypesContainer>
-          {types && types.map((typeUrl) => (
-<<<<<<< HEAD
+          {types.map((typeUrl) => (
             <img src={typeUrl} alt="" key={typeUrl} />
-=======
-            <img src={typeUrl} alt="" />
->>>>>>> 633d06f5575c7ce7bd61d8b1acfd391643988ff6
           ))}
         </TypesContainer>
-        <a href={`/list/detail/${props.pokemons.data.id}`}>Ver detalhes</a> {/* Adiciona um link para a página "Pokedex" com o ID do Pokémon */}
+        <a href={`/list/detail/${pokemons.id}`}>See details</a>
       </div>
       <Containerimg>
-<<<<<<< HEAD
-      {props.pokemon && props.pokemon.sprites && (
-  <Pokemon src={`${props.pokemon.sprites.front_default}`} alt="" />
-)}
-        <CatchButton onClick={handleCapture}>Capturar!</CatchButton>
+        <Pokemon src={pokemons.sprites.front_default} alt="" />
+        {captured ? (
+          <CatchButton onClick={releasePokemon}>Release!</CatchButton>
+        ) : (
+          <CatchButton onClick={capturePokemon}>Capture!</CatchButton>
+        )}
       </Containerimg>
       <Pokeball src={pokeball} alt="pokeball" />
     </Container>
   );
 };
-=======
-        {props.pokemons.data.sprites && <Pokemon src={`${props.pokemons.data.sprites.front_default}`} alt="" />}
-        {captured ?
-          <CatchButton onClick={() => removePokemon(props.pokemons.data)}>Remover</CatchButton> :
-          <CatchButton onClick={() => capturePokemon(props.pokemons.data)}>Capturar!</CatchButton>
-        }
-      </Containerimg>
-      <Pokeball src={pokeball} alt="pokeball" />
-    </Container>
-  )
-}
->>>>>>> 633d06f5575c7ce7bd61d8b1acfd391643988ff6
