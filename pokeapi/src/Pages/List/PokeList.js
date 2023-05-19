@@ -4,13 +4,17 @@ import { PokemonCard } from '../../Components/PokemonCard/PokemonCard'
 import axios from 'axios'
 import { getColors } from '../../utils/TypeColor'
 import { getTypes } from '../../utils/PokeType'
-import { Containerlist, Displaynone } from './styledList'
+import { ContainerMsg, Containerlist, Displaynone } from './styledList'
 import { PokeDetails } from '../Details/PokeDetails'
 
 export const PokeList = (props) => {
     const cardColor = getColors
     const pokeType = getTypes
     const [pokemons, setPokemons] = useState([])
+    const [showCaptureMessage, setShowCaptureMessage] = useState(false);
+    const handleCaptureMensagePokemon = () => {
+        setShowCaptureMessage(true);
+};
     
     useEffect(() => {
         getPokemons()
@@ -31,6 +35,13 @@ export const PokeList = (props) => {
         <div>
             <Header />
             <Containerlist>
+            {showCaptureMessage && (
+        <ContainerMsg>
+          <h1>Gotcha!</h1>
+          <h3>O Pokémon foi adicionado a sua Pokédex</h3>
+          <button onClick={() => setShowCaptureMessage(false)}>X</button>
+        </ContainerMsg>
+      )}
                 {pokemons.length ? (
                     pokemons.map((pokemons) => {
                         return (
@@ -38,6 +49,7 @@ export const PokeList = (props) => {
                                 pokemons={pokemons}
                                 cardColor={cardColor}
                                 getTypes={pokeType}
+                                onCapturemsg={handleCaptureMensagePokemon}
                               
                             />
                         )

@@ -14,7 +14,7 @@ import {
   TypesContainer,
 } from "./styledPokeCard";
 
-export const PokemonCard = ({ pokemons, onRemove }) => {
+export const PokemonCard = ({ pokemons, onRemove,  onCapturemsg }) => {
   const [captured, setCaptured] = useState(false);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ export const PokemonCard = ({ pokemons, onRemove }) => {
     const capturedPokemons = JSON.parse(localStorage.getItem("capturedPokemons")) || {};
     capturedPokemons[pokemons.id] = pokemons;
     localStorage.setItem("capturedPokemons", JSON.stringify(capturedPokemons));
+    onCapturemsg()
   };
 
   const releasePokemon = () => {
@@ -41,6 +42,7 @@ export const PokemonCard = ({ pokemons, onRemove }) => {
     localStorage.setItem("capturedPokemons", JSON.stringify(capturedPokemons));
     onRemove(pokemons.id);
   };
+  
   /* console.log(pokemons) */
   return (
     <Container color={color}>

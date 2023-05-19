@@ -1,39 +1,27 @@
-/* Frame 14 */
-
-/* Auto layout */
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 10px;
-gap: 10px;
+/* Rectangle 11 */
 
 position: absolute;
-width: 94px;
-height: 37px;
-left: 814px;
-top: 769px;
+width: 451px;
+height: 222px;
+left: 0px;
+top: 0px;
 
-background: #ECECEC;
-border: 1px dashed rgba(0, 0, 0, 0.14);
+background: #FFFFFF;
 border-radius: 12px;
+/* Gotcha! */
 
+position: absolute;
+width: 219.16px;
+height: 72px;
+left: 123px;
+top: 61px;
 
-/* Vine Whip */
-
-width: 74px;
-height: 17px;
-
-font-family: 'Montserrat';
+font-family: 'Poppins';
 font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
+font-weight: 700;
+font-size: 48px;
+line-height: 72px;
 /* identical to box height */
 
 color: #000000;
 
-
-/* Inside auto layout */
-flex: none;
-order: 0;
-flex-grow: 0;
