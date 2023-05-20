@@ -14,6 +14,8 @@ import {
   PokemonNumber,
   TypesContainer,
 } from "./styledPokeCard";
+import { Displaynone } from "../../Pages/List/styledList";
+import { PokeDetails } from "../../Pages/Details/PokeDetails";
 
 export const PokemonCard = ({ pokemons, onRemove, onCapturemsg }) => {
   const [captured, setCaptured] = useState(false);
@@ -68,6 +70,9 @@ export const PokemonCard = ({ pokemons, onRemove, onCapturemsg }) => {
         )}
       </Containerimg>
       <Pokeball src={pokeball} alt="pokeball" />
+      <Displaynone>
+        <PokeDetails pokemons={pokemons} color={color} type={types} />
+      </Displaynone>
     </Container>
   );
 };

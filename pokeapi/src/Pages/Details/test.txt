@@ -1,9 +1,45 @@
-/* image 7 */
-
-position: absolute;
-width: 307px;
-height: 257px;
-left: 378px;
-top: 43px;
-
-background: url(image.png);
+<Container color={color}>
+    <FrontBackImg>
+            <CardFront>
+              <BackeFrontImg src={pokemon.sprites.front_default} alt={pokemon.name} />
+            </CardFront>
+            <CardBack>
+              <BackeFrontImg src={pokemon.sprites.back_default} alt={pokemon.name} />
+            </CardBack>
+          </FrontBackImg>
+          <BaseStates>
+          <Title>Base States</Title>
+          <BaseList>
+            {pokemon.stats.map((type) => (
+              <ListItem key={type.slot}>{type.stat.name}:{type.base_stat}<ProgressBar>
+                <ProgressFill value={type.base_stat} />
+                </ProgressBar>
+                </ListItem>
+            ))}
+          </BaseList>
+          </BaseStates>
+      <div>
+        <PokemonNumber>#{pokemons.id}</PokemonNumber>
+        <PokemonName>{pokemons.name}</PokemonName>
+        <TypesContainer>
+          {types.map((typeUrl) => (
+            <img src={typeUrl} alt="" key={typeUrl} />
+          ))}
+        </TypesContainer>
+        <DetailsLink href={`/list/detail/${pokemons.id}`}>Detalhes</DetailsLink>
+      </div>
+      <Containerimg>
+        <Pokemon src={pokemons.sprites.front_default} alt="" />
+      </Containerimg>
+      <Moves>
+          <ul>
+            <MovesPoke>{pokemon.moves[0].move.name}</MovesPoke>
+            <MovesPoke>{pokemon.moves[1].move.name}</MovesPoke>
+            <MovesPoke>{pokemon.moves[2].move.name}</MovesPoke>
+            <MovesPoke>{pokemon.moves[3].move.name}</MovesPoke>
+            <MovesPoke>{pokemon.moves[4].move.name}</MovesPoke>
+            <MovesPoke>{pokemon.moves[5].move.name}</MovesPoke>
+          </ul>
+          </Moves>
+      <Pokeball src={pokeball} alt="pokeball" />
+    </Container>
