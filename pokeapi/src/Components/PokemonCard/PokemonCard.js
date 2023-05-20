@@ -7,6 +7,7 @@ import {
   CatchButton,
   Container,
   Containerimg,
+  DetailsLink,
   Pokeball,
   Pokemon,
   PokemonName,
@@ -46,14 +47,14 @@ export const PokemonCard = ({ pokemons, onRemove, onCapturemsg }) => {
   return (
     <Container color={color}>
       <div>
-        <PokemonNumber>{pokemons.id}</PokemonNumber>
+        <PokemonNumber>#{pokemons.id}</PokemonNumber>
         <PokemonName>{pokemons.name}</PokemonName>
         <TypesContainer>
           {types.map((typeUrl) => (
             <img src={typeUrl} alt="" key={typeUrl} />
           ))}
         </TypesContainer>
-        <a href={`/list/detail/${pokemons.id}`}>Detalhes</a>
+        <DetailsLink href={`/list/detail/${pokemons.id}`}>Detalhes</DetailsLink>
       </div>
       <Containerimg>
         <Pokemon src={pokemons.sprites.front_default} alt="" />

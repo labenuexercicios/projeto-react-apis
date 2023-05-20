@@ -6,7 +6,8 @@ export const Containerlist =styled.div`
     align-items: center;
     justify-content: center;
     background: #DDDDDD;
-    padding: 50px 10px;
+   /*  padding: 50px 0px; */
+    width: 100vw;
 
 `
 

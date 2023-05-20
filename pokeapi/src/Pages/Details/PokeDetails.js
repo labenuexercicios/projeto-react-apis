@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Header } from '../../Components/Header/Header';
-import { BackeFrontImg, BaseStates, CardBack, CardContainer, CardFront, ContainerDetails, FrontBackImg, Info, Moves, MovesPoke, NameImg, PokeballD, Pokemon, PokemonNameD } from './styledDetails';
+import { BackeFrontImg, BaseList, BaseStates, CardBack, CardContainer, CardFront, ContainerDetails, FrontBackImg, Info, ListItem, Moves, MovesPoke, NameImg, PokeballD, Pokemon, PokemonNameD, ProgressBar, ProgressFill, Title } from './styledDetails';
 import { PokemonName } from '../../Components/PokemonCard/styledPokeCard';
 import pokeball from '../../assets/pokebola.png';
 
@@ -40,11 +40,15 @@ export const PokeDetails = () => {
             </CardBack>
           </FrontBackImg>
           <BaseStates>
-          <ul>
+          <Title>Base States</Title>
+          <BaseList>
             {pokemon.stats.map((type) => (
-              <li key={type.slot}>{type.stat.name} :  {type.base_stat}</li>
+              <ListItem key={type.slot}>{type.stat.name}:{type.base_stat}<ProgressBar>
+                <ProgressFill value={type.base_stat} />
+                </ProgressBar>
+                </ListItem>
             ))}
-          </ul>
+          </BaseList>
           </BaseStates>
           <Info>
           <NameImg>

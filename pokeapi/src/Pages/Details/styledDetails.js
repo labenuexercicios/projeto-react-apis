@@ -66,6 +66,14 @@ export const BackeFrontImg = styled.img`
 export const BaseStates = styled.div`
     background-color: white;
     width: 23vw;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+`
+export const Title = styled.h2`
+   /*  margin-bottom: 150px; */
 `
 
 export const Moves = styled.div`
@@ -92,6 +100,35 @@ export const Info = styled.div`
 export const NameImg = styled.div`
     display: flex;
 `
+export const ProgressFill = styled.div`
+  height: 100%;
+  border-radius: 10px;
+  background-color: ${({ value }) =>
+    value > 60 ? 'gold' : value > 20 ? 'orangeRed' : 'red'};
+  width: ${({ value }) => `${value}%`};
+`;
+export const ProgressBar = styled.div`
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  background-color: lightgray;
+  margin-left: 10px;
+`;
+export const BaseList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Adicionado para alinhar verticalmente os itens */
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+`;
 
-
-
+export const ListItem = styled.li`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; /* Adicionado para alinhar verticalmente os elementos */
+  width: 14em;
+  font-weight: bolder;
+`;

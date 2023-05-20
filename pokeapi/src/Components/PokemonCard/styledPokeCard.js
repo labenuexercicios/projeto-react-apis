@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 20px;
-  width: 340px;
-  height: 190px;
-  background-color: ${(props) => props.color[0]};
+  width: 355px;
+  height: 210px;
+  
   border-radius: 12px;
   display: flex;
   position: relative;
   margin: 50px;
   color:black;
+  background-color: ${(props) => props.color[0]};
   
 `;
 
@@ -18,6 +19,7 @@ export const PokemonNumber = styled.p`
   font-size: 16px;
   font-weight: 600;
   text-align: left;
+  color: white;
 `;
 
 export const PokemonName = styled.h1`
@@ -26,7 +28,7 @@ export const PokemonName = styled.h1`
   letter-spacing: 0em;
   text-align: left;
   margin-bottom: 10px;
-  color: black;
+  color: white;
 `;
 
 export const PokemonType = styled.img`
@@ -67,11 +69,18 @@ export const CatchButton = styled.button`
 `;
 
 export const Pokemon = styled.img`
-position: absolute;
-width: 220px;
-left: 153px;
-top: -85px;
-`
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  left: 170px;
+  top: -90px;
+  object-fit: cover;
+  
+  :hover {
+    width: 250px;
+    height: 250px;
+  }
+`;
 
 export const Containerimg = styled.div`
 display: flex;
@@ -79,4 +88,9 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 
+`
+export const DetailsLink = styled.a`
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
 `

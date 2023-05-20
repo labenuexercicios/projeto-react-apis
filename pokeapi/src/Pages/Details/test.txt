@@ -1,27 +1,9 @@
-/* Rectangle 11 */
+/* image 7 */
 
 position: absolute;
-width: 451px;
-height: 222px;
-left: 0px;
-top: 0px;
+width: 307px;
+height: 257px;
+left: 378px;
+top: 43px;
 
-background: #FFFFFF;
-border-radius: 12px;
-/* Gotcha! */
-
-position: absolute;
-width: 219.16px;
-height: 72px;
-left: 123px;
-top: 61px;
-
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 700;
-font-size: 48px;
-line-height: 72px;
-/* identical to box height */
-
-color: #000000;
-
+background: url(image.png);
