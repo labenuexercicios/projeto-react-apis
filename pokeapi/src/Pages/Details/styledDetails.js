@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ContainerDetails = styled.div`
-    background-color: gray;
+    background-color: #5E5E5E;
+  font-size: 20px;
     height: 100%;
     padding: 50px 0px 0px 0px;
     display: flex;
@@ -11,10 +12,16 @@ export const ContainerDetails = styled.div`
     justify-content: center;  */
 
 `
+export const TitleD = styled.h1`
+  font-size: 50px;
+  color: white;
+  margin-left: 25px;
+ 
+`
 export const PokeballD = styled.img`
 width: 650px;
-left: 643px;
-top:211px;
+left: 633px;
+top:232px;
 position: absolute;
 `
 export const CardContainer = styled.div`

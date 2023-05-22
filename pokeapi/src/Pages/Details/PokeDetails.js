@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Header } from '../../Components/Header/Header';
-import { BackeFrontImg, BaseList, BaseStates, CardBack, CardContainer, CardFront, ContainerDetails, FrontBackImg, Info, ListItem, Moves, MovesPoke, NameImg, PokeballD, Pokeimg, Pokemon, PokemonNameD, ProgressBar, ProgressFill, Title } from './styledDetails';
+import { BackeFrontImg, BaseList, BaseStates, CardBack, CardContainer, CardFront, ContainerDetails, FrontBackImg, Info, ListItem, Moves, MovesPoke, NameImg, PokeballD, Pokeimg, Pokemon, PokemonNameD, ProgressBar, ProgressFill, Title, TitleD } from './styledDetails';
 import { PokemonName, PokemonNumber, TypesContainer } from '../../Components/PokemonCard/styledPokeCard';
 import pokeball from '../../assets/pokebola.png';
 import { getTypes } from '../../utils/PokeType';
 import { getColors } from '../../utils/TypeColor';
+import { TitlePag } from '../List/styledList';
 
 
 export const PokeDetails = () => {
@@ -31,7 +32,7 @@ export const PokeDetails = () => {
     <div>
       <Header />
       <ContainerDetails >
-        <h1>Detalhes</h1>
+            <TitleD>Detalhes</TitleD>
           <CardContainer color={color}>
            
             <FrontBackImg>

@@ -4,8 +4,9 @@ import { PokemonCard } from '../../Components/PokemonCard/PokemonCard';
 import axios from 'axios';
 import { getColors } from '../../utils/TypeColor';
 import { getTypes } from '../../utils/PokeType';
-import { ContainerMsg, Containerlist, Displaynone } from './styledList';
+import { ContainerMsg, Containerlist, Displaynone, TitlePag } from './styledList';
 import { PokeDetails } from '../Details/PokeDetails';
+import { Title } from '../Details/styledDetails';
 
 export const PokeList = (props) => {
   const cardColor = getColors;
@@ -50,6 +51,9 @@ export const PokeList = (props) => {
   return (
     <div>
       <Header />
+      <TitlePag>
+          <h1>Todos os Pokémons</h1>
+        </TitlePag>
       <Containerlist>
         {showCaptureMessage && (
           <ContainerMsg ref={captureMessageRef}>

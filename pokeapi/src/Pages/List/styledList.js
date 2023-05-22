@@ -5,7 +5,7 @@ export const Containerlist =styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background: #DDDDDD;
+    background:#5E5E5E;
    /*  padding: 50px 0px; */
     width: 100vw;
 
@@ -14,7 +14,12 @@ export const Containerlist =styled.div`
 export const Displaynone = styled.div`
     display: none;
 `
-
+export const TitlePag = styled.div`
+  background-color:  #5E5E5E;
+  font-size: 20px;
+  color: white;
+  padding: 20px;
+`
 export const ContainerMsg = styled.div`
     position: fixed;
   top: 50%;

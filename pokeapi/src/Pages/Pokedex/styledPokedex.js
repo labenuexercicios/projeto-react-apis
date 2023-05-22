@@ -5,7 +5,7 @@ export const Containerpokedex = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background: #DDDDDD;
+    background:  #5E5E5E;
    /*  padding: 50px 0px; */
     width: 100vw;
     height: 100vh;

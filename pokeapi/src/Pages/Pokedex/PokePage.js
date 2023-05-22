@@ -1,7 +1,7 @@
 import { Header } from "../../Components/Header/Header";
 import { useEffect, useState, useRef } from "react";
 import { PokemonCard } from "../../Components/PokemonCard/PokemonCard";
-import { ContainerMsg } from "../List/styledList";
+import { ContainerMsg, TitlePag } from "../List/styledList";
 import { ContainerDetails } from "../Details/styledDetails";
 import { Containerpokedex } from "./styledPokedex";
 
@@ -40,7 +40,9 @@ export const Pokedex = () => {
   return (
     <div>
       <Header />
+      <TitlePag><h1>Meus Pokémons</h1></TitlePag>
       <Containerpokedex>
+      
         {RemoveMessage && (
           <ContainerMsg ref={captureMessageRef}>
             <h1>Gotcha!</h1>

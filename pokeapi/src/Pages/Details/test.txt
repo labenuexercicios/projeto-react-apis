@@ -1,45 +1,1432 @@
-<Container color={color}>
-    <FrontBackImg>
-            <CardFront>
-              <BackeFrontImg src={pokemon.sprites.front_default} alt={pokemon.name} />
-            </CardFront>
-            <CardBack>
-              <BackeFrontImg src={pokemon.sprites.back_default} alt={pokemon.name} />
-            </CardBack>
-          </FrontBackImg>
-          <BaseStates>
-          <Title>Base States</Title>
-          <BaseList>
-            {pokemon.stats.map((type) => (
-              <ListItem key={type.slot}>{type.stat.name}:{type.base_stat}<ProgressBar>
-                <ProgressFill value={type.base_stat} />
-                </ProgressBar>
-                </ListItem>
-            ))}
-          </BaseList>
-          </BaseStates>
-      <div>
-        <PokemonNumber>#{pokemons.id}</PokemonNumber>
-        <PokemonName>{pokemons.name}</PokemonName>
-        <TypesContainer>
-          {types.map((typeUrl) => (
-            <img src={typeUrl} alt="" key={typeUrl} />
-          ))}
-        </TypesContainer>
-        <DetailsLink href={`/list/detail/${pokemons.id}`}>Detalhes</DetailsLink>
-      </div>
-      <Containerimg>
-        <Pokemon src={pokemons.sprites.front_default} alt="" />
-      </Containerimg>
-      <Moves>
-          <ul>
-            <MovesPoke>{pokemon.moves[0].move.name}</MovesPoke>
-            <MovesPoke>{pokemon.moves[1].move.name}</MovesPoke>
-            <MovesPoke>{pokemon.moves[2].move.name}</MovesPoke>
-            <MovesPoke>{pokemon.moves[3].move.name}</MovesPoke>
-            <MovesPoke>{pokemon.moves[4].move.name}</MovesPoke>
-            <MovesPoke>{pokemon.moves[5].move.name}</MovesPoke>
-          </ul>
-          </Moves>
-      <Pokeball src={pokeball} alt="pokeball" />
-    </Container>
+/* Desktop - 2 */
+
+position: relative;
+width: 1440px;
+height: 1174px;
+
+background: #5E5E5E;
+
+
+/* Rectangle 1 */
+
+position: absolute;
+width: 1440px;
+height: 160px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+
+
+/* Meus Pokémons */
+
+position: absolute;
+width: 404px;
+height: 72px;
+left: 40px;
+top: 220px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* image 1 */
+
+position: absolute;
+width: 307px;
+height: 113px;
+left: 566px;
+top: 21px;
+
+background: url(image);
+
+
+/* Group 1 */
+
+position: absolute;
+width: 440px;
+height: 263px;
+left: 40px;
+top: 295px;
+
+
+
+/* Frame 1 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 40px;
+top: 348px;
+
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 0px;
+top: 0px;
+
+background: #729F92;
+border-radius: 12px;
+
+
+/* pngwing 2 */
+
+position: absolute;
+width: 210.73px;
+height: 210.73px;
+left: 294.37px;
+top: -62px;
+
+background: url(pngwing);
+opacity: 0.17;
+transform: rotate(30deg);
+
+
+/* #01 */
+
+position: absolute;
+width: 30px;
+height: 19px;
+left: 23px;
+top: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+
+
+/* Bulbasaur */
+
+position: absolute;
+width: 159px;
+height: 39px;
+left: 23px;
+top: 40px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Frame 2 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 5px 8px;
+gap: 17px;
+
+position: absolute;
+width: 99px;
+height: 31px;
+left: 121px;
+top: 89px;
+
+background: #AD61AE;
+border: 1px dashed rgba(255, 255, 255, 0.47);
+border-radius: 8px;
+
+
+/* poison 1 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Poison */
+
+width: 46px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 4 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 5px 8px;
+gap: 17px;
+
+position: absolute;
+width: 91px;
+height: 31px;
+left: 23px;
+top: 89px;
+
+background: #70B873;
+border: 1px dashed rgba(255, 255, 255, 0.47);
+border-radius: 8px;
+
+
+/* Vector */
+
+width: 17px;
+height: 19px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Grass */
+
+width: 41px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 7 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 135px;
+
+position: absolute;
+width: 395px;
+height: 38px;
+left: 23px;
+top: 159px;
+
+
+
+/* Detalhes */
+
+width: 74px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+text-decoration-line: underline;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 5 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 10px;
+
+width: 146px;
+height: 38px;
+
+background: #FF6262;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Excluir */
+
+width: 50px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 3 */
+
+position: absolute;
+width: 193px;
+height: 193px;
+left: 274px;
+top: 295px;
+
+background: url(image.png);
+
+
+/* Group 2 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 500px;
+top: 348px;
+
+
+
+/* Frame 1 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 500px;
+top: 348px;
+
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 0px;
+top: 0px;
+
+background: #729F92;
+border-radius: 12px;
+
+
+/* pngwing 2 */
+
+position: absolute;
+width: 210.73px;
+height: 210.73px;
+left: 294.37px;
+top: -62px;
+
+background: url(pngwing);
+opacity: 0.17;
+transform: rotate(30deg);
+
+
+/* #02 */
+
+position: absolute;
+width: 32px;
+height: 19px;
+left: 23px;
+top: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+
+
+/* Ivysaur */
+
+position: absolute;
+width: 116px;
+height: 39px;
+left: 23px;
+top: 40px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Frame 2 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 5px 8px;
+gap: 17px;
+
+position: absolute;
+width: 99px;
+height: 31px;
+left: 121px;
+top: 89px;
+
+background: #AD61AE;
+border: 1px dashed rgba(255, 255, 255, 0.47);
+border-radius: 8px;
+
+
+/* poison 1 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Poison */
+
+width: 46px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 4 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 5px 8px;
+gap: 17px;
+
+position: absolute;
+width: 91px;
+height: 31px;
+left: 23px;
+top: 89px;
+
+background: #70B873;
+border: 1px dashed rgba(255, 255, 255, 0.47);
+border-radius: 8px;
+
+
+/* Vector */
+
+width: 17px;
+height: 19px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Grass */
+
+width: 41px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* image 4 */
+
+position: absolute;
+width: 193px;
+height: 193px;
+left: 236px;
+top: -53px;
+
+background: url(image.png);
+
+
+/* Frame 7 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 135px;
+
+position: absolute;
+width: 395px;
+height: 38px;
+left: 23px;
+top: 159px;
+
+
+
+/* Detalhes */
+
+width: 74px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+text-decoration-line: underline;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 5 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 10px;
+
+width: 146px;
+height: 38px;
+
+background: #FF6262;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Excluir */
+
+width: 50px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 8 */
+
+position: absolute;
+width: 440px;
+height: 266px;
+left: 960px;
+top: 292px;
+
+
+
+/* Group 4 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 960px;
+top: 348px;
+
+
+
+/* Frame 1 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 960px;
+top: 348px;
+
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 0px;
+top: 0px;
+
+background: #71C3FF;
+border-radius: 12px;
+
+
+/* pngwing 2 */
+
+position: absolute;
+width: 210.73px;
+height: 210.73px;
+left: 294.37px;
+top: -62px;
+
+background: url(pngwing);
+opacity: 0.17;
+transform: rotate(30deg);
+
+
+/* #07 */
+
+position: absolute;
+width: 31px;
+height: 19px;
+left: 23px;
+top: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+
+
+/* Squirtle */
+
+position: absolute;
+width: 125px;
+height: 39px;
+left: 23px;
+top: 40px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Frame 7 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 5px 8px;
+gap: 17px;
+
+position: absolute;
+width: 97px;
+height: 31px;
+left: 23px;
+top: 89px;
+
+background: #33A4F5;
+border: 1px dashed rgba(255, 255, 255, 0.47);
+border-radius: 8px;
+
+
+/* water 1 */
+
+width: 21px;
+height: 21px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 17.58%;
+right: 17.54%;
+top: 0%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Water */
+
+width: 43px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 7 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 135px;
+
+position: absolute;
+width: 395px;
+height: 38px;
+left: 983px;
+top: 507px;
+
+
+
+/* Detalhes */
+
+width: 74px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+text-decoration-line: underline;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 5 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 10px;
+
+width: 146px;
+height: 38px;
+
+background: #FF6262;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Excluir */
+
+width: 50px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 6 */
+
+position: absolute;
+width: 193px;
+height: 193px;
+left: 1204px;
+top: 292px;
+
+background: url(image.png);
+
+
+/* Group 9 */
+
+position: absolute;
+width: 440px;
+height: 266px;
+left: 40px;
+top: 558px;
+
+
+
+/* Group 4 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 40px;
+top: 614px;
+
+
+
+/* Frame 1 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 40px;
+top: 614px;
+
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 0px;
+top: 0px;
+
+background: #004170;
+border-radius: 12px;
+
+
+/* pngwing 2 */
+
+position: absolute;
+width: 210.73px;
+height: 210.73px;
+left: 294.37px;
+top: -62px;
+
+background: url(pngwing);
+opacity: 0.17;
+transform: rotate(30deg);
+
+
+/* #148 */
+
+position: absolute;
+width: 40px;
+height: 19px;
+left: 23px;
+top: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+
+
+/* Dragonair */
+
+position: absolute;
+width: 155px;
+height: 39px;
+left: 23px;
+top: 40px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Frame 7 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 135px;
+
+position: absolute;
+width: 395px;
+height: 38px;
+left: 63px;
+top: 773px;
+
+
+
+/* Detalhes */
+
+width: 74px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+text-decoration-line: underline;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 5 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 10px;
+
+width: 146px;
+height: 38px;
+
+background: #FF6262;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Excluir */
+
+width: 50px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 6 */
+
+position: absolute;
+width: 193px;
+height: 193px;
+left: 284px;
+top: 558px;
+
+background: url(image.png);
+
+
+/* Group 21 */
+
+position: absolute;
+width: 440px;
+height: 266px;
+left: 500px;
+top: 558px;
+
+
+
+/* Group 18 */
+
+position: absolute;
+width: 440px;
+height: 266px;
+left: 500px;
+top: 558px;
+
+
+
+/* Group 4 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 500px;
+top: 614px;
+
+
+
+/* Frame 1 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 500px;
+top: 614px;
+
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 440px;
+height: 210px;
+left: 0px;
+top: 0px;
+
+background: #BF9762;
+border-radius: 12px;
+
+
+/* pngwing 2 */
+
+position: absolute;
+width: 210.73px;
+height: 210.73px;
+left: 294.37px;
+top: -62px;
+
+background: url(pngwing);
+opacity: 0.17;
+transform: rotate(30deg);
+
+
+/* #143 */
+
+position: absolute;
+width: 40px;
+height: 19px;
+left: 23px;
+top: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+
+
+/* Snorlax */
+
+position: absolute;
+width: 120px;
+height: 39px;
+left: 23px;
+top: 40px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Frame 7 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 135px;
+
+position: absolute;
+width: 395px;
+height: 38px;
+left: 523px;
+top: 773px;
+
+
+
+/* Detalhes */
+
+width: 74px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+text-decoration-line: underline;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 5 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 10px;
+
+width: 146px;
+height: 38px;
+
+background: #FF6262;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Excluir */
+
+width: 50px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 6 */
+
+position: absolute;
+width: 193px;
+height: 193px;
+left: 744px;
+top: 558px;
+
+background: url(image.png);
+
+
+/* Frame 9 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 5px 8px;
+gap: 17px;
+
+position: absolute;
+width: 106px;
+height: 31px;
+left: 523px;
+top: 703px;
+
+background: #8A8A8A;
+border: 1px dashed rgba(255, 255, 255, 0.47);
+border-radius: 8px;
+
+
+/* normal 1 */
+
+width: 21px;
+height: 21px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 6.05%;
+right: 6.05%;
+top: 6.05%;
+bottom: 6.05%;
+
+background: #FFFFFF;
+
+
+/* Normal */
+
+width: 52px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* eva:arrow-ios-back-outline */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 74px;
+top: 67px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 33.3%;
+right: 37.54%;
+top: 20.83%;
+bottom: 20.83%;
+
+background: #000000;
+
+
+/* Todos Pokémons */
+
+position: absolute;
+width: 210px;
+height: 36px;
+left: 100px;
+top: 62px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+text-decoration-line: underline;
+
+color: #1A1A1A;
+
+
+
+/* Frame 18 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 5px 8px;
+gap: 17px;
+
+position: absolute;
+width: 106px;
+height: 31px;
+left: 63px;
+top: 703px;
+
+background: #0A6CBF;
+border: 1px dashed rgba(255, 255, 255, 0.47);
+border-radius: 8px;
+
+
+/* dragon 1 */
+
+width: 21px;
+height: 21px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 6.25%;
+right: 6.3%;
+top: 0%;
+bottom: 0%;
+
+background: #FFFFFF;
+
+
+/* Dragon */
+
+width: 52px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
