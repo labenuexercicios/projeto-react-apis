@@ -15,15 +15,15 @@ Essa Pokédex é uma aplicação web que possui 3 páginas (Home, Pokédex e Det
 
 <br>
 
-[![GitHub](https://img.shields.io/badge/Repositório_Dhouglas_Ornilo-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dhouglasornilo/projeto-intro-web-js)
+[![GitHub](https://img.shields.io/badge/Repositório_Dhouglas_Ornilo-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dhouglasornilo/projeto-react-apis)
 
 
 <br>
 
-### Link do Netlify abaixo.
+### Link do Projeto abaixo.
 <br>
 
-[![Pokedex](https://img.shields.io/badge/Projeto-DhouglasOrnilo-D32936?style=for-the-badge&logo=riot-games&logoColor=white)]()
+[![Pokedex](https://img.shields.io/badge/Projeto-DhouglasOrnilo-D32936?style=for-the-badge&logo=riot-games&logoColor=white)](https://projeto-react-apis-three.vercel.app)
 
 
 ## Funcionalidades
