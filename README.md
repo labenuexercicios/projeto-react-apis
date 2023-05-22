@@ -51,6 +51,6 @@ $ npm run dev
 
 # Créditos
 
-Este projeto foi desenvolvido por [Breno Moreira](https://www.linkedin.com/in/brenomorp/) com intuito educacional no Bootcamp da [Labenu](https://www.labenu.com.br/)
+Este projeto foi desenvolvido por [Breno Moreira](https://www.linkedin.com/in/brenomorp/) no Bootcamp da [Labenu](https://www.labenu.com.br/)
 
 Contribuições são sempre bem-vindas! Se você encontrar algum problema ou tiver alguma sugestão de melhoria, sinta-se à vontade para abrir uma issue ou fazer um pull request.
