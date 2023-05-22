@@ -1,0 +1,11 @@
+.containerBar {
+    border-radius: 3px;
+    width: 150px;
+    height: 10px;
+    background-color: #ececec;
+}
+
+.barProgress {
+    border-radius: 3px;
+    height: 10px;
+}
