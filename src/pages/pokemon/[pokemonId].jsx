@@ -23,14 +23,14 @@ const inter = Inter({
 
 export const getStaticPaths = async () => {
   const res = await axios.get(`${BASE_URL}/?limit=${DEFAULT_LIMIT}`);
-  const pokemonList = res.data.results;
+  const pokemonList = await res.data.results;
   const paths = pokemonList.map((pokemon, index) => ({
     params: {
       pokemonId: `${String(index + 1)}`,
     },
   }));
 
-  return { paths, fallback: true };
+  return { paths, fallback: 'blocking' };
 };
 
 export const getStaticProps = async (context) => {
@@ -73,7 +73,9 @@ function PokemonDetails({ pokemon }) {
 
   useEffect(() => {
     setPageFlow(3);
-    setCurrentPokemon(pokemon);
+    if (pokemon) {
+      setCurrentPokemon(pokemon);
+    }
     const storedPokedex = JSON.parse(localStorage.getItem('pokedex'));
     if (storedPokedex) {
       setPokedex(storedPokedex);
