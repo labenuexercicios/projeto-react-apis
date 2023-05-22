@@ -1,10 +1,10 @@
-import { BigDetail, CardDetail, PokeId, PokemonDetailStyle, SmallDetail, PokeName, PokeInfo, PokeImg, PokeMoves, FirstColumn, PokeGolpes } from "./pokemonDetailStyle"
+import { BigDetail, CardDetail, PokeId, PokemonDetailStyle, SmallDetail, PokeName, PokeInfo, PokeImg, PokeMoves, FirstColumn, PokeGolpes, PokeBarra, Table, TableCell} from "./pokemonDetailStyle"
 import { useParams } from "react-router-dom";
 import Header from "../../Components/Header/Header"
 import { Title } from "../PokedexPage/pokedexStyle"
 import pokeball from '../../assets/pngwing 1.png'
-import pokeball2 from '../../assets/pngwing 2.png'
-import { SmallPokeball, BigPokeball } from "./pokemonDetailStyle"
+
+import { BigPokeball } from "./pokemonDetailStyle"
 import { useState } from "react";
 import { useEffect } from "react";
 import { BASE_URL } from "../../Constants/url";
@@ -12,6 +12,8 @@ import axios from 'axios';
 import { TypesContainer } from "../../Components/PokemonCard/pokemonCardStyle";
 import { PokemonType } from "../../Components/PokemonCard/pokemonCardStyle";
 import { getTypes } from "../../utils/ReturnPokemonType";
+
+// Função para definir a largura e a classe CSS do botão com base no valor numérico
 
 export default function PokemonDetailPage (){
     const {pokemonId} = useParams();
@@ -48,36 +50,52 @@ export default function PokemonDetailPage (){
                     <SmallDetail src={pokemonDetails.sprites.back_default} alt=''/>
                 </FirstColumn>
                 <BigDetail>
-                    <h2>Base Stats</h2>
-                    <table>
-                        <tbody>
-                        {pokemonDetails.stats[0] ? (
-                            <>
-                            {pokemonDetails.stats.map((stats) => (
-                                <tr key={stats.stat.name}>
-                                <td>{stats.stat.name}</td>
-                                <td>{stats.base_stat}</td>
-                                </tr>
-                            ))}
-                            <tr>
-                                <td>Total</td>
-                                <td>
-                                {pokemonDetails.stats.reduce(
-                                    (total, stats) => total + stats.base_stat,
-                                    0
-                                )}
-                                </td>
-                            </tr>
-                            </>
-                        ) : (
-                            <tr>
-                            <td colSpan="2">Carregando...</td>
-                            </tr>
-                        )}
-                        </tbody>
-                    </table>
-                </BigDetail>
                 
+    <h2>Base Stats</h2>
+    <Table>
+      <tbody>
+        {pokemonDetails.stats[0] ? (
+          <>
+            {pokemonDetails.stats.map((stats) => (
+              <tr key={stats.stat.name}>
+              <TableCell>
+      {stats.stat.name}
+      <div>{stats.base_stat}
+      
+      </div>
+      <PokeBarra valor={stats.base_stat} />
+    </TableCell>
+            </tr>
+            ))}
+            <tr>
+              <TableCell>Total</TableCell>
+              <TableCell>
+                <div>
+                  <PokeGolpes
+                    valor={pokemonDetails.stats.reduce(
+                      (total, stats) => total + stats.base_stat,
+                      0
+                    )}
+                  >
+                    {pokemonDetails.stats.reduce(
+                      (total, stats) => total + stats.base_stat,
+                      0
+                    )}
+                  </PokeGolpes>
+                </div>
+              </TableCell>
+            </tr>
+          </>
+        ) : (
+          <tr>
+            <TableCell colSpan="2">Carregando...</TableCell>
+          </tr>
+        )}
+      </tbody>
+    </Table>
+  
+</BigDetail>
+
 
                 <PokeInfo>
                     <PokeId>#{pokemonDetails.id}</PokeId>

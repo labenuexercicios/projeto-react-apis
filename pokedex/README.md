@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# Projeto Pokédex - Front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Pokedex](https://th.bing.com/th/id/OIP.7R4-AST_uPMAz7yCiBDiUQHaEq?pid=ImgDet&rs=1)
 
-## Available Scripts
 
-In the project directory, you can run:
+Pokedex apresentando página de lista de Pokémons, com 20 cards individuais estilizado de acordo com o tipo dos Pokémons, com botão de detalhes e adicionar; Pokédex, mostrando os cards dos Pokémons que foram adicionados na página de lista ; e Detalhes, mostrando uma página com uma imagem maior do Pokémon selecionado, duas imagens pixelizadas, golpes e estatísticas daquele Pokémon.
 
-### `npm start`
+Projeto feito como pré-requisito para conclusão do módulo Front-end da Labenu.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Índice:
+- <a href='#funcoes'> Funções do Projeto 
+- <a href='#layout'> Layout
+- <a href='#demo'> Demonstração
+- <a href='#rodar'> Como rodar este projeto?
+- <a href='#techs'> Tecnologias utilizadas
+- <a href='#autor'> Autor
+- <a href='#next'> Próximos passos
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Funcionalidade do Projeto
 
-### `npm run build`
+## Gerais:
+-[x] O site deve ter 3 páginas: Home, Pokedex e Detalhes;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-[x] Projeto deve seguir o design proposto;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-[x] O fluxo de trocas de páginas devem ser semelhante ao fluxograma;
+## Página Home:
+-[x] Mostrar uma lista de Pokemons, contendo ao menos 20 Pokemons;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-[x] Cada Pokemon será representado por um Card;
 
-### `npm run eject`
+-[x] Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-[x] Header dessa página terá um botão para acessar a página da Pokedex;
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Página Pokédex:
+-[x] Renderizar a lista de pokémons adicionados na pokedex;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+-[x] Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-[x] Header deve ter um botão para voltar para a Home;
 
-## Learn More
+-[x] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Página de Detalhes:
+-[x] Mostrar os detalhes do Pokemon selecionado, com informações descritas;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-[x] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
 
-### Code Splitting
+-[x] Criar um readme para o projeto;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Layout
+O layout de referência está disponível no link do <a href='https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?type=design&node-id=2-2&t=G7HNehWZz81SiyLB-0'> Figma(clique em mim!).
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Demonstração
 
-### Making a Progressive Web App
+[Surge]()
+[Gitpages]()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Como rodar esse projeto?
 
-### Advanced Configuration
+```bash
+# Clone este repositório
+$ git clone https://github.com/garrcastro/projeto-react-apis.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Acesse a página do projeto no seu terminal
+$ cd pokedex
 
-### Deployment
+# Instale as dependências
+$ npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Execute a aplicação
+$ npm run start
 
-### `npm run build` fails to minify
+# A aplicação será iniciada na porta 3000, acesse pelo navegador:
+http://localhost:3000
+```
+# Tecnologias utilizadas 
+1. React
+2. React Router
+3. Styled Components
+4. Axios
+5. Figma
+6. API Pokeapi
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Autor
+
+Gabriel Castro
+
+[LinkedIn](https://www.linkedin.com/in/garrcastro/) 
+
+[Instagram](https://www.instagram.com/gabriologic/)
+
+# Próximos passos
+
+1. React Context
+2. Design System
+3. Responsividade
+4. Função Filtro
+5. Função Busca
+6. Refatoração do código

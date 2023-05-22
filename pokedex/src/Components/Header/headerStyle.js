@@ -27,8 +27,10 @@ export const ButtonPokedex = styled.button`
 `
 export const Logo = styled.img`
     background-image: url(${logo});
-    width: 20vw;
-    height: 15vh;
+    background-repeat: no-repeat;
+    width: 340px;
+    height: 20vh;
+    border-color: transparent;
     position: relative;
     margin-top: 2em;
     

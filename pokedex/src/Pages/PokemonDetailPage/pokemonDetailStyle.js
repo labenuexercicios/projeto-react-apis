@@ -117,3 +117,61 @@ line-height: 17px;
 padding: 10px;
 
 `
+
+export const PokeBarra = styled.button`
+position: relative;
+  height: 10px;
+  width: 100%;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 12px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: ${({ valor }) => {
+      if (valor > 80) {
+        return '#4CAF50'; // Verde
+      } else if (valor > 50) {
+        return '#FFA500'; // Laranja
+      } else {
+        return '#FF0000'; // Vermelho
+      }
+    }};
+    width: ${({ valor }) => `${valor}%`};
+    transition: width 0.3s ease-in-out;
+    border-radius: 12px;
+  }
+`;
+
+
+
+
+export const Table = styled.table`
+  width: 100%;
+
+`;
+
+export const TableCell = styled.td`
+   display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  align-items: center;
+  height: 100%;
+  column-gap: 8px;
+
+  &:first-child {
+    width: 30%;
+  }
+
+  &:last-child {
+    width: 70%;
+  }
+  > div {
+    display: flex;
+    align-items: center;
+  }
+`;
+
