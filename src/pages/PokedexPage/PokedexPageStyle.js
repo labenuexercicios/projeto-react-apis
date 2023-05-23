@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PokedexPageStyle = styled.main`
 
 background-color: #5D5D5D;
+min-height: 100vh;
 display: flex;
 flex-direction: column;
 padding: 32px 24px 24px 32px;
