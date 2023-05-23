@@ -70,7 +70,7 @@ background-repeat: no-repeat;
 
         button{
             position: relative;
-            top: 12px;
+            top: 19px;
             left: 60px;
             width: 120px;
             height: 38px;

@@ -9,7 +9,6 @@ flex-direction: column;
 align-items: center;
 padding: 30px;
 gap: 30px;
-min-height: 90vh;
 color: #FFFFFF;
 
 h1{
