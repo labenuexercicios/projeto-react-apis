@@ -2,20 +2,19 @@ import { Button, Link } from "@chakra-ui/react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { HeaderStyle } from "./HeaderStyle";
-import { goToHomePage, goToPokedexPage } from "../../routes/coordinator";
+import { goToPokedexPage } from "../../routes/coordinator";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import PokeLogo from "../../assets/PokeLogo.png"
 
 
-export function Header(props) {
+export function Header() {
 
     const location = useLocation();
     const navigate = useNavigate();
     const params = useParams()
     const context = useContext(GlobalContext)
-    const {pokemon} = props
-    const {addToPokedex, removeFromPokedex, pokedex} = context
+    const {addToPokedex, removeFromPokedex, pokedex, pokemon } = context
     const [pokemonFound, setPokemonFound] = useState()
     
 

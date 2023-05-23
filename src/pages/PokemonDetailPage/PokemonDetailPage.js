@@ -24,7 +24,7 @@ export function PokemonDetailPage() {
          setTypesLocal([typePokemon[response.data.types[0].type.name], typePokemon[response.data.types[1]?.type.name]])
          setPokemon(response.data)
         } catch (error) {
-          console.log('Erro ao acessar pokemon')
+          console.log(error.response)
           
         }
       }
@@ -58,9 +58,6 @@ export function PokemonDetailPage() {
       }
   
     }
-  
-
-    console.log(pokemon.stats && pokemon?.stats[0]?.base_stat)
 
 
     return ( 

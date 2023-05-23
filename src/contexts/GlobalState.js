@@ -20,7 +20,6 @@ export default function GlobalState(props) {
       const response = await axios.get(`${BASE_URL}/?limit=25`);
       setPokelist(response.data.results)
     } catch (error) {
-      console.log("Erro ao busca lista de pokemons")
       console.log(error.response)
     }
   }
@@ -49,12 +48,12 @@ export default function GlobalState(props) {
       setPokedex(newPokedex)
       const pokedexStringfy = JSON.stringify(newPokedex)
       window.localStorage.setItem('pokedex', pokedexStringfy)
-      console.log("Pokemon adicionado")
+
     }
     showModal()
   }
 
-  const loadPokedexFromLocal = () => {
+  const PokedexFromLocal = () => {
     if (window.localStorage.getItem('pokedex')) {
       const pokedexParse = JSON.parse(window.localStorage.getItem('pokedex'))
       setPokedex(pokedexParse)
@@ -62,7 +61,7 @@ export default function GlobalState(props) {
   }
 
   useEffect(() => {
-    loadPokedexFromLocal()
+    PokedexFromLocal()
   }, [])
 
 
@@ -74,9 +73,8 @@ export default function GlobalState(props) {
     )
 
     setPokedex(newPokedex)
-    const newPokedexStringfy = JSON.stringify(newPokedex)
-    window.localStorage.setItem('pokedex', newPokedexStringfy)
-    console.log("Pokemon removido!")
+    const PokedexStringfy = JSON.stringify(newPokedex)
+    window.localStorage.setItem('pokedex', PokedexStringfy)
     showModal()
   }
 
