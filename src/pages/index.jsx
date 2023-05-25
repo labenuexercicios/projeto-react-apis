@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Poppins } from 'next/font/google';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import PokemonCard from '@/components/PokemonCard';
 import Title from '@/components/Title';
 import { BASE_URL, DEFAULT_LIMIT } from '@/constants/api';
@@ -9,12 +8,15 @@ import useGlobalContext from '@/hook/useGlobalContext';
 import Pagination from '@/components/Pagination';
 
 export const getServerSideProps = async (context) => {
-  const { offset, limit } = context.query;
+  const { offset } = context.query;
+
   const res = await axios.get(
-    `${BASE_URL}/?limit=${limit ?? DEFAULT_LIMIT}&offset=${offset ?? 0}`
+    `${BASE_URL}/?limit=${DEFAULT_LIMIT}&offset=${offset ?? 0}`
   );
+
   const pokemonList = res.data.results;
-  const { next, previous } = res.data;
+  const { count } = res.data;
+
   const pokemonDataList = await Promise.all(
     pokemonList.map(async (pokemon) => {
       const pokemonResponse = await axios.get(pokemon.url);
@@ -32,7 +34,7 @@ export const getServerSideProps = async (context) => {
   );
 
   return {
-    props: { pokemonDataList, next, previous },
+    props: { pokemonDataList, count },
   };
 };
 
@@ -42,17 +44,9 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-export default function Home({ pokemonDataList, next, previous }) {
+export default function Home({ pokemonDataList, count }) {
   const { setPageFlow, pokedex, setPokedex } = useGlobalContext();
   const [search, setSearch] = useState('');
-
-  const { replace, query } = useRouter();
-  const { offset, limit } = query;
-  const offsetValue = offset ? Number(offset) : 0;
-  const limitValue = limit ? Number(limit) : DEFAULT_LIMIT;
-  const currentPage = Math.ceil(offsetValue / limitValue) + 1;
-  const prevRoute = previous?.replace(BASE_URL, '');
-  const nextRoute = next?.replace(BASE_URL, '');
 
   useEffect(() => {
     setPageFlow(1);
@@ -108,12 +102,7 @@ export default function Home({ pokemonDataList, next, previous }) {
           </p>
         </div>
       )}
-      <Pagination
-        replace={replace}
-        currentPage={currentPage}
-        prevRoute={prevRoute}
-        nextRoute={nextRoute}
-      />
+      <Pagination count={count} />
     </div>
   );
 }
