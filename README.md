@@ -6,7 +6,7 @@ O seguinte projeto apresenta um modelo de pokedéx como uma "vitrine" digital co
 
 A [Poke Api](https://pokeapi.co/ "Poke Api") fora utilizada como fonte de dados para a criação deste projeto. 
 
-Para visualizar o projeto, acesse o link de deploy na plataforma "Surge": misty-blue.surge.sh
+Para visualizar o projeto, acesse o projeto na plataforma "Surge" através deste [link](misty-blue.surge.sh "Pokedex")
 
 # **Composição**
 
