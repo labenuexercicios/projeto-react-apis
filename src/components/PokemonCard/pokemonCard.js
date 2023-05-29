@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Card, DivColum, Types, Images, Image, ImagePokebola, DivRow, Details, Capture } from "./style"
+import { Card, DivColum, Types, Images, Image, DivRow, Details, Capture } from "./style"
 import { goToPokemonDetailPage } from '../../routes/Coordinator';
 import { useNavigate, useLocation } from "react-router-dom";
 import { PokemonTypes } from "../../PokemonTypes"
@@ -34,7 +34,7 @@ const PokemonCard = (props) => {
                 </Images>
 
                 <DivRow>
-                  <Details onClick={() => goToPokemonDetailPage(navigate, pokemon.id)}>Detalhes</Details>
+                  <Details onClick={() => goToPokemonDetailPage(navigate, pokemon.data.id)}>Detalhes</Details>
                   <Capture onClick={() => addToPokedex(pokemon)}>
                     Capturar
                   </Capture>

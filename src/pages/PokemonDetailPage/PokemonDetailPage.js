@@ -6,8 +6,6 @@ import PokemonCard from '../../components/PokemonCard/pokemonCard';
 
 const PageDetails = () => {
 
-
-
   return (
     <div>
       <HeaderDetails />
@@ -18,13 +16,10 @@ const PageDetails = () => {
 
         <CardDetails className='container-card-details' >
           <div className='foto-front' >
-            imagem frente
-            
+            imagem frente         
           </div>
           <div className='base-stats'>
-
-            dados status 
-                      
+            dados status          
           </div>
           <InfosPokemon className='infos-pokemon' > 
           dados pokemon
