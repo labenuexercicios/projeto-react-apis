@@ -5,7 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import GlobalState from "./contexts/GlobalState";
 import { ModalContact } from './components/ModalContact/ModalContact'
 
-
+//para o PR
 function App() {
 
   const context = GlobalState()
