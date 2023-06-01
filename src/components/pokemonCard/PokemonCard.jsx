@@ -11,17 +11,19 @@ import {
   Detalhes,
   DeletButton,
 } from "./styled";
-import { getColors } from "../../utils/ReturnCardColor";
-import { getTypes } from "../../utils/ReturnPokemonType";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import pokeball from "../../assets/pngwing 2.png";
 import { useNavigate } from "react-router-dom";
 import { goToDetailPage } from "../../routes/Cordinator";
+import GlobalContext from "../../context/GlobalContext";
 
 export const PokemonCard = (props) => {
   const navigate = useNavigate();
 
-  const { deletPokemon, capturePokemon, pokemon, setDetail, btn } = props;
+  const context = useContext(GlobalContext)
+    const { getColors, getTypes, deletPokemon, capturePokemon,setDetail } = context;
+
+  const {  pokemon,btn } = props;
 
   const [id, setId] = useState("");
   const [image, setImage] = useState("");
@@ -88,4 +90,3 @@ export const PokemonCard = (props) => {
   );
 };
 
-//capture={capture} onClick={handleClickBtn}

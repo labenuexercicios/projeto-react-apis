@@ -4,9 +4,15 @@ import { Button } from "@chakra-ui/react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { goToHomePage, goToPokedexPage } from "../../routes/Cordinator";
 import { FiChevronLeft } from "react-icons/fi";
+import { useContext } from "react";
+import GlobalContext from "../../context/GlobalContext";
 
-export const Header = (props) => {
-  const { pokedex, detail,capturePokemon,deletPokemon,pokemons} = props;
+
+export const Header = () => {
+
+  const context = useContext(GlobalContext)
+    const { pokedex, detail,capturePokemon,deletPokemon } = context
+  
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -48,7 +54,7 @@ export const Header = (props) => {
         <Button
           colorScheme="blue"
           w={200}
-          onClick={() => capturePokemon(detail.name)}
+          onClick={() => capturePokemon(detail)}
         >
           Capturar!
         </Button>
@@ -57,7 +63,7 @@ export const Header = (props) => {
         <Button
           colorScheme="red"
           w={200}
-          onClick={() => deletPokemon(detail.name)}
+          onClick={() => deletPokemon(detail)}
         >
           Excluir!
         </Button>

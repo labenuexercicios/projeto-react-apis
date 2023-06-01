@@ -1,21 +1,13 @@
 import { PokemonCard } from "../../components/pokemonCard/PokemonCard";
+import GlobalContext from "../../context/GlobalContext";
 import { Conteiner, H1 } from "./styled";
+import { useContext } from "react";
 
-export const HomePage = (props) => {
-  const { pokemons, pokedex, type1, setType1, type2, setType2, setDetail,capturePokemon } =
-    props;
+export const HomePage = () => {
+
+  const context = useContext(GlobalContext)
+    const { pokemons, noPokedex } = context;
   
-
-  const noPokedex = (pokemonName) => {
-    const foundPokemon = pokedex.filter(
-      (pokemon) => pokemon.name === pokemonName
-    );
-    if (foundPokemon.length > 0) {
-      return false;
-    } else {
-      return true;
-    }
-  };
   return (
     <Conteiner>
       <H1>Todos os pokemons</H1>
@@ -23,15 +15,9 @@ export const HomePage = (props) => {
         .filter((pokemon) => noPokedex(pokemon.name))
         .map((pokemon, index) => {
           return (
-            <PokemonCard
-              setType1={setType1}
-              setType2={setType2}
-              type1={type1}
-              type2={type2}
+            <PokemonCard              
               key={index}
               pokemon={pokemon}
-              capturePokemon={capturePokemon}
-              setDetail={setDetail}
               btn={'capture'}
             />
           );

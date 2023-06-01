@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   BaseStats,
   BoxImageMiniPoke,
@@ -10,8 +10,6 @@ import {
   MoviesPokemon,
   Pokeball,
   Pokemon,
-  PokemonName,
-  PokemonNumber,
   PokemonType,
   ProgressBar,
   ProgressBarContainer,
@@ -19,22 +17,24 @@ import {
   TypesContainer,
   H1,  
 } from "./styled";
-import { getColors } from "../../utils/ReturnCardColor";
-import { getTypes } from "../../utils/ReturnPokemonType";
-import { colorProgress } from "../../utils/ReturnColorProgress";
-import { abbreviate, ModifayFirstLetter } from "../../utils/ReturnAbreviate";
-import { useParams } from "react-router-dom";
-import { BASE_URL } from "../../constants/constants";
 import pokeball from "../../assets/pngwing 2.png";
+import GlobalContext from "../../context/GlobalContext";
 
-export const DetailPokemon = (props) => {
-  const {  
-    type1,
-    type2,
-    setType1,
-    setType2,
-    detail,
-  } = props;
+export const DetailPokemon = () => {
+
+  const context = useContext(GlobalContext)
+    const { type1,
+      type2,
+      setType1,
+      setType2,
+      detail,
+      getColors,
+      getTypes,
+      colorProgress,
+      abbreviate,
+      ModifayFirstLetter
+     } = context
+  
   const [image, setImage] = useState("");
   const [imageBack, setImageBack] = useState("");
   const [imageFront, setImageFront] = useState("");
