@@ -4,6 +4,8 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import PokedexPage from "../pages/PokedexPage/PokedexPage";
 import DetailsPage from "../pages/DetailsPage/DetailsPage";
 import Header from "../components/Header/Header";
+import React from "react";
+
 function Router() {
   return (
     <BrowserRouter>
@@ -11,8 +13,8 @@ function Router() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/pokedex" element={<PokedexPage />} />
+        <Route path="/pokemon/:name" element={<DetailsPage />} />
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/details" element={<DetailsPage/>} />
       </Routes>
     </BrowserRouter>
   );

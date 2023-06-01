@@ -3,6 +3,8 @@ import parser from 'postcss-selector-parser'
 
 import { resolveMatches } from './generateRules'
 import escapeClassName from '../util/escapeClassName'
+import { applyImportantSelector } from '../util/applyImportantSelector'
+import { movePseudos } from '../util/pseudoElements'
 
 /** @typedef {Map<string, [any, import('postcss').Rule[]]>} ApplyCache */
 
@@ -555,12 +557,17 @@ function processApply(root, context, localCache) {
 
             // And then re-add it if it was removed
             if (importantSelector && parentSelector !== parent.selector) {
-              rule.selector = `${importantSelector} ${rule.selector}`
+              rule.selector = applyImportantSelector(rule.selector, importantSelector)
             }
 
             rule.walkDecls((d) => {
               d.important = meta.important || important
             })
+
+            // Move pseudo elements to the end of the selector (if necessary)
+            let selector = parser().astSync(rule.selector)
+            selector.each((sel) => movePseudos(sel))
+            rule.selector = selector.toString()
           })
         }
 

@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 12px;
+  padding: 20px;
   min-height: 200px;
   max-height: 210px;
-  min-width: 400px;
+  min-width: 410px;
   max-width: 440px;
   background-color: ${(props) => props.color};
   border-radius: 12px;
   display: flex;
   position: relative;
-  margin: 40px;
+  margin: 50px;
   color: #ffffff;
-  top: 50%;
+  @media only screen and (max-width: 600px) {
+    min-width: 340px;
+  max-width: 400px;
+  top: 10%;
+  right: 5%;
+}
 `;
 
 export const CatchButton = styled.button`
@@ -29,8 +34,7 @@ export const CatchButton = styled.button`
   cursor: pointer;
   position: relative;
   top: 40px;
-  right: 0vh;
-  left: 35vh;
+  left: 220px;
   z-index: 2;
   color: #000;
 
@@ -42,6 +46,11 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
+
+@media only screen and (max-width: 600px) {
+
+  left: 150px;
+}
   `;
 
   export const ExtButton = styled.button`
@@ -60,9 +69,14 @@ display: flex;
   position: relative;
   top: 40px;
   right: 0vh;
-  left: 35vh;
+  left: 220px;
   z-index: 2;
-  color: #FFFFFF;;
+  color: #FFFFFF;
+
+  @media only screen and (max-width: 600px) {
+
+left: 150px;
+}
 
 
   
@@ -72,6 +86,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
+
   `;
   
 export const PokemonNumber = styled.p`
@@ -93,27 +108,32 @@ line-height: 39px;
 `;
 
 export const Pokeball = styled.img`
+
  position: absolute;
   top: 0;
   right: 0;
 `;
 
 export const Pokemon = styled.img`
+position: absolute;
 width: 193px;
 height: 193px;
-position: absolute;
 bottom: 60px;
-left: 30vh;
+left: 210px;
 z-index: 1;
+@media only screen and (max-width: 800px) {
+  width: 125px;
+height: 125px;
+left: 220px;
+}
 `;
 
-
 export const PokemonType = styled.img`
-  
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px dashed #ffffff;
-  margin-right: 8px;
+  margin-right: 3px;
+  @media only screen and (max-width: 800px) {
+    margin-right: 0px;
+
+}
 `;
 
 export const PokemonDetails = styled.p`

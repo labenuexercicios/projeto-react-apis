@@ -1,21 +1,18 @@
 import Card from "../../components/Card/Card";
-import { H, P } from "./styled";
-import { useContext } from "react";
+import { P } from "./styled";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import styled from "styled-components";
 import { Container } from "./styled";
-const CardsContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, minmax(440px, 1fr));
-    justify-items: center;
-    background: grey;
-  `;
+import { CardsContainer } from "./styled";
+import Modal from "../../components/Modal/Modal";
+import React from "react";
 function HomePage() {
   const context = useContext(GlobalContext);
 
-  const { pokelist, addToPokedex, pokedex,  } = context;
+  const { pokedex, pokelist, addToPokedex, openModal, setOpenModal, verifyPokemon} = context;
 
-  // não mostrar pokemons que estão na pokedex
+  
+    // não mostrar pokemons que estão na pokedex
   const filteredPokelist = () =>
     pokelist.filter(
       (pokemonInList) =>
@@ -28,19 +25,23 @@ function HomePage() {
   
   return (
     <Container>
-       <H>  
-        <P>
-          <p>
+     <P>
+      <h1>
            Todos Pokémons
-        </p>
-        </P>
-        </H>
-      <CardsContainer>
+        </h1>
+      </P>
+      <Modal isOpen={openModal}  setIsClose={() => setOpenModal(!openModal)}> 
+      <h1> Gotcha!</h1>
+      <p>O Pokémon foi adicionado a sua Pokédex</p>
+      </Modal>
+      <CardsContainer >
         {filteredPokelist().map((pokemon) => (
           <Card
-            key={pokemon.url}
+          key={pokemon.url}
             pokemonUrl={pokemon.url}
             addToPokedex={addToPokedex}
+            setOpenModal={setOpenModal}
+            verifyPokemon={verifyPokemon}
         />
         ))}
       </CardsContainer>

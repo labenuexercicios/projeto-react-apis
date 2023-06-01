@@ -1,6 +1,5 @@
-import { useContext } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
 
+import React from "react";
 function NotFoundPage() {
  
  

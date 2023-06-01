@@ -6,19 +6,24 @@ import {TypesContainer, PokemonDetails, Container, CatchButton, PokemonNumber, P
 import pokeball from '../../assets/pngwing 2.png'
 import { getPokemonType } from "../../constants/type";
 import { getColors } from "../../constants/color";
-
+import React from "react";
 
 function Card(props) {
-  const { pokemonUrl, addToPokedex, removeFromPokedex, } = props;
-
+  const { pokemonUrl, addToPokedex, removeFromPokedex, setOpenModal, verifyPokemon} = props;
+  
+  // Função que retorna primeira letra do nome em maiusculo
+  const capitalize = str => {
+    if (typeof str !== 'string') {
+      return '';
+    }
+    return str.charAt(0).toUpperCase() + str.substring(1);
+  }
   // hook para saber nosso path atual
   const location = useLocation();
 
   // hook para redirecionar
   const navigate = useNavigate();
-
   const [pokemon, setPokemon] = useState({});
-  
   // guarda, porque ainda não renderizamos
   useEffect(() => {
     fetchPokemon();
@@ -28,21 +33,24 @@ function Card(props) {
     try {
       const response = await axios.get(pokemonUrl);
       setPokemon(response.data);
-      console.log(response.data)
     } catch (error) {
       console.log("Erro ao buscar lista de pokemons");
       console.log(error);
     }
   };
+  const onClickCard = (name) => {
+    goToDetailsPage(navigate,name)
+    };
 
+ 
   return (
-    <Container color={getColors(pokemon.types && pokemon.types[0].type.name)} >
+    <Container  color={getColors(pokemon.types && pokemon.types[0].type.name)} >
       <Pokemon 
           src={pokemon.sprites?.other["official-artwork"]["front_default"]} alt={pokemon.name} /> 
       <Pokeball src={pokeball} alt="pokeball" />
       <div>
-      <PokemonNumber>#{pokemon.id}</PokemonNumber>
-      <PokemonName>{pokemon.name}</PokemonName>
+      <PokemonNumber>#{pokemon.id < 10 ? '0' + String(pokemon.id):pokemon.id}</PokemonNumber>
+      <PokemonName>{capitalize(pokemon.name)}</PokemonName>
       <TypesContainer>
       {pokemon.types?.map((type) => {
               return (
@@ -52,19 +60,22 @@ function Card(props) {
         </TypesContainer>
       
         {location.pathname === "/" ? (
-          <CatchButton onClick={() => addToPokedex(pokemon)}>
+          <CatchButton onClick={() => {   addToPokedex(pokemon); setOpenModal(true);}}>
+            
             Capturar!
           </CatchButton>
         ) : (
-          <ExtButton onClick={() => removeFromPokedex(pokemon)}>
+          <ExtButton onClick={() => {removeFromPokedex(pokemon); setOpenModal(true);} }>
             Excluir
           </ExtButton>
         )}
-        <PokemonDetails typeof="submit" onClick={() => goToDetailsPage(navigate, pokemon.name)}>
+        <PokemonDetails typeof="submit" onClick={() => {  verifyPokemon(pokemon);  onClickCard(pokemon.name);}}>
           Detalhes
         </PokemonDetails>
       </div>
-    </Container>
+      
+    </Container> 
+    
   );
 }
 

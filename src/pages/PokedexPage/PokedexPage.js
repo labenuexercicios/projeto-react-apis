@@ -1,43 +1,40 @@
 import Card from "../../components/Card/Card";
-import { Container } from "./styled";
+import { CardsContainer, Container } from "./styled";
 import { BASE_URL } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useContext } from "react";
-import { getColors } from "../../utils/ReturnCardColor";
-import { H, P } from "../HomePage/styled";
-import styled, { createGlobalStyle } from "styled-components";
+import {  P } from "../HomePage/styled";
+import styled  from "styled-components";
+import Modal from "../../components/Modal/Modal";
+import React from "react";
 
 function PokedexPage() {
 
-  const CardsContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, minmax(440px, 1fr));
-    justify-items: center;
-    background: grey;
-  `;
 
 
   const context = useContext(GlobalContext);
 
-  const { pokedex, removeFromPokedex } = context;
+  const { pokedex, removeFromPokedex, openModal, setOpenModal, verifyPokemon } = context;
 
   return (
     <Container>
-      
-      <H>  
-        <P>
-          <p>
-           Meus Pokémons
-        </p>
-        </P>
-        </H>
+      <P>
+      <h1>
+      Meus Pokémons
+        </h1>
+      </P>
+      <Modal isOpen={openModal}  setIsClose={() => setOpenModal(!openModal)}>
+      <h1>  Oh, no!</h1>
+      <p>O Pokémon foi removido da sua Pokedéx</p>
+      </Modal>
        <CardsContainer>
         {pokedex.map((pokemon) => (
           <Card
-            key={pokemon.name}
+            key={pokemon.id}
             pokemonUrl={`${BASE_URL}/${pokemon.name}`}
             removeFromPokedex={removeFromPokedex}
-           
+            setOpenModal={setOpenModal}
+            verifyPokemon={verifyPokemon}
           />
         ))}
      </CardsContainer>

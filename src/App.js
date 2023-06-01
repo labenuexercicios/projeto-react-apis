@@ -3,16 +3,22 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "./constants/url";
 import { GlobalContext } from "./contexts/GlobalContext";
 import Router from "./routes/Router";
+import React from "react";
 
 
 export default function App() {
   const [pokelist, setPokelist] = useState([]);
   const [pokedex, setPokedex] = useState([]);
+  const  [pokemonDetailed, setPokemonDetailed ] = useState([]);
+  const [openModal, setOpenModal] = useState(false)
+  const [pokemonExistsInPokedex, setPokemonExistsInPokedex] = useState(false)
 
   useEffect(() => {
     fetchPokelist();
   }, []);
+//
 
+//
   const fetchPokelist = async () => {
     try {
       const response = await axios.get(BASE_URL);
@@ -20,9 +26,24 @@ export default function App() {
       
     } catch (error) {
       console.log("Erro ao buscar lista de pokemons");
-      console.log(error.response);
+      
     }
   };
+
+
+  const verifyPokemon = (pokemon) => {
+    const isAlreadyOnPokedex = pokedex.find(
+      (pokemonInPokedex) => pokemonInPokedex.name === pokemon.name
+    );
+      if (!isAlreadyOnPokedex) {
+setPokemonExistsInPokedex(true);
+      }else if(isAlreadyOnPokedex) {
+        setPokemonExistsInPokedex(false);
+      }
+
+  };
+
+
   const addToPokedex = (pokemonToAdd) => {
     const isAlreadyOnPokedex = pokedex.find(
       (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
@@ -31,6 +52,7 @@ export default function App() {
     if (!isAlreadyOnPokedex) {
       const newPokedex = [...pokedex, pokemonToAdd];
       setPokedex(newPokedex);
+      
     }
   };
 
@@ -42,20 +64,26 @@ export default function App() {
     setPokedex(newPokedex);
   
   };
+ 
 
   const context = {
+    verifyPokemon: verifyPokemon,
     pokelist: pokelist,
     addToPokedex: addToPokedex,
     pokedex: pokedex,
     removeFromPokedex: removeFromPokedex,
-    
+    openModal,
+    setOpenModal,
+    pokemonDetailed,
+    setPokemonDetailed,
+    pokemonExistsInPokedex,
+    setPokemonExistsInPokedex
   };
 
   return (
-    
+      
       <GlobalContext.Provider value={context}>
         <Router />
       </GlobalContext.Provider>
-    
   );
 }
