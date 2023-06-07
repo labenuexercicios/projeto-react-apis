@@ -1,0 +1,542 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Montserrat:wght@100&display=swap');
+
+.detailsCard {
+    position: relative;
+    top: 0px;
+    height: 60vh;
+    width: 69vw;
+    min-width: 1060px;
+    min-height: 450px;
+    max-width: 1060px;
+    max-height: 450px;
+    border-radius: 32px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    overflow: visible;
+}
+
+.detailsLeft {
+    height: 420px;
+    width: 520px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.detailsImage {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detailsFrontImage {
+    background-color: white;
+    width: 190px;
+    height: 200px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailsFrontImage img {
+    height: 180px;
+}
+
+.detailsBackImage {
+    background-color: white;
+    width: 190px;
+    height: 200px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailsBackImage img {
+    height: 180px;
+}
+
+.baseStats {
+    background-color: white;
+    width: 260px;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.base {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+}
+
+.detailsSpliter {
+    color: #f0f1f0;
+}
+
+.stats1 {
+
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    gap: 10px;
+}
+
+.stats2,
+.stats3,
+.stats4,
+.stats5,
+.stats6 {
+    border-bottom: 1px solid silver;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    gap: 10px;
+}
+
+.hpDetails {
+    font-family: 'Inter', sans-serif;
+    margin-left: 50px;
+    color: #787878;
+}
+
+.attackDetails {
+    font-family: 'Inter', sans-serif;
+    margin-left: 20px;
+    color: #787878;
+}
+
+.deffenseDetails {
+    font-family: 'Inter', sans-serif;
+    margin-left: 1px;
+    color: #787878;
+}
+
+.spatkDetails {
+    font-family: 'Inter', sans-serif;
+    margin-left: 20px;
+    color: #787878;
+}
+
+.spdefDetails {
+    font-family: 'Inter', sans-serif;
+    margin-left: 20px;
+    color: #787878;
+}
+
+.speedDetails {
+    font-family: 'Inter', sans-serif;
+    margin-left: 22px;
+    color: #787878;
+}
+
+.numberDetails {
+    font-family: 'Inter', sans-serif;
+}
+
+.totalStats {
+    border-bottom: 1px solid silver;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.total {
+    font-family: 'Inter', sans-serif;
+    margin-left: -130px;
+}
+
+.detailsRight {
+    height: 420px;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    overflow: visible;
+}
+
+.rightPokeballBackground {
+    height: 504px;
+    width: 504px;
+    position: absolute;
+    top: -6%;
+    background-image: url(../../Assets/png-transparent-pokeball-pokebola-pokemon-pokemongo-pokemon-go-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+}
+
+.detailsRightTop {
+    position: relative;
+    display: flex;
+    height: 145px;
+    gap: 60px;
+    overflow: visible;
+}
+
+.idNameType {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detailsId {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+.detailsName {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+}
+
+.detailsType {
+    display: flex;
+    gap: 20px;
+}
+
+.detailsPokemonImage {
+    position: relative;
+    width: 300px;
+    overflow: visible;
+}
+
+.detailsPokemonImage img {
+    height: 270px;
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.detailsMoves {
+    position: relative;
+    border-radius: 16px;
+    background-color: white;
+    height: 300px;
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.moves {
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+}
+
+.move1,
+.move2,
+.move3,
+.move4 {
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px dashed rgb(143, 143, 143);
+    padding: 10px;
+    width: auto;
+    height: auto;
+    max-width: fit-content;
+    border-radius: 14px;
+    background-color: #ececec;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+@media (max-width: 750px) {
+    .detailsCard {
+        position: relative;
+        top: 0px;
+        min-width: 350px;
+        min-height: 650px;
+        max-width: 350px;
+        max-height: 650px;
+        border-radius: 32px;
+        margin-bottom: 20px;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 0px;
+        overflow: visible;
+    }
+
+    .detailsLeft {
+        height: 360px;
+        width: 330px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 5px;
+    }
+
+    .detailsImage {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .detailsFrontImage {
+        background-color: white;
+        width: 160px;
+        height: 110px;
+        border-radius: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .detailsFrontImage img {
+        height: 140px;
+    }
+
+    .detailsBackImage {
+        background-color: white;
+        width: 160px;
+        height: 110px;
+        border-radius: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .detailsBackImage img {
+        height: 140px;
+    }
+
+    .baseStats {
+        background-color: white;
+        width: 290px;
+        border-radius: 26px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .base {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+    }
+
+    .detailsSpliter {
+        color: #f0f1f0;
+    }
+
+    .stats1 {
+        border-top: 1px solid silver;
+        border-bottom: 1px solid silver;
+        height: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: center;
+        gap: 5px;
+    }
+
+    .stats2,
+    .stats3,
+    .stats4,
+    .stats5,
+    .stats6 {
+        border-bottom: 1px solid silver;
+        height: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: center;
+        gap: 5px;
+        font-size: 13px;
+    }
+
+    .hpDetails {
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        color: #787878;
+        margin-right: -4px;
+        margin-left: 45px;
+    }
+
+    .attackDetails {
+        font-family: 'Inter', sans-serif;
+        color: #787878;
+        margin-right: -3px;
+    }
+
+    .deffenseDetails {
+        font-family: 'Inter', sans-serif;
+        color: #787878;
+        margin-left: 5px;
+        margin-right: -5px;
+    }
+
+    .spatkDetails {
+        font-family: 'Inter', sans-serif;
+        color: #787878;
+        margin-right: -5px;
+    }
+
+    .spdefDetails {
+        font-family: 'Inter', sans-serif;
+        color: #787878;
+        margin-right: -5px;
+    }
+
+    .speedDetails {
+        font-family: 'Inter', sans-serif;
+        color: #787878;
+        margin-right: -5px;
+    }
+
+    .numberDetails {
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        margin-left: 15px;
+    }
+
+    .totalStats {
+        border-bottom: 1px solid silver;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+    }
+
+    .total {
+        font-family: 'Inter', sans-serif;
+        margin-left: -125px;
+    }
+
+    .detailsRight {
+        height: 250px;
+        width: 330px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        overflow: visible;
+    }
+
+    .rightPokeballBackground {
+        height: 270px;
+        width: 504px;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        background-image: url(../../Assets/png-transparent-pokeball-pokebola-pokemon-pokemongo-pokemon-go-icon.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.1;
+    }
+
+    .detailsRightTop {
+        position: relative;
+        display: flex;
+        height: 100px;
+        gap: 5px;
+        overflow: visible;
+    }
+
+    .idNameType {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: -5px;
+        margin-left: -5px;
+        padding: 5px;
+    }
+
+    .detailsId {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: white;
+    }
+
+    .detailsName {
+        color: white;
+        font-family: 'Inter', sans-serif;
+        font-size: 28px;
+    }
+
+    .detailsType {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        min-width: 100px;
+        max-width: 100px;
+    }
+
+    .detailsPokemonImage {
+        position: relative;
+        width: 150px;
+        overflow: visible;
+    }
+
+    .detailsPokemonImage img {
+        height: 200px;
+        position: absolute;
+        top: -70%;
+        left: 70%;
+        transform: translate(-50%);
+    }
+
+    .detailsMoves {
+        margin-top: 35px;
+        position: relative;
+        border-radius: 16px;
+        background-color: white;
+        height: 100px;
+        width: 330px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .moves {
+        font-weight: 700;
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        margin-top: 5px;
+    }
+
+    .move1,
+    .move2,
+    .move3,
+    .move4 {
+        display: inline-block;
+        box-sizing: border-box;
+        border: 1px dashed rgb(143, 143, 143);
+        padding: 10px;
+        width: auto;
+        height: auto;
+        max-width: fit-content;
+        border-radius: 14px;
+        background-color: #ececec;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,123 @@
+.modalCatch {
+    position: absolute;
+    width: 560px;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    overflow: hidden;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalOverlay.open .modalCatch {
+    opacity: 1;
+}
+
+svg {
+    width: 520px;
+    position: relative;
+    height: 280px;
+    margin: 0 auto;
+    display: block;
+    margin-left: 107px;
+}
+
+svg line {
+    stroke-width: 2px;
+    stroke: rgba(2, 162, 239, 1);
+}
+
+svg #svg_2 {
+    stroke-dasharray: 1680;
+    stroke-dashoffset: 1680;
+    animation: anim-dash 0.5s forwards;
+    animation-delay: 0.2s;
+}
+
+svg #svg_4 {
+    stroke-dasharray: 1680;
+    stroke-dashoffset: -280;
+    animation: anim-dash 0.5s forwards;
+    animation-delay: 0.2s;
+}
+
+svg #svg_3 {
+    stroke-dasharray: 1680;
+    stroke-dashoffset: -580;
+    animation: anim-dash 0.5s forwards;
+    animation-delay: 0.2s;
+}
+
+svg #svg_5 {
+    stroke-dasharray: 1680;
+    stroke-dashoffset: -280;
+    animation: anim-dash 0.5s forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes anim-dash {
+    90% {
+        stroke: rgba(2, 162, 239, 1);
+    }
+
+    100% {
+        stroke: #ffffff;
+        stroke-dashoffset: 1;
+        opacity: 1;
+    }
+}
+
+@keyframes display {
+    to {
+        opacity: 1;
+    }
+}
+
+.modalOverlay:target .modalCatch,
+.modalOverlay:target {
+    animation: display .6s forwards;
+    z-index: auto;
+}
+
+.modalOverlay:target .modalCatch svg line {
+    animation: anim-dash .6s forwards;
+    animation-delay: .6s;
+}
+
+.gifCatchModal video {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 345px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadeIn 0.5s ease-in-out forwards;
+    animation-delay: 0.7s;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
