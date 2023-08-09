@@ -1,0 +1,25 @@
+.pokedexpage{
+    background-color: #5d5d5d;
+    height: 100vh;
+}
+
+
+.header{
+    display: flex;
+    min-width: 100%;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.botaopokedex{
+    border: none;
+    background-color: white;
+    color: black;
+    font-weight: 900;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.botao:hover{
+    text-decoration: underline;
+}
