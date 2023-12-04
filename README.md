@@ -1,6 +1,5 @@
 # Projeto Pokédex
 
-![Pokemon](./src/assets/images/pokemons-logo-header.svg)
 
 O Pokédex Projeto é um software que oferece aos usuários a capacidade de selecionar uma variedade de pokémons para inclusão ou exclusão de sua própria pokédex. Além disso, na página de detalhes, é viável examinar os atributos individuais de cada pokémon, como ataques, estatísticas e tipos.
 
@@ -8,7 +7,7 @@ O Pokédex Projeto é um software que oferece aos usuários a capacidade de sele
 - <a href="#funcionalidades">Funcionalidades do projeto</a>
 - <a href="#rodar">Como rodar o projeto</a>
 - <a href="#tecnologias-utilizadas"> Tecnologias utilizadas</a>
-- <a href="#autora">Pessoa autora</a>
+- <a href="#autora">Desenvolvedora</a>
 
 
 ## Funcionalidades do projeto
@@ -46,6 +45,6 @@ http://127.0.0.1:5173/
 6. [PokéAPI](https://pokeapi.co/)
 7. Media Query
 
-## Pessoa autora 
+## Desenvolvedora
 [LinkedIn](https://www.linkedin.com/in/gleicielen-dourado/)
 
