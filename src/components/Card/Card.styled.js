@@ -12,6 +12,11 @@ export const Container = styled.div`
   margin-bottom: 60px;
   margin-left: 10px;
   margin-right: 10px;
+
+  @media (max-width: 400px) {
+    width: 50px;
+    height: auto;
+  }
 `;
 
 export const PokemonType = styled.img`

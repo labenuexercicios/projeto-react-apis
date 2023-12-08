@@ -62,6 +62,7 @@ export const ProgressMain = styled.div`
    padding-top: 15px;
    padding-left: 30px;
    margin-left: 15px;
+   z-index: 1;
 `;
 
 export const TitleBase = styled.h1`

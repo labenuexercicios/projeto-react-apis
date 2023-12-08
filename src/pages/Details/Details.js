@@ -25,6 +25,7 @@ const fetchDetails = async () => {
     setTypeDetails(data['types']['0']['type']['name'])
     setTypeDetails2(data['types']['1']['type']['name']) 
 }
+
 const functionBaseStart2 = async () => {
   setBase(details['stats'])
 }

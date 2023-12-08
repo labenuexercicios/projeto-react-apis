@@ -6,6 +6,11 @@ export const Container = styled.div`
    max-width: 1440px;
    min-width: 1440px;
    margin: 0 auto;
+
+   @media (max-width: 400px) {
+      width: 100vw;
+      height: 100vh;
+   }
 `;
 
 export const Buttons = styled.div`
@@ -82,4 +87,6 @@ export const ModalCapture = styled.div`
       text-align: center;
    }
 `
+
+
 
