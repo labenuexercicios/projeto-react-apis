@@ -1,3 +1,6 @@
+alberto-faria-pokedex.surge.sh
+
+
 # **Projeto React e API's**
 O Projeto React e APIs é um site de pokémons que possui três páginas: Home, Pokedex e Detalhes. O projeto está subdivido em temas de acordo com os conteúdos que estudado durante o Módulo 2 - Frontend.
 
